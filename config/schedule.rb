@@ -17,8 +17,12 @@
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every 2.hours do
+every 1.hours do
   runner "ReceiverPriceNotifier.receive_regual"
+end
+
+every 2.hours do
+  runner "Price.load_price_regual"
 end
 
 # Learn more: http://github.com/javan/whenever

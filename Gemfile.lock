@@ -223,7 +223,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
   friendly_id (~> 5.0.0)
-  iconv
+  iconv (~> 1.0.3)
   jbuilder (~> 1.2)
   jquery-rails (~> 2.1.4)
   jquery-ui-rails

@@ -23,8 +23,12 @@ class CatalogsController < ApplicationController
     self.breadcrumb(@catalog.parent)
     @subcatalogs = []
 
-    if @catalog.keywords.size > 0
-      @catalog.keywords += ', '
+    if @catalog.keywords != nil
+      if @catalog.keywords.size > 0
+        @catalog.keywords += ', '
+      end
+    else
+      @catalog.keywords = ''
     end
     @catalog.keywords += @catalog.title
 

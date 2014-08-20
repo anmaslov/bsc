@@ -80,4 +80,6 @@ Bsc::Application.configure do
 
   config.assets.compile = true
   config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
+
+  $GC_ID = 777
 end
