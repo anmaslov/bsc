@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @email_box.address %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @email_box.description %>
+</p>
+
+<%= link_to 'Edit', edit_email_box_path(@email_box) %> |
+<%= link_to 'Back', email_boxes_path %>

@@ -1,6 +1,9 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'csv'
+require 'iconv'
+require 'roo'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -19,5 +22,14 @@ module Bsc
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+     config.autoload_paths += %W(#{Rails.root}/lib)
+     config.i18n.default_locale = :ru
+
   end
+
+  def register_default_assets
+    register_stylesheet 'admin/active_admin.css'
+    register_javascript 'admin/active_admin.js'
+  end
+
 end

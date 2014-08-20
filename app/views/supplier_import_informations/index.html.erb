@@ -1,0 +1,39 @@
+<h1>Listing supplier_import_informations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Margin</th>
+      <th>First row</th>
+      <th>Article column</th>
+      <th>Title column</th>
+      <th>Quantity column</th>
+      <th>Price column</th>
+      <th>Supplier</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @supplier_import_informations.each do |supplier_import_information| %>
+      <tr>
+        <td><%= supplier_import_information.margin %></td>
+        <td><%= supplier_import_information.first_row %></td>
+        <td><%= supplier_import_information.article_column %></td>
+        <td><%= supplier_import_information.title_column %></td>
+        <td><%= supplier_import_information.quantity_column %></td>
+        <td><%= supplier_import_information.price_column %></td>
+        <td><%= supplier_import_information.supplier_id %></td>
+        <td><%= link_to 'Show', supplier_import_information %></td>
+        <td><%= link_to 'Edit', edit_supplier_import_information_path(supplier_import_information) %></td>
+        <td><%= link_to 'Destroy', supplier_import_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Supplier import information', new_supplier_import_information_path %>

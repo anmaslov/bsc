@@ -1,0 +1,29 @@
+<h1>Listing email_boxes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Description</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @email_boxes.each do |email_box| %>
+      <tr>
+        <td><%= email_box.address %></td>
+        <td><%= email_box.description %></td>
+        <td><%= link_to 'Show', email_box %></td>
+        <td><%= link_to 'Edit', edit_email_box_path(email_box) %></td>
+        <td><%= link_to 'Destroy', email_box, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Email box', new_email_box_path %>

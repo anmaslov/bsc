@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Margin:</strong>
+  <%= @supplier_import_information.margin %>
+</p>
+
+<p>
+  <strong>First row:</strong>
+  <%= @supplier_import_information.first_row %>
+</p>
+
+<p>
+  <strong>Article column:</strong>
+  <%= @supplier_import_information.article_column %>
+</p>
+
+<p>
+  <strong>Title column:</strong>
+  <%= @supplier_import_information.title_column %>
+</p>
+
+<p>
+  <strong>Quantity column:</strong>
+  <%= @supplier_import_information.quantity_column %>
+</p>
+
+<p>
+  <strong>Price column:</strong>
+  <%= @supplier_import_information.price_column %>
+</p>
+
+<p>
+  <strong>Supplier:</strong>
+  <%= @supplier_import_information.supplier_id %>
+</p>
+
+<%= link_to 'Edit', edit_supplier_import_information_path(@supplier_import_information) %> |
+<%= link_to 'Back', supplier_import_informations_path %>

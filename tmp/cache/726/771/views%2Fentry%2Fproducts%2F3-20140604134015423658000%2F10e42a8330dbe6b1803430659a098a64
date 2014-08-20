@@ -1,0 +1,12 @@
+o: ActiveSupport::Cache::Entry:@valueI"<        <div class="entry">
+          <img alt="Second" src="/assets/second.jpg" />
+          <h3>CoffeeScript</h3>
+          <p>CoffeScript is JavaScript</p>
+          <div class="price_line">
+            <span class="price">
+              $50.00
+            </span>
+            <form action="/line_items?product_id=3" class="button_to" method="post"><div><input class="btn btn-success" type="submit" value="Add to Cart" /><input name="authenticity_token" type="hidden" value="MsgrvCnpZD8jNsDVw43JxqwqDZQgh5QxOmYM/2BHGNo=" /></div></form>
+          </div>
+        </div>
+:ET:@created_atf1401913654.883532:@expires_in0

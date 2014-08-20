@@ -1,0 +1,117 @@
+<%= title @catalog.title %>
+<%= description @catalog.description %>
+<%= keywords @catalog.keywords %>
+
+<div class="row">
+
+  <div class="col-md-3 col-xs-3">
+    <div class="panel panel-noborder left-menu"> <!-- Левое меню -->
+      <%= render :template => "catalogs/left-menu" %>
+    </div>
+  </div>
+
+
+  <div class="col-md-9 col-xs-9">
+    <div class="panel panel-noborder">
+      <ol class="breadcrumb left">
+        <%= render_breadcrumbs :tag => :li, :separator => "" %>
+        <!--<li><a href="#">Измерительная техника</a></li>
+        <li class="active">Тепловизоры</li>-->
+        <li class="active"><%= @catalog.title %></li>
+      </ol>
+
+      <%= image_tag(@catalog.image.url(:thumb), :alt => @catalog.title, :class => 'catalog_title_img') %>
+      <div class="clear"></div>
+
+      <h1 class="title-catalog"><%= @catalog.title %></h1>
+
+
+      <% if @catalog.children.size > 0 %>
+        <div class="panel-body">
+
+          <div class="btn-group right catalog-view-toggle" data-toggle="buttons">
+            <label class="btn btn-default btn-sm <%= (@catalog.catalog_table) ? '' : 'active' %>">
+              <input type="radio" name="options" id="option1">
+              <span class="glyphicon glyphicon-th-large"></span>
+            </label>
+            <label class="btn btn-default btn-sm <%= (@catalog.catalog_table) ? 'active' : '' %>">
+              <input type="radio" name="options" id="option3">
+              <span class="glyphicon glyphicon-th-list"></span>
+            </label>
+          </div>
+
+          <div class="clear" style="height: 10px"></div>
+
+            <div class="row catalog-th-large">
+              <table class="table table-striped table-product">
+                <thead>
+                <tr class="tr catalog <%= (@catalog.catalog_table) ? '' : 'hidden' %>">
+                  <th></th>
+                  <th>Наименование</th>
+                  <th>Описание</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%= render(@catalog.children) %>
+                </tbody>
+              </table>
+            </div>
+
+         </div>
+      <% end %>
+
+      <% if @catalog.product.size > 0 %>
+        <div class="panel-body">
+
+          <div class="btn-group right product2-view-toggle" data-toggle="buttons">
+            <label class="btn btn-default btn-sm <%= (@catalog.product_table) ? '' : 'active' %>">
+              <input type="radio" name="options" id="option1">
+              <span class="glyphicon glyphicon-th-large"></span>
+            </label>
+            <label class="btn btn-default btn-sm <%= (@catalog.product_table) ? 'active' : '' %>">
+              <input type="radio" name="options" id="option3">
+              <span class="glyphicon glyphicon-th-list"></span>
+            </label>
+          </div>
+          <div class="clear" style="height: 10px"></div>
+          <%= will_paginate @products %>
+          <div class="clear" style="height: 10px"></div>
+
+          <div class="row product-th-large">
+            <table class="table table-striped table-product">
+              <thead>
+              <tr class="tr product <%= (@catalog.product_table) ? '' : 'hidden' %>">
+                <% if (user_signed_in? && current_user.admin?) %>
+                    <th></th>
+                <% end %>
+                <th></th>
+                <th>Артикул</th>
+                <th>Наименование</th>
+                <th>Цена</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+                <%= render(@products) %>
+
+              </tbody>
+            </table>
+          </div>
+
+          <%= will_paginate @products %>
+          <div class="clear" style="height: 10px"></div>
+            <div class="content">
+              <%= raw @catalog.content %>
+            </div>
+        </div>
+      <% end %>
+
+      <%= raw @catalog.content %>
+
+      </div>
+    </div>
+</div>
+
+
+
+<%= render :template => "layouts/view-toggle" %>

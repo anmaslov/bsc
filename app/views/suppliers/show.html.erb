@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @supplier.title %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @supplier.subject %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @supplier.description %>
+</p>
+
+<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
+<%= link_to 'Back', suppliers_path %>

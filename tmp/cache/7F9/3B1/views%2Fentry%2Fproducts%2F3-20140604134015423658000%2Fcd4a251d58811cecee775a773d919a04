@@ -1,0 +1,11 @@
+o: ActiveSupport::Cache::Entry:@valueI",        <div class="entry">
+          <img alt="Second" src="/assets/second.jpg" />
+          <h3>CoffeeScript</h3>
+          <p>CoffeScript is JavaScript</p>
+          <div class="price_line">
+            <span class="price">
+              $50.00
+            </span>
+          </div>
+        </div>
+:ET:@created_atf1401909478.023566:@expires_in0

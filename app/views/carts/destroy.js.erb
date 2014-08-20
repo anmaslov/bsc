@@ -1,0 +1,7 @@
+if ($('#cart tr').length > 2) {
+    $('#cart').show('blind', 1000);
+} else {
+    $('#bascet').modal('hide');
+}
+
+$('#cart').html("<%= escape_javascript render(@cart) %>");

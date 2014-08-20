@@ -1,0 +1,45 @@
+<%= form_for(@supplier_import_information) do |f| %>
+  <% if @supplier_import_information.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@supplier_import_information.errors.count, "error") %> prohibited this supplier_import_information from being saved:</h2>
+
+      <ul>
+      <% @supplier_import_information.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :margin %><br>
+    <%= f.text_field :margin %>
+  </div>
+  <div class="field">
+    <%= f.label :first_row %><br>
+    <%= f.number_field :first_row %>
+  </div>
+  <div class="field">
+    <%= f.label :article_column %><br>
+    <%= f.number_field :article_column %>
+  </div>
+  <div class="field">
+    <%= f.label :title_column %><br>
+    <%= f.number_field :title_column %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity_column %><br>
+    <%= f.number_field :quantity_column %>
+  </div>
+  <div class="field">
+    <%= f.label :price_column %><br>
+    <%= f.number_field :price_column %>
+  </div>
+  <div class="field">
+    <%= f.label :supplier_id %><br>
+    <%= f.number_field :supplier_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

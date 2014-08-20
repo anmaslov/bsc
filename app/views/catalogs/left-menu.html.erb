@@ -1,0 +1,5 @@
+<ul>
+  <% Catalog.where({:parent_id=>[0, nil]}).order('title ASC').each do |cat| %>
+      <%=render :template => "catalogs/left-menu-item", :locals => {:catalog => cat} %>
+  <% end %>
+</ul>

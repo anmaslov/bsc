@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  margin: 9.99
+  first_row: 1
+  article_column: 1
+  title_column: 1
+  quantity_column: 1
+  price_column: 1
+  supplier_id: 1
+
+two:
+  margin: 9.99
+  first_row: 1
+  article_column: 1
+  title_column: 1
+  quantity_column: 1
+  price_column: 1
+  supplier_id: 1

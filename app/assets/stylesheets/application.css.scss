@@ -9,8 +9,22 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require_directory .
  */
+
+a {
+  cursor: pointer !important;
+  text-decoration: underline !important;
+  background: none !important;
+  color: #428bca !important;
+}
+
+a:hover {
+  cursor: pointer !important;
+  text-decoration: underline !important;
+  background: none !important;
+  color: #2a6496 !important;
+}
 
 #banner {
   background: #9c9;
@@ -49,6 +63,25 @@
     width: 13em;
     background: #141;
 
+    form, div {
+      display: inline;
+    }
+
+    input {
+      font-size: small;
+    }
+
+    #cart {
+      font-size: smaller;
+      color: white;
+
+      table {
+        border-top: 1px dotted #595;
+        border-bottom: 1px dotted #595;
+        margin-bottom: 10px;
+      }
+    }
+
     ul {
       padding: 0;
       li {
@@ -62,3 +95,57 @@
   }
 }
 
+
+#footer {
+  background-color: #F5F5F5;
+  bottom: 0;
+  height: auto;
+  min-width: 1000px;
+  padding-top: 20px;
+  position: relative;
+  top: 40px;
+  width: 100%;
+  color: #404040;
+}
+
+#footer > .container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.container {
+  max-width: 1440px;
+  min-width: 1000px;
+  width: 100%;
+}
+
+.depot_form {
+  fieldset {
+    background: #efe;
+    legend {
+      color: #efe;
+      background: #141;
+      font-family: sans-serif;
+      padding: 0.2em 1em;
+    }
+  }
+  form {
+    label {
+      width: 5em;
+      float: left;
+      text-align: right;
+      padding-top: 0.2em;
+      margin-right: 0.1em;
+      display: block;
+    }
+    select, textarea, input {
+      margin-left: 0.5em;
+    }
+  }
+  .submit {
+  margin-left: 4em;
+  }
+  br {
+    display: none;
+  }
+}

@@ -1,16 +1,51 @@
 Bsc::Application.routes.draw do
+  resources :supplier_import_informations
+
+  resources :suppliers
+
+  resources :email_boxes
+
+  resources :emails
+
+  resources :catalogs
+
+  ActiveAdmin.routes(self)
+  resources :pages
+
+  mount RedactorRails::Engine => '/redactor_rails'
+  devise_for :users
+  get "persons/profile"
+  resources :orders
+
   resources :line_items
 
   resources :carts
 
   get "store/index"
-  resources :products
+  resources :products do
+    get :who_bought, on: :member
+  end
+
+  get 'persons/profile', as: 'user_root'
+
+  match '/contact.php' => 'pages#show', :id => 'contacts', :via => [:get]
+  match '/about.php' => 'pages#show', :id => 'about', :via => [:get]
+  match '/price.php' => 'pages#show', :id => 'price-list', :via => [:get]
+  match '/catalog.php' => 'catalogs#show', :via => [:get]
+  match '/vacancy.php' => 'pages#show', :id => 'vacancy', :via => [:get]
+  match '/delivery.php' => 'pages#show', :id => 'delivery', :via => [:get]
+
+  match 'catalog.php' => 'catalogs#show', :id => 0, :via => [:get]
+
+  match '/:id' => 'pages#show', :via => [:get], :as => 'pages_show'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
+  root 'store#index'
   root to: 'store#index', as: 'store'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

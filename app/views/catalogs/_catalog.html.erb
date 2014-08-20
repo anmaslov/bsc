@@ -1,0 +1,23 @@
+<% if (user_signed_in? && current_user.admin?) || catalog.is_active %>
+<div class="col-sm-3 col-md-3 <%= !catalog.is_active ? 'not-active' : '' %>" id="<%= catalog.id %>">
+    <div class="thumbnail catalog <%= (@catalog && @catalog.catalog_table) ? 'hidden' : '' %>">
+      <div class="cart-img">
+        <%= image_tag(catalog.image.url(:thumb), :alt => catalog.title, :class => 'catalog_img') %>
+      </div>
+      <div class="caption">
+        <%= link_to catalog.title, catalog, :class => 'catalog_title' %>
+      </div>
+    </div>
+  <tr class="tr catalog <%= (@catalog && @catalog.catalog_table) ? '' : 'hidden' %> <%= !catalog.is_active ? 'not-active' : '' %>">
+    <td>
+      <%= image_tag(catalog.image.url(:thumbnail), :alt => catalog.title, :class => 'catalog_img') %>
+    </td>
+    <td>
+        <%= link_to catalog.title, catalog, :class => 'catalog_title' %>
+    </td>
+    <td>
+      <%= catalog.description %>
+    </td>
+  </tr>
+</div>
+<% end %>

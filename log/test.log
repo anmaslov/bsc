@@ -1,0 +1,1718 @@
+  [1m[36m (1.3ms)[0m  [1mCREATE TABLE "carts" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.2ms)[0m  CREATE TABLE "line_items" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "product_id" integer, "cart_id" integer, "created_at" datetime, "updated_at" datetime, "quantity" integer) 
+  [1m[36m (1.1ms)[0m  [1mCREATE INDEX "index_line_items_on_cart_id" ON "line_items" ("cart_id")[0m
+  [1m[35m (1.2ms)[0m  CREATE INDEX "index_line_items_on_product_id" ON "line_items" ("product_id")
+  [1m[36m (1.2ms)[0m  [1mCREATE TABLE "products" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar(255), "description" text, "image_url" varchar(255), "price" decimal, "created_at" datetime, "updated_at" datetime) [0m
+  [1m[35m (1.3ms)[0m  CREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) 
+  [1m[36m (1.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35m (0.1ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.7ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140604215606')[0m
+  [1m[35m (1.7ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140604124839')
+  [1m[36m (1.3ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140604200453')[0m
+  [1m[35m (1.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20140604201117')
+  [1m[36m (1.2ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20140604212902')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM "carts"[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-06-05 17:50:21', '2014-06-05 17:50:21', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at", "id") VALUES ('2014-06-05 17:50:21', '2014-06-05 17:50:21', 298486374)[0m
+  [1m[35mFixture Delete (0.1ms)[0m  DELETE FROM "line_items"
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at", "id") VALUES (NULL, NULL, '2014-06-05 17:50:21', '2014-06-05 17:50:21', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "line_items" ("product_id", "cart_id", "created_at", "updated_at", "id") VALUES (NULL, NULL, '2014-06-05 17:50:21', '2014-06-05 17:50:21', 298486374)
+  [1m[36mFixture Delete (0.1ms)[0m  [1mDELETE FROM "products"[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 9.99, '2014-06-05 17:50:21', '2014-06-05 17:50:21', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at", "id") VALUES ('MyString', 'MyText', 'MyString', 9.99, '2014-06-05 17:50:21', '2014-06-05 17:50:21', 298486374)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO "products" ("title", "description", "image_url", "price", "created_at", "updated_at", "id") VALUES ('Programming Ruby 1.9', 'Ruby is the fastest growing and most exciting dynamic language out there. If you need to ger working programs.', 'ruby.png', 49.5, '2014-06-05 17:50:21', '2014-06-05 17:50:21', 207281424)
+  [1m[36m (1.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (11.7ms)[0m  INSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)  [["created_at", Thu, 05 Jun 2014 17:50:21 UTC +00:00], ["updated_at", Thu, 05 Jun 2014 17:50:21 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 30ms (ActiveRecord: 11.9ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[36mCart Load (0.4ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?[0m  [["cart_id", 980190962]]
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "carts" WHERE "carts"."id" = ?  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts
+Completed 302 Found in 92ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "carts"
+  [1m[36m (0.4ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  Rendered carts/_form.html.erb (152.0ms)
+Completed 200 OK in 751ms (Views: 749.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#index as HTML
+  [1m[35mCart Load (0.2ms)[0m  SELECT "carts".* FROM "carts"
+Completed 200 OK in 30ms (Views: 29.8ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (1.6ms)
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ?  [["cart_id", 980190962]]
+Completed 200 OK in 26ms (Views: 24.6ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[36mCart Load (0.1ms)[0m  [1mSELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[35mCart Load (0.1ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-----------------------------------------------------
+LineItemsControllerTest: test_should_create_line_item
+-----------------------------------------------------
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "line_items"
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 207281424]]
+Processing by LineItemsController#create as HTML
+  Parameters: {"product_id"=>"207281424"}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "carts" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", Thu, 05 Jun 2014 17:50:22 UTC +00:00], ["updated_at", Thu, 05 Jun 2014 17:50:22 UTC +00:00]]
+  [1m[35m (0.0ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", "207281424"]]
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."cart_id" = ? AND "line_items"."product_id" = 207281424 LIMIT 1  [["cart_id", 980190963]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (20.9ms)[0m  INSERT INTO "line_items" ("cart_id", "created_at", "product_id", "updated_at") VALUES (?, ?, ?, ?)  [["cart_id", 980190963], ["created_at", Thu, 05 Jun 2014 17:50:23 UTC +00:00], ["product_id", 207281424], ["updated_at", Thu, 05 Jun 2014 17:50:23 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mCart Load (0.3ms)[0m  SELECT "carts".* FROM "carts" WHERE "carts"."id" = ? ORDER BY "carts"."id" ASC LIMIT 1  [["id", 980190963]]
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 74ms (ActiveRecord: 22.2ms)
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "line_items"[0m
+  [1m[35m (4.4ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+------------------------------------------------------
+LineItemsControllerTest: test_should_destroy_line_item
+------------------------------------------------------
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "line_items"[0m
+Processing by LineItemsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", "980190962"]]
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "line_items" WHERE "line_items"."id" = ?  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/line_items
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "line_items"
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+---------------------------------------------
+LineItemsControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by LineItemsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", "980190962"]]
+  Rendered line_items/_form.html.erb (31.6ms)
+Completed 200 OK in 73ms (Views: 72.3ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+----------------------------------------------
+LineItemsControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by LineItemsController#index as HTML
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items"
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+LineItemsControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by LineItemsController#new as HTML
+  Rendered line_items/_form.html.erb (2.0ms)
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+---------------------------------------------------
+LineItemsControllerTest: test_should_show_line_item
+---------------------------------------------------
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by LineItemsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+-----------------------------------------------------
+LineItemsControllerTest: test_should_update_line_item
+-----------------------------------------------------
+  [1m[35mLineItem Load (0.1ms)[0m  SELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by LineItemsController#update as HTML
+  Parameters: {"line_item"=>{"cart_id"=>nil, "product_id"=>nil}, "id"=>"980190962"}
+  [1m[36mLineItem Load (0.1ms)[0m  [1mSELECT "line_items".* FROM "line_items" WHERE "line_items"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/line_items/980190962
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.1ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM "products"[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"title"=>"Lorem Ipsum", "description"=>"Wibbles are fun!", "image_url"=>"lorem.jpg", "price"=>"19.95"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "products" WHERE "products"."title" = 'Lorem Ipsum' LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "products" ("created_at", "description", "image_url", "price", "title", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["created_at", Thu, 05 Jun 2014 17:50:23 UTC +00:00], ["description", "Wibbles are fun!"], ["image_url", "lorem.jpg"], ["price", #<BigDecimal:7fe7c2115718,'0.1995E2',18(18)>], ["title", "Lorem Ipsum"], ["updated_at", Thu, 05 Jun 2014 17:50:23 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190963
+Completed 302 Found in 32ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "products"
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mLineItem Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM "line_items" WHERE "line_items"."product_id" = ? LIMIT 1[0m  [["product_id", 980190962]]
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "products" WHERE "products"."id" = ?  [["id", 980190962]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products
+Completed 302 Found in 7ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM "products"
+  [1m[36m (0.5ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.1ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", "980190962"]]
+  Rendered products/_form.html.erb (5.6ms)
+Completed 200 OK in 28ms (Views: 26.5ms | ActiveRecord: 0.1ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.2ms)[0m  SELECT "products".* FROM "products"
+Completed 200 OK in 148ms (Views: 146.9ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", 980190962]]
+Processing by ProductsController#new as HTML
+  Rendered products/_form.html.erb (2.8ms)
+Completed 200 OK in 36ms (Views: 35.6ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (0.1ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+Completed 200 OK in 31ms (Views: 30.3ms | ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.1ms)[0m  SELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1  [["id", 980190962]]
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"title"=>"Lorem Ipsum", "description"=>"Wibbles are fun!", "image_url"=>"lorem.jpg", "price"=>"19.95"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.1ms)[0m  [1mSELECT "products".* FROM "products" WHERE "products"."id" = ? LIMIT 1[0m  [["id", "980190962"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProduct Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM "products" WHERE ("products"."title" = 'Lorem Ipsum' AND "products"."id" != 980190962) LIMIT 1[0m
+  [1m[35mSQL (0.7ms)[0m  UPDATE "products" SET "title" = ?, "description" = ?, "image_url" = ?, "price" = ?, "updated_at" = ? WHERE "products"."id" = 980190962  [["title", "Lorem Ipsum"], ["description", "Wibbles are fun!"], ["image_url", "lorem.jpg"], ["price", #<BigDecimal:7fe7c1573ab8,'0.1995E2',18(18)>], ["updated_at", Thu, 05 Jun 2014 17:50:23 UTC +00:00]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190962
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+  [1m[35m (84.6ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+------------------------------------------
+StoreControllerTest: test_should_get_index
+------------------------------------------
+Processing by StoreController#index as HTML
+  [1m[35mProduct Load (0.4ms)[0m  SELECT "products".* FROM "products" ORDER BY "products"."updated_at" DESC LIMIT 1
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT "products".* FROM "products" ORDER BY "products"."title" ASC[0m
+Completed 200 OK in 84ms (Views: 82.3ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (1110.7ms)[0m  [1mDROP DATABASE IF EXISTS `bsc_test`[0m
+  [1m[35m (128.9ms)[0m  CREATE DATABASE `bsc_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (887.1ms)[0m  [1mCREATE TABLE `carts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (711.1ms)[0m  CREATE TABLE `line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `product_id` int(11), `cart_id` int(11), `created_at` datetime, `updated_at` datetime, `quantity` int(11) DEFAULT 1) ENGINE=InnoDB
+  [1m[36m (836.7ms)[0m  [1mCREATE INDEX `index_line_items_on_cart_id` USING btree ON `line_items` (`cart_id`) [0m
+  [1m[35m (299.9ms)[0m  CREATE INDEX `index_line_items_on_product_id` USING btree ON `line_items` (`product_id`) 
+  [1m[36m (517.9ms)[0m  [1mCREATE TABLE `products` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `image_url` varchar(255), `price` decimal(8,2), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (307.3ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (664.6ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (46.3ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604215606')[0m
+  [1m[35m (143.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140604124839')
+  [1m[36m (16.5ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604200453')[0m
+  [1m[35m (15.7ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140604201117')
+  [1m[36m (15.9ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604212902')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (228.6ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (38.5ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (93.5ms)[0m  [1mDELETE FROM `carts`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `carts` (`created_at`, `updated_at`, `id`) VALUES ('2014-06-08 00:08:50', '2014-06-08 00:08:50', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`, `id`) VALUES ('2014-06-08 00:08:50', '2014-06-08 00:08:50', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `line_items`
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `id`) VALUES (NULL, NULL, '2014-06-08 00:08:51', '2014-06-08 00:08:51', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `id`) VALUES (NULL, NULL, '2014-06-08 00:08:51', '2014-06-08 00:08:51', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `products`[0m
+  [1m[35mFixture Insert (45.5ms)[0m  INSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 'MyString', 9.99, '2014-06-08 00:08:51', '2014-06-08 00:08:51', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 'MyString', 9.99, '2014-06-08 00:08:51', '2014-06-08 00:08:51', 298486374)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('Programming Ruby 1.9', 'Ruby is the fastest growing and most exciting dynamic language out there. If you need to ger working programs.', 'ruby.png', 49.5, '2014-06-08 00:08:51', '2014-06-08 00:08:51', 207281424)
+  [1m[36m (135.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (117.5ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:08:52', '2014-06-08 00:08:52')[0m
+  [1m[35m (117.7ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 285ms (ActiveRecord: 118.2ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+  [1m[35m (93.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `carts` WHERE `carts`.`id` = 980190962[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 100ms (ActiveRecord: 0.9ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+  [1m[35m (15.9ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+  Rendered carts/_form.html.erb (100.8ms)
+  [1m[35mLineItem Exists (0.4ms)[0m  SELECT 1 AS one FROM `line_items` WHERE `line_items`.`cart_id` = 980190962 LIMIT 1
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962[0m
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (2.9ms)
+Completed 200 OK in 6592ms (Views: 6589.6ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#index as HTML
+  [1m[36mCart Load (0.5ms)[0m  [1mSELECT `carts`.* FROM `carts`[0m
+Completed 500 Internal Server Error in 158ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (1.5ms)
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (1.1ms)
+Completed 200 OK in 82ms (Views: 81.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962[0m
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (2.3ms)
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (0.7ms)
+Completed 200 OK in 56ms (Views: 55.0ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------
+LineItemsControllerTest: test_should_create_line_item
+-----------------------------------------------------
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1
+Processing by LineItemsController#create as HTML
+  Parameters: {"product_id"=>"207281424"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (95.0ms)[0m  INSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:09:00', '2014-06-08 00:09:00')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1
+  [1m[36mLineItem Load (0.4ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190964 AND `line_items`.`product_id` = 207281424 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `line_items` (`cart_id`, `created_at`, `product_id`, `updated_at`) VALUES (980190964, '2014-06-08 00:09:00', 207281424, '2014-06-08 00:09:00')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 142ms (ActiveRecord: 96.7ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190964 ORDER BY `carts`.`id` ASC LIMIT 1
+  [1m[36m (58.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------
+LineItemsControllerTest: test_should_destroy_line_item
+------------------------------------------------------
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `line_items`
+Processing by LineItemsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.4ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mDELETE FROM `line_items` WHERE `line_items`.`id` = 980190962[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items
+Completed 302 Found in 5ms (ActiveRecord: 1.1ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35m (282.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+LineItemsControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[35mLineItem Load (0.4ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  Rendered line_items/_form.html.erb (286.7ms)
+Completed 500 Internal Server Error in 329ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+LineItemsControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#index as HTML
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items`[0m
+Completed 500 Internal Server Error in 46ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+LineItemsControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#new as HTML
+  Rendered line_items/_form.html.erb (1.9ms)
+Completed 500 Internal Server Error in 47ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+LineItemsControllerTest: test_should_show_line_item
+---------------------------------------------------
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+Processing by LineItemsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Completed 500 Internal Server Error in 15ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------------
+LineItemsControllerTest: test_should_update_line_item
+-----------------------------------------------------
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+Processing by LineItemsController#update as HTML
+  Parameters: {"line_item"=>{"product_id"=>nil}, "id"=>"980190962"}
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists (626.6ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.1ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.1ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+ProductTest: test_product_attrubutes_must_not_be_empty
+------------------------------------------------------
+  [1m[35mProduct Exists (0.3ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` IS NULL LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------
+ProductTest: test_product_is_not_valid_without_a_unique_title
+-------------------------------------------------------------
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1[0m
+  [1m[35mProduct Exists (0.3ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'Programming Ruby 1.9' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `products`[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"title"=>"Lorem Ipsum", "description"=>"Wibbles are fun!", "image_url"=>"lorem.jpg", "price"=>"19.95"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'Lorem Ipsum' LIMIT 1[0m
+  [1m[35mSQL (119.1ms)[0m  INSERT INTO `products` (`created_at`, `description`, `image_url`, `price`, `title`, `updated_at`) VALUES ('2014-06-08 00:09:01', 'Wibbles are fun!', 'lorem.jpg', 19.95, 'Lorem Ipsum', '2014-06-08 00:09:01')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190963
+Completed 302 Found in 124ms (ActiveRecord: 119.5ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (31.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `products`
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mLineItem Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `line_items` WHERE `line_items`.`product_id` = 980190962 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM `products` WHERE `products`.`id` = 980190962
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products
+Completed 302 Found in 6ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (15.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+  Rendered products/_form.html.erb (42.2ms)
+Completed 500 Internal Server Error in 103ms
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products`
+Completed 500 Internal Server Error in 126ms
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#new as HTML
+  Rendered products/_form.html.erb (2.6ms)
+Completed 500 Internal Server Error in 46ms
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (0.4ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Completed 500 Internal Server Error in 32ms
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"title"=>"Lorem Ipsum", "description"=>"Wibbles are fun!", "image_url"=>"lorem.jpg", "price"=>"19.95"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProduct Exists (55.4ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE (`products`.`title` = BINARY 'Lorem Ipsum' AND `products`.`id` != 980190962) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `products` SET `title` = 'Lorem Ipsum', `description` = 'Wibbles are fun!', `image_url` = 'lorem.jpg', `price` = 19.95, `updated_at` = '2014-06-08 00:09:02' WHERE `products`.`id` = 980190962
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190962
+Completed 302 Found in 94ms (ActiveRecord: 56.2ms)
+  [1m[35m (18.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+StoreControllerTest: test_should_get_index
+------------------------------------------
+Processing by StoreController#index as HTML
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:09:02', '2014-06-08 00:09:02')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY `products`.`updated_at` DESC LIMIT 1[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` ORDER BY `products`.`title` ASC
+  [1m[36mLineItem Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `line_items` WHERE `line_items`.`cart_id` = 980190965 LIMIT 1[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190965
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (1.3ms)
+Completed 200 OK in 112ms (Views: 108.4ms | ActiveRecord: 1.4ms)
+  [1m[36m (43.1ms)[0m  [1mROLLBACK[0m
+  [1m[36m (425.7ms)[0m  [1mDROP DATABASE IF EXISTS `bsc_test`[0m
+  [1m[35m (13.8ms)[0m  CREATE DATABASE `bsc_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (217.3ms)[0m  [1mCREATE TABLE `carts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (416.3ms)[0m  CREATE TABLE `line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `product_id` int(11), `cart_id` int(11), `created_at` datetime, `updated_at` datetime, `quantity` int(11) DEFAULT 1) ENGINE=InnoDB
+  [1m[36m (276.9ms)[0m  [1mCREATE INDEX `index_line_items_on_cart_id` USING btree ON `line_items` (`cart_id`) [0m
+  [1m[35m (201.0ms)[0m  CREATE INDEX `index_line_items_on_product_id` USING btree ON `line_items` (`product_id`) 
+  [1m[36m (199.7ms)[0m  [1mCREATE TABLE `products` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `image_url` varchar(255), `price` decimal(8,2), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (193.8ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (172.7ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604215606')[0m
+  [1m[35m (29.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140604124839')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604200453')[0m
+  [1m[35m (0.4ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140604201117')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604212902')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `carts`[0m
+  [1m[35mFixture Insert (0.4ms)[0m  INSERT INTO `carts` (`created_at`, `updated_at`, `id`) VALUES ('2014-06-08 00:15:48', '2014-06-08 00:15:48', 980190962)
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`, `id`) VALUES ('2014-06-08 00:15:48', '2014-06-08 00:15:48', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `line_items`
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `id`) VALUES (NULL, NULL, '2014-06-08 00:15:48', '2014-06-08 00:15:48', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `id`) VALUES (NULL, NULL, '2014-06-08 00:15:48', '2014-06-08 00:15:48', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `products`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 'MyString', 9.99, '2014-06-08 00:15:48', '2014-06-08 00:15:48', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 'MyString', 9.99, '2014-06-08 00:15:48', '2014-06-08 00:15:48', 298486374)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('Programming Ruby 1.9', 'Ruby is the fastest growing and most exciting dynamic language out there. If you need to ger working programs.', 'ruby.png', 49.5, '2014-06-08 00:15:48', '2014-06-08 00:15:48', 207281424)
+  [1m[36m (29.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:15:48', '2014-06-08 00:15:48')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 53ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+  [1m[35m (15.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `carts` WHERE `carts`.`id` = 980190962[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 49ms (ActiveRecord: 0.9ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+  [1m[35m (15.6ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+  Rendered carts/_form.html.erb (69.8ms)
+  [1m[35mLineItem Exists (0.3ms)[0m  SELECT 1 AS one FROM `line_items` WHERE `line_items`.`cart_id` = 980190962 LIMIT 1
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962[0m
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (3.1ms)
+Completed 200 OK in 899ms (Views: 897.5ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#index as HTML
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts`[0m
+Completed 200 OK in 24ms (Views: 22.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (2.2ms)
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (1.1ms)
+Completed 200 OK in 384ms (Views: 384.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962[0m
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (2.3ms)
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (1.8ms)
+Completed 200 OK in 38ms (Views: 36.3ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------
+LineItemsControllerTest: test_should_create_line_item
+-----------------------------------------------------
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1
+Processing by LineItemsController#create as HTML
+  Parameters: {"product_id"=>"207281424"}
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:15:50', '2014-06-08 00:15:50')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1
+  [1m[36mLineItem Load (0.4ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190964 AND `line_items`.`product_id` = 207281424 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `line_items` (`cart_id`, `created_at`, `product_id`, `updated_at`) VALUES (980190964, '2014-06-08 00:15:50', 207281424, '2014-06-08 00:15:50')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 57ms (ActiveRecord: 1.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190964 ORDER BY `carts`.`id` ASC LIMIT 1
+  [1m[36m (15.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------
+LineItemsControllerTest: test_should_destroy_line_item
+------------------------------------------------------
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `line_items`
+Processing by LineItemsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM `line_items` WHERE `line_items`.`id` = 980190962[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+LineItemsControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  Rendered line_items/_form.html.erb (75.6ms)
+Completed 200 OK in 108ms (Views: 106.5ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+LineItemsControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#index as HTML
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items`[0m
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+LineItemsControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#new as HTML
+  Rendered line_items/_form.html.erb (3.3ms)
+Completed 200 OK in 41ms (Views: 40.0ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+LineItemsControllerTest: test_should_show_line_item
+---------------------------------------------------
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+Processing by LineItemsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------------
+LineItemsControllerTest: test_should_update_line_item
+-----------------------------------------------------
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+Processing by LineItemsController#update as HTML
+  Parameters: {"line_item"=>{"product_id"=>nil}, "id"=>"980190962"}
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items/980190962
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.1ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+ProductTest: test_product_attrubutes_must_not_be_empty
+------------------------------------------------------
+  [1m[35mProduct Exists (0.3ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` IS NULL LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------
+ProductTest: test_product_is_not_valid_without_a_unique_title
+-------------------------------------------------------------
+  [1m[36mProduct Load (0.5ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1[0m
+  [1m[35mProduct Exists (0.4ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'Programming Ruby 1.9' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `products`[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"title"=>"Lorem Ipsum", "description"=>"Wibbles are fun!", "image_url"=>"lorem.jpg", "price"=>"19.95"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'Lorem Ipsum' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `products` (`created_at`, `description`, `image_url`, `price`, `title`, `updated_at`) VALUES ('2014-06-08 00:15:50', 'Wibbles are fun!', 'lorem.jpg', 19.95, 'Lorem Ipsum', '2014-06-08 00:15:50')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190963
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (14.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `products`
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mLineItem Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `line_items` WHERE `line_items`.`product_id` = 980190962 LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM `products` WHERE `products`.`id` = 980190962
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products
+Completed 302 Found in 5ms (ActiveRecord: 0.9ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+  Rendered products/_form.html.erb (5.2ms)
+Completed 200 OK in 39ms (Views: 37.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products`
+Completed 200 OK in 91ms (Views: 90.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#new as HTML
+  Rendered products/_form.html.erb (2.8ms)
+Completed 200 OK in 51ms (Views: 50.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Completed 200 OK in 15ms (Views: 13.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.4ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"title"=>"Lorem Ipsum", "description"=>"Wibbles are fun!", "image_url"=>"lorem.jpg", "price"=>"19.95"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProduct Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE (`products`.`title` = BINARY 'Lorem Ipsum' AND `products`.`id` != 980190962) LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `products` SET `title` = 'Lorem Ipsum', `description` = 'Wibbles are fun!', `image_url` = 'lorem.jpg', `price` = 19.95, `updated_at` = '2014-06-08 00:15:50' WHERE `products`.`id` = 980190962
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190962
+Completed 302 Found in 6ms (ActiveRecord: 1.0ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+StoreControllerTest: test_should_get_index
+------------------------------------------
+Processing by StoreController#index as HTML
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (15.3ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:15:50', '2014-06-08 00:15:50')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mProduct Load (25.4ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY `products`.`updated_at` DESC LIMIT 1[0m
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` ORDER BY `products`.`title` ASC
+  [1m[36mLineItem Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `line_items` WHERE `line_items`.`cart_id` = 980190965 LIMIT 1[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190965
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (1.5ms)
+Completed 200 OK in 157ms (Views: 111.8ms | ActiveRecord: 41.7ms)
+  [1m[36m (338.8ms)[0m  [1mROLLBACK[0m
+  [1m[36m (381.6ms)[0m  [1mDROP DATABASE IF EXISTS `bsc_test`[0m
+  [1m[35m (10.4ms)[0m  CREATE DATABASE `bsc_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (588.6ms)[0m  [1mCREATE TABLE `carts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (333.9ms)[0m  CREATE TABLE `line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `product_id` int(11), `cart_id` int(11), `created_at` datetime, `updated_at` datetime, `quantity` int(11) DEFAULT 1) ENGINE=InnoDB
+  [1m[36m (332.6ms)[0m  [1mCREATE INDEX `index_line_items_on_cart_id` USING btree ON `line_items` (`cart_id`) [0m
+  [1m[35m (494.3ms)[0m  CREATE INDEX `index_line_items_on_product_id` USING btree ON `line_items` (`product_id`) 
+  [1m[36m (712.6ms)[0m  [1mCREATE TABLE `products` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `image_url` varchar(255), `price` decimal(8,2), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (310.0ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (477.2ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (1.6ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604215606')[0m
+  [1m[35m (1.3ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140604124839')
+  [1m[36m (45.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604200453')[0m
+  [1m[35m (16.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140604201117')
+  [1m[36m (12.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604212902')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `carts`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `carts` (`created_at`, `updated_at`, `id`) VALUES ('2014-06-08 00:17:10', '2014-06-08 00:17:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`, `id`) VALUES ('2014-06-08 00:17:10', '2014-06-08 00:17:10', 298486374)[0m
+  [1m[35mFixture Delete (0.2ms)[0m  DELETE FROM `line_items`
+  [1m[36mFixture Insert (0.2ms)[0m  [1mINSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `id`) VALUES (NULL, NULL, '2014-06-08 00:17:10', '2014-06-08 00:17:10', 980190962)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `id`) VALUES (NULL, NULL, '2014-06-08 00:17:10', '2014-06-08 00:17:10', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `products`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 'MyString', 9.99, '2014-06-08 00:17:10', '2014-06-08 00:17:10', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 'MyString', 9.99, '2014-06-08 00:17:10', '2014-06-08 00:17:10', 298486374)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('Programming Ruby 1.9', 'Ruby is the fastest growing and most exciting dynamic language out there. If you need to ger working programs.', 'ruby.png', 49.5, '2014-06-08 00:17:10', '2014-06-08 00:17:10', 207281424)
+  [1m[36m (25.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:17:11', '2014-06-08 00:17:11')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 34ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+  [1m[35m (10.7ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `carts` WHERE `carts`.`id` = 980190962[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 85ms (ActiveRecord: 0.9ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+  [1m[35m (18.0ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+  Rendered carts/_form.html.erb (100.6ms)
+  [1m[35mLineItem Exists (0.3ms)[0m  SELECT 1 AS one FROM `line_items` WHERE `line_items`.`cart_id` = 980190962 LIMIT 1
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962[0m
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (2.6ms)
+Completed 200 OK in 613ms (Views: 610.6ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#index as HTML
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts`[0m
+Completed 200 OK in 45ms (Views: 44.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (1.2ms)
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (1.0ms)
+Completed 200 OK in 64ms (Views: 63.9ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36mLineItem Load (0.4ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962[0m
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (3.1ms)
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (1.0ms)
+Completed 200 OK in 19ms (Views: 17.2ms | ActiveRecord: 0.7ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------
+LineItemsControllerTest: test_should_create_line_item
+-----------------------------------------------------
+  [1m[35mLineItem Load (0.4ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1
+Processing by LineItemsController#create as HTML
+  Parameters: {"product_id"=>"207281424"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:17:12', '2014-06-08 00:17:12')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190964 AND `line_items`.`product_id` = 207281424 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `line_items` (`cart_id`, `created_at`, `product_id`, `updated_at`) VALUES (980190964, '2014-06-08 00:17:12', 207281424, '2014-06-08 00:17:12')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 10ms (ActiveRecord: 1.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190964 ORDER BY `carts`.`id` ASC LIMIT 1
+  [1m[36m (14.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------
+LineItemsControllerTest: test_should_destroy_line_item
+------------------------------------------------------
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `line_items`
+Processing by LineItemsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `line_items` WHERE `line_items`.`id` = 980190962[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items
+Completed 302 Found in 3ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+LineItemsControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  Rendered line_items/_form.html.erb (32.0ms)
+Completed 200 OK in 81ms (Views: 80.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+LineItemsControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#index as HTML
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items`[0m
+Completed 200 OK in 16ms (Views: 14.9ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+LineItemsControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#new as HTML
+  Rendered line_items/_form.html.erb (3.7ms)
+Completed 200 OK in 41ms (Views: 41.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+LineItemsControllerTest: test_should_show_line_item
+---------------------------------------------------
+  [1m[36mLineItem Load (0.4ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+Processing by LineItemsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Completed 200 OK in 14ms (Views: 12.9ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-----------------------------------------------------
+LineItemsControllerTest: test_should_update_line_item
+-----------------------------------------------------
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+Processing by LineItemsController#update as HTML
+  Parameters: {"line_item"=>{"product_id"=>nil}, "id"=>"980190962"}
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items/980190962
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.1ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.1ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+ProductTest: test_product_attrubutes_must_not_be_empty
+------------------------------------------------------
+  [1m[35mProduct Exists (0.3ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` IS NULL LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------
+ProductTest: test_product_is_not_valid_without_a_unique_title
+-------------------------------------------------------------
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1[0m
+  [1m[35mProduct Exists (0.3ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'Programming Ruby 1.9' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.1ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.1ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `products`[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"title"=>"Lorem Ipsum", "description"=>"Wibbles are fun!", "image_url"=>"lorem.jpg", "price"=>"19.95"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'Lorem Ipsum' LIMIT 1[0m
+  [1m[35mSQL (44.3ms)[0m  INSERT INTO `products` (`created_at`, `description`, `image_url`, `price`, `title`, `updated_at`) VALUES ('2014-06-08 00:17:12', 'Wibbles are fun!', 'lorem.jpg', 19.95, 'Lorem Ipsum', '2014-06-08 00:17:12')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190963
+Completed 302 Found in 49ms (ActiveRecord: 44.7ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SELECT COUNT(*) FROM `products`
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mLineItem Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM `line_items` WHERE `line_items`.`product_id` = 980190962 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM `products` WHERE `products`.`id` = 980190962
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products
+Completed 302 Found in 6ms (ActiveRecord: 1.1ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+  Rendered products/_form.html.erb (5.0ms)
+Completed 200 OK in 20ms (Views: 18.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products`
+Completed 200 OK in 65ms (Views: 64.4ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#new as HTML
+  Rendered products/_form.html.erb (5.0ms)
+Completed 200 OK in 58ms (Views: 57.5ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Completed 200 OK in 16ms (Views: 14.5ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"title"=>"Lorem Ipsum", "description"=>"Wibbles are fun!", "image_url"=>"lorem.jpg", "price"=>"19.95"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProduct Exists (0.6ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE (`products`.`title` = BINARY 'Lorem Ipsum' AND `products`.`id` != 980190962) LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  UPDATE `products` SET `title` = 'Lorem Ipsum', `description` = 'Wibbles are fun!', `image_url` = 'lorem.jpg', `price` = 19.95, `updated_at` = '2014-06-08 00:17:12' WHERE `products`.`id` = 980190962
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190962
+Completed 302 Found in 8ms (ActiveRecord: 1.7ms)
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+StoreControllerTest: test_should_get_index
+------------------------------------------
+Processing by StoreController#index as HTML
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:17:12', '2014-06-08 00:17:12')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY `products`.`updated_at` DESC LIMIT 1[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` ORDER BY `products`.`title` ASC
+  [1m[36mLineItem Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `line_items` WHERE `line_items`.`cart_id` = 980190965 LIMIT 1[0m
+  [1m[35mLineItem Load (0.2ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190965
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (1.5ms)
+Completed 200 OK in 109ms (Views: 105.8ms | ActiveRecord: 1.4ms)
+  [1m[36m (15.4ms)[0m  [1mROLLBACK[0m
+  [1m[36m (342.2ms)[0m  [1mDROP DATABASE IF EXISTS `bsc_test`[0m
+  [1m[35m (16.6ms)[0m  CREATE DATABASE `bsc_test` DEFAULT CHARACTER SET `utf8` COLLATE `utf8_unicode_ci`
+  [1m[36m (390.8ms)[0m  [1mCREATE TABLE `carts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (534.5ms)[0m  CREATE TABLE `line_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `product_id` int(11), `cart_id` int(11), `created_at` datetime, `updated_at` datetime, `quantity` int(11) DEFAULT 1) ENGINE=InnoDB
+  [1m[36m (712.7ms)[0m  [1mCREATE INDEX `index_line_items_on_cart_id` USING btree ON `line_items` (`cart_id`) [0m
+  [1m[35m (287.4ms)[0m  CREATE INDEX `index_line_items_on_product_id` USING btree ON `line_items` (`product_id`) 
+  [1m[36m (322.2ms)[0m  [1mCREATE TABLE `products` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `description` text, `image_url` varchar(255), `price` decimal(8,2), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [1m[35m (474.3ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36m (874.6ms)[0m  [1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36m (10.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604215606')[0m
+  [1m[35m (179.5ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140604124839')
+  [1m[36m (25.0ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604200453')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20140604201117')
+  [1m[36m (5.7ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20140604212902')[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `carts`[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO `carts` (`created_at`, `updated_at`, `id`) VALUES ('2014-06-08 00:24:02', '2014-06-08 00:24:02', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`, `id`) VALUES ('2014-06-08 00:24:02', '2014-06-08 00:24:02', 298486374)[0m
+  [1m[35mFixture Delete (0.4ms)[0m  DELETE FROM `line_items`
+  [1m[36mFixture Insert (0.5ms)[0m  [1mINSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `id`) VALUES (NULL, NULL, '2014-06-08 00:24:02', '2014-06-08 00:24:02', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO `line_items` (`product_id`, `cart_id`, `created_at`, `updated_at`, `id`) VALUES (NULL, NULL, '2014-06-08 00:24:02', '2014-06-08 00:24:02', 298486374)
+  [1m[36mFixture Delete (0.2ms)[0m  [1mDELETE FROM `products`[0m
+  [1m[35mFixture Insert (0.2ms)[0m  INSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 'MyString', 9.99, '2014-06-08 00:24:02', '2014-06-08 00:24:02', 980190962)
+  [1m[36mFixture Insert (0.1ms)[0m  [1mINSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('MyString', 'MyText', 'MyString', 9.99, '2014-06-08 00:24:02', '2014-06-08 00:24:02', 298486374)[0m
+  [1m[35mFixture Insert (0.1ms)[0m  INSERT INTO `products` (`title`, `description`, `image_url`, `price`, `created_at`, `updated_at`, `id`) VALUES ('Programming Ruby 1.9', 'Ruby is the fastest growing and most exciting dynamic language out there. If you need to ger working programs.', 'ruby.png', 49.5, '2014-06-08 00:24:02', '2014-06-08 00:24:02', 207281424)
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  SET FOREIGN_KEY_CHECKS = 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+CartsControllerTest: test_should_create_cart
+--------------------------------------------
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+Processing by CartsController#create as HTML
+  Parameters: {"cart"=>{}}
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:24:02', '2014-06-08 00:24:02')[0m
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/carts/980190963
+Completed 302 Found in 55ms (ActiveRecord: 0.8ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+CartsControllerTest: test_should_destroy_cart
+---------------------------------------------
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+Processing by CartsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM `carts` WHERE `carts`.`id` = 980190962[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 68ms (ActiveRecord: 1.0ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `carts`[0m
+  [1m[35m (15.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------
+CartsControllerTest: test_should_get_edit
+-----------------------------------------
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+  Rendered carts/_form.html.erb (59.4ms)
+  [1m[35mLineItem Exists (0.4ms)[0m  SELECT 1 AS one FROM `line_items` WHERE `line_items`.`cart_id` = 980190962 LIMIT 1
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962[0m
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (2.6ms)
+Completed 200 OK in 644ms (Views: 642.2ms | ActiveRecord: 0.9ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+CartsControllerTest: test_should_get_index
+------------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#index as HTML
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts`[0m
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------
+CartsControllerTest: test_should_get_new
+----------------------------------------
+  [1m[35mCart Load (0.2ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#new as HTML
+  Rendered carts/_form.html.erb (1.2ms)
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (1.0ms)
+Completed 200 OK in 64ms (Views: 63.4ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------
+CartsControllerTest: test_should_show_cart
+------------------------------------------
+  [1m[36mCart Load (0.2ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+Processing by CartsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190962[0m
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (3.0ms)
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (1.1ms)
+Completed 200 OK in 20ms (Views: 17.9ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+CartsControllerTest: test_should_update_cart
+--------------------------------------------
+  [1m[35mCart Load (0.4ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1
+Processing by CartsController#update as HTML
+  Parameters: {"cart"=>{}, "id"=>"980190962"}
+  [1m[36mCart Load (0.3ms)[0m  [1mSELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/carts/980190962
+Completed 302 Found in 4ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+-----------------------------------------------------
+LineItemsControllerTest: test_should_create_line_item
+-----------------------------------------------------
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1
+Processing by LineItemsController#create as HTML
+  Parameters: {"product_id"=>"207281424"}
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:24:03', '2014-06-08 00:24:03')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190964 AND `line_items`.`product_id` = 207281424 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `line_items` (`cart_id`, `created_at`, `product_id`, `updated_at`) VALUES (980190964, '2014-06-08 00:24:03', 207281424, '2014-06-08 00:24:03')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/
+Completed 302 Found in 25ms (ActiveRecord: 1.3ms)
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35mCart Load (0.3ms)[0m  SELECT `carts`.* FROM `carts` WHERE `carts`.`id` = 980190964 ORDER BY `carts`.`id` ASC LIMIT 1
+  [1m[36m (15.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------------
+LineItemsControllerTest: test_should_destroy_line_item
+------------------------------------------------------
+  [1m[36mLineItem Load (0.2ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `line_items`
+Processing by LineItemsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM `line_items` WHERE `line_items`.`id` = 980190962[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms)
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `line_items`[0m
+  [1m[35m (84.0ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+---------------------------------------------
+LineItemsControllerTest: test_should_get_edit
+---------------------------------------------
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+  Rendered line_items/_form.html.erb (61.5ms)
+Completed 200 OK in 116ms (Views: 114.6ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+----------------------------------------------
+LineItemsControllerTest: test_should_get_index
+----------------------------------------------
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#index as HTML
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items`[0m
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------
+LineItemsControllerTest: test_should_get_new
+--------------------------------------------
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Processing by LineItemsController#new as HTML
+  Rendered line_items/_form.html.erb (2.6ms)
+Completed 200 OK in 44ms (Views: 43.1ms | ActiveRecord: 0.0ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+LineItemsControllerTest: test_should_show_line_item
+---------------------------------------------------
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+Processing by LineItemsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+-----------------------------------------------------
+LineItemsControllerTest: test_should_update_line_item
+-----------------------------------------------------
+  [1m[36mLineItem Load (0.3ms)[0m  [1mSELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1[0m
+Processing by LineItemsController#update as HTML
+  Parameters: {"line_item"=>{"product_id"=>nil}, "id"=>"980190962"}
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+Redirected to http://test.host/line_items/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------
+ProductTest: test_image_url
+---------------------------
+  [1m[36mProduct Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.3ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.3ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.4ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------------
+ProductTest: test_product_attrubutes_must_not_be_empty
+------------------------------------------------------
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` IS NULL LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------------------------
+ProductTest: test_product_is_not_valid_without_a_unique_title
+-------------------------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 207281424 LIMIT 1[0m
+  [1m[35mProduct Exists (0.2ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'Programming Ruby 1.9' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+------------------------------------------------
+ProductTest: test_product_price_must_be_positive
+------------------------------------------------
+  [1m[36mProduct Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35mProduct Exists (0.3ms)[0m  SELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1
+  [1m[36mProduct Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'My Book Title' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_create_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(*) FROM `products`[0m
+Processing by ProductsController#create as HTML
+  Parameters: {"product"=>{"title"=>"Lorem Ipsum", "description"=>"Wibbles are fun!", "image_url"=>"lorem.jpg", "price"=>"19.95"}}
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProduct Exists (0.2ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE `products`.`title` = BINARY 'Lorem Ipsum' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `products` (`created_at`, `description`, `image_url`, `price`, `title`, `updated_at`) VALUES ('2014-06-08 00:24:04', 'Wibbles are fun!', 'lorem.jpg', 19.95, 'Lorem Ipsum', '2014-06-08 00:24:04')
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190963
+Completed 302 Found in 5ms (ActiveRecord: 0.6ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (15.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------------
+ProductsControllerTest: test_should_destroy_product
+---------------------------------------------------
+  [1m[36mProduct Load (0.4ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `products`
+Processing by ProductsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mLineItem Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM `line_items` WHERE `line_items`.`product_id` = 980190962 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM `products` WHERE `products`.`id` = 980190962
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products
+Completed 302 Found in 7ms (ActiveRecord: 1.2ms)
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `products`
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+--------------------------------------------
+ProductsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+  Rendered products/_form.html.erb (5.0ms)
+Completed 200 OK in 38ms (Views: 37.1ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------
+ProductsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#index as HTML
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products`
+Completed 200 OK in 65ms (Views: 64.0ms | ActiveRecord: 0.2ms)
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+-------------------------------------------
+ProductsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Processing by ProductsController#new as HTML
+  Rendered products/_form.html.erb (3.6ms)
+Completed 200 OK in 39ms (Views: 38.4ms | ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------------
+ProductsControllerTest: test_should_show_product
+------------------------------------------------
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+Processing by ProductsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mProduct Load (0.2ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+--------------------------------------------------
+ProductsControllerTest: test_should_update_product
+--------------------------------------------------
+  [1m[35mProduct Load (0.3ms)[0m  SELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1
+Processing by ProductsController#update as HTML
+  Parameters: {"product"=>{"title"=>"Lorem Ipsum", "description"=>"Wibbles are fun!", "image_url"=>"lorem.jpg", "price"=>"19.95"}, "id"=>"980190962"}
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` WHERE `products`.`id` = 980190962 LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mProduct Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM `products` WHERE (`products`.`title` = BINARY 'Lorem Ipsum' AND `products`.`id` != 980190962) LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE `products` SET `title` = 'Lorem Ipsum', `description` = 'Wibbles are fun!', `image_url` = 'lorem.jpg', `price` = 19.95, `updated_at` = '2014-06-08 00:24:04' WHERE `products`.`id` = 980190962
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://test.host/products/980190962
+Completed 302 Found in 9ms (ActiveRecord: 1.5ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+------------------------------------------
+StoreControllerTest: test_should_get_index
+------------------------------------------
+Processing by StoreController#index as HTML
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `carts` (`created_at`, `updated_at`) VALUES ('2014-06-08 00:24:04', '2014-06-08 00:24:04')[0m
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mProduct Load (0.3ms)[0m  [1mSELECT `products`.* FROM `products` ORDER BY `products`.`updated_at` DESC LIMIT 1[0m
+  [1m[35mProduct Load (0.2ms)[0m  SELECT `products`.* FROM `products` ORDER BY `products`.`title` ASC
+  [1m[36mLineItem Exists (0.4ms)[0m  [1mSELECT 1 AS one FROM `line_items` WHERE `line_items`.`cart_id` = 980190965 LIMIT 1[0m
+  [1m[35mLineItem Load (0.3ms)[0m  SELECT `line_items`.* FROM `line_items` WHERE `line_items`.`cart_id` = 980190965
+  Rendered collection (0.0ms)
+  Rendered carts/_cart.html.erb (2.5ms)
+Completed 200 OK in 106ms (Views: 101.9ms | ActiveRecord: 1.6ms)
+  [1m[36m (15.6ms)[0m  [1mROLLBACK[0m

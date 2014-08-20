@@ -1,0 +1,23 @@
+<li
+<% if (user_signed_in? && current_user.admin?) || catalog.is_active %>
+    class="
+    <% if @catalog && @catalog.id == catalog.id %>
+        selected
+    <% end %>
+    <% if !catalog.is_active %>
+        not-active
+    <% end %>
+        ">
+        <%= link_to catalog do %>
+          <%=catalog.title%>
+          <i id="group-icon-<%=catalog.id%>"></i>
+        <% end %>
+        <% if (@subcatalogs && (@subcatalogs.include? catalog)) || (@catalog && @catalog.id == catalog.id) %>
+            <ul>
+                  <%  Catalog.where({:parent_id=>catalog.id}).order('title ASC').each do |cat| %>
+                      <%=render :template => "catalogs/left-menu-item", :locals => {:catalog => cat} %>
+                  <% end %>
+            </ul>
+        <% end %>
+    </li>
+<% end %>

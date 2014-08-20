@@ -1,0 +1,40 @@
+<%= title 'Каталог' %>
+
+<div class="row">
+
+
+  <div class="panel-body">
+
+    <div class="btn-group right catalog-view-toggle" data-toggle="buttons">
+      <label class="btn btn-default btn-sm active">
+        <input type="radio" name="options" id="option1">
+        <span class="glyphicon glyphicon-th-large"></span>
+      </label>
+      <label class="btn btn-default btn-sm">
+        <input type="radio" name="options" id="option3">
+        <span class="glyphicon glyphicon-th-list"></span>
+      </label>
+    </div>
+
+    <div class="clear" style="height: 10px;"></div>
+
+    <div class="row catalog-th-large">
+      <table class="table table-striped table-product">
+        <thead>
+        <tr class="tr catalog hidden">
+          <th></th>
+          <th>Наименование</th>
+          <th>Описание</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%= render(Catalog.where({:parent_id=>[0, nil]}).order('title ASC')) %>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+
+<%= render :template => "layouts/view-toggle" %>
