@@ -78,3 +78,7 @@ gem 'spreadsheet', '~> 0.9.7'
 gem 'roo'
 
 gem 'will_paginate', '~> 3.0'
+
+gem 'nokogiri', '~> 1.6.3.1'
+
+gem 'rest-client', '~> 1.7.2'

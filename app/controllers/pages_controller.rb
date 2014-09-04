@@ -14,7 +14,9 @@ class PagesController < ApplicationController
   def show
     @page = Page.find(params[:id])
     #ReceiverPriceNotifier.receive_regual
-    Price.load_price_regual
+
+    #Price.load_price_regual
+    Price.update_info_arrow
     render 'shared/404', :status => 404 if @page.nil?
   end
 

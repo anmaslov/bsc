@@ -2,6 +2,7 @@
 class Product < ActiveRecord::Base
   has_many :line_items
   has_many :orders, through: :line_items
+  has_many :imgs, :class_name => "ProductImg", dependent: :destroy
   belongs_to :catalog
   belongs_to :supplier
 
@@ -17,6 +18,12 @@ class Product < ActiveRecord::Base
 
   def self.latest
     Product.order(:updated_at).last
+  end
+
+  def image
+    if self.image_file_size.nil?
+
+    end
   end
 
   #def imageurl

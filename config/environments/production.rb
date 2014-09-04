@@ -82,4 +82,5 @@ Bsc::Application.configure do
   config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
 
   $GC_ID = 777
+  $ROOT_PATH = '/var/www/osetrov/data/www/osetrov.info/'
 end

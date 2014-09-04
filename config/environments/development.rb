@@ -42,4 +42,7 @@ Bsc::Application.configure do
 
   $ROOT_PATH = '/Users/apple/Sites/ruby/bsc/'
   $GC_ID = 20
+
+  #$GC_ID = 777
+  #$ROOT_PATH = '/var/www/osetrov/data/www/osetrov.info/'
 end
