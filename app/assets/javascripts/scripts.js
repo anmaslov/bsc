@@ -38,6 +38,12 @@ $(document).ready(function(){
         }
     });
 
+    $('.mini-slider').each(function(){
+        $(this).carousel({
+            interval: false
+        });
+    });
+
 
 });
 
@@ -75,4 +81,9 @@ function message(type, conent) {
     setTimeout(function() {
         $('.alert.alert-' + type).addClass('hidden');
     }, 2000);
+}
+
+function changeFieldProduct(field, value) {
+    alert( $('#' + field + '_' + value).is(':checked') );
+
 }

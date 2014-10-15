@@ -26,7 +26,7 @@ $(document).on('scroll', window, function() {
         feedback.attr({'style': 'top: 32px; left: ' + feedbackLeft + 'px; display: block;'});
     } else {
         navbarInverse.removeClass('navbar-fixed-top');
-        navbarInverse.css('background-position', '0 60px');
+        navbarInverse.css('background-position', '0 62px');
         $('.navbar-header').removeClass('hidden');
         header.css({'height': '96px'});
         $('.container.content').css({'padding-top': '0'});

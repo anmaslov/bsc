@@ -9,7 +9,7 @@ class CatalogsController < ApplicationController
   add_breadcrumb "Каталог", Catalog
 
   def index
-    @catalogs = Catalog.where({:parent_id=>[0, nil]}).order('title ASC')
+    @catalogs = Catalog.roots
     add_breadcrumb "index", @catalogs
   end
 

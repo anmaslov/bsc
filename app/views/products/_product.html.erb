@@ -1,25 +1,70 @@
 <% if (user_signed_in? && current_user.admin?) || product.is_active %>
-<div class="col-sm-4 col-md-4" id="<%= product.article %>">
-    <div class="thumbnail product <%= (@catalog && @catalog.product_table) ? 'hidden' : '' %>">
+<div class="column_product" id="product_<%= product.article %>">
+
+
+  <div class="thumbnail product <%= (@catalog && @catalog.product_table) ? 'hidden' : '' %>">
       <div class="cart-img">
-        <%= image_tag(product.image.url(:thumb), :alt => product.title, :class => 'product_img') %>
+        <div class="container" style="padding-top: 5px;">
+          <!-- slider -->
+          <div class="row">
+            <div id="slider_<%=product.id%>">
+              <!-- Top part of the slider -->
+              <div class="row">
+                <div class="carousel-bounding-box" id="carousel-bounding-box">
+                  <div id="mini-carousel-<%=product.id%>" class="carousel slide mini-slider">
+                    <!-- Carousel items -->
+                    <div class="carousel-inner">
+                      <div class="active item" data-slide-number="0">
+                        <%= image_tag(product.image.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'max-height: 150px;') %>
+                      </div>
+                      <% if product.imgs.size > 0 %>
+                          <% i = 1 %>
+                          <% product.imgs.each do |image| %>
+                              <div class="item" data-slide-number="<%=i%>>">
+                                <%= image_tag(image.picture.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'max-height: 150px;') %>
+                              </div>
+                              <% i = i + 1 %>
+                          <% end %>
+                      <% end %>
+                    </div><!--/carousel-inner-->
+                  </div><!--/carousel-->
+                  <% if product.imgs.size > 0 %>
+                  <ul class="carousel-controls-mini list-inline text-center" style="margin-top: -85px;">
+                    <li style="float: left; margin-left: -20px;"><a href="#mini-carousel-<%=product.id%>" data-slide="prev" style="text-decoration: none !important; font-size: x-large;">‹</a></li>
+                    <li style="float: right; margin-right: -20px;"><a href="#mini-carousel-<%=product.id%>" data-slide="next" style="text-decoration: none !important; font-size: x-large;">›</a></li>
+                  </ul><!--/carousel-controls-->
+                  <% end %>
+                </div><!--/col-->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="caption">
         <%= link_to product.title, product, :class => 'product_title' %>
         <p class="product_article">арт. <%= product.article %></p>
-        <p class="product_price">
-          <%= raw (product.old_price) ? "<del>" + product.old_price.to_s + '<span class="ruble">a</span>' +  "</del>" : '' %>
-          <span class="price"><%= product.price %><span class="ruble">a</span></span>
+
+        <hr style="margin-bottom: 10px;">
+          <div>
+          <%= raw (product.old_price) ? "<del>" + number_to_currency(product.old_price, unit: '',  separator: ",", delimiter: " ", precision: 0).to_s + '<span class="ruble">a</span>' +  "</del>" : '' %>
+
+          <span class="price"><%= number_to_currency(product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+          </div>
+        <div class="clear"></div>
+        <div class="btn-group" style="width: 100%; margin-top: -5px;">
           <button type="button" class="btn btn-success buy"  data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= product.article %>');">Купить</button>
+          <button type="button" class="btn btn-primary compare" style="padding: 6px !important;">Сравнить</button>
+        </div>
         <div class="product_form_buy hidden">
           <%= form_for(@line_item, url:line_items_path(product_id:product), :remote=>true, :html => {:class => 'form_' + product.article}) do |f| %>
               <%= f.text_field :quantity, :class => 'quantity_' + product.article %>
               <%= f.submit %>
           <% end %>
         </div>
-        </p>
+
       </div>
     </div>
+  </div>
 
   <tr class="tr product <%= (@catalog && @catalog.product_table) ? '' : 'hidden' %>">
 
@@ -40,7 +85,7 @@
 
       <div class="checkbox">
         <label>
-          <input type="checkbox"> Янд.Марк
+          <input type="checkbox" id="market_yandex_<%= product.id %>" onchange="changeFieldProduct('market_yandex', <%= product.id %>);"> Янд.Марк
         </label>
       </div>
     </td>
@@ -60,13 +105,17 @@
       <% if (user_signed_in? && current_user.admin?) %>
           <div class="btn-group-vertical" style="width: 75px;">
               <button type="button" class="btn btn-sm btn-success buy"  data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= product.article %>');">Купить</button>
-              <button type="button" class="btn btn-sm btn-primary">Изменить</button>
-              <button type="button" class="btn btn-sm btn-danger">Удалить</button>
+                <%= button_to "Изменить", edit_product_path(product),
+                          :class => "btn btn-sm btn-primary", :method => :get %>
+
+                <%= button_to "Удалить", product,
+                          :class => "btn btn-sm btn-danger", :method => :delete, :data => { :confirm => 'Вы уверены?' } %>
+
           </div>
       <% else %>
           <button type="button" class="btn btn-sm btn-success buy"  data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= product.article %>');">Купить</button>
       <% end %>
     </td>
   </tr>
-</div>
+
 <% end %>

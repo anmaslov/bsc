@@ -10,11 +10,6 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery.js
-
-//= require jquery_ujs
-
-//= require turbolinks
 
 //= require redactor-rails/plugins/fontsize
 //= require redactor-rails/plugins/fontfamily

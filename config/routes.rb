@@ -7,7 +7,16 @@ Bsc::Application.routes.draw do
 
   resources :emails
 
-  resources :catalogs
+  #resources :catalogs
+
+  resources :catalogs do
+    collection do
+      get :manage
+
+      # required for Sortable GUI server side actions
+      post :rebuild
+    end
+  end
 
   ActiveAdmin.routes(self)
   resources :pages

@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  include CurrentCart
+  before_action :set_cart
+
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]
   # GET /products
@@ -10,6 +13,18 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @tree = []
+    self.breadcrumb(@product.catalog)
+    @subcatalogs = []
+
+    while @tree.size > 0
+      catalog_item = @tree.pop
+      @subcatalogs.push(catalog_item)
+      add_breadcrumb catalog_item.title, catalog_item
+    end
+
+    @line_item = LineItem.new
+
   end
 
   # GET /products/new
@@ -68,6 +83,14 @@ class ProductsController < ApplicationController
       respond_to do |format|
         format.atom
       end
+    end
+  end
+
+  def breadcrumb (catalog_item)
+    if catalog_item != nil
+      #add_breadcrumb catalog_item.title, catalog_item
+      @tree.push(catalog_item)
+      self.breadcrumb(catalog_item.parent)
     end
   end
 

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.4'
 
 gem 'iconv', '~> 1.0.3'
 
@@ -25,7 +25,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails', '~> 2.1.4'
+gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
@@ -65,8 +65,9 @@ gem 'friendly_id', '~> 5.0.0'
 
 gem 'rails-i18n'
 gem 'activeadmin', github: 'gregbell/active_admin'
-#gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
-#gem 'ancestry'
+#
+gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
+gem 'ancestry'
 
 gem 'paperclip'
 gem 'breadcrumbs_on_rails'
@@ -74,7 +75,7 @@ gem 'breadcrumbs_on_rails'
 
 gem 'whenever', :require => false
 
-gem 'spreadsheet', '~> 0.9.7'
+gem 'spreadsheet', '~> 1.0.0'
 gem 'roo'
 
 gem 'will_paginate', '~> 3.0'
@@ -82,3 +83,5 @@ gem 'will_paginate', '~> 3.0'
 gem 'nokogiri', '~> 1.6.3.1'
 
 gem 'rest-client', '~> 1.7.2'
+
+gem 'oj'

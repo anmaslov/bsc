@@ -403,9 +403,10 @@ body.safari .search .input-group-btn {
     padding: 0;
     margin: 0;
     top: 0 !important;
+
 }
 
-.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+.carousel-inner.big > .item > img, .carousel-inner > .item > a > img {
     height: 400px;
     width: 1440px;
     max-width: none !important;
@@ -434,6 +435,11 @@ body.safari .search .input-group-btn {
     position: relative;
     font-weight: normal;
     font-size: 0.9em;
+}
+
+.carousel-bounding-box.col-md-2 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 .panel.left-menu ul li.selected > a {
@@ -472,8 +478,13 @@ tr.not-active {
 }
 
 .caption button.buy, .caption input.buy {
-    width: 100%;
+    width: 65%;
 }
+
+.caption button.compare, .caption input.compare {
+    width: 35%;
+}
+
 .thumbnail {
     overflow: hidden;
 }
@@ -482,13 +493,19 @@ tr.not-active {
     background-color: #eeeeee;
 }
 
+.thumbnail:hover {
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+}
+
 .thumbnail .cart-img {
     height: 150px;
     line-height: 150px;
     display: block;
     position: relative;
-    left: 50%;
-    margin-left: -75px;
+    margin: 0 auto;
+
     text-align: center;
     width: 150px;
 }
@@ -496,6 +513,7 @@ tr.not-active {
 .thumbnail .cart-img img {
     max-height: 150px;
     max-width: 150px;
+    margin: 0 auto;
 }
 
 /** Новости **/
@@ -659,11 +677,11 @@ tr.not-active {
 
 .thumbnail.product {
     min-height: 325px;
-    max-height: 325px;
+    max-height: 340px;
 }
 
 .thumbnail.product .product_title {
-    max-height: 55px;
+    max-height: 37px;
     overflow: hidden;
     display: block;
 }
@@ -689,4 +707,19 @@ tr.not-active {
 
 .title-catalog {
     width: 800px;
+}
+
+.navbar.navbar-inverse {
+    background-position: 0 62px;
+}
+
+.column_product {
+    width: 285px;
+    float: left;
+    padding: 0 10px;
+}
+
+.carousel-bounding-box {
+    width: 150px;
+    margin-left: 20px;
 }

@@ -3,6 +3,13 @@ class Product < ActiveRecord::Base
   has_many :line_items
   has_many :orders, through: :line_items
   has_many :imgs, :class_name => "ProductImg", dependent: :destroy
+  has_many :characters, :class_name => "Character"
+  has_many :detailing, :class_name => "Detailing"
+  has_many :documents, :class_name => "Document"
+
+  belongs_to :detail_for, :class_name => "Product", :foreign_key => "detail_for_id"
+  has_many :details, :order => 'title ASC', :class_name => "Product", :foreign_key => "detail_for_id"
+
   belongs_to :catalog
   belongs_to :supplier
 
@@ -20,11 +27,19 @@ class Product < ActiveRecord::Base
     Product.order(:updated_at).last
   end
 
-  def image
-    if self.image_file_size.nil?
-
+  def image_from_url (url)
+    dd = URI.parse(url)
+    req = Net::HTTP.new(dd.host, dd.port)
+    req.read_timeout = 500
+    if dd.path != ""
+      res = req.request_head(dd.path)
+      if res.code == "200"
+        self.image = URI.parse(url)
+      end
+      sleep(1.0/24.0)
     end
   end
+
 
   #def imageurl
   #  self.image.url != '' ? self.image.url : 'no-image.png'

@@ -54,43 +54,99 @@ class Price < ActiveRecord::Base
   end
 
   def Price.update_info_arrow
-    product_all = Product.where(supplier_id: 1).all
+    require 'rubygems'
+    require 'nokogiri'
+    require 'rest_client'
+    require 'oj'
+
+
+    # Берез все товары, поставщиком которых являются Северные стрелы
+    product_all = Product.where({supplier_id: 1, catalog_id: 20}).order("id asc").all() # .order("id asc").limit(100)
+
+    product_all.each do |product|
+
+      # Ищем в поиске по артикулу
+      url = "http://www.arrows.ru/e_shop/search/?search=" + product.article[0..(product.article.size-3)]
+      url.gsub!("?discount", "")
+      puts '71 ' + url
+
+      # Вся информация в скриптах
+      url = URI.encode(url)
+
+      # Если Url в порядке
+      if url =~ URI::regexp
+
+        response = hopen(url)
+
+        RestClient.get(url){|response, request, result|
+
+        if result.message == "OK"
+          page = Nokogiri::HTML(response)
+
+        script = page.css("script")[7].text
+        # Если они есть
+        if script.length > 0
+
+          # Забираем первый
+          string = /\{(.+)\}/.match(script)
+          string = string.to_s.split("}, {");
+          if (string.size > 1)
+            string = string[0] + "}"
+          else
+            string = string[0]
+          end
+
+          # Распарсиваем Json
+          hash = Oj.load( string.to_s )
+
+          # Если он распарсился
+          if hash != nil and hash['url'] != nil and hash['url'] != ""
+
+            parsing_product(product, hash['url'], hash['image'])
+
+          end
+        end
+      end }
+    end
+  end
+end
+
+  def self.parsing_product(product, url, img_href)
 
     require 'rubygems'
     require 'nokogiri'
     require 'rest_client'
+    require 'oj'
 
-    product_all.each do |product|
+    # Получаем страницу с нужным товаром
+    href = "http://www.arrows.ru" + url.to_s
+    page_product_href = URI.encode(href)
+    page_product_href.gsub!("?discount", "")
+    puts '124 ' +  page_product_href
+    response = hopen(page_product_href)
+    RestClient.get(page_product_href){|response, request, result|
 
-    url = "http://www.arrows.ru/e_shop/search/?search=" + product.article[0..(product.article.size-3)]
-    page = Nokogiri::HTML(RestClient.get(url))
-    script = page.css("script")[7].text
+      if result.message == "OK"
+        page_product = Nokogiri::HTML(response)
 
-    if script.length > 0
-      string = /\{(.+)\}/.match(script)
-      hash = JSON.parse string.to_s
-      href = "http://www.arrows.ru/" + hash['url']
-      page_product = Nokogiri::HTML(RestClient.get(href))
+      #page_product = Nokogiri::HTML(RestClient.get(page_product_href))
 
-      pprod_id = page_product.at("input#pprod_id")['value']
-
-      diller_href = "http://www.dilkab.ru/e_shop/product/" + pprod_id.to_s + "/discont"
-
-      diller_page = Nokogiri::HTML(RestClient.get(diller_href,
-                                                  {
-                                                      :user_agent => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4",
-                                                      :Cookie => 'sessionid=7a4bd94c1a4a07d5890e97c3c4448cd9; _ym_visorc_24406210=w'
-                                                  }))
-
-      product.description = page.css(".product-description").text
+      product.title = page_product.css(".product_detail_title h1").text
+      product.image_from_url 'http://www.arrows.ru' + img_href
 
       new_product = Hash.new
-      product.title = page_product.css(".product_detail_title h1").text
-      new_product_aricle   = page_product.css(".product_detail_title span").text
+      new_product["article"] = page_product.css(".product_detail_title span").text
 
+      if product.article.nil?
+        product.article = new_product["article"]
+      end
+
+      #Хлебные крошки
       breadcrumb = String.new
       parent_id = 0
       new_catalog_id = 0
+
+      # Воссоздаем родительские каталоги до корня
       page_product.css(".breadcrumb a").each do |link|
         item_bread = Hash.new
         item_bread["title"] = link.content
@@ -103,11 +159,10 @@ class Price < ActiveRecord::Base
           if parent_id == 0
             catalog.parent = nil
           else
-            parent_catalog = Catalog.find(parent_id)
-            catalog.parent = parent_catalog
+            catalog.parent = Catalog.find(parent_id)
           end
 
-          old_product = Catalog.find_by_title(catalog.title)
+          old_product = Catalog.where({:title => catalog.title, :parent_id => catalog.parent}).pop
 
           if (old_product.nil? or old_product.parent != catalog.parent)
             catalog.description = catalog.title
@@ -125,17 +180,12 @@ class Price < ActiveRecord::Base
         end
       end
 
-      if new_catalog_id != nil
+      # если есть id родительского каталога
+      if new_catalog_id != nil && new_catalog_id != 0
         product.catalog = Catalog.find(new_catalog_id)
       end
-      #page_product = Nokogiri::HTML(RestClient.get(href))
 
-      #puts page_product.css('html')
-
-      #new_product_description = page_product.css(".dd_text")
-      new_product['description'] = ''
-
-
+      # Характеристики
       characters = Hash.new
       i = 0
       page_product.css(".list_character li").each do |li|
@@ -143,27 +193,77 @@ class Price < ActiveRecord::Base
         item["name"] = li.css(".db_param_name").text
         item["value"] = li.css(".db_param_value").text
         characters[i] = item
-        i = i + 1
+
+        i = 0
+        product.characters.each do |char|
+          if char.value = item["value"] and char.name = item["name"]
+            i = 1
+          end
+        end
+
+        if i == 0
+          ch = Character.new
+          ch.name = item["name"]
+          ch.value = item["value"]
+          ch.product = product
+          ch.save
+          i = i + 1
+        end
       end
 
-      product.save
+      if product != nil
+        product.save
 
-      diller_page.css(".product-images .product-image").each do |img|
-        picture = ProductImg.new
-        huk = "http://www.arrows.ru" + img['href']
-        picture.picture_from_url "http://www.dilkab.ru" + img['href']
-        picture.product = product
-        picture.save
+        #Забираем деталировку
+        detaining = Detailing.new
+        detaining.product = product
+        page_product.css(".sparepdf a").each do |link|
+          if link['href'] != nil and link['href'] != ""
+            detaining.pdf_from_url link['href']
+          end
+        end
+
+        page_product.css(".sparepdf .detail_img img").each do |link|
+            if link['src'] != nil and link['src'] != ""
+              detaining.image_from_url link['src']
+            end
+        end
+        detaining.save
+
+        #Забираем документы
+        page_product.css(".dd_doc_document .big_image").each do |link|
+
+          document = Document.new
+
+          page_product_href = URI.encode(link['href'])
+          page_product_href.gsub!("?discount", "")
+          puts '238 ' +  page_product_href
+
+            if link['href'] != nil and link['href'] != ""
+
+              document.image_from_url link['href']
+              document.product = product
+              document.save
+            end
+
+        end
+
+        #Пробегаемся по запчастям
+        page_product.css(".sparestable .spitem").each do |tr|
+          position = tr.css(".sp_pos").text
+          tr.css(".sp_desc a").each do |h|
+            href = h['href']
+          end
+
+          detail = Product.new
+          detail.position_detail = position
+
+          if href != nil and href != ""
+            parsing_product(detail, href, '')
+          end
+        end
       end
-
-      #remove_instance_variable(page_product)
-
-    end
-
-    end
-
-
-
+    end}
   end
 
   def self.open_spreadsheet(file)
@@ -175,4 +275,35 @@ class Price < ActiveRecord::Base
     end
   end
 
+  def self.hopen(url)
+    dd = URI.parse(url)
+    req = Net::HTTP.new(dd.host, dd.port)
+    res = req.request_head(url)
+      if res.code == "200"
+      begin
+        open(url)
+      rescue URI::InvalidURIError
+        host = url.match(".+\:\/\/([^\/]+)")[1]
+        path = url.partition(host)[2] || "/"
+        Net::HTTP.get host, path
+      end
+    end
+  end
+
 end
+
+
+
+=begin
+if (page_product.at("input#pprod_id") != nil)
+  pprod_id = page_product.at("input#pprod_id")['value']
+
+  diller_href = "http://www.dilkab.ru/e_shop/product/" + pprod_id.to_s
+
+  diller_page = Nokogiri::HTML(RestClient.get(diller_href,
+                                              {
+                                                  :user_agent => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4",
+                                                  :Cookie => 'sessionid=7a4bd94c1a4a07d5890e97c3c4448cd9; _ym_visorc_24406210=w'
+                                              }))
+end
+=end

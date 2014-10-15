@@ -7,6 +7,7 @@ function addToBascet (id) {
     $('#addToBascet .close').click();
 
     article = article.replace('арт. ', '');
+
     var quantity = $('.model-product-quantity').val();
     $('.quantity_' + article).val(quantity);
     $('.form_' + article).submit();
@@ -19,14 +20,15 @@ $('#orders a').click(function (e) {
 
 var article = '';
 function showAddToBascet(product) {
+
     clearFormAddToBascet();
-    var productObj = $('#' + product).children('.thumbnail');
-    var img_src =        productObj.children('.cart-img').children('.product_img').attr('src');
-    var img_alt =        productObj.children('.cart-img').children('.product_img').attr('alt');
-    var title =          productObj.children('.caption').children('.product_title').html();
-    var product_href =   productObj.children('.caption').children('.product_title').attr('href');
-    article =            productObj.children('.caption').children('.product_article').html();
-    var price =          productObj.children('.caption').children('.product_price').children('.price').html();
+    var productObj = $('#product_' + product);
+    var img_src =        productObj.find('.product_img').attr('src');
+    var img_alt =        productObj.find('.product_img').attr('alt');
+    var title =          productObj.find('.product_title').html();
+    var product_href =   productObj.find('.product_title').attr('href');
+    article =            productObj.find('.product_article').html();
+    var price =          productObj.find('.price').html();
 
     $('.modal-product-image').attr({src: img_src, alt: img_alt});
     $('.modal-product-title').html(title).attr({href: product_href});
