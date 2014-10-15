@@ -26,5 +26,14 @@ class Catalog < ActiveRecord::Base
     Catalog.where({:parent_id=>self.id}).order('title ASC')
   end
 
+  def is_active_boolean
+    result = true
+    hui = self.is_active
+    if hui!=1 and hui!=true
+      result = false
+    end
+    result
+  end
+
 
 end

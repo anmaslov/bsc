@@ -94,6 +94,20 @@ class ProductsController < ApplicationController
     end
   end
 
+  def change_ajax
+    @product = Product.find(params[:id])
+    product_params = Hash[params[:field] => params[:value]]
+    respond_to do |format|
+      if @product.update(product_params)
+        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

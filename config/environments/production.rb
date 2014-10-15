@@ -45,6 +45,8 @@ Bsc::Application.configure do
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
+
+
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]
 
@@ -80,6 +82,7 @@ Bsc::Application.configure do
 
   config.assets.compile = true
   config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
+  config.assets.precompile += [/^[a-z0-9]\w+\.(css|js)$/]
 
   $GC_ID = 777
   $ROOT_PATH = '/var/www/osetrov/data/www/osetrov.info/'

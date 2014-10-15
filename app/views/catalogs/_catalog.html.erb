@@ -9,6 +9,29 @@
       </div>
     </div>
   <tr class="tr catalog <%= (@catalog && @catalog.catalog_table) ? '' : 'hidden' %> <%= !catalog.is_active ? 'not-active' : '' %>">
+
+    <% if (user_signed_in? && current_user.admin?) %>
+        <td>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox"> Масс
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" <% if catalog.is_active_boolean == true %> checked <% end %> id="is_active_<%= catalog.id %>" onchange="changeFieldCatalog('is_active', <%= catalog.id %>);"> Акт
+            </label>
+          </div>
+        </td>
+
+        <script>
+            $('#is_active_<%= catalog.id %>').attr("checked", <%= catalog.is_active_boolean %>);
+        </script>
+
+    <% end %>
+
     <td>
       <%= image_tag(catalog.image.url(:thumbnail), :alt => catalog.title, :class => 'catalog_img') %>
     </td>

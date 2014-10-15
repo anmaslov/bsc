@@ -45,6 +45,24 @@ class Product < ActiveRecord::Base
   #  self.image.url != '' ? self.image.url : 'no-image.png'
   #end
 
+  def market_yandex_boolean
+    result = true
+    hui = self.market_yandex
+    if hui!=1 and hui!=true
+      result = false
+    end
+    result
+  end
+
+  def is_active_boolean
+    result = true
+    hui = self.is_active
+    if hui!=1 and hui!=true
+      result = false
+    end
+    result
+  end
+
   private
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
@@ -56,5 +74,7 @@ class Product < ActiveRecord::Base
       return false
     end
   end
+
+
 
 end

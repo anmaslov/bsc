@@ -11,6 +11,9 @@
 // about supported directives.
 //
 
+//= require jquery_ujs
+
+
 //= require redactor-rails/plugins/fontsize
 //= require redactor-rails/plugins/fontfamily
 

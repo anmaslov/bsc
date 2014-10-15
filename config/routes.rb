@@ -12,7 +12,7 @@ Bsc::Application.routes.draw do
   resources :catalogs do
     collection do
       get :manage
-
+      get :change_ajax
       # required for Sortable GUI server side actions
       post :rebuild
     end
@@ -33,6 +33,7 @@ Bsc::Application.routes.draw do
   get "store/index"
   resources :products do
     get :who_bought, on: :member
+    get :change_ajax, on: :collection
   end
 
   get 'persons/profile', as: 'user_root'

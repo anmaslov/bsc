@@ -84,6 +84,53 @@ function message(type, conent) {
 }
 
 function changeFieldProduct(field, value) {
-    alert( $('#' + field + '_' + value).is(':checked') );
+    field_object = $('#' + field + '_' + value);
+    console.log('Изменение продукта ' + value + ' поле ' + field + ' на значение ' + field_object.is(':checked'))
+    $.ajax({
+        url: "/products/change_ajax",
+        type: "GET",
+        data: {
+            id: value,
+            field: field,
+            value: field_object.is(':checked')
+        },
+        success: function(data) {
+            console.log('Данные изменены');
+//            if (station_to != '' && station_from != '') {
+//                $('#distance_div').show();
+//            } else {
+//                $('#distance_div').hide();
+//            }
+//            $('#distance').html(data);
+        },
+        error: function (data) {
+            //$('#distance').html('Расстояние не найдено');
+        }
+    });
+}
 
+function changeFieldCatalog(field, value) {
+    field_object = $('#' + field + '_' + value);
+    console.log('Изменение каталога ' + value + ' поле ' + field + ' на значение ' + field_object.is(':checked'))
+    $.ajax({
+        url: "/catalogs/change_ajax",
+        type: "GET",
+        data: {
+            id: value,
+            field: field,
+            value: field_object.is(':checked')
+        },
+        success: function(data) {
+            console.log('Данные изменены');
+//            if (station_to != '' && station_from != '') {
+//                $('#distance_div').show();
+//            } else {
+//                $('#distance_div').hide();
+//            }
+//            $('#distance').html(data);
+        },
+        error: function (data) {
+            //$('#distance').html('Расстояние не найдено');
+        }
+    });
 }

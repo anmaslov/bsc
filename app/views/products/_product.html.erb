@@ -79,16 +79,22 @@
 
       <div class="checkbox">
         <label>
-          <input type="checkbox"> Акт
+          <input type="checkbox" <% if product.is_active_boolean == true %> checked <% end %> id="is_active_<%= product.id %>" onchange="changeFieldProduct('is_active', <%= product.id %>);"> Акт
         </label>
       </div>
 
       <div class="checkbox">
         <label>
-          <input type="checkbox" id="market_yandex_<%= product.id %>" onchange="changeFieldProduct('market_yandex', <%= product.id %>);"> Янд.Марк
+          <input type="checkbox" <% if product.market_yandex_boolean == true %> checked <% end %> id="market_yandex_<%= product.id %>" onchange="changeFieldProduct('market_yandex', <%= product.id %>);"> Янд.Марк
         </label>
       </div>
     </td>
+
+        <script>
+            $('#is_active_<%= product.id %>').attr("checked", <%= product.is_active_boolean %>);
+            $('#market_yandex_<%= product.id %>').attr("checked", <%= product.market_yandex_boolean %>);
+        </script>
+
     <% end %>
 
     <td>

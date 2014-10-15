@@ -86,6 +86,19 @@ class CatalogsController < ApplicationController
     end
   end
 
+  def change_ajax
+    @catalog = Catalog.find(params[:id])
+    catalog_params = Hash[params[:field] => params[:value]]
+    respond_to do |format|
+      if @catalog.update(catalog_params)
+        format.html { redirect_to @catalog, notice: 'Catalog was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @catalog.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   private
   # Use callbacks to share common setup or constraints between actions.

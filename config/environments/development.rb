@@ -39,6 +39,8 @@ Bsc::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+  config.assets.precompile =  ['*.js', '*.css', '*.css.erb']
+  config.assets.precompile += [/^[a-z0-9]\w+\.(css|js)$/]
 
   $ROOT_PATH = '/Users/apple/Sites/ruby/bsc/'
   $GC_ID = 20

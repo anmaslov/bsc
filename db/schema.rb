@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904184359) do
+ActiveRecord::Schema.define(version: 20141006132551) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -57,6 +57,47 @@ ActiveRecord::Schema.define(version: 20140904184359) do
     t.integer  "old_id"
     t.boolean  "catalog_table",      default: false
     t.boolean  "product_table",      default: false
+    t.string   "ancestry"
+    t.integer  "positon"
+    t.integer  "position"
+  end
+
+  create_table "characters", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "product_id"
+  end
+
+  create_table "detailings", force: true do |t|
+    t.string   "title"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
+    t.datetime "pdf_updated_at"
+  end
+
+  create_table "documents", force: true do |t|
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "pdf_file_name"
+    t.string   "pdf_content_type"
+    t.integer  "pdf_file_size"
+    t.datetime "pdf_updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "email_boxes", force: true do |t|
@@ -184,6 +225,8 @@ ActiveRecord::Schema.define(version: 20140904184359) do
     t.string   "keywords"
     t.integer  "supplier_id"
     t.integer  "quantity"
+    t.integer  "detail_for_id"
+    t.integer  "position_detail"
   end
 
   create_table "redactor_assets", force: true do |t|
