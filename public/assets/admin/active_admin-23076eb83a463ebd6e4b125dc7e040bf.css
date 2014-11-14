@@ -1,0 +1,4365 @@
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+span.icon {
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* line 2, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+span.icon svg {
+  vertical-align: baseline;
+}
+
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+span.icon {
+  width: 0.8em;
+  height: 0.8em;
+}
+
+/* Active Admin CSS */
+/* line 44, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* line 47, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+body {
+  line-height: 1;
+  color: black;
+  background: white;
+}
+
+/* line 49, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 51, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  vertical-align: middle;
+}
+
+/* line 53, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 55, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+q, blockquote {
+  quotes: "" "";
+}
+/* line 126, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+}
+
+/* line 57, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_reset.css.scss */
+a img {
+  border: none;
+}
+
+/* line 27, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+html {
+  font-size: 100.01%;
+}
+
+/* line 28, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+body {
+  font-size: 75%;
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+/* line 31, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  color: #5e6469;
+}
+/* line 34, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+h1 img, h2 img, h3 img, h4 img, h5 img, h6 img {
+  margin: 0;
+}
+
+/* line 37, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+h1 {
+  font-size: 3em;
+  line-height: 1;
+  margin-bottom: 0.5em;
+}
+
+/* line 38, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+h2 {
+  font-size: 2em;
+  margin-bottom: 0.75em;
+}
+
+/* line 39, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+h3 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-bottom: 1em;
+}
+
+/* line 40, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+h4 {
+  font-size: 1.2em;
+  line-height: 1.25;
+  margin-bottom: 1.25em;
+}
+
+/* line 41, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 1.5em;
+}
+
+/* line 42, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+h6 {
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* line 45, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+p {
+  margin: 0 0 1.5em;
+}
+/* line 48, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+p .left {
+  margin: 1.5em 1.5em 1.5em 0;
+  padding: 0;
+}
+/* line 49, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+p .right {
+  margin: 1.5em 0 1.5em 1.5em;
+  padding: 0;
+}
+
+/* line 52, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.left {
+  float: left !important;
+}
+
+/* line 53, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.right {
+  float: right !important;
+}
+
+/* line 55, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+blockquote {
+  margin: 1.5em;
+  color: #666;
+  font-style: italic;
+}
+
+/* line 56, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+strong, dfn {
+  font-weight: bold;
+}
+
+/* line 57, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+em, dfn {
+  font-style: italic;
+}
+
+/* line 58, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+sup, sub {
+  line-height: 0;
+}
+
+/* line 61, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+abbr,
+acronym {
+  border-bottom: 1px dotted #666;
+}
+
+/* line 62, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+address {
+  margin: 0 0 1.5em;
+  font-style: italic;
+}
+
+/* line 63, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+del {
+  color: #666;
+}
+
+/* line 65, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+pre {
+  margin: 1.5em 0;
+  white-space: pre;
+}
+
+/* line 66, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+pre, code, tt {
+  font: 1em 'andale mono', 'lucida console', monospace;
+  line-height: 1.5;
+}
+
+/* line 70, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+li ul,
+li ol {
+  margin: 0;
+}
+
+/* line 71, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+ul, ol {
+  margin: 0 1.5em 1.5em 0;
+  padding-left: 1.5em;
+}
+
+/* line 73, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+ul {
+  list-style-type: disc;
+}
+
+/* line 74, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+ol {
+  list-style-type: decimal;
+}
+
+/* line 76, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+dl {
+  margin: 0 0 1.5em 0;
+}
+
+/* line 77, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+dl dt {
+  font-weight: bold;
+}
+
+/* line 78, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+dd {
+  margin-left: 1.5em;
+}
+
+/* line 81, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+table {
+  margin-bottom: 1.4em;
+  width: 100%;
+}
+
+/* line 82, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+th {
+  font-weight: bold;
+}
+
+/* line 83, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+thead th {
+  background: #c3d9ff;
+}
+
+/* line 84, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+th, td, caption {
+  padding: 4px 10px 4px 5px;
+}
+
+/* line 87, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.small {
+  font-size: .8em;
+  margin-bottom: 1.875em;
+  line-height: 1.875em;
+}
+
+/* line 88, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.large {
+  font-size: 1.2em;
+  line-height: 2.5em;
+  margin-bottom: 1.25em;
+}
+
+/* line 89, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.hide {
+  display: none;
+}
+
+/* line 91, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.quiet {
+  color: #666;
+}
+
+/* line 92, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.loud {
+  color: #000;
+}
+
+/* line 93, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.highlight {
+  background: #ff0;
+}
+
+/* line 94, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.added {
+  background: #060;
+  color: #fff;
+}
+
+/* line 95, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.removed {
+  background: #900;
+  color: #fff;
+}
+
+/* line 97, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.first {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* line 98, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.last {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+/* line 99, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.top {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* line 100, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_typography.css.scss */
+.bottom {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* line 4, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header {
+  background: #6a7176;
+  background: -webkit-linear-gradient(-90deg, #6a7176, #4d5256);
+  background: -moz-linear-gradient(-90deg, #6a7176, #4d5256);
+  background: linear, -90deg, #6a7176, #4d5256;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF6A7176', endColorstr='#FF4D5256');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF6A7176', endColorstr='#FF4D5256');
+  border-bottom: 1px solid #44484b;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+  text-shadow: black 0 1px 0;
+  display: table;
+  height: 20px;
+  width: 100%;
+  overflow: visible;
+  position: inherit;
+  padding: 5px 0;
+  z-index: 900;
+}
+/* line 16, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header h1 {
+  display: table-cell;
+  vertical-align: middle;
+  white-space: nowrap;
+  color: #cdcdcd;
+  margin-right: 20px;
+  margin-bottom: 0px;
+  padding: 3px 30px 0 30px;
+  font-size: 1.3em;
+  font-weight: normal;
+  line-height: 1.2;
+}
+/* line 28, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header h1 a {
+  text-decoration: none;
+}
+/* line 31, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header h1 a:hover {
+  color: #fff;
+}
+/* line 36, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header h1 img {
+  position: relative;
+  top: -2px;
+}
+/* line 42, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header a, #header a:link {
+  color: #cdcdcd;
+}
+/* line 44, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header .header-item {
+  top: 2px;
+  position: relative;
+  height: 20px;
+}
+/* line 50, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* line 57, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li {
+  display: inline-block;
+  margin-right: 4px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 1.0em;
+  position: relative;
+  /* Hover on li, display the ul */
+  /* Drop down menus */
+}
+/* line 65, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li a {
+  text-decoration: none;
+  padding: 6px 10px 4px 10px;
+  position: relative;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+/* line 72, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li.current > a {
+  background: #7b8389;
+  color: #fff;
+}
+/* line 77, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li.has_nested > a {
+  background: url(/assets/active_admin/nested_menu_arrow.gif) no-repeat calc(100% - 7px) 50%;
+  padding-right: 20px;
+}
+/* line 82, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li.has_nested.current > a {
+  background: #7b8389 url(/assets/active_admin/nested_menu_arrow_dark.gif) no-repeat calc(100% - 7px) 50%;
+  padding-right: 20px;
+}
+/* line 87, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li:hover > a {
+  background: #7b8389;
+  color: #fff;
+}
+/* line 92, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li.has_nested:hover > a {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-bottom: 5px solid #7b8389;
+  background: #7b8389 url(/assets/active_admin/nested_menu_arrow_dark.gif) no-repeat calc(100% - 7px) 50%;
+  z-index: 1020;
+}
+/* line 101, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li:hover ul {
+  display: block;
+}
+/* line 103, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li ul {
+  background: #7b8389;
+  border-top-right-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-top-left-radius: 0;
+  -moz-border-radius-topleft: 0;
+  -webkit-border-top-left-radius: 0;
+  border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  box-shadow: 0 1px 3px #444444;
+  -moz-box-shadow: 0 1px 3px #444444;
+  -webkit-box-shadow: 0 1px 3px #444444;
+  position: absolute;
+  width: 120%;
+  min-width: 175px;
+  max-width: calc(100% + 20px);
+  margin-top: 5px;
+  float: left;
+  display: none;
+  padding: 3px 0px 5px 0;
+  list-style: none;
+  z-index: 1010;
+}
+/* line 118, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li ul li {
+  margin: 0px;
+}
+/* line 120, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li ul li a {
+  background: none;
+  display: block;
+}
+/* line 123, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li ul li a:hover {
+  color: #fff;
+  background: none;
+}
+/* line 127, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header ul.tabs > li ul li.current a {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+/* line 135, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header #tabs {
+  width: 100%;
+}
+/* line 139, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header #utility_nav {
+  color: #aaa;
+  display: table-cell;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  padding-right: 26px;
+  text-align: right;
+}
+/* line 148, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header #utility_nav a {
+  text-decoration: none;
+}
+/* line 149, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header #utility_nav a:hover {
+  color: #fff;
+}
+/* line 151, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_header.css.scss */
+#header #utility_nav li {
+  display: inline;
+}
+
+/* line 3, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form {
+  /* Reset margins & Padding */
+  /* Nested Fieldsets and Legends */
+  /* Text Fields */
+  /* semantic_errors */
+  /* Buttons */
+}
+/* line 5, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form ul, form ol, form li, form fieldset, form legend, form input, form textarea, form select, form p {
+  margin: 0;
+  padding: 0;
+}
+/* line 6, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form ol, form ul {
+  list-style: none;
+}
+/* line 8, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset {
+  border: 0;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset.inputs {
+  background: #f4f4f4;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 4px #dddddd;
+  -moz-box-shadow: inset 0 1px 4px #dddddd;
+  -webkit-box-shadow: inset 0 1px 4px #dddddd;
+}
+/* line 15, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset legend {
+  width: 100%;
+}
+/* line 17, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset legend span {
+  display: block;
+  background: #efefef;
+  background: -webkit-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: -moz-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: linear, -90deg, #efefef, #dfe1e2;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  text-shadow: white 0 1px 0;
+  border: solid 1px #cdcdcd;
+  border-color: #d4d4d4;
+  border-top-color: #e6e6e6;
+  border-right-color: #d4d4d4;
+  border-bottom-color: #cdcdcd;
+  border-left-color: #d4d4d4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
+  font-size: 1.0em;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 0.5em;
+  color: #5e6469;
+  padding: 5px 10px 3px 10px;
+}
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+form fieldset legend span span.icon svg path, form fieldset legend span span.icon svg polygon, form fieldset legend span span.icon svg rect, form fieldset legend span span.icon svg circle {
+  fill: #5e6469 !important;
+}
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+form fieldset legend span span.icon {
+  width: 1em;
+  height: 1em;
+}
+/* line 20, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset ol > li {
+  padding: 10px;
+}
+/* line 22, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset ol > li label {
+  display: block;
+  width: 20%;
+  float: left;
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #5e6469;
+}
+/* line 29, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset ol > li label abbr {
+  border: none;
+  color: #aaaaaa;
+}
+/* line 36, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset ol > li.has_many_container {
+  padding: 20px 10px;
+}
+/* line 38, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset ol > li.has_many_container h3 {
+  font-size: 12px;
+  font-weight: bold;
+}
+/* line 42, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset ol > li.has_many_container .has_many_fields {
+  margin: 10px 0;
+}
+/* line 45, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset ol > li > li label {
+  line-height: 100%;
+  padding-top: 0;
+}
+/* line 48, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset ol > li > li label input {
+  line-height: 100%;
+  vertical-align: middle;
+  margin-top: -0.1em;
+}
+/* line 57, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form .has_many_fields {
+  position: relative;
+}
+/* line 60, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form .has_many_container .handle {
+  position: absolute;
+  top: calc(50% - 3em / 2);
+  right: 2px;
+  padding: 0;
+  cursor: move;
+}
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+form .has_many_container .handle span.icon {
+  width: 3em;
+  height: 3em;
+}
+/* line 70, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form .has_many_container.ui-sortable .has_many_container {
+  margin-right: 2em;
+}
+/* line 77, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form .ui-sortable input[type=text], form .ui-sortable input[type=password], form .ui-sortable input[type=email], form .ui-sortable input[type=number], form .ui-sortable input[type=url], form .ui-sortable input[type=tel], form .ui-sortable textarea {
+  width: calc(80% - 22px - 2em - 1px);
+}
+/* line 85, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li fieldset {
+  position: relative;
+  padding: 0;
+  margin-bottom: 0;
+}
+/* line 90, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li fieldset legend {
+  position: absolute;
+  width: 95%;
+  padding-top: 0.1em;
+  left: 0px;
+  font-size: 100%;
+  font-weight: normal;
+}
+/* line 97, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li fieldset legend span {
+  position: absolute;
+}
+/* line 98, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li fieldset legend.label label {
+  position: absolute;
+}
+/* line 101, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li fieldset:not(.has_many_fields) ol {
+  float: left;
+  width: 74%;
+  margin: 0;
+  padding: 0 0 0 20%;
+}
+/* line 107, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li fieldset:not(.has_many_fields) ol li {
+  padding: 0;
+  border: 0;
+}
+/* line 113, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li fieldset.has_many_fields ol {
+  float: left;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+/* line 123, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form input[type=text], form input[type=password], form input[type=email], form input[type=number], form input[type=url], form input[type=tel], form textarea {
+  width: calc(80% - 22px);
+  border: 1px solid #c9d0d6;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 0.95em;
+  font-family: Helvetica, Arial, sans-serif;
+  outline: none;
+  padding: 8px 10px 7px;
+}
+/* line 132, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=number]:focus, form input[type=url]:focus, form input[type=tel]:focus, form textarea:focus {
+  border: 1px solid #99a2aa;
+  box-shadow: 0 0 4px #99a2aa;
+  -moz-box-shadow: 0 0 4px #99a2aa;
+  -webkit-box-shadow: 0 0 4px #99a2aa;
+}
+/* line 138, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li {
+  /* Hints */
+  /* Date and Time Fields */
+  /* Check Boxes or Radio fields */
+  /* Boolean Field */
+  /* Hidden fields */
+  /* Errors */
+}
+/* line 141, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li p.inline-hints {
+  font-size: 0.95em;
+  font-style: italic;
+  color: #666;
+  margin: 0.5em 0 0 20%;
+}
+/* line 150, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.date fieldset ol li, form fieldset > ol > li.time fieldset ol li, form fieldset > ol > li.datetime fieldset ol li, form fieldset > ol > li.date_select fieldset ol li {
+  float: left;
+  width: auto;
+  margin: 0 0.5em 0 0;
+}
+/* line 152, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.date fieldset ol li label, form fieldset > ol > li.time fieldset ol li label, form fieldset > ol > li.datetime fieldset ol li label, form fieldset > ol > li.date_select fieldset ol li label {
+  display: none;
+}
+/* line 153, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.date fieldset ol li input, form fieldset > ol > li.time fieldset ol li input, form fieldset > ol > li.datetime fieldset ol li input, form fieldset > ol > li.date_select fieldset ol li input {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+/* line 159, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.check_boxes fieldset ol, form fieldset > ol > li.radio fieldset ol {
+  margin-bottom: -0.6em;
+}
+/* line 161, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.check_boxes fieldset ol li, form fieldset > ol > li.radio fieldset ol li {
+  margin: 0.1em 0 0.5em 0;
+}
+/* line 163, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.check_boxes fieldset ol li label, form fieldset > ol > li.radio fieldset ol li label {
+  float: none;
+  width: 100%;
+}
+/* line 166, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.check_boxes fieldset ol li label input, form fieldset > ol > li.radio fieldset ol li label input {
+  margin-right: 0.2em;
+}
+/* line 173, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.boolean {
+  height: 1.1em;
+}
+/* line 175, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.boolean label {
+  width: 80%;
+  padding-left: 20%;
+  padding-right: 10px;
+  text-transform: none !important;
+  font-weight: normal;
+}
+/* line 181, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.boolean label input {
+  margin: 0 0.5em 0 0.2em;
+}
+/* line 186, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.hidden {
+  padding: 0;
+}
+/* line 191, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li p.inline-errors {
+  color: #932419;
+  font-weight: bold;
+  margin: 0.3em 0 0 20%;
+}
+/* line 196, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li ul.errors {
+  color: #932419;
+  margin: 0.5em 0 0 20%;
+  list-style: square;
+}
+/* line 200, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li ul.errors li {
+  padding: 0;
+  border: none;
+  display: list-item;
+}
+/* line 204, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset > ol > li.error input[type=text], form fieldset > ol > li.error input[type=password], form fieldset > ol > li.error input[type=email], form fieldset > ol > li.error input[type=number], form fieldset > ol > li.error input[type=url], form fieldset > ol > li.error input[type=tel], form fieldset > ol > li.error textarea {
+  border: 1px solid #932419;
+}
+/* line 211, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form ul.errors {
+  background: #fae6e4;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #932419;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 10px;
+  list-style: square;
+}
+/* line 219, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form ul.errors li {
+  margin-left: 15px;
+  padding: 0;
+  border: none;
+  display: list-item;
+}
+/* line 224, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form input[type=submit] {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: #838a90;
+  background: -webkit-linear-gradient(-90deg, #838a90, #414549);
+  background: -moz-linear-gradient(-90deg, #838a90, #414549);
+  background: linear, -90deg, #838a90, #414549;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF838A90', endColorstr='#FF414549');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF838A90', endColorstr='#FF414549');
+  text-shadow: black 0 1px 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0px rgba(255, 255, 255, 0.2) inset;
+  border: solid 1px #484e53;
+  border-color: #484e53;
+  border-top-color: #616a71;
+  border-right-color: #484e53;
+  border-bottom-color: #363b3f;
+  border-left-color: #484e53;
+  color: #efefef;
+  cursor: pointer;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+form input[type=submit].disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 30, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+form input[type=submit]:not(.disabled):hover {
+  background: #8b9297;
+  background: -webkit-linear-gradient(-90deg, #8b9297, #484d51);
+  background: -moz-linear-gradient(-90deg, #8b9297, #484d51);
+  background: linear, -90deg, #8b9297, #484d51;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF8B9297', endColorstr='#FF484D51');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF8B9297', endColorstr='#FF484D51');
+}
+/* line 34, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+form input[type=submit]:not(.disabled):active {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
+  background: #71797f;
+  background: -webkit-linear-gradient(-90deg, #71797f, #35383b);
+  background: -moz-linear-gradient(-90deg, #71797f, #35383b);
+  background: linear, -90deg, #71797f, #35383b;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF71797F', endColorstr='#FF35383B');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF71797F', endColorstr='#FF35383B');
+}
+/* line 230, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form .buttons, form .actions {
+  margin-top: 15px;
+}
+/* line 232, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form .buttons input[type=submit], form .actions input[type=submit] {
+  margin-right: 10px;
+}
+/* line 235, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset.buttons li, form fieldset.actions li {
+  float: left;
+  padding: 0;
+}
+/* line 240, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form fieldset.buttons li.cancel a, form fieldset.actions li.cancel a {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #e7e7e7);
+  background: -moz-linear-gradient(-90deg, white, #e7e7e7);
+  background: linear, -90deg, white, #e7e7e7;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.8) inset;
+  border: solid 1px #c7c7c7;
+  border-color: #c7c7c7;
+  border-top-color: lightgrey;
+  border-right-color: #c7c7c7;
+  border-bottom-color: #c2c2c2;
+  border-left-color: #c7c7c7;
+  text-shadow: white 0 1px 0;
+  color: #5e6469;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+form fieldset.buttons li.cancel a.disabled, form fieldset.actions li.cancel a.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 51, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+form fieldset.buttons li.cancel a:not(.disabled):hover, form fieldset.actions li.cancel a:not(.disabled):hover {
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #f1f1f1);
+  background: -moz-linear-gradient(-90deg, white, #f1f1f1);
+  background: linear, -90deg, white, #f1f1f1;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+}
+/* line 55, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+form fieldset.buttons li.cancel a:not(.disabled):active, form fieldset.actions li.cancel a:not(.disabled):active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22) inset, 0 1px 0 0px #eeeeee;
+  border-color: #b9b9b9;
+  border-top-color: #c2c2c2;
+  border-right-color: #b9b9b9;
+  border-bottom-color: #b7b7b7;
+  border-left-color: #b9b9b9;
+  background: #f3f3f3;
+  background: -webkit-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: -moz-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: linear, -90deg, #f3f3f3, #d8d8d8;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+}
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+form fieldset.buttons li.cancel a span.icon svg path, form fieldset.buttons li.cancel a span.icon svg polygon, form fieldset.buttons li.cancel a span.icon svg rect, form fieldset.buttons li.cancel a span.icon svg circle, form fieldset.actions li.cancel a span.icon svg path, form fieldset.actions li.cancel a span.icon svg polygon, form fieldset.actions li.cancel a span.icon svg rect, form fieldset.actions li.cancel a span.icon svg circle {
+  fill: #777777 !important;
+}
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+form fieldset.buttons li.cancel a span.icon, form fieldset.actions li.cancel a span.icon {
+  width: 9px;
+  height: 9px;
+}
+
+/* line 254, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+.sidebar_section label {
+  display: block;
+  text-transform: uppercase;
+  color: #5e6469;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+/* line 262, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+.sidebar_section select {
+  width: 240px;
+}
+/* line 266, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+.sidebar_section input[type=text], .sidebar_section input[type=password], .sidebar_section input[type=email], .sidebar_section input[type=url], .sidebar_section input[type=tel], .sidebar_section textarea {
+  width: 220px;
+}
+
+/* line 284, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form.filter_form .filter_form_field {
+  margin-bottom: 10px;
+  clear: both;
+}
+/* line 289, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form.filter_form .filter_form_field.select_and_search input[type=text] {
+  margin-left: 16px;
+  width: 88px;
+}
+/* line 293, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form.filter_form .filter_form_field.select_and_search select {
+  width: 108px;
+}
+/* line 299, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form.filter_form .filter_form_field.filter_check_boxes label {
+  margin-bottom: 3px;
+}
+/* line 300, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form.filter_form .filter_form_field.filter_check_boxes fieldset {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+/* line 304, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form.filter_form .filter_form_field.filter_check_boxes .check_boxes_wrapper label {
+  font-weight: normal;
+  margin-bottom: 3px;
+  text-transform: none;
+  font-size: 1.0em;
+}
+/* line 309, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form.filter_form .filter_form_field.filter_check_boxes .check_boxes_wrapper label input {
+  vertical-align: baseline;
+}
+/* line 314, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form.filter_form .filter_form_field.filter_date_range .seperator {
+  display: inline-block;
+  text-align: center;
+  width: 12px;
+}
+/* line 320, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form.filter_form .filter_form_field.filter_date_range input[type=text] {
+  background: white url(/assets/active_admin/datepicker/datepicker-input-icon.png) no-repeat 100% 7px;
+  padding-right: 27px;
+  width: 71px;
+}
+/* line 327, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_forms.css.scss */
+form.filter_form a.clear_filters_btn {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #e7e7e7);
+  background: -moz-linear-gradient(-90deg, white, #e7e7e7);
+  background: linear, -90deg, white, #e7e7e7;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.8) inset;
+  border: solid 1px #c7c7c7;
+  border-color: #c7c7c7;
+  border-top-color: lightgrey;
+  border-right-color: #c7c7c7;
+  border-bottom-color: #c2c2c2;
+  border-left-color: #c7c7c7;
+  text-shadow: white 0 1px 0;
+  color: #5e6469;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+form.filter_form a.clear_filters_btn.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 51, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+form.filter_form a.clear_filters_btn:not(.disabled):hover {
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #f1f1f1);
+  background: -moz-linear-gradient(-90deg, white, #f1f1f1);
+  background: linear, -90deg, white, #f1f1f1;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+}
+/* line 55, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+form.filter_form a.clear_filters_btn:not(.disabled):active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22) inset, 0 1px 0 0px #eeeeee;
+  border-color: #b9b9b9;
+  border-top-color: #c2c2c2;
+  border-right-color: #b9b9b9;
+  border-bottom-color: #b7b7b7;
+  border-left-color: #b9b9b9;
+  background: #f3f3f3;
+  background: -webkit-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: -moz-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: linear, -90deg, #f3f3f3, #d8d8d8;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+}
+
+/* line 4, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_comments.css.scss */
+.comments .active_admin_comment {
+  clear: both;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  max-width: 700px;
+}
+/* line 10, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_comments.css.scss */
+.comments .active_admin_comment .active_admin_comment_meta {
+  width: 130px;
+  float: left;
+  overflow: hidden;
+  font-size: 0.9em;
+  color: #767e84;
+}
+/* line 16, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_comments.css.scss */
+.comments .active_admin_comment .active_admin_comment_meta .active_admin_comment_author {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: 0;
+  color: #5e6469;
+}
+/* line 23, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_comments.css.scss */
+.comments .active_admin_comment .active_admin_comment_body {
+  margin-left: 150px;
+}
+/* line 27, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_comments.css.scss */
+.comments form.active_admin_comment {
+  margin: 0;
+  padding: 0;
+  margin-left: 150px;
+}
+/* line 32, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_comments.css.scss */
+.comments form.active_admin_comment fieldset.inputs {
+  margin: 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+/* line 38, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_comments.css.scss */
+.comments form.active_admin_comment li {
+  padding: 0;
+}
+/* line 39, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_comments.css.scss */
+.comments form.active_admin_comment fieldset.buttons {
+  padding: 0;
+  margin-top: 5px;
+}
+
+/* line 2, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_flash_messages.css.scss */
+body.logged_in .flash {
+  background: #f7f1d3;
+  background: -webkit-linear-gradient(-90deg, #f7f1d3, #f5edc5);
+  background: -moz-linear-gradient(-90deg, #f7f1d3, #f5edc5);
+  background: linear, -90deg, #f7f1d3, #f5edc5;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF7F1D3', endColorstr='#FFF5EDC5');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF7F1D3', endColorstr='#FFF5EDC5');
+  text-shadow: #fafafa 0 1px 0;
+  border-bottom: 1px solid #eee098;
+  color: #cb9810;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 1.0em;
+  padding: 13px 30px 11px;
+  position: relative;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_flash_messages.css.scss */
+body.logged_in .flash.flash_notice {
+  background: #dce9dd;
+  background: -webkit-linear-gradient(-90deg, #dce9dd, #ccdfcd);
+  background: -moz-linear-gradient(-90deg, #dce9dd, #ccdfcd);
+  background: linear, -90deg, #dce9dd, #ccdfcd;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFDCE9DD', endColorstr='#FFCCDFCD');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFDCE9DD', endColorstr='#FFCCDFCD');
+  border-bottom: 1px solid #adcbaf;
+  color: #416347;
+}
+/* line 18, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_flash_messages.css.scss */
+body.logged_in .flash.flash_error {
+  background: #f5e4e4;
+  background: -webkit-linear-gradient(-90deg, #f5e4e4, #f1dcdc);
+  background: -moz-linear-gradient(-90deg, #f5e4e4, #f1dcdc);
+  background: linear, -90deg, #f5e4e4, #f1dcdc;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF5E4E4', endColorstr='#FFF1DCDC');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF5E4E4', endColorstr='#FFF1DCDC');
+  border-bottom: 1px solid #e0c2c0;
+  color: #b33c33;
+}
+
+/* line 27, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_flash_messages.css.scss */
+body.logged_out .flash {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  text-shadow: white 0 1px 0;
+  background: none;
+  color: #666;
+  font-weight: bold;
+  line-height: 1.0em;
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+/* line 6, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker {
+  background: #fff;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  background-clip: padding-box;
+  color: #fff;
+  display: none;
+  margin-top: 2px;
+  padding: 0;
+  text-align: center;
+  width: 160px;
+  background: url(/assets/active_admin/datepicker/datepicker-nipple.png) no-repeat 0 -40px;
+}
+/* line 20, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker a {
+  text-decoration: none;
+}
+/* line 22, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker a:hover {
+  cursor: pointer;
+}
+/* line 27, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker .ui-datepicker-header {
+  background: url(/assets/active_admin/datepicker/datepicker-header-bg.png) no-repeat 0px 0px;
+  height: 12px;
+  padding: 16px 7px 8px;
+  position: relative;
+  z-index: 2000;
+}
+/* line 34, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker .ui-datepicker-header .ui-datepicker-title {
+  text-shadow: black 0 1px 0;
+  color: #fff;
+  display: block;
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 0.8em;
+  text-align: center;
+}
+/* line 44, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker .ui-datepicker-header a {
+  color: #fff;
+  display: block;
+  height: 19px;
+  margin-top: -4px;
+  width: 20px;
+}
+/* line 51, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker .ui-datepicker-header a.ui-datepicker-prev {
+  float: left;
+  background: url(/assets/active_admin/datepicker/datepicker-prev-link-icon.png) no-repeat 2px 5px;
+}
+/* line 55, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker .ui-datepicker-header a.ui-datepicker-next {
+  float: right;
+  background: url(/assets/active_admin/datepicker/datepicker-next-link-icon.png) no-repeat 12px 5px;
+}
+/* line 59, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker .ui-datepicker-header a:active {
+  margin-top: -3px;
+  height: 18px;
+}
+/* line 64, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker .ui-datepicker-header a span {
+  display: none;
+}
+/* line 70, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker table.ui-datepicker-calendar {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.26);
+  -moz-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.26);
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.26);
+  background-color: #f4f4f4;
+  border: solid 1px #63686e;
+  left: 2px;
+  margin-bottom: 0px;
+  position: relative;
+  top: -2px;
+  width: 156px;
+}
+/* line 81, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker table.ui-datepicker-calendar td, .ui-datepicker table.ui-datepicker-calendar th {
+  padding: 0px;
+  text-align: center;
+}
+/* line 86, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker table.ui-datepicker-calendar thead th {
+  background-color: #dbdddf;
+  color: #333333;
+  font-weight: normal;
+  font-size: 0.8em;
+  padding-top: 1px;
+}
+/* line 94, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker table.ui-datepicker-calendar tbody {
+  color: #666666;
+}
+/* line 97, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker table.ui-datepicker-calendar tbody td {
+  border: none;
+  height: 24px;
+  width: 22px;
+}
+/* line 102, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker table.ui-datepicker-calendar tbody td a {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #666666;
+  font-weight: bold;
+  font-size: 0.85em;
+  padding: 4px;
+}
+/* line 109, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker table.ui-datepicker-calendar tbody td a.ui-state-active {
+  background-color: #5a5f64;
+  color: #fff;
+}
+/* line 112, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker table.ui-datepicker-calendar tbody td a.ui-state-active.ui-state-hover {
+  background-color: #5a5f64;
+  color: #fff;
+}
+/* line 117, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker table.ui-datepicker-calendar tbody td a.ui-state-hover {
+  background-color: #eceef0;
+}
+/* line 120, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_date_picker.css.scss */
+.ui-datepicker table.ui-datepicker-calendar tbody td a.ui-state-highlight {
+  background-color: #dbdddf;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover {
+  display: inline-block;
+  position: absolute;
+  background-color: white;
+  padding: 2px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 1px 3px, #838a90 0px 1px 0px 0px inset;
+  background-color: #5e6469;
+  background: #686e74;
+  background: -webkit-linear-gradient(-90deg, #686e74, #52575c);
+  background: -moz-linear-gradient(-90deg, #686e74, #52575c);
+  background: linear, -90deg, #686e74, #52575c;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF686E74', endColorstr='#FF52575C');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF686E74', endColorstr='#FF52575C');
+  border: solid 1px #464a4e;
+  border-top-color: #545a5e;
+  border-bottom-color: #35383b;
+  border-radius: 4px;
+}
+/* line 15, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover .popover_nipple {
+  content: "";
+  position: absolute;
+  top: -6px;
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 0 6px 6px;
+  border-style: solid;
+  border-color: #545a5e transparent;
+  z-index: 100;
+}
+/* line 31, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover .popover_nipple:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 0 5px 5px;
+  border-style: solid;
+  border-color: #838a90 transparent;
+  left: -5px;
+  top: 1px;
+}
+/* line 45, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover .popover_nipple:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 0 5px 5px;
+  border-style: solid;
+  border-color: #686e74 transparent;
+  left: -5px;
+  top: 2px;
+}
+/* line 58, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover .popover_contents {
+  display: block;
+  background-color: #FFF;
+  border: solid 1px #464a4e;
+  box-shadow: #6a7176 0px 1px 0px 0px;
+  border-radius: 3px;
+  margin: 0;
+  overflow: hidden;
+  padding: 8px;
+}
+
+/* line 74, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover ul.popover_contents {
+  list-style-type: none;
+  padding: 0;
+}
+/* line 78, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover ul.popover_contents li {
+  display: block;
+  border-bottom: solid 1px #ebebeb;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 83, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover ul.popover_contents li a {
+  display: block;
+  -webkit-box-sizing: padding-box;
+  -moz-box-sizing: padding-box;
+  box-sizing: padding-box;
+  font-size: 0.95em;
+  font-weight: bold;
+  padding: 7px 16px 5px;
+  text-decoration: none;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}
+/* line 93, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover ul.popover_contents li a:hover {
+  background: #75a1c2;
+  background: -webkit-linear-gradient(-90deg, #75a1c2, #608cb4);
+  background: -moz-linear-gradient(-90deg, #75a1c2, #608cb4);
+  background: linear, -90deg, #75a1c2, #608cb4;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF75A1C2', endColorstr='#FF608CB4');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF75A1C2', endColorstr='#FF608CB4');
+  text-shadow: #5a83aa 0 1px 0;
+  color: #FFF;
+}
+/* line 99, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover ul.popover_contents li a:active {
+  background: #608cb4;
+  background: -webkit-linear-gradient(-90deg, #608cb4, #75a1c2);
+  background: -moz-linear-gradient(-90deg, #608cb4, #75a1c2);
+  background: linear, -90deg, #608cb4, #75a1c2;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF608CB4', endColorstr='#FF75A1C2');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF608CB4', endColorstr='#FF75A1C2');
+  color: #FFF;
+}
+/* line 107, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover ul.popover_contents li:first-child a {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+/* line 114, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover ul.popover_contents li:last-child {
+  border: none;
+}
+/* line 115, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_popovers.css.scss */
+.popover ul.popover_contents li:last-child a {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+/* line 5, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table tr td {
+  vertical-align: top;
+}
+
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table {
+  width: 100%;
+  margin-bottom: 10px;
+  border: 0;
+  border-spacing: 0;
+}
+/* line 18, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table th {
+  background: #efefef;
+  background: -webkit-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: -moz-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: linear, -90deg, #efefef, #dfe1e2;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  text-shadow: white 0 1px 0;
+  border: solid 1px #cdcdcd;
+  border-color: #d4d4d4;
+  border-top-color: #e6e6e6;
+  border-right-color: #d4d4d4;
+  border-bottom-color: #cdcdcd;
+  border-left-color: #d4d4d4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
+  font-size: 1.0em;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 0.5em;
+  color: #5e6469;
+  padding: 5px 10px 3px 10px;
+  border-right: none;
+  text-align: left;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+table.index_table th span.icon svg path, table.index_table th span.icon svg polygon, table.index_table th span.icon svg rect, table.index_table th span.icon svg circle {
+  fill: #5e6469 !important;
+}
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+table.index_table th span.icon {
+  width: 1em;
+  height: 1em;
+}
+/* line 25, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table th a, table.index_table th a:link, table.index_table th a:visited {
+  color: #5e6469;
+  text-decoration: none;
+  display: block;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+}
+/* line 33, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table th.sortable a {
+  background: url(/assets/active_admin/orderable.png) no-repeat 0 4px;
+  padding-left: 13px;
+}
+/* line 37, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table th.sorted-asc a {
+  background-position: 0 -27px;
+}
+/* line 38, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table th.sorted-desc a {
+  background-position: 0 -56px;
+}
+/* line 40, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table th.sorted-asc, table.index_table th.sorted-desc {
+  background: #e2e2e2;
+  background: -webkit-linear-gradient(-90deg, #e2e2e2, #d2d4d6);
+  background: -moz-linear-gradient(-90deg, #e2e2e2, #d2d4d6);
+  background: linear, -90deg, #e2e2e2, #d2d4d6;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFE2E2E2', endColorstr='#FFD2D4D6');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFE2E2E2', endColorstr='#FFD2D4D6');
+}
+/* line 44, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table th:last-child {
+  border-right: solid 1px #d4d4d4;
+}
+/* line 50, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table tr.even td {
+  background: #f4f5f5;
+}
+/* line 52, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table tr.selected td {
+  background: #d9e4ec;
+}
+/* line 56, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+table.index_table td {
+  padding: 10px 12px 8px 12px;
+  border-bottom: 1px solid #e8e8e8;
+  vertical-align: top;
+}
+
+/* line 65, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.panel_contents table {
+  margin-top: 5px;
+}
+/* line 67, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.panel_contents table th {
+  padding-top: 10px;
+  background: none;
+  color: #5e6469;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  text-shadow: white 0 1px 0;
+  text-transform: uppercase;
+  border-bottom: 1px solid #ccc;
+}
+/* line 76, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.panel_contents table tr.odd td {
+  background: #ecedee;
+}
+/* line 77, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.panel_contents table tr.even td {
+  background: #f4f5f5;
+}
+
+/* line 81, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.attributes_table {
+  overflow: hidden;
+}
+
+/* line 84, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.attributes_table table col.even {
+  background: #f4f5f5;
+}
+/* line 85, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.attributes_table table col.odd {
+  background: #ecedee;
+}
+/* line 86, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.attributes_table table th, .attributes_table table td {
+  padding: 8px 12px 6px 12px;
+  vertical-align: top;
+  border-bottom: 1px solid #e8e8e8;
+}
+/* line 91, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.attributes_table table th {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  background: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(enabled=false)";
+  width: 150px;
+  font-size: 0.9em;
+  padding-left: 0;
+  text-transform: uppercase;
+  color: #5e6469;
+  text-shadow: white 0 1px 0;
+}
+/* line 102, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.attributes_table table td .empty {
+  color: #bbb;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+/* line 111, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_tables.css.scss */
+.sidebar_section .attributes_table th {
+  width: 50px;
+}
+
+/* line 15, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/gems/bourbon-3.2.3/app/assets/stylesheets/addons/_clearfix.scss */
+#collection_selection_toggle_panel:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 3, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_batch_actions.css.scss */
+#collection_selection_toggle_panel > .resource_selection_toggle_cell {
+  float: left;
+}
+/* line 6, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_batch_actions.css.scss */
+#collection_selection_toggle_panel #collection_selection_toggle_explaination {
+  float: left;
+  margin-left: 5px;
+  font-style: italic;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.ui-widget-overlay {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.2);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001;
+}
+
+/* line 8, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.ui-dialog {
+  position: fixed;
+  z-index: 1002;
+  background: #f4f4f4;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 4px #dddddd;
+  -moz-box-shadow: inset 0 1px 4px #dddddd;
+  -webkit-box-shadow: inset 0 1px 4px #dddddd;
+  box-shadow: rgba(0, 0, 0, 0.5) 0 0 10px;
+}
+/* line 14, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.ui-dialog .ui-dialog-titlebar {
+  background: #efefef;
+  background: -webkit-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: -moz-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: linear, -90deg, #efefef, #dfe1e2;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  text-shadow: white 0 1px 0;
+  border: solid 1px #cdcdcd;
+  border-color: #d4d4d4;
+  border-top-color: #e6e6e6;
+  border-right-color: #d4d4d4;
+  border-bottom-color: #cdcdcd;
+  border-left-color: #d4d4d4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
+  font-size: 1.0em;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 0.5em;
+  color: #5e6469;
+  padding: 5px 10px 3px 10px;
+}
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+.ui-dialog .ui-dialog-titlebar span.icon svg path, .ui-dialog .ui-dialog-titlebar span.icon svg polygon, .ui-dialog .ui-dialog-titlebar span.icon svg rect, .ui-dialog .ui-dialog-titlebar span.icon svg circle {
+  fill: #5e6469 !important;
+}
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+.ui-dialog .ui-dialog-titlebar span.icon {
+  width: 1em;
+  height: 1em;
+}
+/* line 16, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.ui-dialog .ui-dialog-titlebar span {
+  font-size: 1.1em;
+}
+/* line 19, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.ui-dialog ul {
+  list-style-type: none;
+}
+/* line 20, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.ui-dialog li {
+  margin: 10px 0;
+}
+/* line 21, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.ui-dialog label {
+  margin-right: 10px;
+}
+/* line 23, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.ui-dialog .ui-dialog-buttonpane, .ui-dialog form {
+  padding: 7px 15px 13px;
+}
+/* line 27, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.ui-dialog .ui-dialog-buttonpane button {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: #838a90;
+  background: -webkit-linear-gradient(-90deg, #838a90, #414549);
+  background: -moz-linear-gradient(-90deg, #838a90, #414549);
+  background: linear, -90deg, #838a90, #414549;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF838A90', endColorstr='#FF414549');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF838A90', endColorstr='#FF414549');
+  text-shadow: black 0 1px 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0px rgba(255, 255, 255, 0.2) inset;
+  border: solid 1px #484e53;
+  border-color: #484e53;
+  border-top-color: #616a71;
+  border-right-color: #484e53;
+  border-bottom-color: #363b3f;
+  border-left-color: #484e53;
+  color: #efefef;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.ui-dialog .ui-dialog-buttonpane button.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 30, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.ui-dialog .ui-dialog-buttonpane button:not(.disabled):hover {
+  background: #8b9297;
+  background: -webkit-linear-gradient(-90deg, #8b9297, #484d51);
+  background: -moz-linear-gradient(-90deg, #8b9297, #484d51);
+  background: linear, -90deg, #8b9297, #484d51;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF8B9297', endColorstr='#FF484D51');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF8B9297', endColorstr='#FF484D51');
+}
+/* line 34, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.ui-dialog .ui-dialog-buttonpane button:not(.disabled):active {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
+  background: #71797f;
+  background: -webkit-linear-gradient(-90deg, #71797f, #35383b);
+  background: -moz-linear-gradient(-90deg, #71797f, #35383b);
+  background: linear, -90deg, #71797f, #35383b;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF71797F', endColorstr='#FF35383B');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF71797F', endColorstr='#FF35383B');
+}
+/* line 28, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.ui-dialog .ui-dialog-buttonpane button:last-child {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #e7e7e7);
+  background: -moz-linear-gradient(-90deg, white, #e7e7e7);
+  background: linear, -90deg, white, #e7e7e7;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.8) inset;
+  border: solid 1px #c7c7c7;
+  border-color: #c7c7c7;
+  border-top-color: lightgrey;
+  border-right-color: #c7c7c7;
+  border-bottom-color: #c2c2c2;
+  border-left-color: #c7c7c7;
+  text-shadow: white 0 1px 0;
+  color: #5e6469;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.ui-dialog .ui-dialog-buttonpane button:last-child.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 51, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.ui-dialog .ui-dialog-buttonpane button:last-child:not(.disabled):hover {
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #f1f1f1);
+  background: -moz-linear-gradient(-90deg, white, #f1f1f1);
+  background: linear, -90deg, white, #f1f1f1;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+}
+/* line 55, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.ui-dialog .ui-dialog-buttonpane button:last-child:not(.disabled):active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22) inset, 0 1px 0 0px #eeeeee;
+  border-color: #b9b9b9;
+  border-top-color: #c2c2c2;
+  border-right-color: #b9b9b9;
+  border-bottom-color: #b7b7b7;
+  border-left-color: #b9b9b9;
+  background: #f3f3f3;
+  background: -webkit-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: -moz-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: linear, -90deg, #f3f3f3, #d8d8d8;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+}
+
+/* line 33, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_modal_dialog.scss */
+.active_admin_dialog.ui-dialog .ui-dialog-titlebar-close {
+  display: none;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_blank_slates.scss */
+.blank_slate_container {
+  clear: both;
+  text-align: center;
+}
+/* line 5, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_blank_slates.scss */
+.blank_slate_container .blank_slate {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-font-smoothing: antialiased;
+  border: 1px dashed #dadada;
+  color: #aaaaaa;
+  display: inline-block;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 14px 25px;
+  text-align: center;
+}
+/* line 16, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_blank_slates.scss */
+.blank_slate_container .blank_slate small {
+  display: block;
+  font-size: 0.9em;
+  font-weight: normal;
+}
+
+/* line 24, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_blank_slates.scss */
+.admin_dashboard .blank_slate_container .blank_slate {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+/* line 29, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_blank_slates.scss */
+.with_sidebar .blank_slate_container .blank_slate {
+  margin-top: 80px;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_breadcrumbs.scss */
+.breadcrumb {
+  display: block;
+  font-size: 0.9em;
+  font-weight: normal;
+  line-height: 1.0em;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+/* line 9, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_breadcrumbs.scss */
+.breadcrumb a, .breadcrumb a:link, .breadcrumb a:visited, .breadcrumb a:active {
+  color: #8a949e;
+  text-decoration: none;
+}
+/* line 14, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_breadcrumbs.scss */
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+/* line 16, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_breadcrumbs.scss */
+.breadcrumb .breadcrumb_sep {
+  margin: 0 2px;
+  color: #aab2ba;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu {
+  display: inline;
+}
+/* line 4, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_button {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #e7e7e7);
+  background: -moz-linear-gradient(-90deg, white, #e7e7e7);
+  background: linear, -90deg, white, #e7e7e7;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.8) inset;
+  border: solid 1px #c7c7c7;
+  border-color: #c7c7c7;
+  border-top-color: lightgrey;
+  border-right-color: #c7c7c7;
+  border-bottom-color: #c2c2c2;
+  border-left-color: #c7c7c7;
+  text-shadow: white 0 1px 0;
+  color: #5e6469;
+  position: relative;
+  padding-right: 22px !important;
+  cursor: pointer;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.dropdown_menu .dropdown_menu_button.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 51, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.dropdown_menu .dropdown_menu_button:not(.disabled):hover {
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #f1f1f1);
+  background: -moz-linear-gradient(-90deg, white, #f1f1f1);
+  background: linear, -90deg, white, #f1f1f1;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+}
+/* line 55, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.dropdown_menu .dropdown_menu_button:not(.disabled):active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22) inset, 0 1px 0 0px #eeeeee;
+  border-color: #b9b9b9;
+  border-top-color: #c2c2c2;
+  border-right-color: #b9b9b9;
+  border-bottom-color: #b7b7b7;
+  border-left-color: #b9b9b9;
+  background: #f3f3f3;
+  background: -webkit-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: -moz-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: linear, -90deg, #f3f3f3, #d8d8d8;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+}
+/* line 10, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_button:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 3px 3px 0;
+  border-style: solid;
+  border-color: #FFF transparent;
+  right: 12px;
+  top: 45%;
+}
+/* line 22, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_button:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 3px 3px 0;
+  border-style: solid;
+  border-color: #777 transparent;
+  right: 12px;
+  top: 45%;
+}
+/* line 35, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_nipple {
+  content: "";
+  position: absolute;
+  top: -6px;
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 0 6px 6px;
+  border-style: solid;
+  border-color: #545a5e transparent;
+  z-index: 100;
+}
+/* line 51, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_nipple:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 0 5px 5px;
+  border-style: solid;
+  border-color: #838a90 transparent;
+  left: -5px;
+  top: 1px;
+}
+/* line 65, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_nipple:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 0 5px 5px;
+  border-style: solid;
+  border-color: #686e74 transparent;
+  left: -5px;
+  top: 2px;
+}
+/* line 78, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_list_wrapper {
+  display: inline-block;
+  position: absolute;
+  background-color: white;
+  padding: 2px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0 1px 3px, #838a90 0px 1px 0px 0px inset;
+  background-color: #5e6469;
+  background: #686e74;
+  background: -webkit-linear-gradient(-90deg, #686e74, #52575c);
+  background: -moz-linear-gradient(-90deg, #686e74, #52575c);
+  background: linear, -90deg, #686e74, #52575c;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF686E74', endColorstr='#FF52575C');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF686E74', endColorstr='#FF52575C');
+  border: solid 1px #464a4e;
+  border-top-color: #545a5e;
+  border-bottom-color: #35383b;
+  border-radius: 4px;
+  z-index: 2000;
+  display: none;
+}
+/* line 93, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list {
+  display: block;
+  background-color: #FFF;
+  border: solid 1px #464a4e;
+  box-shadow: #6a7176 0px 1px 0px 0px;
+  border-radius: 3px;
+  margin: 0;
+  overflow: hidden;
+  padding: 8px;
+  list-style-type: none;
+  padding: 0;
+}
+/* line 106, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list li {
+  display: block;
+  border-bottom: solid 1px #ebebeb;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 111, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list li a {
+  display: block;
+  -webkit-box-sizing: padding-box;
+  -moz-box-sizing: padding-box;
+  box-sizing: padding-box;
+  font-size: 0.95em;
+  font-weight: bold;
+  padding: 7px 16px 5px;
+  text-decoration: none;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  white-space: nowrap;
+}
+/* line 122, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list li a:hover {
+  background: #75a1c2;
+  background: -webkit-linear-gradient(-90deg, #75a1c2, #608cb4);
+  background: -moz-linear-gradient(-90deg, #75a1c2, #608cb4);
+  background: linear, -90deg, #75a1c2, #608cb4;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF75A1C2', endColorstr='#FF608CB4');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF75A1C2', endColorstr='#FF608CB4');
+  text-shadow: #5a83aa 0 1px 0;
+  color: #FFF;
+}
+/* line 128, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list li a:active {
+  background: #608cb4;
+  background: -webkit-linear-gradient(-90deg, #608cb4, #75a1c2);
+  background: -moz-linear-gradient(-90deg, #608cb4, #75a1c2);
+  background: linear, -90deg, #608cb4, #75a1c2;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF608CB4', endColorstr='#FF75A1C2');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF608CB4', endColorstr='#FF75A1C2');
+  color: #FFF;
+}
+/* line 136, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list li:first-child a {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+/* line 143, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list li:last-child {
+  border: none;
+}
+/* line 144, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_dropdown_menu.scss */
+.dropdown_menu .dropdown_menu_list_wrapper .dropdown_menu_list li:last-child a {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+td span.icon svg path, td span.icon svg polygon, td span.icon svg rect, td span.icon svg circle, p span.icon svg path, p span.icon svg polygon, p span.icon svg rect, p span.icon svg circle {
+  fill: #b3bcc1 !important;
+}
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+td span.icon, p span.icon {
+  width: 0.8em;
+  height: 0.8em;
+}
+/* line 3, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_buttons.scss */
+td span.icon, p span.icon {
+  margin: 0 3px;
+}
+
+/* line 6, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_buttons.scss */
+a.member_link {
+  margin-right: 7px;
+  white-space: nowrap;
+}
+
+/* line 11, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_buttons.scss */
+a.button, a:link.button, a:visited.button, input[type=submit] {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: #838a90;
+  background: -webkit-linear-gradient(-90deg, #838a90, #414549);
+  background: -moz-linear-gradient(-90deg, #838a90, #414549);
+  background: linear, -90deg, #838a90, #414549;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF838A90', endColorstr='#FF414549');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF838A90', endColorstr='#FF414549');
+  text-shadow: black 0 1px 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0px rgba(255, 255, 255, 0.2) inset;
+  border: solid 1px #484e53;
+  border-color: #484e53;
+  border-top-color: #616a71;
+  border-right-color: #484e53;
+  border-bottom-color: #363b3f;
+  border-left-color: #484e53;
+  color: #efefef;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+a.button.disabled, a:link.button.disabled, a:visited.button.disabled, input[type=submit].disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 30, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+a.button:not(.disabled):hover, a:link.button:not(.disabled):hover, a:visited.button:not(.disabled):hover, input[type=submit]:not(.disabled):hover {
+  background: #8b9297;
+  background: -webkit-linear-gradient(-90deg, #8b9297, #484d51);
+  background: -moz-linear-gradient(-90deg, #8b9297, #484d51);
+  background: linear, -90deg, #8b9297, #484d51;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF8B9297', endColorstr='#FF484D51');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF8B9297', endColorstr='#FF484D51');
+}
+/* line 34, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+a.button:not(.disabled):active, a:link.button:not(.disabled):active, a:visited.button:not(.disabled):active, input[type=submit]:not(.disabled):active {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
+  background: #71797f;
+  background: -webkit-linear-gradient(-90deg, #71797f, #35383b);
+  background: -moz-linear-gradient(-90deg, #71797f, #35383b);
+  background: linear, -90deg, #71797f, #35383b;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF71797F', endColorstr='#FF35383B');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF71797F', endColorstr='#FF35383B');
+}
+
+/* line 2, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_grid.scss */
+table.index_grid td {
+  border: none;
+  background: none;
+  padding: 0 20px 20px 0;
+  margin: 0;
+}
+
+/* line 5, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_grid.scss */
+.columns {
+  clear: both;
+  padding: 0;
+}
+/* line 8, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_grid.scss */
+.columns .column {
+  float: left;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_links.scss */
+a, a:link, a:visited {
+  color: #38678b;
+  text-decoration: underline;
+}
+
+/* line 5, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_links.scss */
+a:hover {
+  text-decoration: none;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_pagination.scss */
+.paginated_collection_contents {
+  clear: both;
+}
+
+/* line 5, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_pagination.scss */
+.pagination {
+  float: right;
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+/* line 10, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_pagination.scss */
+.pagination a {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #e7e7e7);
+  background: -moz-linear-gradient(-90deg, white, #e7e7e7);
+  background: linear, -90deg, white, #e7e7e7;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.8) inset;
+  border: solid 1px #c7c7c7;
+  border-color: #c7c7c7;
+  border-top-color: lightgrey;
+  border-right-color: #c7c7c7;
+  border-bottom-color: #c2c2c2;
+  border-left-color: #c7c7c7;
+  text-shadow: white 0 1px 0;
+  color: #5e6469;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.pagination a.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 51, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.pagination a:not(.disabled):hover {
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #f1f1f1);
+  background: -moz-linear-gradient(-90deg, white, #f1f1f1);
+  background: linear, -90deg, white, #f1f1f1;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+}
+/* line 55, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.pagination a:not(.disabled):active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22) inset, 0 1px 0 0px #eeeeee;
+  border-color: #b9b9b9;
+  border-top-color: #c2c2c2;
+  border-right-color: #b9b9b9;
+  border-bottom-color: #b7b7b7;
+  border-left-color: #b9b9b9;
+  background: #f3f3f3;
+  background: -webkit-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: -moz-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: linear, -90deg, #f3f3f3, #d8d8d8;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+}
+/* line 14, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_pagination.scss */
+.pagination span.page.current {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: #838a90;
+  background: -webkit-linear-gradient(-90deg, #838a90, #414549);
+  background: -moz-linear-gradient(-90deg, #838a90, #414549);
+  background: linear, -90deg, #838a90, #414549;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF838A90', endColorstr='#FF414549');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF838A90', endColorstr='#FF414549');
+  text-shadow: black 0 1px 0;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0px rgba(255, 255, 255, 0.2) inset;
+  border: solid 1px #484e53;
+  border-color: #484e53;
+  border-top-color: #616a71;
+  border-right-color: #484e53;
+  border-bottom-color: #363b3f;
+  border-left-color: #484e53;
+  color: #efefef;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.pagination span.page.current.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 30, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.pagination span.page.current:not(.disabled):hover {
+  background: #8b9297;
+  background: -webkit-linear-gradient(-90deg, #8b9297, #484d51);
+  background: -moz-linear-gradient(-90deg, #8b9297, #484d51);
+  background: linear, -90deg, #8b9297, #484d51;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF8B9297', endColorstr='#FF484D51');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF8B9297', endColorstr='#FF484D51');
+}
+/* line 34, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+.pagination span.page.current:not(.disabled):active {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4) inset, 0 1px 0 0px white;
+  background: #71797f;
+  background: -webkit-linear-gradient(-90deg, #71797f, #35383b);
+  background: -moz-linear-gradient(-90deg, #71797f, #35383b);
+  background: linear, -90deg, #71797f, #35383b;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF71797F', endColorstr='#FF35383B');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF71797F', endColorstr='#FF35383B');
+}
+/* line 18, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_pagination.scss */
+.pagination a, .pagination span.page.current {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  margin-right: 4px;
+  padding: 2px 5px;
+}
+
+/* line 25, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_pagination.scss */
+.pagination_information {
+  float: right;
+  margin-bottom: 5px;
+  color: #b3bcc1;
+}
+/* line 29, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_pagination.scss */
+.pagination_information b {
+  color: #5c6469;
+}
+
+/* line 32, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_pagination.scss */
+.download_links {
+  float: left;
+}
+
+/* line 2, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_panels.scss */
+.section, .panel {
+  background: #f4f4f4;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 4px #dddddd;
+  -moz-box-shadow: inset 0 1px 4px #dddddd;
+  -webkit-box-shadow: inset 0 1px 4px #dddddd;
+  margin-bottom: 20px;
+}
+/* line 28, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_sections.css.scss */
+.section > h3, .panel > h3 {
+  background: #efefef;
+  background: -webkit-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: -moz-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: linear, -90deg, #efefef, #dfe1e2;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  text-shadow: white 0 1px 0;
+  border: solid 1px #cdcdcd;
+  border-color: #d4d4d4;
+  border-top-color: #e6e6e6;
+  border-right-color: #d4d4d4;
+  border-bottom-color: #cdcdcd;
+  border-left-color: #d4d4d4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
+  font-size: 1.0em;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 0.5em;
+  color: #5e6469;
+  padding: 5px 10px 3px 10px;
+}
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+.section > h3 span.icon svg path, .section > h3 span.icon svg polygon, .section > h3 span.icon svg rect, .section > h3 span.icon svg circle, .panel > h3 span.icon svg path, .panel > h3 span.icon svg polygon, .panel > h3 span.icon svg rect, .panel > h3 span.icon svg circle {
+  fill: #5e6469 !important;
+}
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+.section > h3 span.icon, .panel > h3 span.icon {
+  width: 1em;
+  height: 1em;
+}
+/* line 31, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_sections.css.scss */
+.section > h3 .header_action, .panel > h3 .header_action {
+  float: right;
+}
+/* line 36, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_sections.css.scss */
+.section > div, .panel > div {
+  padding: 3px 15px 15px 15px;
+}
+/* line 38, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_sections.css.scss */
+.section hr, .panel hr {
+  border: none;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+/* line 6, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_panels.scss */
+.sidebar_section {
+  background: #f4f4f4;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 4px #dddddd;
+  -moz-box-shadow: inset 0 1px 4px #dddddd;
+  -webkit-box-shadow: inset 0 1px 4px #dddddd;
+  margin-bottom: 20px;
+}
+/* line 28, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_sections.css.scss */
+.sidebar_section > h3 {
+  background: #efefef;
+  background: -webkit-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: -moz-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: linear, -90deg, #efefef, #dfe1e2;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  text-shadow: white 0 1px 0;
+  border: solid 1px #cdcdcd;
+  border-color: #d4d4d4;
+  border-top-color: #e6e6e6;
+  border-right-color: #d4d4d4;
+  border-bottom-color: #cdcdcd;
+  border-left-color: #d4d4d4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
+  font-size: 1.0em;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 0.5em;
+  color: #5e6469;
+  padding: 5px 10px 3px 10px;
+}
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+.sidebar_section > h3 span.icon svg path, .sidebar_section > h3 span.icon svg polygon, .sidebar_section > h3 span.icon svg rect, .sidebar_section > h3 span.icon svg circle {
+  fill: #5e6469 !important;
+}
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+.sidebar_section > h3 span.icon {
+  width: 1em;
+  height: 1em;
+}
+/* line 31, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_sections.css.scss */
+.sidebar_section > h3 .header_action {
+  float: right;
+}
+/* line 36, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_sections.css.scss */
+.sidebar_section > div {
+  padding: 3px 15px 15px 15px;
+}
+/* line 38, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_sections.css.scss */
+.sidebar_section hr {
+  border: none;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_columns.scss */
+.columns {
+  margin-bottom: 10px;
+}
+
+/* line 3, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_scopes.scss */
+.scopes li .count {
+  color: #8e979e;
+  font-weight: normal;
+  font-size: 0.9em;
+  line-height: 10px;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_status_tags.scss */
+.status_tag {
+  background: #cacaca;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: 3px 5px 2px 5px;
+  font-size: 0.8em;
+}
+/* line 9, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_status_tags.scss */
+.status_tag.ok, .status_tag.published, .status_tag.complete, .status_tag.completed, .status_tag.green {
+  background: #8daa92;
+}
+/* line 10, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_status_tags.scss */
+.status_tag.warn, .status_tag.warning, .status_tag.orange {
+  background: #e29b20;
+}
+/* line 11, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_status_tags.scss */
+.status_tag.error, .status_tag.errored, .status_tag.red {
+  background: #d45f53;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_status_tags.scss */
+.status_tag.yes {
+  background: #6090db;
+}
+/* line 14, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_status_tags.scss */
+.status_tag.no {
+  background: grey;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+.table_tools {
+  margin-bottom: 16px;
+}
+/* line 15, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/gems/bourbon-3.2.3/app/assets/stylesheets/addons/_clearfix.scss */
+.table_tools:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 6, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+.table_tools .dropdown_menu {
+  float: left;
+}
+
+/* line 10, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+a.table_tools_button, .table_tools .dropdown_menu_button {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #e7e7e7);
+  background: -moz-linear-gradient(-90deg, white, #e7e7e7);
+  background: linear, -90deg, white, #e7e7e7;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.8) inset;
+  border: solid 1px #c7c7c7;
+  border-color: #c7c7c7;
+  border-top-color: lightgrey;
+  border-right-color: #c7c7c7;
+  border-bottom-color: #c2c2c2;
+  border-left-color: #c7c7c7;
+  text-shadow: white 0 1px 0;
+  color: #5e6469;
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #f0f0f0);
+  background: -moz-linear-gradient(-90deg, white, #f0f0f0);
+  background: linear, -90deg, white, #f0f0f0;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF0F0F0');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF0F0F0');
+  border-color: #d0d0d0;
+  border-top-color: #d9d9d9;
+  border-right-color: #d0d0d0;
+  border-bottom-color: #c5c5c5;
+  border-left-color: #d0d0d0;
+  font-size: 0.9em;
+  padding: 4px 14px 4px;
+  margin: 0;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+a.table_tools_button.disabled, .table_tools .dropdown_menu_button.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 51, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+a.table_tools_button:not(.disabled):hover, .table_tools .dropdown_menu_button:not(.disabled):hover {
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #f1f1f1);
+  background: -moz-linear-gradient(-90deg, white, #f1f1f1);
+  background: linear, -90deg, white, #f1f1f1;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+}
+/* line 55, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+a.table_tools_button:not(.disabled):active, .table_tools .dropdown_menu_button:not(.disabled):active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22) inset, 0 1px 0 0px #eeeeee;
+  border-color: #b9b9b9;
+  border-top-color: #c2c2c2;
+  border-right-color: #b9b9b9;
+  border-bottom-color: #b7b7b7;
+  border-left-color: #b9b9b9;
+  background: #f3f3f3;
+  background: -webkit-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: -moz-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: linear, -90deg, #f3f3f3, #d8d8d8;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+}
+/* line 19, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+a.table_tools_button:not(.disabled):hover, .table_tools .dropdown_menu_button:not(.disabled):hover {
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #f6f6f6);
+  background: -moz-linear-gradient(-90deg, white, #f6f6f6);
+  background: linear, -90deg, white, #f6f6f6;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF6F6F6');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF6F6F6');
+}
+/* line 23, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+a.table_tools_button:not(.disabled):active, .table_tools .dropdown_menu_button:not(.disabled):active {
+  border-color: #c8c8c8;
+  border-top-color: #d7d7d7;
+  border-right-color: #c8c8c8;
+  border-bottom-color: #c3c3c3;
+  border-left-color: #c8c8c8;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.17) inset;
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #e8e8e8);
+  background: -moz-linear-gradient(-90deg, white, #e8e8e8);
+  background: linear, -90deg, white, #e8e8e8;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE8E8E8');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE8E8E8');
+}
+
+/* line 31, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+.table_tools_segmented_control {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+/* line 36, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+.table_tools_segmented_control li {
+  float: left;
+}
+/* line 39, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+.table_tools_segmented_control li a {
+  border-width: 1px .5px 1px .5px;
+  border-radius: 0;
+}
+/* line 44, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+.table_tools_segmented_control li:first-child a {
+  border-left-width: 1px;
+  border-radius: 12px 0 0 12px;
+}
+/* line 49, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+.table_tools_segmented_control li:last-child a {
+  border-right-width: 1px;
+  border-radius: 0 12px 12px 0;
+}
+/* line 54, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+.table_tools_segmented_control li.selected a {
+  background: #f0f0f0;
+  background: -webkit-linear-gradient(-90deg, #f0f0f0, #fdfdfd);
+  background: -moz-linear-gradient(-90deg, #f0f0f0, #fdfdfd);
+  background: linear, -90deg, #f0f0f0, #fdfdfd;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF0F0F0', endColorstr='#FFFDFDFD');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF0F0F0', endColorstr='#FFFDFDFD');
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1) inset;
+  cursor: default;
+}
+/* line 59, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_table_tools.css.scss */
+.table_tools_segmented_control li.selected a:hover {
+  background: #f0f0f0;
+  background: -webkit-linear-gradient(-90deg, #f0f0f0, #fdfdfd);
+  background: -moz-linear-gradient(-90deg, #f0f0f0, #fdfdfd);
+  background: linear, -90deg, #f0f0f0, #fdfdfd;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF0F0F0', endColorstr='#FFFDFDFD');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF0F0F0', endColorstr='#FFFDFDFD');
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_index_list.scss */
+.indexes {
+  float: right;
+}
+/* line 5, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/components/_index_list.scss */
+.indexes li .count {
+  color: #8e979e;
+  font-weight: normal;
+  font-size: 0.9em;
+  line-height: 10px;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/pages/_logged_out.scss */
+body.logged_out {
+  background: #e8e9ea;
+}
+/* line 4, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/pages/_logged_out.scss */
+body.logged_out #content_wrapper {
+  width: 500px;
+  margin: 70px auto;
+}
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/pages/_logged_out.scss */
+body.logged_out #content_wrapper #active_admin_content {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+  background: #fff;
+  padding: 13px 30px;
+}
+/* line 14, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/pages/_logged_out.scss */
+body.logged_out h2 {
+  background: #efefef;
+  background: -webkit-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: -moz-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: linear, -90deg, #efefef, #dfe1e2;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  text-shadow: white 0 1px 0;
+  border: solid 1px #cdcdcd;
+  border-color: #d4d4d4;
+  border-top-color: #e6e6e6;
+  border-right-color: #d4d4d4;
+  border-bottom-color: #cdcdcd;
+  border-left-color: #d4d4d4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
+  font-size: 1.0em;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 0.5em;
+  color: #5e6469;
+  padding: 5px 10px 3px 10px;
+  background: #6a7176;
+  background: -webkit-linear-gradient(-90deg, #6a7176, #4d5256);
+  background: -moz-linear-gradient(-90deg, #6a7176, #4d5256);
+  background: linear, -90deg, #6a7176, #4d5256;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF6A7176', endColorstr='#FF4D5256');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF6A7176', endColorstr='#FF4D5256');
+  border-bottom: 1px solid #44484b;
+  text-shadow: black 0 1px 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  border: none;
+  color: #fff;
+  margin: -13px -30px 20px -30px;
+}
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+body.logged_out h2 span.icon svg path, body.logged_out h2 span.icon svg polygon, body.logged_out h2 span.icon svg rect, body.logged_out h2 span.icon svg circle {
+  fill: #5e6469 !important;
+}
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+body.logged_out h2 span.icon {
+  width: 1em;
+  height: 1em;
+}
+/* line 24, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/pages/_logged_out.scss */
+body.logged_out #login {
+  /* Login Form */
+}
+/* line 27, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/pages/_logged_out.scss */
+body.logged_out #login form fieldset {
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  background: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+/* line 31, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/pages/_logged_out.scss */
+body.logged_out #login form fieldset li {
+  padding: 10px 0;
+}
+/* line 33, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/pages/_logged_out.scss */
+body.logged_out #login form fieldset input[type=text], body.logged_out #login form fieldset input[type=email], body.logged_out #login form fieldset input[type=password] {
+  width: 70%;
+}
+/* line 36, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/pages/_logged_out.scss */
+body.logged_out #login form fieldset.buttons {
+  margin-left: 20%;
+}
+/* line 41, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/pages/_logged_out.scss */
+body.logged_out #login a {
+  float: right;
+  margin-top: -32px;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_footer.scss */
+#footer {
+  padding: 30px 30px;
+  font-size: 0.8em;
+  clear: both;
+}
+/* line 6, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_footer.scss */
+#footer p {
+  padding-top: 10px;
+}
+
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_footer.scss */
+#index_footer {
+  padding-top: 5px;
+  text-align: right;
+  font-size: 0.85em;
+}
+
+/* line 14, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_footer.scss */
+.index_content {
+  clear: both;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_main_structure.scss */
+#wrapper {
+  width: 100%;
+}
+
+/* line 5, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_main_structure.scss */
+.index #wrapper {
+  display: table;
+}
+
+/* line 9, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_main_structure.scss */
+#active_admin_content {
+  margin: 0;
+  padding: 30px;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_main_structure.scss */
+#active_admin_content #main_content_wrapper {
+  float: left;
+  width: 100%;
+}
+/* line 17, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_main_structure.scss */
+#active_admin_content #main_content_wrapper #main_content {
+  margin-right: 300px;
+}
+/* line 22, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_main_structure.scss */
+#active_admin_content.without_sidebar #main_content_wrapper #main_content {
+  margin-right: 0;
+}
+/* line 24, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_main_structure.scss */
+#active_admin_content #sidebar {
+  float: left;
+  width: 270px;
+  margin-left: -270px;
+}
+
+/* line 1, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_title_bar.scss */
+#title_bar {
+  background: #efefef;
+  background: -webkit-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: -moz-linear-gradient(-90deg, #efefef, #dfe1e2);
+  background: linear, -90deg, #efefef, #dfe1e2;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFEFEFEF', endColorstr='#FFDFE1E2');
+  text-shadow: white 0 1px 0;
+  border: solid 1px #cdcdcd;
+  border-color: #d4d4d4;
+  border-top-color: #e6e6e6;
+  border-right-color: #d4d4d4;
+  border-bottom-color: #cdcdcd;
+  border-left-color: #d4d4d4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 1px white inset;
+  font-size: 1.0em;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 0.5em;
+  color: #5e6469;
+  padding: 5px 10px 3px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.37);
+  display: table;
+  border-bottom-color: #EEE;
+  width: 100%;
+  position: relative;
+  margin: 0;
+  padding: 10px 30px;
+  z-index: 800;
+}
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+#title_bar span.icon svg path, #title_bar span.icon svg polygon, #title_bar span.icon svg rect, #title_bar span.icon svg circle {
+  fill: #5e6469 !important;
+}
+/* line 12, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+#title_bar span.icon {
+  width: 1em;
+  height: 1em;
+}
+/* line 15, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/gems/bourbon-3.2.3/app/assets/stylesheets/addons/_clearfix.scss */
+#title_bar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 14, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_title_bar.scss */
+#title_bar #titlebar_left, #title_bar #titlebar_right {
+  height: 50px;
+  vertical-align: middle;
+  display: table-cell;
+}
+/* line 20, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_title_bar.scss */
+#title_bar #titlebar_right {
+  text-align: right;
+}
+/* line 24, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_title_bar.scss */
+#title_bar h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 2.6em;
+  line-height: 100%;
+  font-weight: bold;
+}
+/* line 34, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_title_bar.scss */
+#title_bar .action_items span.action_item > a, #title_bar .action_items span.action_item > .dropdown_menu > a {
+  -webkit-border-radius: 200px;
+  -moz-border-radius: 200px;
+  border-radius: 200px;
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.0em;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 12px;
+  margin-right: 3px;
+  padding: 7px 16px 6px;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #e7e7e7);
+  background: -moz-linear-gradient(-90deg, white, #e7e7e7);
+  background: linear, -90deg, white, #e7e7e7;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFE7E7E7');
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 0 0 rgba(255, 255, 255, 0.8) inset;
+  border: solid 1px #c7c7c7;
+  border-color: #c7c7c7;
+  border-top-color: lightgrey;
+  border-right-color: #c7c7c7;
+  border-bottom-color: #c2c2c2;
+  border-left-color: #c7c7c7;
+  text-shadow: white 0 1px 0;
+  color: #5e6469;
+  padding: 12px 17px 10px;
+  margin: 0px;
+}
+/* line 13, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+#title_bar .action_items span.action_item > a.disabled, #title_bar .action_items span.action_item > .dropdown_menu > a.disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+/* line 51, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+#title_bar .action_items span.action_item > a:not(.disabled):hover, #title_bar .action_items span.action_item > .dropdown_menu > a:not(.disabled):hover {
+  background: white;
+  background: -webkit-linear-gradient(-90deg, white, #f1f1f1);
+  background: -moz-linear-gradient(-90deg, white, #f1f1f1);
+  background: linear, -90deg, white, #f1f1f1;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF1F1F1');
+}
+/* line 55, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_buttons.css.scss */
+#title_bar .action_items span.action_item > a:not(.disabled):active, #title_bar .action_items span.action_item > .dropdown_menu > a:not(.disabled):active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.22) inset, 0 1px 0 0px #eeeeee;
+  border-color: #b9b9b9;
+  border-top-color: #c2c2c2;
+  border-right-color: #b9b9b9;
+  border-bottom-color: #b7b7b7;
+  border-left-color: #b9b9b9;
+  background: #f3f3f3;
+  background: -webkit-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: -moz-linear-gradient(-90deg, #f3f3f3, #d8d8d8);
+  background: linear, -90deg, #f3f3f3, #d8d8d8;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3F3F3', endColorstr='#FFD8D8D8');
+}
+/* line 37, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/structure/_title_bar.scss */
+#title_bar .action_items span.action_item > a span.icon, #title_bar .action_items span.action_item > .dropdown_menu > a span.icon {
+  vertical-align: bottom;
+  margin-right: 4px;
+}
+/* line 7, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/mixins/_icons.css.scss */
+#title_bar .action_items span.action_item > a:hover span.icon svg path, #title_bar .action_items span.action_item > a:hover span.icon svg polygon, #title_bar .action_items span.action_item > a:hover span.icon svg rect, #title_bar .action_items span.action_item > a:hover span.icon svg circle, #title_bar .action_items span.action_item > .dropdown_menu > a:hover span.icon svg path, #title_bar .action_items span.action_item > .dropdown_menu > a:hover span.icon svg polygon, #title_bar .action_items span.action_item > .dropdown_menu > a:hover span.icon svg rect, #title_bar .action_items span.action_item > .dropdown_menu > a:hover span.icon svg circle {
+  fill: black !important;
+}
+
+/* line 34, /home/osetrov/.rvm/gems/ruby-2.0.0-p481/bundler/gems/active_admin-35f2f8a934fe/app/assets/stylesheets/active_admin/_base.css.scss */
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 150%;
+  font-size: 72%;
+  background: white;
+  margin: 0;
+  padding: 0;
+  color: #323537;
+}
+
+/*
+	Icon font
+*/
+@font-face {
+  font-family: 'RedactorFont';
+  src: url("redactor-font.eot");
+}
+
+@font-face {
+  font-family: 'RedactorFont';
+  src: url(data:application/x-font-ttf;charset=utf-8;base64,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) format("truetype"), url(data:application/font-woff;charset=utf-8;base64,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) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* =Selection
+-----------------------------------------------------------------------------*/
+/* line 17, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box ::selection {
+  background: #ffff9e;
+}
+
+/* line 20, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box ::-moz-selection {
+  background: #ffff9e;
+}
+
+/* line 23, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box img::selection {
+  background: transparent;
+}
+
+/* line 26, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box img::-moz-selection {
+  background: transparent;
+}
+
+/*
+	BOX
+*/
+/* line 32, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box {
+  position: relative;
+  overflow: visible;
+  background: #fff;
+}
+
+/* line 38, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box a {
+  color: #000000 !important;
+  text-decoration: none  !important;
+}
+
+/* line 43, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box iframe {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #eee;
+}
+
+/* line 49, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box textarea {
+  position: relative;
+  display: block;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: #222;
+  box-shadow: none;
+  color: #ccc;
+  font-size: 13px;
+  font-family: Menlo, Monaco, monospace, sans-serif;
+  resize: none;
+}
+
+/* line 65, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box textarea:focus {
+  outline: none;
+}
+
+/* line 69, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box,
+.redactor_box textarea {
+  z-index: auto !important;
+}
+
+/* line 72, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box_fullscreen {
+  z-index: 99 !important;
+}
+
+/* line 77, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal_overlay,
+#redactor_modal,
+.redactor_dropdown {
+  z-index: 100 !important;
+}
+
+/*
+	AIR
+
+*/
+/* line 84, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+body .redactor_air {
+  position: absolute;
+  z-index: 502;
+}
+
+/*
+	FULLSCREEN
+*/
+/* line 91, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+body .redactor_box_fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/*
+	LINK TOOLTIP
+*/
+/* line 100, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor-link-tooltip {
+  position: absolute;
+  z-index: 49999;
+  padding: 10px;
+  line-height: 1;
+  display: inline-block;
+  background-color: #000;
+  color: #555 !important;
+}
+
+/* line 110, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor-link-tooltip,
+.redactor-link-tooltip a {
+  font-size: 12px;
+  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
+}
+
+/* line 114, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor-link-tooltip a {
+  color: #ccc;
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+/* line 119, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor-link-tooltip a:hover {
+  color: #fff;
+}
+
+/*
+	IMAGE BOX
+*/
+/* line 125, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor-image-box img {
+  width: 100%;
+}
+
+/* line 128, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor {
+  position: relative;
+  overflow: auto;
+  margin: 0 !important;
+  padding: 10px 20px;
+  padding-bottom: 5px;
+  outline: none;
+  background: none;
+  background: #fff;
+  box-shadow: none !important;
+  white-space: normal;
+  border: 1px solid #eee;
+}
+
+/* line 141, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor:focus {
+  outline: none;
+}
+
+/* line 157, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor div,
+.redactor_editor p,
+.redactor_editor ul,
+.redactor_editor ol,
+.redactor_editor table,
+.redactor_editor dl,
+.redactor_editor blockquote,
+.redactor_editor pre,
+.redactor_editor h1,
+.redactor_editor h2,
+.redactor_editor h3,
+.redactor_editor h4,
+.redactor_editor h5,
+.redactor_editor h6 {
+  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
+}
+
+/* line 161, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor code,
+.redactor_editor pre {
+  font-family: Menlo, Monaco, monospace, sans-serif;
+}
+
+/* line 171, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor div,
+.redactor_editor p,
+.redactor_editor ul,
+.redactor_editor ol,
+.redactor_editor table,
+.redactor_editor dl,
+.redactor_editor blockquote,
+.redactor_editor pre {
+  font-size: 14px;
+  line-height: 1.6em;
+}
+
+/* line 175, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor a {
+  color: #15c !important;
+  text-decoration: underline !important;
+}
+
+/* line 179, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor .redactor_placeholder {
+  color: #999 !important;
+  display: block !important;
+}
+
+/*
+	TYPOGRAPHY
+*/
+/* line 189, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor object,
+.redactor_editor embed,
+.redactor_editor video,
+.redactor_editor img {
+  max-width: 100%;
+  width: auto;
+}
+
+/* line 194, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor video,
+.redactor_editor img {
+  height: auto;
+}
+
+/* line 204, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor div,
+.redactor_editor p,
+.redactor_editor ul,
+.redactor_editor ol,
+.redactor_editor table,
+.redactor_editor dl,
+.redactor_editor blockquote,
+.redactor_editor pre {
+  margin: 0;
+  margin-bottom: 10px !important;
+  border: none;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* line 213, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor iframe,
+.redactor_editor object,
+.redactor_editor hr {
+  margin-bottom: 15px !important;
+}
+
+/* line 216, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor blockquote {
+  margin-left: 1.5em !important;
+  padding-left: 0 !important;
+  color: #777;
+  font-style: italic !important;
+}
+
+/* line 223, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor ul,
+.redactor_editor ol {
+  padding-left: 2em !important;
+}
+
+/* line 229, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor ul ul,
+.redactor_editor ol ol,
+.redactor_editor ul ol,
+.redactor_editor ol ul {
+  margin: 2px !important;
+  padding: 0 !important;
+  padding-left: 2em !important;
+  border: none;
+}
+
+/* line 235, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor dl dt {
+  font-weight: bold;
+}
+
+/* line 238, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor dd {
+  margin-left: 1em;
+}
+
+/* line 241, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor table {
+  border-collapse: collapse;
+  font-size: 1em !important;
+}
+
+/* line 245, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor table td {
+  padding: 5px !important;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+/* line 250, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor table thead td {
+  border-bottom: 2px solid #000 !important;
+  font-weight: bold !important;
+}
+
+/* line 254, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor code {
+  background-color: #d8d7d7 !important;
+}
+
+/* line 257, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor pre {
+  overflow: auto;
+  padding: 1em !important;
+  border: 1px solid #ddd !important;
+  border-radius: 3px !important;
+  background: #f8f8f8 !important;
+  white-space: pre;
+  font-size: 90% !important;
+}
+
+/* line 266, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+/*
+	HEADERS
+*/
+/* line 280, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor h1,
+.redactor_editor h2,
+.redactor_editor h3,
+.redactor_editor h4,
+.redactor_editor h5,
+.redactor_editor h6 {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  background: none;
+  color: #000;
+  font-weight: bold;
+}
+
+/* line 287, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor h1 {
+  font-size: 36px !important;
+  line-height: 1.111em !important;
+  margin-bottom: .15em !important;
+}
+
+/* line 292, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor h2 {
+  font-size: 30px !important;
+  line-height: 1.111em !important;
+  margin-bottom: .25em !important;
+}
+
+/* line 297, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor h3 {
+  font-size: 24px !important;
+  line-height: 1.333em !important;
+  margin-bottom: .2em !important;
+}
+
+/* line 302, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor h4 {
+  font-size: 18px !important;
+  line-height: 1.5em !important;
+  margin-bottom: .2em !important;
+}
+
+/* line 307, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor h5 {
+  font-size: 1em !important;
+  line-height: 1.6em !important;
+  margin-bottom: .25em !important;
+}
+
+/* line 312, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor h6 {
+  font-size: .8em !important;
+  line-height: 1.6em !important;
+  text-transform: uppercase;
+  margin-bottom: .3em !important;
+}
+
+/*
+	TOOLBAR
+*/
+/* line 321, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  font-size: 14px !important;
+  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
+  line-height: 1 !important;
+  background: #fff;
+  border: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  z-index: 600;
+}
+
+/* line 337, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_box_fullscreen .redactor_toolbar {
+  margin: 70px 0 0 0 !important;
+}
+
+/* line 342, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 347, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar.redactor-toolbar-overflow {
+  overflow-y: auto;
+  height: 29px;
+  white-space: nowrap;
+}
+
+/* line 352, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar.redactor-toolbar-external {
+  z-index: 999;
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* line 357, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+body .redactor_air .redactor_toolbar {
+  padding-right: 2px !important;
+}
+
+/* line 360, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar li {
+  vertical-align: top;
+  display: inline-block;
+  margin: 0 !important;
+  padding: 0 !important;
+  outline: none;
+  list-style: none !important;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* line 371, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar li a {
+  display: block;
+  color: #333;
+  text-align: center;
+  padding: 9px 10px;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  zoom: 1;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+/* line 385, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar li a:hover {
+  outline: none;
+  background-color: #1f78d8;
+  color: #fff;
+}
+
+/* line 390, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar li a:hover i:before {
+  color: #fff;
+}
+
+/* line 394, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar li a:active,
+.redactor_toolbar li a.redactor_act {
+  outline: none;
+  background-color: #ccc;
+  color: #444;
+}
+
+/* line 399, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar li a.redactor-btn-image {
+  width: 14px;
+  height: 14px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* line 405, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_button_disabled {
+  filter: alpha(opacity=30);
+  -moz-opacity: 0.3;
+  opacity: 0.3;
+}
+
+/* line 410, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_button_disabled:hover {
+  outline: none;
+  background-color: transparent !important;
+  cursor: default;
+}
+
+/* line 415, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar li a.fa-redactor-btn {
+  display: inline-block;
+  padding: 9px 10px 8px 10px;
+  line-height: 1;
+}
+
+/* line 420, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar.redactor-toolbar-typewriter {
+  box-shadow: none;
+  background: rgba(240, 240, 240, 0.9);
+}
+
+/* line 424, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar.redactor-toolbar-typewriter li a:hover {
+  outline: none;
+  background-color: #1f78d8;
+  color: #fff;
+}
+
+/* line 430, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_toolbar.redactor-toolbar-typewriter li a:active,
+.redactor_toolbar.redactor-toolbar-typewriter li a.redactor_act {
+  outline: none;
+  background-color: #ccc;
+  color: #444;
+}
+
+/* line 435, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-icon {
+  font-family: 'RedactorFont';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 446, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-icon i:before {
+  position: relative;
+  font-size: 14px;
+}
+
+/* line 450, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-video:before {
+  content: "\e600";
+}
+
+/* line 453, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-unorderedlist:before {
+  content: "\e601";
+}
+
+/* line 456, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-undo:before {
+  content: "\e602";
+}
+
+/* line 459, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-underline:before {
+  content: "\e603";
+}
+
+/* line 462, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-textdirection:before {
+  content: "\e604";
+}
+
+/* line 465, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-fontcolor:before {
+  content: "\e605";
+}
+
+/* line 468, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-table:before {
+  content: "\e606";
+}
+
+/* line 471, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-redo:before {
+  content: "\e607";
+}
+
+/* line 474, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-quote:before {
+  content: "\e608";
+}
+
+/* line 477, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-outdent:before {
+  content: "\e609";
+}
+
+/* line 480, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-orderedlist:before {
+  content: "\e60a";
+}
+
+/* line 483, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-link:before {
+  content: "\e60b";
+}
+
+/* line 486, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-horizontalrule:before {
+  content: "\e60c";
+}
+
+/* line 489, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-italic:before {
+  content: "\e60d";
+}
+
+/* line 492, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-indent:before {
+  content: "\e60e";
+}
+
+/* line 495, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-image:before {
+  content: "\e60f";
+}
+
+/* line 498, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-fullscreen:before {
+  content: "\e610";
+}
+
+/* line 501, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-normalscreen:before {
+  content: "\e611";
+}
+
+/* line 504, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-formatting:before {
+  content: "\e612";
+}
+
+/* line 507, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-fontsize:before {
+  content: "\e613";
+}
+
+/* line 510, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-fontfamily:before {
+  content: "\e614";
+}
+
+/* line 513, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-deleted:before {
+  content: "\e615";
+}
+
+/* line 516, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-html:before {
+  content: "\e616";
+}
+
+/* line 519, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-clips:before {
+  content: "\e617";
+}
+
+/* line 522, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-bold:before {
+  content: "\e618";
+}
+
+/* line 525, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-backcolor:before {
+  content: "\e619";
+}
+
+/* line 528, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-file:before {
+  content: "\e61a";
+}
+
+/* line 531, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-alignright:before {
+  content: "\e61b";
+}
+
+/* line 535, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-alignment:before,
+.re-alignleft:before {
+  content: "\e61c";
+}
+
+/* line 538, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-alignjustify:before {
+  content: "\e61d";
+}
+
+/* line 541, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-aligncenter:before {
+  content: "\e61e";
+}
+
+/* line 544, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.re-gallery:before {
+  content: "\e61f";
+}
+
+/*
+	Toolbar classes
+*/
+/* line 550, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_format_blockquote {
+  padding-left: 10px;
+  color: #666 !important;
+  font-style: italic;
+}
+
+/* line 555, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_format_pre {
+  font-family: monospace, sans-serif;
+}
+
+/* line 562, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_format_h1,
+.redactor_format_h2,
+.redactor_format_h3,
+.redactor_format_h4,
+.redactor_format_h5 {
+  font-weight: bold;
+}
+
+/* line 565, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_format_h1 {
+  font-size: 30px;
+  line-height: 36px;
+}
+
+/* line 569, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_format_h2 {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+/* line 573, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_format_h3 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+/* line 577, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_format_h4 {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+/* line 581, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_format_h5 {
+  font-size: 14px;
+  line-height: 23px;
+}
+
+/* line 589, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor-toolbar-typewriter .redactor_dropdown .redactor_format_h1,
+.redactor-toolbar-typewriter .redactor_dropdown .redactor_format_h2,
+.redactor-toolbar-typewriter .redactor_dropdown .redactor_format_h3,
+.redactor-toolbar-typewriter .redactor_dropdown .redactor_format_h4,
+.redactor-toolbar-typewriter .redactor_dropdown .redactor_format_h5 {
+  font-size: 1em;
+  line-height: 1.6em;
+  text-transform: uppercase;
+}
+
+/* line 594, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor-toolbar-typewriter .redactor_dropdown .redactor_format_h2 {
+  font-size: .85em;
+}
+
+/*
+	Typewriter
+*/
+/* line 600, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor-editor-typewriter {
+  background: #f5f5f5 !important;
+  padding: 25px 50px !important;
+}
+
+/* line 617, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor-editor-typewriter div,
+.redactor_editor.redactor-editor-typewriter p,
+.redactor_editor.redactor-editor-typewriter ul,
+.redactor_editor.redactor-editor-typewriter ol,
+.redactor_editor.redactor-editor-typewriter table,
+.redactor_editor.redactor-editor-typewriter dl,
+.redactor_editor.redactor-editor-typewriter blockquote,
+.redactor_editor.redactor-editor-typewriter pre,
+.redactor_editor.redactor-editor-typewriter h1,
+.redactor_editor.redactor-editor-typewriter h2,
+.redactor_editor.redactor-editor-typewriter h3,
+.redactor_editor.redactor-editor-typewriter h4,
+.redactor_editor.redactor-editor-typewriter h5,
+.redactor_editor.redactor-editor-typewriter h6 {
+  font-family: 'Courier New', 'Lucida Console', Consolas, Monaco, monospace, sans-serif;
+  font-size: 18px !important;
+  line-height: 1.5em !important;
+  margin-bottom: 1.5em !important;
+}
+
+/* line 623, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor-editor-typewriter h2 {
+  font-size: 14px !important;
+}
+
+/* line 631, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor-editor-typewriter h1,
+.redactor_editor.redactor-editor-typewriter h2,
+.redactor_editor.redactor-editor-typewriter h3,
+.redactor_editor.redactor-editor-typewriter h4,
+.redactor_editor.redactor-editor-typewriter h5,
+.redactor_editor.redactor-editor-typewriter h6 {
+  text-transform: uppercase;
+}
+
+/* line 634, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor-editor-typewriter a {
+  color: #000 !important;
+  text-decoration: underline !important;
+}
+
+/*
+	WYM
+*/
+/* line 641, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor_editor_wym {
+  padding: 10px 7px 0 7px !important;
+  background: #f6f6f6 !important;
+}
+
+/* line 658, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor_editor_wym div,
+.redactor_editor.redactor_editor_wym p,
+.redactor_editor.redactor_editor_wym ul,
+.redactor_editor.redactor_editor_wym ol,
+.redactor_editor.redactor_editor_wym table,
+.redactor_editor.redactor_editor_wym dl,
+.redactor_editor.redactor_editor_wym pre,
+.redactor_editor.redactor_editor_wym h1,
+.redactor_editor.redactor_editor_wym h2,
+.redactor_editor.redactor_editor_wym h3,
+.redactor_editor.redactor_editor_wym h4,
+.redactor_editor.redactor_editor_wym h5,
+.redactor_editor.redactor_editor_wym h6,
+.redactor_editor.redactor_editor_wym blockquote {
+  margin-top: 0;
+  margin-bottom: 5px !important;
+  padding: 10px !important;
+  border: 1px solid #e4e4e4 !important;
+  background-color: #fff !important;
+  z-index: 0;
+}
+
+/* line 666, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor_editor_wym blockquote:before {
+  content: '';
+}
+
+/* line 669, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor_editor_wym img {
+  position: relative;
+  z-index: 1;
+}
+
+/* line 673, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor_editor_wym div {
+  border: 1px dotted #aaa !important;
+}
+
+/* line 676, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor_editor_wym pre {
+  border: 2px dashed #e4e4e4 !important;
+  background-color: #f8f8f8 !important;
+}
+
+/* line 681, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor_editor_wym ul,
+.redactor_editor.redactor_editor_wym ol {
+  padding-left: 2em !important;
+}
+
+/* line 687, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_editor.redactor_editor_wym ul li ul,
+.redactor_editor.redactor_editor_wym ol li ul,
+.redactor_editor.redactor_editor_wym ul li ol,
+.redactor_editor.redactor_editor_wym ol li ol {
+  border: none !important;
+}
+
+/*
+	DROPDOWN
+*/
+/* line 693, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_dropdown {
+  position: absolute;
+  top: 28px;
+  left: 0;
+  padding: 10px;
+  width: 200px;
+  background-color: #fff;
+  box-shadow: 0 1px 5px #bbb;
+  font-size: 13px;
+  font-family: Helvetica, Arial, Verdana, Tahoma, sans-serif;
+  line-height: 21px;
+}
+
+/* line 705, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor-toolbar-typewriter .redactor_dropdown {
+  font-family: 'Courier New', 'Lucida Console', Consolas, Monaco, monospace, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* line 709, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_separator_drop {
+  padding: 0 !important;
+  border-top: 1px solid #ddd;
+  font-size: 0;
+  line-height: 0;
+}
+
+/* line 715, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_dropdown a {
+  display: block;
+  padding: 3px 5px;
+  color: #000;
+  text-decoration: none;
+}
+
+/* line 721, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_dropdown a:hover {
+  background-color: #dde4ef;
+  color: #444 !important;
+  text-decoration: none;
+}
+
+/*
+	MODAL
+*/
+/* line 729, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background-color: #000 !important;
+  filter: alpha(opacity=30);
+  -moz-opacity: 0.3;
+  opacity: 0.3;
+}
+
+/* line 741, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  padding: 0;
+  background: #fff;
+  color: #000;
+  font-size: 12px !important;
+  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* line 752, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal header {
+  padding: 20px 30px 5px 30px;
+  font-size: 16px;
+}
+
+/* line 756, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal section {
+  padding: 20px 30px;
+}
+
+/* line 759, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal label {
+  display: block !important;
+  float: none !important;
+  margin: 10px 0 3px 0 !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+}
+
+/* line 766, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal footer:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 771, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal footer div {
+  float: left;
+}
+
+/* line 775, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal input[type="radio"],
+#redactor_modal input[type="checkbox"] {
+  position: relative;
+  top: -1px;
+}
+
+/* line 782, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal input[type="text"],
+#redactor_modal input[type="password"],
+#redactor_modal input[type="email"],
+#redactor_modal textarea {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 1px 2px;
+  height: 23px;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  background-color: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+  color: #333;
+  font-size: 13px;
+  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
+  line-height: 1;
+  -moz-transition: border 0.3s ease-in;
+  transition: border 0.3s ease-in;
+}
+
+/* line 799, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal textarea {
+  display: block;
+  margin-top: 4px;
+  line-height: 1.4em;
+}
+
+/* line 805, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal input:focus,
+#redactor_modal textarea:focus {
+  outline: none;
+  border-color: #5ca9e4;
+  box-shadow: 0 0 0 2px rgba(70, 161, 231, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+/* line 810, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal_close {
+  position: absolute;
+  top: 5px;
+  right: 3px;
+  width: 20px;
+  height: 20px;
+  color: #999;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* line 820, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal_close:hover {
+  color: #000;
+}
+
+/* line 823, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_input {
+  width: 99%;
+  font-size: 14px;
+}
+
+/* line 827, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_modal_box {
+  overflow: auto;
+  margin-bottom: 10px;
+  height: 350px;
+}
+
+/* line 832, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_image_box {
+  overflow: auto;
+  margin-bottom: 10px;
+  height: 270px;
+}
+
+/* line 837, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_image_box_select {
+  display: block;
+  margin-bottom: 15px !important;
+  width: 200px;
+}
+
+/* line 842, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_image_box img {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  max-width: 100px;
+  cursor: pointer;
+}
+
+/* line 848, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_tabs {
+  margin-bottom: 18px;
+}
+
+/* line 851, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_tabs a {
+  display: inline-block;
+  margin-right: 2px;
+  padding: 4px 14px;
+  border: 1px solid #d2d2d2;
+  border-radius: 3px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  line-height: 1;
+}
+
+/* line 863, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_tabs a:hover,
+#redactor_tabs a.redactor_tabs_act {
+  border-color: #eee;
+  color: #999 !important;
+  text-decoration: none !important;
+}
+
+/* line 868, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_modal_btn_hidden {
+  display: none;
+}
+
+/* line 871, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal footer button {
+  position: relative;
+  width: 100%;
+  padding: 10px 16px;
+  margin: 0;
+  outline: none;
+  border: none;
+  background-color: #ddd;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 12px;
+  font-family: Arial, Helvetica, Verdana, Tahoma, sans-serif;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* line 888, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal footer button:hover {
+  color: #777;
+  background: none;
+  background: #bbb;
+  text-decoration: none;
+}
+
+/* line 894, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal footer button.redactor_modal_delete_btn {
+  background: none;
+  color: #fff;
+  background-color: #b52525;
+}
+
+/* line 899, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal footer button.redactor_modal_delete_btn:hover {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: #881b1b;
+}
+
+/* line 903, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal footer button.redactor_modal_action_btn {
+  background: none;
+  color: #fff;
+  background-color: #2461b5;
+}
+
+/* line 908, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor_modal footer button.redactor_modal_action_btn:hover {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: #1a4580;
+}
+
+/* Drag and Drop Area */
+/* line 913, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_droparea {
+  position: relative;
+  margin: auto;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+/* line 919, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_droparea .redactor_dropareabox {
+  position: relative;
+  z-index: 1;
+  padding: 60px 0;
+  width: 99%;
+  border: 1px dashed #ddd;
+  background: #fff;
+  text-align: center;
+}
+
+/* line 929, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_droparea .redactor_dropareabox,
+.redactor_dropalternative {
+  color: #555;
+  font-size: 12px;
+}
+
+/* line 933, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_dropalternative {
+  margin: 4px 0 2px 0;
+}
+
+/* line 936, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_dropareabox.hover {
+  border-color: #aaa;
+  background: #efe3b8;
+}
+
+/* line 940, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_dropareabox.error {
+  border-color: #dcc3c3;
+  background: #f7e5e5;
+}
+
+/* line 944, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+.redactor_dropareabox.drop {
+  border-color: #e0e5d6;
+  background: #f4f4ee;
+}
+
+/* =ProgressBar
+-----------------------------------------------------------------------------*/
+/* line 950, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000000;
+  height: 10px;
+}
+
+/* line 958, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+#redactor-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #3d58a8;
+  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+  background-image: linear, 45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent;
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+  -o-animation: progress-bar-stripes 2s linear infinite;
+  animation: progress-bar-stripes 2s linear infinite;
+  background-size: 40px 40px;
+}
+
+@-webkit-keyframes progress-bar-stripes {
+  /* line 972, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+  from {
+    background-position: 40px 0;
+  }
+
+  /* line 975, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+  to {
+    background-position: 0 0;
+  }
+}
+
+@-o-keyframes progress-bar-stripes {
+  /* line 980, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+  from {
+    background-position: 40px 0;
+  }
+
+  /* line 983, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+  to {
+    background-position: 0 0;
+  }
+}
+
+@keyframes progress-bar-stripes {
+  /* line 988, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+  from {
+    background-position: 40px 0;
+  }
+
+  /* line 991, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/redactor.css */
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* line 19, /home/osetrov/RubymineProjects/bsc/app/assets/stylesheets/admin/active_admin.css.scss */
+body .redactor_box_fullscreen {
+  top: 44px !important;
+}

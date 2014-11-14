@@ -1,11 +1,11 @@
 # encoding: utf-8
 class Catalog < ActiveRecord::Base
 
-  has_ancestry :orphan_strategy => :rootify
+  #has_ancestry :orphan_strategy => :rootify
 
   belongs_to :parent, :class_name => "Catalog", :foreign_key => "parent_id"
   has_many :children, :order => 'title ASC', :class_name => "Catalog", :foreign_key => "parent_id", dependent: :destroy
-  has_many :product, :order => 'title ASC'
+  has_many :product, :order => 'title ASC', dependent: :destroy
 
   has_attached_file :image, styles: {:medium => "300x300#", :thumb => "150x150>", :thumbnail => "50x50>"}
 
@@ -18,7 +18,7 @@ class Catalog < ActiveRecord::Base
   #end
 
   def roots
-    catalogs = Catalog.where({:parent_id=>[0, nil]}).order('position ASC')
+    #catalogs = Catalog.where({:parent_id=>[0, nil]}).order('position ASC')
     Catalog.where({:parent_id=>[0, nil]}).order('title ASC')
   end
 

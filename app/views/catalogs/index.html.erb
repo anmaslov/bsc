@@ -1,5 +1,22 @@
 <%= title 'Каталог' %>
 
+<% if (user_signed_in? && current_user.admin?) %>
+    <nav class="navbar-admin navbar-inverse-admin navbar-fixed-bottom" role="navigation"> <!-- navbar-fixed-top -->
+      <nav class="navbar-admin navbar-admin" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-footer-menu">
+
+            <%= link_to 'Добавить подкаталог', new_catalog_path, :class => 'navbar-brand' %>
+            <%= link_to 'Добавить товар', new_product_path, :class => 'navbar-brand' %>
+            <%= link_to 'Масс переместить в другой каталог', '#', :class => 'navbar-brand' %>
+
+          </div>
+        </div><!-- /.container-fluid -->
+      </nav>
+    </nav>
+<% end %>
+
 <div class="row">
 
 

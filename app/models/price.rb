@@ -61,10 +61,9 @@ class Price < ActiveRecord::Base
 
 
     # Берез все товары, поставщиком которых являются Северные стрелы
-    product_all = Product.where({supplier_id: 1, catalog_id: 20}).order("id asc").all() # .order("id asc").limit(100)
+    product_all = Product.where({supplier_id: 1, catalog_id: 20, is_processed: false}).order("id desc").all # .order("id asc").limit(100)
 
     product_all.each do |product|
-
       # Ищем в поиске по артикулу
       url = "http://www.arrows.ru/e_shop/search/?search=" + product.article[0..(product.article.size-3)]
       url.gsub!("?discount", "")
@@ -76,40 +75,42 @@ class Price < ActiveRecord::Base
       # Если Url в порядке
       if url =~ URI::regexp
 
-        response = hopen(url)
+        #response = hopen(url)
 
         RestClient.get(url){|response, request, result|
 
         if result.message == "OK"
           page = Nokogiri::HTML(response)
 
-        script = page.css("script")[7].text
-        # Если они есть
-        if script.length > 0
+          script = page.css("script")[7].text
+          # Если они есть
+          if script.length > 0
 
-          # Забираем первый
-          string = /\{(.+)\}/.match(script)
-          string = string.to_s.split("}, {");
-          if (string.size > 1)
-            string = string[0] + "}"
-          else
-            string = string[0]
-          end
+            # Забираем первый
+            string = /\{(.+)\}/.match(script)
+            string = string.to_s.split("}, {");
+            if (string.size > 1)
+              string = string[0] + "}"
+            else
+              string = string[0]
+            end
 
-          # Распарсиваем Json
-          hash = Oj.load( string.to_s )
+            # Распарсиваем Json
+            hash = Oj.load( string.to_s )
 
-          # Если он распарсился
-          if hash != nil and hash['url'] != nil and hash['url'] != ""
-
-            parsing_product(product, hash['url'], hash['image'])
-
+            # Если он распарсился
+            if !hash.nil? and hash['url'] != nil and hash['url'] != ""
+              parsing_product(product, hash['url'], hash['image'])
+            end
           end
         end
-      end }
+        }
+      end
+      product.is_processed = true
+      sleep(5)
+      product.save
     end
   end
-end
 
   def self.parsing_product(product, url, img_href)
 
@@ -123,147 +124,184 @@ end
     page_product_href = URI.encode(href)
     page_product_href.gsub!("?discount", "")
     puts '124 ' +  page_product_href
-    response = hopen(page_product_href)
+    #response = hopen(page_product_href)
     RestClient.get(page_product_href){|response, request, result|
 
       if result.message == "OK"
         page_product = Nokogiri::HTML(response)
 
-      #page_product = Nokogiri::HTML(RestClient.get(page_product_href))
+        #page_product = Nokogiri::HTML(RestClient.get(page_product_href))
 
-      product.title = page_product.css(".product_detail_title h1").text
-      product.image_from_url 'http://www.arrows.ru' + img_href
+        product.title = page_product.css(".product_detail_title h1").text
+        puts product.title
+        product.image_from_url 'http://www.arrows.ru' + img_href
 
-      new_product = Hash.new
-      new_product["article"] = page_product.css(".product_detail_title span").text
+        new_product = Hash.new
+        new_product["article"] = page_product.css(".product_detail_title span").text
 
-      if product.article.nil?
-        product.article = new_product["article"]
-      end
-
-      #Хлебные крошки
-      breadcrumb = String.new
-      parent_id = 0
-      new_catalog_id = 0
-
-      # Воссоздаем родительские каталоги до корня
-      page_product.css(".breadcrumb a").each do |link|
-        item_bread = Hash.new
-        item_bread["title"] = link.content
-        item_bread["href"]  = link['href']
-
-        if ( item_bread["title"] != "Главная стрaница" || item_bread["href"] != "/" )
-          catalog = Catalog.new
-          catalog.title = item_bread["title"]
-
-          if parent_id == 0
-            catalog.parent = nil
-          else
-            catalog.parent = Catalog.find(parent_id)
-          end
-
-          old_product = Catalog.where({:title => catalog.title, :parent_id => catalog.parent}).pop
-
-          if (old_product.nil? or old_product.parent != catalog.parent)
-            catalog.description = catalog.title
-            catalog.save
-            new_catalog_id = catalog.id
-            parent_id = catalog.id
-          else
-            parent_id = old_product.id
-            new_catalog_id = parent_id
-          end
-
-        else
-          parent_id = 0
-          new_catalog_id = 0
+        if product.article.nil?
+          product.article = new_product["article"]
         end
-      end
 
-      # если есть id родительского каталога
-      if new_catalog_id != nil && new_catalog_id != 0
-        product.catalog = Catalog.find(new_catalog_id)
-      end
+        #Хлебные крошки
+        breadcrumb = String.new
+        parent_id = 0
+        new_catalog_id = 0
 
-      # Характеристики
-      characters = Hash.new
-      i = 0
-      page_product.css(".list_character li").each do |li|
-        item = Hash.new
-        item["name"] = li.css(".db_param_name").text
-        item["value"] = li.css(".db_param_value").text
-        characters[i] = item
+        # Пиздим картинки
+        page_product.css(".productimage a.big_image").each do |link|
+          image = ProductImg.new
+          image.product = product
+          if link['href'].present?
+            image.picture_from_url 'http://www.arrows.ru' + link['href']
+            image.save
+          end
+        end
 
+        # Воссоздаем родительские каталоги до корня
+        page_product.css(".breadcrumb a").each do |link|
+          item_bread = Hash.new
+          item_bread["title"] = link.content
+          item_bread["href"]  = link['href']
+
+          if item_bread["title"] != "Главная стрaница" || item_bread["href"] != "/"
+            catalog = Catalog.new
+            catalog.title = item_bread["title"]
+
+            if parent_id == 0
+              catalog.parent = nil
+            else
+              catalog.parent = Catalog.find(parent_id)
+            end
+
+            old_product = Catalog.where({:title => catalog.title, :parent_id => parent_id}).pop
+
+            if old_product.nil? # or old_product.parent_id != parent_id
+              catalog.description = catalog.title
+              catalog.save
+              new_catalog_id = catalog.id
+              parent_id = catalog.id
+            else
+              parent_id = old_product.id
+              new_catalog_id = parent_id
+            end
+
+          else
+            parent_id = 0
+            new_catalog_id = 0
+          end
+        end
+
+        # если есть id родительского каталога
+        if !new_catalog_id.nil? && new_catalog_id != 0
+          product.catalog = Catalog.find(new_catalog_id)
+        end
+
+        # Характеристики
+        characters = Hash.new
         i = 0
-        product.characters.each do |char|
-          if char.value = item["value"] and char.name = item["name"]
-            i = 1
+        page_product.css(".list_character li").each do |li|
+          item = Hash.new
+          item["name"] = li.css(".db_param_name").text
+          item["value"] = li.css(".db_param_value").text
+          characters[i] = item
+
+          i = 0
+          product.characters.each do |char|
+            if char.value == item["value"] and char.name == item["name"]
+              i = 1
+            end
+          end
+
+          if i == 0
+            ch = Character.new
+            ch.name = item["name"]
+            ch.value = item["value"]
+            ch.product = product
+            ch.save
           end
         end
 
-        if i == 0
-          ch = Character.new
-          ch.name = item["name"]
-          ch.value = item["value"]
-          ch.product = product
-          ch.save
-          i = i + 1
+
+        page_product.css(".box_character li").each do |li|
+          item = Hash.new
+          item["name"] = li.css(".db_param_name").text
+          item["value"] = li.css(".db_param_value").text
+
+          i = 0
+          product.characters.each do |char|
+            if char.value == item["value"] and char.name == item["name"]
+              i = 1
+            end
+          end
+
+          if i == 0
+            ch = Character.new
+            ch.name = item["name"]
+            ch.value = item["value"]
+            ch.product = product
+            ch.save
+          end
+        end
+
+        if !product.nil?
+          product.save
+
+          #Забираем деталировку
+          detaining = Detailing.new
+          detaining.product = product
+          page_product.css(".sparepdf a").each do |link|
+            if !link['href'].nil? and link['href'] != ""
+              detaining.pdf_from_url link['href']
+            end
+          end
+
+          page_product.css(".sparepdf .detail_img img").each do |link|
+              if !link['src'].nil? and link['src'] != ""
+                detaining.image_from_url link['src']
+              end
+          end
+
+          if detaining.image.present? or detaining.pdf.present?
+            detaining.save
+          end
+
+          #Забираем документы
+          page_product.css(".dd_doc_document .big_image").each do |link|
+
+            document = Document.new
+
+            page_product_href = URI.encode(link['href'])
+            page_product_href.gsub!("?discount", "")
+            puts '238 ' +  page_product_href
+
+              if link['href'] != nil and link['href'] != ""
+
+                document.image_from_url link['href']
+                document.product = product
+                document.save
+              end
+
+          end
+
+          #Пробегаемся по запчастям
+          page_product.css(".sparestable .spitem").each do |tr|
+            position = tr.css(".sp_pos").text
+            tr.css(".sp_desc a").each do |h|
+              href = h['href']
+            end
+
+            detail = Product.new
+            detail.position_detail = position
+
+            if href != nil and href != ""
+              parsing_product(detail, href, '')
+              detail.save
+            end
+          end
         end
       end
-
-      if product != nil
-        product.save
-
-        #Забираем деталировку
-        detaining = Detailing.new
-        detaining.product = product
-        page_product.css(".sparepdf a").each do |link|
-          if link['href'] != nil and link['href'] != ""
-            detaining.pdf_from_url link['href']
-          end
-        end
-
-        page_product.css(".sparepdf .detail_img img").each do |link|
-            if link['src'] != nil and link['src'] != ""
-              detaining.image_from_url link['src']
-            end
-        end
-        detaining.save
-
-        #Забираем документы
-        page_product.css(".dd_doc_document .big_image").each do |link|
-
-          document = Document.new
-
-          page_product_href = URI.encode(link['href'])
-          page_product_href.gsub!("?discount", "")
-          puts '238 ' +  page_product_href
-
-            if link['href'] != nil and link['href'] != ""
-
-              document.image_from_url link['href']
-              document.product = product
-              document.save
-            end
-
-        end
-
-        #Пробегаемся по запчастям
-        page_product.css(".sparestable .spitem").each do |tr|
-          position = tr.css(".sp_pos").text
-          tr.css(".sp_desc a").each do |h|
-            href = h['href']
-          end
-
-          detail = Product.new
-          detail.position_detail = position
-
-          if href != nil and href != ""
-            parsing_product(detail, href, '')
-          end
-        end
-      end
-    end}
+    }
   end
 
   def self.open_spreadsheet(file)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141006132551) do
+ActiveRecord::Schema.define(version: 20141113143800) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -227,6 +227,7 @@ ActiveRecord::Schema.define(version: 20141006132551) do
     t.integer  "quantity"
     t.integer  "detail_for_id"
     t.integer  "position_detail"
+    t.boolean  "is_processed",                               default: false
   end
 
   create_table "redactor_assets", force: true do |t|

@@ -9,7 +9,7 @@ class ProductImg < ActiveRecord::Base
     dd = URI.parse(url)
     req = Net::HTTP.new(dd.host, dd.port)
     res = req.request_head(dd.path)
-    code = res.code
+    #code = res.code
     if res.code == "200"
       self.picture = URI.parse(url)
     end

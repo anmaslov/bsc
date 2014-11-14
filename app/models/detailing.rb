@@ -5,13 +5,13 @@ class Detailing < ActiveRecord::Base
   has_attached_file :image, styles: {:medium => "300x300#", :thumb => "150x150>", :thumbnail => "50x50>"}
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
-  has_attached_file :pdf, styles: {thumbnail: "60x60#"}
+  has_attached_file :pdf
   validates_attachment_content_type :pdf, :content_type => ["application/pdf"]
 
   def image_from_url (url)
 
     url = 'http://www.arrows.ru' + url
-    response = self.hopen(url)
+    #response = self.hopen(url)
     RestClient.get(url){|response, request, result|
 
       if result.message == "OK"
@@ -36,7 +36,7 @@ class Detailing < ActiveRecord::Base
 
   def pdf_from_url (url)
     url = 'http://www.arrows.ru' + url
-    response = self.hopen(url)
+    #response = self.hopen(url)
     RestClient.get(url){|response, request, result|
 
       if result.message == "OK"

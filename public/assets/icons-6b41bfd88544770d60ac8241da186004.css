@@ -1,0 +1,147 @@
+.panel.left-menu ul li i {
+    display: block;
+    background-image: url(/assets/ico/k_icons_0212_all.png);
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-position: 0px 0;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+}
+.panel.left-menu ul li i {
+}
+.panel.left-menu a:hover i {
+}
+.panel.left-menu a:active i {
+}
+
+/*48 80 112 144 176 208*/
+/*45 75 105 135 165 195*/
+.panel.left-menu i#group-icon-6018 {background-position:  -15px -15px;}
+.panel.left-menu i#group-icon-5098 {background-position:  -45px -15px;}
+.panel.left-menu i#group-icon-3336 {background-position:  -75px -15px;}
+.panel.left-menu i#group-icon-5114 {background-position: -105px -15px;}
+.panel.left-menu i#group-icon-2730 {background-position: -165px -15px;}
+.panel.left-menu i#group-icon-7701 {background-position: -195px -15px;}
+.panel.left-menu i#group-icon-1915 {background-position: -225px -15px;}
+.panel.left-menu i#group-icon-7576 {background-position: -255px -15px;}
+.panel.left-menu i#group-icon-4947 {background-position: -285px -15px;}
+.panel.left-menu i#group-icon-5152 {background-position: -315px -15px;}
+.panel.left-menu i#group-icon-7752 {background-position: -345px -15px;}
+.panel.left-menu i#group-icon-1932 {background-position: -375px -15px;}
+.panel.left-menu i#group-icon-1888 {background-position: -405px -15px;}
+.panel.left-menu i#group-icon-5087 {background-position: -435px -15px;}
+.panel.left-menu i#group-icon-3837 {background-position: -465px -15px;}
+.panel.left-menu i#group-icon-2091 {background-position: -495px -15px;}
+.panel.left-menu i#group-icon-683  {background-position: -525px -15px;}
+.panel.left-menu i#group-icon-5167 {background-position: -555px -15px;}
+.panel.left-menu i#group-icon-1992 {background-position: -585px -15px;}
+.panel.left-menu i#group-icon-1948 {background-position: -615px -15px;}
+.panel.left-menu i#group-icon-4213 {background-position: -645px -15px;}
+.panel.left-menu i#group-icon-6374 {background-position: -675px -15px;}
+.panel.left-menu i#group-icon-4457 {background-position: -705px -15px;}
+.panel.left-menu i#group-icon-2037 {background-position: -735px -15px;}
+.panel.left-menu i#group-icon-2073 {background-position: -765px -15px;}
+.panel.left-menu i#group-icon-5601 {background-position: -795px -15px;}
+.panel.left-menu i#group-icon-1849 {background-position: -825px -15px;}
+.panel.left-menu i#group-icon-1966 {background-position: -855px -15px;}
+.panel.left-menu i#group-icon-3673 {background-position: -885px -15px;}
+.panel.left-menu i#group-icon-5686 {background-position: -945px -15px;}
+.panel.left-menu i#group-icon-7885 {background-position: -975px -15px;}
+
+.panel.left-menu a i#group-icon-6018 {background-position:  -15px -105px;}
+.panel.left-menu a i#group-icon-5098 {background-position:  -45px -105px;}
+.panel.left-menu a i#group-icon-3336 {background-position:  -75px -105px;}
+.panel.left-menu a i#group-icon-5114 {background-position: -105px -105px;}
+.panel.left-menu a i#group-icon-2730 {background-position: -165px -105px;}
+.panel.left-menu a i#group-icon-7701 {background-position: -195px -105px;}
+.panel.left-menu a i#group-icon-1915 {background-position: -225px -105px;}
+.panel.left-menu a i#group-icon-7576 {background-position: -255px -105px;}
+.panel.left-menu a i#group-icon-4947 {background-position: -285px -105px;}
+.panel.left-menu a i#group-icon-5152 {background-position: -315px -105px;}
+.panel.left-menu a i#group-icon-7752 {background-position: -345px -105px;}
+.panel.left-menu a i#group-icon-1932 {background-position: -375px -105px;}
+.panel.left-menu a i#group-icon-1888 {background-position: -405px -105px;}
+.panel.left-menu a i#group-icon-5087 {background-position: -435px -105px;}
+.panel.left-menu a i#group-icon-3837 {background-position: -465px -105px;}
+.panel.left-menu a i#group-icon-2091 {background-position: -495px -105px;}
+.panel.left-menu a i#group-icon-683  {background-position: -525px -105px;}
+.panel.left-menu a i#group-icon-5167 {background-position: -555px -105px;}
+.panel.left-menu a i#group-icon-1992 {background-position: -585px -105px;}
+.panel.left-menu a i#group-icon-1948 {background-position: -615px -105px;}
+.panel.left-menu a i#group-icon-4213 {background-position: -645px -105px;}
+.panel.left-menu a i#group-icon-6374 {background-position: -675px -105px;}
+.panel.left-menu a i#group-icon-4457 {background-position: -705px -105px;}
+.panel.left-menu a i#group-icon-2037 {background-position: -735px -105px;}
+.panel.left-menu a i#group-icon-2073 {background-position: -765px -105px;}
+.panel.left-menu a i#group-icon-5601 {background-position: -795px -105px;}
+.panel.left-menu a i#group-icon-1849 {background-position: -825px -105px;}
+.panel.left-menu a i#group-icon-1966 {background-position: -855px -105px;}
+.panel.left-menu a i#group-icon-3673 {background-position: -885px -105px;}
+.panel.left-menu a i#group-icon-5686 {background-position: -945px -105px;}
+.panel.left-menu a i#group-icon-7885 {background-position: -975px -105px;}
+
+.panel.left-menu a:hover i#group-icon-6018 {background-position:  -15px -135px;}
+.panel.left-menu a:hover i#group-icon-5098 {background-position:  -45px -135px;}
+.panel.left-menu a:hover i#group-icon-3336 {background-position:  -75px -135px;}
+.panel.left-menu a:hover i#group-icon-5114 {background-position: -105px -135px;}
+.panel.left-menu a:hover i#group-icon-2730 {background-position: -165px -135px;}
+.panel.left-menu a:hover i#group-icon-7701 {background-position: -195px -135px;}
+.panel.left-menu a:hover i#group-icon-1915 {background-position: -225px -135px;}
+.panel.left-menu a:hover i#group-icon-7576 {background-position: -255px -135px;}
+.panel.left-menu a:hover i#group-icon-4947 {background-position: -285px -135px;}
+.panel.left-menu a:hover i#group-icon-5152 {background-position: -315px -135px;}
+.panel.left-menu a:hover i#group-icon-7752 {background-position: -345px -135px;}
+.panel.left-menu a:hover i#group-icon-1932 {background-position: -375px -135px;}
+.panel.left-menu a:hover i#group-icon-1888 {background-position: -405px -135px;}
+.panel.left-menu a:hover i#group-icon-5087 {background-position: -435px -135px;}
+.panel.left-menu a:hover i#group-icon-3837 {background-position: -465px -135px;}
+.panel.left-menu a:hover i#group-icon-2091 {background-position: -495px -135px;}
+.panel.left-menu a:hover i#group-icon-683  {background-position: -525px -135px;}
+.panel.left-menu a:hover i#group-icon-5167 {background-position: -555px -135px;}
+.panel.left-menu a:hover i#group-icon-1992 {background-position: -585px -135px;}
+.panel.left-menu a:hover i#group-icon-1948 {background-position: -615px -135px;}
+.panel.left-menu a:hover i#group-icon-4213 {background-position: -645px -135px;}
+.panel.left-menu a:hover i#group-icon-6374 {background-position: -675px -135px;}
+.panel.left-menu a:hover i#group-icon-4457 {background-position: -705px -135px;}
+.panel.left-menu a:hover i#group-icon-2037 {background-position: -735px -135px;}
+.panel.left-menu a:hover i#group-icon-2073 {background-position: -765px -135px;}
+.panel.left-menu a:hover i#group-icon-5601 {background-position: -795px -135px;}
+.panel.left-menu a:hover i#group-icon-1849 {background-position: -825px -135px;}
+.panel.left-menu a:hover i#group-icon-1966 {background-position: -855px -135px;}
+.panel.left-menu a:hover i#group-icon-3673 {background-position: -885px -135px;}
+.panel.left-menu a:hover i#group-icon-5686 {background-position: -945px -135px;}
+.panel.left-menu a:hover i#group-icon-7885 {background-position: -975px -135px;}
+
+.panel.left-menu a:active i#group-icon-6018 {background-position:  -15px -75px;}
+.panel.left-menu a:active i#group-icon-5098 {background-position:  -45px -75px;}
+.panel.left-menu a:active i#group-icon-3336 {background-position:  -75px -75px;}
+.panel.left-menu a:active i#group-icon-5114 {background-position: -105px -75px;}
+.panel.left-menu a:active i#group-icon-2730 {background-position: -165px -75px;}
+.panel.left-menu a:active i#group-icon-7701 {background-position: -195px -75px;}
+.panel.left-menu a:active i#group-icon-1915 {background-position: -225px -75px;}
+.panel.left-menu a:active i#group-icon-7576 {background-position: -255px -75px;}
+.panel.left-menu a:active i#group-icon-4947 {background-position: -285px -75px;}
+.panel.left-menu a:active i#group-icon-5152 {background-position: -315px -75px;}
+.panel.left-menu a:active i#group-icon-7752 {background-position: -345px -75px;}
+.panel.left-menu a:active i#group-icon-1932 {background-position: -375px -75px;}
+.panel.left-menu a:active i#group-icon-1888 {background-position: -405px -75px;}
+.panel.left-menu a:active i#group-icon-5087 {background-position: -435px -75px;}
+.panel.left-menu a:active i#group-icon-3837 {background-position: -465px -75px;}
+.panel.left-menu a:active i#group-icon-2091 {background-position: -495px -75px;}
+.panel.left-menu a:active i#group-icon-683  {background-position: -525px -75px;}
+.panel.left-menu a:active i#group-icon-5167 {background-position: -555px -75px;}
+.panel.left-menu a:active i#group-icon-1992 {background-position: -585px -75px;}
+.panel.left-menu a:active i#group-icon-1948 {background-position: -615px -75px;}
+.panel.left-menu a:active i#group-icon-4213 {background-position: -645px -75px;}
+.panel.left-menu a:active i#group-icon-6374 {background-position: -675px -75px;}
+.panel.left-menu a:active i#group-icon-4457 {background-position: -705px -75px;}
+.panel.left-menu a:active i#group-icon-2037 {background-position: -735px -75px;}
+.panel.left-menu a:active i#group-icon-2073 {background-position: -765px -75px;}
+.panel.left-menu a:active i#group-icon-5601 {background-position: -795px -75px;}
+.panel.left-menu a:active i#group-icon-1849 {background-position: -825px -75px;}
+.panel.left-menu a:active i#group-icon-1966 {background-position: -855px -75px;}
+.panel.left-menu a:active i#group-icon-3673 {background-position: -885px -75px;}
+.panel.left-menu a:active i#group-icon-5686 {background-position: -945px -75px;}
+.panel.left-menu a:active i#group-icon-7885 {background-position: -975px -75px;}

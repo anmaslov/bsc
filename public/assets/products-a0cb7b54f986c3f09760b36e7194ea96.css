@@ -1,0 +1,45 @@
+/* line 6, /Users/apple/Sites/ruby/work/bsc/app/assets/stylesheets/products.css.scss */
+.products table {
+  border-collapse: collapse;
+  width: 100%;
+}
+/* line 11, /Users/apple/Sites/ruby/work/bsc/app/assets/stylesheets/products.css.scss */
+.products table tr td {
+  padding: 5px;
+  vertical-align: top;
+}
+/* line 16, /Users/apple/Sites/ruby/work/bsc/app/assets/stylesheets/products.css.scss */
+.products .list-image {
+  width: 60px;
+  height: 70px;
+}
+/* line 21, /Users/apple/Sites/ruby/work/bsc/app/assets/stylesheets/products.css.scss */
+.products .lst_description {
+  width: 60%;
+}
+/* line 24, /Users/apple/Sites/ruby/work/bsc/app/assets/stylesheets/products.css.scss */
+.products .lst_description dl {
+  margin: 0;
+}
+/* line 28, /Users/apple/Sites/ruby/work/bsc/app/assets/stylesheets/products.css.scss */
+.products .lst_description dt {
+  color: #244;
+}
+/* line 32, /Users/apple/Sites/ruby/work/bsc/app/assets/stylesheets/products.css.scss */
+.products .lst_description dd {
+  margin: 0;
+}
+/* line 37, /Users/apple/Sites/ruby/work/bsc/app/assets/stylesheets/products.css.scss */
+.products .list_actions {
+  font-size: x-small;
+  text-align: right;
+  padding-left: 1em;
+}
+/* line 43, /Users/apple/Sites/ruby/work/bsc/app/assets/stylesheets/products.css.scss */
+.products .list_line_even {
+  background: #e0f8f8;
+}
+/* line 47, /Users/apple/Sites/ruby/work/bsc/app/assets/stylesheets/products.css.scss */
+.products .list_line_odd {
+  background: #f8b0f8;
+}
