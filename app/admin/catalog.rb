@@ -1,14 +1,14 @@
 ActiveAdmin.register Catalog, { :sort_order => :title_asc } do
-  sortable tree: true,
-      max_levels: 0,               # infinite indent levels
-      protect_root: false,         # allow root items to be dragged
-      sorting_attribute: :position,
-      parent_method: :parent,
-      children_method: :childrens,
-      roots_method: :roots,
-      roots_collection: nil,       # proc to specifiy retrieval of roots
-      collapsible: true,          # show +/- buttons to collapse children
-      start_collapsed: true
+  #sortable tree: true,
+  #    max_levels: 0,               # infinite indent levels
+  #    protect_root: false,         # allow root items to be dragged
+  #    sorting_attribute: :position,
+  #    parent_method: :parent,
+  #    children_method: :childrens,
+  #    roots_method: :roots,
+  #    roots_collection: nil,       # proc to specifiy retrieval of roots
+  #    collapsible: true,          # show +/- buttons to collapse children
+  #    start_collapsed: true
 
       # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
@@ -23,13 +23,13 @@ ActiveAdmin.register Catalog, { :sort_order => :title_asc } do
   #  permitted
   # end
 
-  scope :all, :default => true
+  #scope :all, :default => true
 
   permit_params :image, :title, :description, :parent, :parent_id, :content, :keywords, :is_active, :old_id, :product_table, :catalog_table
 
-  index :as => :sortable do
-    label :title
-    label :description
+  index do
+    column :title
+    column :description
     actions
   end
 

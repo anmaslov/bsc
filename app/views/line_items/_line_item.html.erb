@@ -1,9 +1,13 @@
+<% if line_item.product.present? %>
 <% if line_item == @current_item %>
 <tr id="current_item">
 <% else %>
 <tr>
 <% end %>
-  <td><%= image_tag(line_item.product.image.url(:thumbnail), :alt => line_item.product.title, :style => 'max-height: 50px') %>
+  <td>
+
+        <%= image_tag(line_item.product.image.url(:thumbnail), :alt => line_item.product.title, :style => 'max-height: 50px') %>
+
 
     <%= form_for(line_item, :url => {:controller => 'line_items', :action => 'update', id: line_item}, :remote=>true, :html => {:class => 'hidden form_edit_' + line_item.product.article}) do |f| %>
         <%= f.text_field :quantity, :class => 'quantity_' + line_item.product.article%>
@@ -22,3 +26,4 @@
 
   </td>
 </tr>
+<% end %>

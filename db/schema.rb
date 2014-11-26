@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113143800) do
+ActiveRecord::Schema.define(version: 20141126082631) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -84,6 +84,14 @@ ActiveRecord::Schema.define(version: 20141113143800) do
     t.string   "pdf_content_type"
     t.integer  "pdf_file_size"
     t.datetime "pdf_updated_at"
+  end
+
+  create_table "details", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "detail_for_id"
+    t.string   "position_detail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "documents", force: true do |t|
@@ -209,7 +217,7 @@ ActiveRecord::Schema.define(version: 20141113143800) do
     t.string   "title"
     t.text     "description"
     t.string   "image_url"
-    t.decimal  "price",              precision: 8, scale: 2
+    t.decimal  "price",                         precision: 8, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "article"
@@ -219,16 +227,24 @@ ActiveRecord::Schema.define(version: 20141113143800) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.boolean  "is_active"
-    t.boolean  "market_yandex",                              default: false
-    t.decimal  "old_price",          precision: 8, scale: 2
+    t.boolean  "market_yandex",                                         default: false
+    t.decimal  "old_price",                     precision: 8, scale: 2
     t.text     "content"
     t.string   "keywords"
     t.integer  "supplier_id"
-    t.integer  "quantity"
+    t.integer  "quantity",                                              default: 0
     t.integer  "detail_for_id"
-    t.integer  "position_detail"
-    t.boolean  "is_processed",                               default: false
+    t.string   "position_detail",    limit: 11
+    t.boolean  "is_processed",                                          default: false
   end
+
+  create_table "products_details", id: false, force: true do |t|
+    t.integer "product_id"
+    t.integer "detail_id"
+    t.string  "position"
+  end
+
+  add_index "products_details", ["product_id", "detail_id"], name: "index_products_details_on_product_id_and_detail_id", using: :btree
 
   create_table "redactor_assets", force: true do |t|
     t.integer  "user_id"
@@ -246,6 +262,17 @@ ActiveRecord::Schema.define(version: 20141113143800) do
 
   add_index "redactor_assets", ["assetable_type", "assetable_id"], name: "idx_redactor_assetable", using: :btree
   add_index "redactor_assets", ["assetable_type", "type", "assetable_id"], name: "idx_redactor_assetable_type", using: :btree
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", id: false, force: true do |t|
+    t.integer "role_id"
+    t.integer "user_id"
+  end
 
   create_table "supplier_import_informations", force: true do |t|
     t.decimal  "margin",          precision: 10, scale: 0

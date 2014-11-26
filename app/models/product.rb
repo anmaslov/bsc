@@ -3,12 +3,17 @@ class Product < ActiveRecord::Base
   has_many :line_items
   has_many :orders, through: :line_items
   has_many :imgs, :class_name => "ProductImg", dependent: :destroy
-  has_many :characters, :class_name => "Character"
-  has_many :detailing, :class_name => "Detailing"
-  has_many :documents, :class_name => "Document"
+  has_many :characters, :class_name => "Character", dependent: :destroy
+  has_many :detailing, :class_name => "Detailing", dependent: :destroy
+  has_many :documents, :class_name => "Document", dependent: :destroy
+  has_many :details, :order => 'position_detail ASC', :class_name => "Detail", :foreign_key => "detail_for_id"
+  belongs_to :detail, :class_name => "Detail", :foreign_key => "product_id"
+  #belongs_to :detail_for, :class_name => "Product", :foreign_key => "detail_for_id"
+  #has_many :details, :order => 'title ASC', :class_name => "Product", :foreign_key => "detail_for_id"
+  #has_and_belongs_to_many :details, :class_name => "Product", :join_table => "products_details", :association_foreign_key => "detail_id"
+  #has_and_belongs_to_many :products, :class_name => "Product", :join_table => "products_details", :foreign_key => "detail_id"
+  # has_many :details, :order => 'title ASC', :class_name => "ProductsDetails", :foreign_key => "product_id"
 
-  belongs_to :detail_for, :class_name => "Product", :foreign_key => "detail_for_id"
-  has_many :details, :order => 'title ASC', :class_name => "Product", :foreign_key => "detail_for_id"
 
   belongs_to :catalog
   belongs_to :supplier

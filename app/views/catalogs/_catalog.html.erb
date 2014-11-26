@@ -1,9 +1,16 @@
 <% if (user_signed_in? && current_user.admin?) || catalog.is_active %>
 <div class="col-sm-3 col-md-3 <%= !catalog.is_active ? 'not-active' : '' %>" id="<%= catalog.id %>">
     <div class="thumbnail catalog <%= (@catalog && @catalog.catalog_table) ? 'hidden' : '' %>">
+      <% cache(catalog.id.to_s + 'div_image_thumb') do %>
       <div class="cart-img">
-        <%= image_tag(catalog.image.url(:thumb), :alt => catalog.title, :class => 'catalog_img') %>
+        <% if !catalog.image_thumb.kind_of?(Array) %>
+            <%= image_tag(catalog.image_thumb.url(:thumb), :alt => catalog.title, :class => 'catalog_img') %>
+        <% else %>
+            <%= image_tag(catalog.image.url(:thumb), :alt => catalog.title, :class => 'catalog_img') %>
+        <% end %>
+
       </div>
+      <% end %>
       <div class="caption">
         <%= link_to catalog.title, catalog, :class => 'catalog_title' %>
       </div>
@@ -31,15 +38,33 @@
         </script>
 
     <% end %>
-
+    <% cache(catalog.id.to_s + 'td_image_thumb') do %>
     <td>
-      <%= image_tag(catalog.image.url(:thumbnail), :alt => catalog.title, :class => 'catalog_img') %>
+      <% if !catalog.image_thumb.kind_of?(Array) %>
+          <%= image_tag(catalog.image_thumb.url(:thumbnail), :alt => catalog.title, :class => 'catalog_img') %>
+      <% else %>
+          <%= image_tag(catalog.image.url(:thumbnail), :alt => catalog.title, :class => 'catalog_img') %>
+      <% end %>
     </td>
+    <% end %>
     <td>
         <%= link_to catalog.title, catalog, :class => 'catalog_title' %>
     </td>
     <td>
       <%= catalog.description %>
+    </td>
+    <td>
+
+      <% if user_signed_in? && current_user.admin? %>
+          <div class="btn-group-vertical" style="width: 75px;">
+            <%= button_to "Изменить", edit_catalog_path(catalog),
+                          :class => "btn btn-sm btn-primary", :method => :get %>
+
+            <%= button_to "Удалить", catalog,
+                          :class => "btn btn-sm btn-danger", :method => :delete, :data => { :confirm => 'Будут удалены все подкаталоги и товары в них. Вы уверены?' } %>
+
+          </div>
+        <% end %>
     </td>
   </tr>
 </div>

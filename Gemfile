@@ -28,13 +28,15 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
+gem 'russian', '~> 0.6.0'
+
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
     :github => 'anjlab/bootstrap-rails',
     :branch => '3.0.0'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
+#gem 'turbolinks'
+gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
@@ -57,6 +59,7 @@ end
 
 gem 'redactor-rails'
 gem 'devise'
+gem 'cancan'
 
 gem "carrierwave"
 gem "mini_magick"
@@ -66,8 +69,8 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'rails-i18n'
 gem 'activeadmin', github: 'gregbell/active_admin'
 #
-gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
-gem 'ancestry'
+#gem "activeadmin-sortable-tree", :github => "nebirhos/activeadmin-sortable-tree", :branch => "master"
+#gem 'ancestry'
 
 gem 'paperclip'
 gem 'breadcrumbs_on_rails'
@@ -85,3 +88,5 @@ gem 'nokogiri', '~> 1.6.3.1'
 gem 'rest-client', '~> 1.7.2'
 
 gem 'oj'
+
+gem 'simple_form'

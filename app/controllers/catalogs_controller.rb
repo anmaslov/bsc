@@ -71,9 +71,16 @@ class CatalogsController < ApplicationController
   end
 
   def destroy
+    parent = @catalog.parent
+    @destroy_id = @catalog.id
     @catalog.destroy
     respond_to do |format|
-      format.html { redirect_to catalog_url }
+      if !parent.nil?
+        format.html { redirect_to parent }
+      else
+        format.html { redirect_to catalogs_url }
+      end
+      format.js { @destroy_id }
       format.json { head :no_content }
     end
   end

@@ -1,12 +1,15 @@
 class Price < ActiveRecord::Base
 
   def Price.load_price_regual
-    mails = Email.find(:all, :conditions => ["processing = :processing AND processed = :processed", {:processing => true, :processed => false}], :order => "created_at DESC")
+    #mails = Email.find(:all, :conditions => ["processing = :processing AND processed = :processed", {:processing => true, :processed => false}], :order => "created_at DESC")
+    mails  = Email.where({processing: true, processed: false}).order('created_at DESC').all
 
     mails.each do |mail|
       supplier = mail.supplier
-      import_information = SupplierImportInformation.find(:first, :conditions => ["supplier_id = :supplier", {:supplier => supplier.id}])
-      mail_attachments   = MailAttachment.find(:all, :conditions => ["email_id = :email_id", {:email_id => mail.id}], :order => "created_at DESC")
+      #import_information = SupplierImportInformation.find(:first, :conditions => ["supplier_id = :supplier", {:supplier => supplier.id}])
+      import_information  = SupplierImportInformation.where({supplier_id:  supplier.id}).order('created_at DESC').first
+      #mail_attachments   = MailAttachment.find(:all, :conditions => ["email_id = :email_id", {:email_id => mail.id}], :order => "created_at DESC")
+      mail_attachments  = MailAttachment.where({email_id: mail.id}).order('created_at DESC').all
       mail_attachments.each do |attach|
         filename = attach.filename
         self.import(filename, import_information)
@@ -54,6 +57,7 @@ class Price < ActiveRecord::Base
   end
 
   def Price.update_info_arrow
+    puts 'start parcing'
     require 'rubygems'
     require 'nokogiri'
     require 'rest_client'
@@ -61,11 +65,25 @@ class Price < ActiveRecord::Base
 
 
     # Берез все товары, поставщиком которых являются Северные стрелы
-    product_all = Product.where({supplier_id: 1, catalog_id: 20, is_processed: false}).order("id desc").all # .order("id asc").limit(100)
+    product_all = Product.where({supplier_id: 1, catalog_id: 777, is_processed: true}).order("id desc").all # .order("id asc").limit(100)
 
+    puts 'priduct size: ' + product_all.size.to_s
     product_all.each do |product|
       # Ищем в поиске по артикулу
-      url = "http://www.arrows.ru/e_shop/search/?search=" + product.article[0..(product.article.size-3)]
+
+      #art = product.article[0..(product.article.size-3)].split('.')
+
+      art = product.article[0..(product.article.size-3)].split('.')
+      first_word = product.title.split(' ').first
+
+      if art.size > 1
+        art = art.first
+        url = "http://www.arrows.ru/e_shop/search/?search=" + art + ' ' + first_word
+      else
+        url = "http://www.arrows.ru/e_shop/search/?search=" + product.article[0..(product.article.size-3)]
+      end
+
+
       url.gsub!("?discount", "")
       puts '71 ' + url
 
@@ -107,13 +125,13 @@ class Price < ActiveRecord::Base
         }
       end
       product.is_processed = true
-      sleep(5)
+      sleep(2)
       product.save
     end
   end
 
   def self.parsing_product(product, url, img_href)
-
+    sleep(2)
     require 'rubygems'
     require 'nokogiri'
     require 'rest_client'
@@ -132,7 +150,13 @@ class Price < ActiveRecord::Base
 
         #page_product = Nokogiri::HTML(RestClient.get(page_product_href))
 
-        product.title = page_product.css(".product_detail_title h1").text
+        #product.title
+
+        title_new = page_product.css(".product_detail_title h1").text
+
+        title_new = title_new.split(' арт. ').first.strip
+
+        product.title = title_new
         puts product.title
         product.image_from_url 'http://www.arrows.ru' + img_href
 
@@ -166,10 +190,13 @@ class Price < ActiveRecord::Base
 
           if item_bread["title"] != "Главная стрaница" || item_bread["href"] != "/"
             catalog = Catalog.new
+
+
+
             catalog.title = item_bread["title"]
 
             if parent_id == 0
-              catalog.parent = nil
+              catalog.parent_id = 0
             else
               catalog.parent = Catalog.find(parent_id)
             end
@@ -292,11 +319,33 @@ class Price < ActiveRecord::Base
             end
 
             detail = Product.new
-            detail.position_detail = position
+            #detail.position_detail = position.to_s
+            #detail.detail_for_id = product.id
+            detail.title = tr.css(".sp_desc a").text
+            detail.price = tr.css(".sp_price .new_price").text.strip.gsub!(" ", "").gsub!("руб.", "").to_f
+            detail_art = detail.title.split(' арт. ').second
 
+            if !detail_art.nil?
+              detail.article = detail_art.strip.gsub!(")", "") + '-det'
+            end
             if href != nil and href != ""
-              parsing_product(detail, href, '')
               detail.save
+              detail = Product.find_by_article(detail_art.strip.gsub!(")", "") + '-det')
+
+              puts detail_art.strip.gsub!(")", "")
+
+              #20300060-det
+
+              if !detail.nil?
+                det = Detail.new
+                det.product_id = detail.id
+                det.detail_for_id = product.id
+                det.position_detail = position.to_s
+                det.save
+                # product.details << detail
+                # hui = detail.id
+                parsing_product(detail, href, '')
+              end
             end
           end
         end

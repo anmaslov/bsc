@@ -17,11 +17,11 @@ $(document).ready(function(){
     $('.product2-view-toggle label').on('click', function() {
         var obj = $(this).children('span');
         if ( obj.hasClass('glyphicon-th-list')) {
-            $('.thumbnail.product').addClass('hidden');
+            $('.thumbnail.product').parents('.column_product').addClass('hidden');
             $('.tr.product').removeClass('hidden');
         }
         if ( obj.hasClass('glyphicon-th-large')) {
-            $('.thumbnail.product').removeClass('hidden');
+            $('.thumbnail.product').parents('.column_product').removeClass('hidden');
             $('.tr.product').addClass('hidden');
         }
     });

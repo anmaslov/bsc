@@ -513,7 +513,7 @@ tr.not-active {
 .thumbnail .cart-img img {
     max-height: 150px;
     max-width: 150px;
-    margin: 0 auto;
+    margin: -20px auto 0;
 }
 
 /** Новости **/
@@ -717,6 +717,7 @@ tr.not-active {
     width: 285px;
     float: left;
     padding: 0 10px;
+    height: 350px;
 }
 
 .carousel-bounding-box {

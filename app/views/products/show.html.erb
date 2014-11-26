@@ -16,13 +16,24 @@
       </ol>
 
       <div class="clear"></div>
-      <h1 class="title-product"><%= @product.title %> <small>арт. <%= @product.article %></small></h1>
+      <h1 class="title-product"><%= @product.title %> <small style="white-space: nowrap;">арт. <%= @product.article %></small></h1>
       <div class="clear" style="height: 10px"></div>
       <div class="content">
         <%= raw @product.content %>
-      </div>
+
+
       <div class="row">
-        <div class="col-md-5 col-xs-5">
+
+        <% if @product.description.present? %>
+            <div class="col-md-6 col-xs-6">
+              <div class="panel-body">
+              <%= @product.description %>
+                </div>
+            </div>
+        <% end %>
+
+        <% if @product.characters.size > 0 %>
+        <div class="col-md-6 col-xs-6">
           <div class="panel panel-default">
             <div class="panel-heading">Характеристики</div>
             <!-- Table -->
@@ -41,46 +52,96 @@
 
           </div>
         </div>
-
-        <div class="col-md-3 col-xs-3">
+        <% end %>
+        <% if @product.detailing.size > 0 or @product.details.size > 0 %>
+        <div class="col-md-12 col-xs-12">
           <div class="panel panel-default">
             <div class="panel-heading">Деталировка</div>
-            <!-- Table -->
-            <table  class="table table-striped">
-              <% @product.detailing.each do |detailing| %>
-                  <tr>
-                    <td>
-                      <%= image_tag(detailing.image.url(:thumbnail), :alt => 'Деталировка', :class => 'detailing_img', :style => 'max-height: 50px') %>
-                    </td>
-                    <td>
-                      <%= link_to 'Загрузить pdf', '', :class => 'detailing_pdf', :href => detailing.pdf %>
-                    </td>
-                  </tr>
-              <% end %>
-            </table>
-
-          </div>
-        </div>
-
-        <div class="col-md-3 col-xs-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">Документы</div>
             <div class="panel-body">
-              <div id="links2">
-                  <% @product.documents.each do |documents| %>
-                    <a href='<%= documents.image.url(:original) %>' title="<%= @product.title %>" data-gallery>
-                      <%= image_tag(documents.image.url(:thumb), :alt => @product.title, :class => 'documents_img', :style => 'max-height: 150px') %>
-                    </a>
-                  <% end %>
+              <div class="col-md-4 col-xs-4">
+                <% @product.detailing.each do |detailing| %>
+                    <% if detailing.image.present? %>
+                        <a href='<%= detailing.image.url(:original) %>' title="Деталировка" data-gallery>
+                          <%= image_tag(detailing.image.url(:medium), :alt => 'Деталировка', :class => 'detailing_img', :style => 'max-width: 180px; margin: 0 auto;') %>
+                        </a>
+                    <% end %>
+                    <div class="clearfix"></div>
+                    <% if detailing.pdf.present? %>
+                        <%= link_to 'Загрузить pdf', '', :class => 'detailing_pdf', :href => detailing.pdf %>
+                    <% end %>
+                <% end %>
+              </div>
+              <div class="col-md-8 col-xs-8">
+                <% if  @product.details.size > 0 %>
+                    <h4>Запчасти:</h4>
+                    <table class="table table-striped">
+                      <thead>
+                        <th>Позиция</th>
+                        <th>Название</th>
+                        <th>Цена</th>
+                        <th></th>
+                      </thead>
+                      <tbody>
+                    <% @product.details.each do |detail| %>
+                        <tr>
+                        <td>
+                          <%= detail.position_detail %>
+                        </td>
+                        <td>
+                          <%= link_to detail.product.title, detail.product %>
+                        </td>
+                          <td style="white-space: nowrap"><span class="price"><%= number_to_currency(detail.product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span></td>
+                          <td><button onclick="showAddToBascet('<%=detail.product.article %>>');" data-target="#addToBascet" data-toggle="modal" style="width: 100%; min-width: 60px;" class="btn btn-xs btn-info buy" type="button">Заказать</button></td>
+                        </tr>
+                        <% end %>
+                      </tbody>
+                    </table>
+                    <% end %>
+                <% @product.details.each do |detail| %>
+                    <div class="hidden">
+                      <%= render detail.product %>
+                    </div>
+                <% end %>
               </div>
             </div>
+
+            <!-- Table -->
+            <!--<table  class="table table-striped">-->
+              <!--<% @product.detailing.each do |detailing| %>-->
+                  <!--<tr>-->
+                    <!--<td>-->
+                      <!--<%= image_tag(detailing.image.url(:thumbnail), :alt => 'Деталировка', :class => 'detailing_img', :style => 'max-height: 50px') %>-->
+                    <!--</td>-->
+                    <!--<td>-->
+                      <!--<%= link_to 'Загрузить pdf', '', :class => 'detailing_pdf', :href => detailing.pdf %>-->
+                    <!--</td>-->
+                  <!--</tr>-->
+              <!--<% end %>-->
+            <!--</table>-->
+
           </div>
         </div>
+        <% end %>
+        <!--<div class="col-md-3 col-xs-3">-->
+          <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading">Документы</div>-->
+            <!--<div class="panel-body">-->
+              <!--<div id="links2">-->
+                  <!--<% @product.documents.each do |documents| %>-->
+                    <!--<a href='<%= documents.image.url(:original) %>' title="<%= @product.title %>" data-gallery>-->
+                      <!--<%= image_tag(documents.image.url(:thumb), :alt => @product.title, :class => 'documents_img', :style => 'max-height: 150px') %>-->
+                    <!--</a>-->
+                  <!--<% end %>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
 
       </div>
 
 
     </div>
+  </div>
   </div>
   <div class="col-md-3 col-xs-3">
     <div class="panel panel-noborder">
@@ -99,10 +160,33 @@
       <div class="clear" style="height: 25px;"></div>
       <h3>
           <%= raw (@product.old_price) ? "<del>" + @product.old_price.to_s + '<span class="ruble">a</span>' + "</del>" : '' %>
-          <%= @product.price %><span class="ruble">a</span>
+            <%= number_to_currency(@product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span>
+
       </h3>
       <div class="clear" style="height: 5px;"></div>
-      <button type="button" class="btn btn-lg btn-success buy" style="width: 100%;" data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= @product.article %>');">Купить</button>
+
+
+      <div class="btn-group" style="width: 100%;">
+        <button type="button" class="btn btn-lg btn-success buy" style="width: 70%;" data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= @product.article %>');">Купить</button>
+        <button type="button" class="btn btn-lg btn-primary compare" style="width: 30%;">Сравнить</button>
+      </div>
+
+      <% if user_signed_in? && current_user.admin? %>
+          <div class="clearfix" style="height: 5px;"></div>
+          <div class="btn-group-vertical" style="width: 100%;">
+            <%= button_to "Изменить", edit_product_path(@product),
+                          :class => "btn btn-sm btn-primary", :method => :get, :style => 'width: 100%' %>
+
+            <%= button_to "Удалить", @product,
+                          :class => "btn btn-sm btn-danger", :method => :delete, :data => { :confirm => 'Вы уверены?' }, :style => 'width: 100%' %>
+
+          </div>
+      <% end %>
+
+
+      <% if @product.quantity.nil? or !( @product.quantity > 0 ) %>
+        <h4>Под заказ</h4>
+      <% end %>
     </div>
   </div>
 </div>

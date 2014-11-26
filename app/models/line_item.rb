@@ -4,7 +4,11 @@ class LineItem < ActiveRecord::Base
   belongs_to :cart
 
   def total_price
+    if product.present?
      product.price * quantity.to_i
+    else
+      0
+    end
   end
 
   def article

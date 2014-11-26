@@ -22,7 +22,9 @@ Bsc::Application.routes.draw do
   resources :pages
 
   mount RedactorRails::Engine => '/redactor_rails'
-  devise_for :users
+  devise_for :users,  :controllers => { :registrations => "users/registrations" }
+  resources :users
+  resources :roles
   get "persons/profile"
   resources :orders
 

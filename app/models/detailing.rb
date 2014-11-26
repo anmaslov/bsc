@@ -2,7 +2,7 @@ class Detailing < ActiveRecord::Base
 
   belongs_to :product, :class_name => "Product", :foreign_key => "product_id"
 
-  has_attached_file :image, styles: {:medium => "300x300#", :thumb => "150x150>", :thumbnail => "50x50>"}
+  has_attached_file :image, styles: {:medium => "300x300>", :thumb => "150x150>", :thumbnail => "50x50>"}
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   has_attached_file :pdf

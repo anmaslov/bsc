@@ -13,15 +13,17 @@
                 <div class="carousel-bounding-box" id="carousel-bounding-box">
                   <div id="mini-carousel-<%=product.id%>" class="carousel slide mini-slider">
                     <!-- Carousel items -->
-                    <div class="carousel-inner">
-                      <div class="active item" data-slide-number="0">
-                        <%= image_tag(product.image.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'max-height: 150px;') %>
+                    <div class="carousel-inner" style="height: 125px;">
+                      <div class="active item" data-slide-number="0" >
+                        <%= image_tag(product.image.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'display: inline-block; vertical-align: middle;') %>
+                        <div style="display: inline-block;height: 100%;vertical-align: middle;width: 0;"></div>
                       </div>
                       <% if product.imgs.size > 0 %>
                           <% i = 1 %>
                           <% product.imgs.each do |image| %>
                               <div class="item" data-slide-number="<%=i%>>">
-                                <%= image_tag(image.picture.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'max-height: 150px;') %>
+                                <%= image_tag(image.picture.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'display: inline-block; vertical-align: middle;') %>
+                                <div style="display: inline-block;height: 100%;vertical-align: middle;width: 0;"></div>
                               </div>
                               <% i = i + 1 %>
                           <% end %>
@@ -29,7 +31,7 @@
                     </div><!--/carousel-inner-->
                   </div><!--/carousel-->
                   <% if product.imgs.size > 0 %>
-                  <ul class="carousel-controls-mini list-inline text-center" style="margin-top: -85px;">
+                  <ul class="carousel-controls-mini list-inline text-center" style="margin-top: -75px;">
                     <li style="float: left; margin-left: -20px;"><a href="#mini-carousel-<%=product.id%>" data-slide="prev" style="text-decoration: none !important; font-size: x-large;">‹</a></li>
                     <li style="float: right; margin-right: -20px;"><a href="#mini-carousel-<%=product.id%>" data-slide="next" style="text-decoration: none !important; font-size: x-large;">›</a></li>
                   </ul><!--/carousel-controls-->
@@ -108,7 +110,7 @@
     </td>
     <td>
 
-      <% if (user_signed_in? && current_user.admin?) %>
+      <% if user_signed_in? && current_user.admin? %>
           <div class="btn-group-vertical" style="width: 75px;">
               <button type="button" class="btn btn-sm btn-success buy"  data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= product.article %>');">Купить</button>
                 <%= button_to "Изменить", edit_product_path(product),

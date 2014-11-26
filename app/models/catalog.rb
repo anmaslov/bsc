@@ -17,7 +17,26 @@ class Catalog < ActiveRecord::Base
   #  self.image.url != '' ? self.image.url(:thumb) : 'no-image.png'
   #end
 
-  def roots
+  def image_thumb
+    if image.present?
+      return image
+    end
+
+    product.each do |product|
+      if product.image.present?
+        return product.image
+      end
+    end
+
+    children.each do |child|
+      if child.image_thumb.present?
+        return child.image_thumb
+      end
+    end
+    image
+  end
+
+  def self.roots
     #catalogs = Catalog.where({:parent_id=>[0, nil]}).order('position ASC')
     Catalog.where({:parent_id=>[0, nil]}).order('title ASC')
   end
