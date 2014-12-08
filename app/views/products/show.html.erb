@@ -151,9 +151,9 @@
 
       <div id="links1">
         <% @product.imgs.each do |image| %>
-        <a href='<%= image.picture.url(:original) %>' title="<%= @product.title %>" data-gallery>
-          <%= image_tag(image.picture.url(:thumbnail), :alt => @product.title, :class => 'product_img', :style => 'max-height: 50px') %>
-        </a>
+            <a href='<%= image.picture.url(:original) %>' title="<%= @product.title %>" data-gallery>
+              <%= image_tag(image.picture.url(:thumbnail), :alt => @product.title, :class => 'product_img', :style => 'max-height: 50px') %>
+            </a>
         <% end %>
       </div>
 

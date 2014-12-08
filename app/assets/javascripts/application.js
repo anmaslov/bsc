@@ -12,7 +12,7 @@
 //
 
 //= require jquery_ujs
-
+//= require jquery-fileupload
 
 //= require redactor-rails/plugins/fontsize
 //= require redactor-rails/plugins/fontfamily

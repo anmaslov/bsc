@@ -4,6 +4,9 @@ class ProductsController < ApplicationController
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]
+
+  # before_filter :load_attachable
+
   # GET /products
   # GET /products.json
   def index
@@ -34,6 +37,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
+    #@product = @attachable.Product.find(params[:id])
+    @characters = @product.characters
   end
 
   # POST /products
@@ -43,7 +48,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to edit_product_path @product, scrollto: 'imgs' }
         format.json { render action: 'show', status: :created, location: @product }
       else
         format.html { render action: 'new' }
@@ -55,6 +60,63 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    #@img = @attachable.imgs.find(params[:id])
+
+    # product = Product.find(params[:id])
+    # product.imgs.delete_all
+    # category_programs = params[:program][:category_program_ids]
+    # category_programs.shift
+    # category_programs.each do |s|
+    #   product.imgs << ProductImg.find(s.to_i)
+    # end
+    characters_params = params[:product][:characters]
+    if !characters_params.nil?
+      characters_params.each do |key, characters_param|
+        if characters_param.is_a?(Hash)
+          if characters_param[:name].to_s.size > 0 and characters_param[:value].to_s.size > 0
+            if key.include? 'new'
+              character = Character.new
+              character.name = characters_param[:name]
+              character.value = characters_param[:value]
+              character.product_id = @product.id
+              character.save
+            elsif key.to_i > 0
+              character = Character.find(key.to_i)
+              character.name = characters_param[:name]
+              character.value = characters_param[:value]
+              character.product_id = @product.id
+              character.save
+            end
+          end
+          if characters_param[:_destroy].to_i == 1
+            character = Character.find(key.to_i)
+            character.destroy
+          end
+        end
+      end
+    end
+
+    brand_id = params[:product][:brand_id].to_i
+    brand_name = params[:product][:brand]
+    if brand_id == 0 and brand_name != ""
+      brand = Brand.where("lower(title) = ?", brand_name.downcase).first
+      if brand.nil?
+        brand = Brand.new
+        brand.title = brand_name
+        brand.save
+      end
+    else
+      brand = Brand.find(brand_id)
+      if brand.title != brand_name and brand_name != ""
+        brand = Brand.where("lower(title) = ?", brand_name.downcase).first
+        if brand.nil?
+          brand = Brand.new
+          brand.title = brand_name
+          brand.save
+        end
+      end
+    end
+    params[:product][:brand_id] = brand.id
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -69,6 +131,8 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
+    # @product = @attachable.assets.find(params[:id])
+
     @product.destroy
     respond_to do |format|
       format.html { redirect_to products_url }
@@ -108,6 +172,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  # def load_attachable
+  #   resource, id = request.path.split('/')[1, 2]
+  #   @attachable  = resource.singularize.classify.constantize.find(id)
+  # end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -116,6 +185,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :article, :description, :image_url, :price, :catalog_id, :is_active)
+      params.require(:product).permit(:title, :article, :description, :image_url, :price, :catalog_id, :is_active, :image, :imgs, :characters, :brand_id)
     end
 end

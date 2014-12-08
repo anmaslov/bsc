@@ -15,4 +15,17 @@ class ProductImg < ActiveRecord::Base
     end
   end
 
+  include Rails.application.routes.url_helpers
+  def to_jq_upload
+    {
+        "name" => read_attribute(:picture_file_name),
+        "size" => read_attribute(:picture_file_size),
+        "url" => picture.url(:original),
+        "delete_url" => product_img_path(self),
+        "delete_type" => "DELETE",
+        "type" => "image/jpeg",
+        "thumbnail_url" => picture.url(:thumbnail)
+    }
+  end
+
 end

@@ -1,4 +1,6 @@
 Bsc::Application.routes.draw do
+  resources :brands
+
   resources :supplier_import_informations
 
   resources :suppliers
@@ -22,7 +24,7 @@ Bsc::Application.routes.draw do
   resources :pages
 
   mount RedactorRails::Engine => '/redactor_rails'
-  devise_for :users,  :controllers => { :registrations => "users/registrations" }
+  devise_for :users#,  :controllers => { :registrations => "users/registrations" }
   resources :users
   resources :roles
   get "persons/profile"
@@ -32,8 +34,16 @@ Bsc::Application.routes.draw do
 
   resources :carts
 
+
+  resources :uploads
+
+  resources :imgs
+  resources :product_imgs
+
   get "store/index"
   resources :products do
+    resources :imgs
+    resources :brands
     get :who_bought, on: :member
     get :change_ajax, on: :collection
   end

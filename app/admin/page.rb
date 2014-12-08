@@ -15,6 +15,8 @@ ActiveAdmin.register Page do
   #  permitted
   # end
 
+  permit_params :title, :description, :url, :keywords, :content
+
   index do
     column :title
     column :description

@@ -1,0 +1,18 @@
+<fieldset>
+  <div class="row">
+    <div class="col-sm-5">
+        <%= f.text_field :name, :class => 'form-control', :placeholder => 'Название', :name => 'product[characters][new_' + f.__id__.to_s + '][name]' %>
+    </div>
+    <div class="col-sm-5">
+        <%= f.text_field :value, :class => 'form-control', :placeholder => 'Значение', :name => 'product[characters][new_' + f.__id__.to_s + '][value]' %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.hidden_field :_destroy %>
+      <button class="btn btn-sm btn-danger remove_fields" type="button">
+        <i class="icon-trash icon-white"></i>
+        <span>Удалить</span>
+      </button>
+    </div>
+  </div>
+  <br>
+</fieldset>

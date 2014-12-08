@@ -24,7 +24,7 @@ module Bsc
     # config.i18n.default_locale = :de
      config.autoload_paths += %W(#{Rails.root}/lib)
      config.i18n.default_locale = :ru
-
+     #config.force_ssl = true
   end
 
   def register_default_assets

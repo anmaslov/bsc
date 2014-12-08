@@ -90,3 +90,6 @@ gem 'rest-client', '~> 1.7.2'
 gem 'oj'
 
 gem 'simple_form'
+
+gem 'jquery-fileupload-rails'
+gem "thin"

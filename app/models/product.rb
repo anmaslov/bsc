@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
   has_many :documents, :class_name => "Document", dependent: :destroy
   has_many :details, :order => 'position_detail ASC', :class_name => "Detail", :foreign_key => "detail_for_id"
   belongs_to :detail, :class_name => "Detail", :foreign_key => "product_id"
+
   #belongs_to :detail_for, :class_name => "Product", :foreign_key => "detail_for_id"
   #has_many :details, :order => 'title ASC', :class_name => "Product", :foreign_key => "detail_for_id"
   #has_and_belongs_to_many :details, :class_name => "Product", :join_table => "products_details", :association_foreign_key => "detail_id"
@@ -17,6 +18,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :catalog
   belongs_to :supplier
+  belongs_to :brand
 
   has_attached_file :image, styles: {:medium => "300x300#", :thumb => "150x150>", :thumbnail => "50x50>"}
 
@@ -66,6 +68,15 @@ class Product < ActiveRecord::Base
       result = false
     end
     result
+  end
+
+  def potential_brand
+    Brand.all.each do |brand|
+      if title.downcase.include? brand.title.downcase
+        return brand.id
+      end
+    end
+    false
   end
 
   private

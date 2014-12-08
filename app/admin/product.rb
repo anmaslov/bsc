@@ -31,8 +31,8 @@ ActiveAdmin.register Product do
       f.input :catalog, :label => 'Родительский каталог'
       f.input :title, :label => 'Заголовок'
       f.input :content, input_html: {class: "redactor" }
-      f.input :image, as: :file, :label => 'Изображение', :image_preview => true, :hint => f.template.image_tag(f.object.image.url)
-
+      f.input :image, as: :file, :label => 'Изображение', :image_preview => true
+      #f.input :imgs, as: :file, :image_preview => true, :hint => f.template.image_tag(f.object.image.url)
     end
 
     f.inputs 'Торговая информация' do

@@ -1,0 +1,8 @@
+<fieldset>
+  <%#= image_tag imgs.picture.url(:thumb) %>
+  <%= f.file_field :file %>
+  <br>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "Удалить", '#', class: "remove_fields" %>
+  <hr>
+</fieldset>
