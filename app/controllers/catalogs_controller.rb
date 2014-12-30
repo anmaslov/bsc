@@ -1,15 +1,20 @@
 class CatalogsController < ApplicationController
   include CurrentCart
-
-  before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]
-
+  include CurrentCompare
   before_action :set_cart
+  before_action :set_compare
+  #before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]
+
+  load_and_authorize_resource except: :create
+  skip_authorize_resource :only => [:show, :index]
+
   before_action :set_catalog, only: [:show, :edit, :update, :destroy]
   #before_action :breadcrumb_catalog, only: [:show]
   add_breadcrumb "Каталог", Catalog
 
   def index
     @catalogs = Catalog.roots
+    @compare_item = CompareItem.new
     add_breadcrumb "index", @catalogs
   end
 
@@ -39,6 +44,7 @@ class CatalogsController < ApplicationController
       @catalog.keywords += ', ' + catalog_item.title
     end
     @line_item = LineItem.new
+    @compare_item = CompareItem.new
 
     @products =  Product.where(:catalog_id => @catalog.id ).paginate(:page => params[:page], :per_page => 30)
 
@@ -120,7 +126,7 @@ class CatalogsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def catalog_params
-    params.require(:catalog).permit(:title, :description, :keywords, :content, :image_url, :parent_id, :is_active, :old_id, :product_table, :catalog_table)
+    params.require(:catalog).permit(:title, :description, :keywords, :content, :parent_id, :product_table)
   end
 
 end

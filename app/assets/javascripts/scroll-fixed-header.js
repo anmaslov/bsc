@@ -8,13 +8,11 @@ $(document).on('scroll', window, function() {
     var navbarInverse = $('.navbar-inverse');
     var header = $('.header');
 
-
     var feedback = $('.popover.float');
     var feedbackLeft = 0;
     if (typeof (feedback.offset()) != 'undefined' ) {
         feedbackLeft = feedback.offset().left;
     }
-
 
     if (documentScrollTop > 60) {
         navbarInverse.addClass('navbar-fixed-top');

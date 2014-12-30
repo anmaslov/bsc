@@ -1,10 +1,10 @@
-<h1>Listing suppliers</h1>
+<h1>Поставщики</h1>
 
-<table>
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Title</th>
-      <th>Subject</th>
+      <th></th>
       <th>Description</th>
       <th></th>
       <th></th>
@@ -16,7 +16,7 @@
     <% @suppliers.each do |supplier| %>
       <tr>
         <td><%= supplier.title %></td>
-        <td><%= supplier.subject %></td>
+        <td></td>
         <td><%= supplier.description %></td>
         <td><%= link_to 'Show', supplier %></td>
         <td><%= link_to 'Edit', edit_supplier_path(supplier) %></td>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Supplier', new_supplier_path %>
+<%= link_to 'Новый поставщик', new_supplier_path %>

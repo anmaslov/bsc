@@ -4,7 +4,7 @@
 <% @users.each do |u| %>
     <tr>
       <td><%= link_to_if(can?(:read, User), "#{u.id}", user_path(u.id)) {} %></td>
-      <td><%= "#{u.email}" %></td>
+      <td><%= link_to_if(can?(:read, User), "#{u.email}", user_path(u.id)) {} %></td>
       <td><%= "#{u.roles.collect{|r| r.name}}" %></td>
       <td><%= link_to_if(can?(:edit, User), button_tag('Редактировать', :class => 'btn btn-info'), edit_user_path(u.id)) {} %></td>
       <td><%= link_to_if(can?(:delete, u), button_tag('Удалить', :class => 'btn btn-danger'), u, :confirm => "Вы уверены?", :method => :delete) {} %></td>

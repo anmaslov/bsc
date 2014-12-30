@@ -1,0 +1,12 @@
+<tr>
+  <td>
+    <% if compare_item_small.product.image.present? or compare_item_small.product.imgs.size == 0 %>
+        <%= image_tag(compare_item_small.product.image.url(:thumb), :alt => compare_item_small.product.title, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>
+    <% elsif !compare_item_small.product.image.present? and compare_item_small.product.imgs.size > 0 %>
+        <%= image_tag(compare_item_small.product.imgs.first.picture.url(:thumb), :alt => compare_item_small.product.title, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>
+    <% end %>
+  </td>
+  <td>
+    <%= link_to compare_item_small.product.title, compare_item_small.product, :style => 'font-size: 10px;' %>
+  </td>
+</tr>

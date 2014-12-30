@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+
+  include CurrentCart
+  include CurrentCompare
+  before_action :set_cart
+  before_action :set_compare
+
   before_filter :get_user, :only => [:index,:new,:edit]
   before_filter :accessible_roles, :only => [:new, :edit, :show, :update, :create]
   load_and_authorize_resource :only => [:show,:new,:destroy,:edit,:update]
@@ -34,6 +40,14 @@ class UsersController < ApplicationController
   # GET /users/1.json                                     HTML AND AJAX
   #-------------------------------------------------------------------
   def show
+    if params[:end].present? and params[:start].present?
+      @start = Time.at(params[:start].to_f).utc.beginning_of_day
+      @end = Time.at(params[:end].to_f).utc.end_of_day
+      @reports_product = Report.where(user_id: @user.id, type_action: [Report.edit_save, Report.create_save], :created_at => (@start..@end)).where.not(product_id: nil).all
+    else
+      @reports_product = Report.where(user_id: @user.id, type_action: [Report.edit_save, Report.create_save], :created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).where.not(product_id: nil).all
+    end
+    @reports_product_all_time = Report.where(user_id: @user.id, type_action: [Report.edit_save]).where.not(product_id: nil).all
     respond_to do |format|
       format.json { render :json => @user }
       format.xml  { render :xml => @user }
@@ -81,7 +95,7 @@ class UsersController < ApplicationController
   # POST /users.json                                      HTML AND AJAX
   #-----------------------------------------------------------------
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
 
     if @user.save
       respond_to do |format|
@@ -110,7 +124,7 @@ class UsersController < ApplicationController
     end
 
     respond_to do |format|
-      if @user.errors[:base].empty? and @user.update_attributes(params[:user])
+      if @user.errors[:base].empty? and @user.update_attributes(user_params)
         flash[:notice] = "Your account has been updated"
         format.json { render :json => @user.to_json, :status => 200 }
         format.xml  { head :ok }
@@ -138,6 +152,10 @@ class UsersController < ApplicationController
   #----------------------------------------
   def get_user
     @current_user = current_user
+  end
+
+  def user_params
+    params.require(:user).permit(:password, :password_confirmation, :current_password, :role_ids, :encrypted_password, :email)
   end
 
 end

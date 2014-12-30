@@ -33,16 +33,17 @@ class Ability
     if user.role? :super_admin
       can :manage, :all
     elsif user.role? :product_admin
-      can :see_timestamps, :manage, [Product, Asset, User, Role]
-    elsif user.role? :product_team
-      can :see_timestamps, :read, [Product, Asset]
-      # manage products, assets he owns
-      can :see_timestamps, :manage, Product do |product|
-        product.try(:owner) == user
-      end
-      can :see_timestamps, :manage, Asset do |asset|
-        asset.assetable.try(:owner) == user
-      end
+      can :manage, [Product, Catalog, Page]
     end
+    #[Product, Catalog, Page]
+    # elsif user.role? :product_team
+    #   can :see_timestamps, :read, [Product]
+    #   # manage products, assets he owns
+    #   can :see_timestamps, :manage, Product do |product|
+    #     product.try(:owner) == user
+    #   end
+    #   can :see_timestamps, :manage, Asset do |asset|
+    #     asset.assetable.try(:owner) == user
+    #   end
   end
 end

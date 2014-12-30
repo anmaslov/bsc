@@ -1,4 +1,7 @@
 class BrandsController < InheritedResources::Base
+  include CurrentCart
+  before_action :set_cart
+
   before_action :set_brand, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]
 

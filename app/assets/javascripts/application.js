@@ -17,6 +17,9 @@
 //= require redactor-rails/plugins/fontsize
 //= require redactor-rails/plugins/fontfamily
 
+//= require moment
+//= require daterangepicker
+
 //= require_directory .
 //= require_directory ./redactor
 //= require_directory ./redactor-rails

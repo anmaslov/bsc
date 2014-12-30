@@ -1,0 +1,61 @@
+<h1>Список прайсов</h1>
+
+<%= will_paginate @prices %>
+
+<table class="table table-striped table-hover">
+
+  <% i = 1 %>
+  <% @prices.each do |price| %>
+      <tr>
+        <td><%= price.id %></td>
+        <td>
+          <% if price.supplier.present? %>
+            <%= price.supplier.title %>
+          <% end %>
+        </td>
+
+        <td>
+          <% if price.supplier_import_information.present? %>
+            <%= price.supplier_import_information.title %>
+          <% end %>
+        </td>
+
+        <td>
+          <% if price.file.present? %>
+              <%= price.file_file_name %>
+          <% end %>
+        </td>
+
+        <td>
+          <%= localize(price.updated_at.localtime, :format => :long) %>
+        </td>
+
+        <td class="list_actions">
+          <% if can? :manage, price %>
+              <div class="btn-group" role="group" aria-label="...">
+                <%= link_to 'Открыть', price, :class => 'btn btn-default' %>
+                <%= link_to 'Редактировать', edit_price_path(price), :class => 'btn btn-default' %>
+                <%= link_to 'Удалить', price, method: :delete, data: { confirm: 'Вы уверены?' }, :class => 'btn btn-default' %>
+                <% if price.processed %>
+                    <%= link_to 'Обновлен', 'javascript: void(0)', :onclick => 'updatePrice(' + price.id.to_s + ')', :class => 'btn btn-default', :disabled => 'disabled' %>
+                <% else %>
+                    <%= link_to 'Обновить', 'javascript: void(0)', :onclick => 'updatePrice(' + price.id.to_s + ')', :class => 'btn btn-default', :id => 'button_update_price_' + price.id.to_s %>
+                <% end %>
+              </div>
+          <% end %>
+        </td>
+      </tr>
+      <% i = i + 1 %>
+  <% end %>
+
+</table>
+
+
+
+<br>
+
+<%= will_paginate @prices %>
+
+<br>
+
+<%= link_to 'Загрузить новый прайс', new_price_path %>

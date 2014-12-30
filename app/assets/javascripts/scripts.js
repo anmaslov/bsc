@@ -109,6 +109,26 @@ function changeFieldProduct(field, value) {
     });
 }
 
+function search_top(query) {
+    if (query.length > 2) {
+        $.ajax({
+            url: "/products/search",
+            type: "GET",
+            data: {
+                query: query
+            },
+            success: function (data) {
+
+                $('.dropdown.search').addClass('open');
+
+            },
+            error: function (data) {
+                //$('#distance').html('Расстояние не найдено');
+            }
+        });
+    }
+}
+
 function changeFieldCatalog(field, value) {
     field_object = $('#' + field + '_' + value);
     console.log('Изменение каталога ' + value + ' поле ' + field + ' на значение ' + field_object.is(':checked'))

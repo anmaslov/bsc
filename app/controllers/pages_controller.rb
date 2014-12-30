@@ -18,6 +18,10 @@ class PagesController < ApplicationController
 
     #Price.load_price_regual
     #puts 'update info'
+    #ReportMailer.content_manager_for_the_day
+
+    #products = Product.where(:supplier_id => 4).destroy_all
+
 
     render 'shared/404', :status => 404 if @page.nil?
   end

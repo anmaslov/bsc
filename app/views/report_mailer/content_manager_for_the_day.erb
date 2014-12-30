@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<% @users.each do |user| %>
+<h1>Менеджер: <a href="http://osetrov.info/users/<%=user.id%>"><%=user.email%></a></h1>
+
+    <% if user.reports_product.size > 0 %>
+    <table style="border: 1px; width: 100%;">
+
+      <thead>
+        <th>Наименование</th>
+        <th>Действие</th>
+        <th>Время завершения</th>
+        <th>Продолжительность</th>
+      </thead>
+      <tbody>
+      <% user.reports_product.each do |report| %>
+          <tr>
+            <td>
+              <% if report.product.present? %>
+                  <a href="http://osetrov.info/products/<%=report.product.id%>"><%=report.product.title%></a>
+              <% end %>
+            </td>
+            <td>
+              <%= report.type_title %>
+            </td>
+            <td>
+              <%= localize(report.updated_at.localtime, :format => :long) %>
+            </td>
+            <td>
+              <% if report.handling_time.present? %>
+                  <%= Time.at( report.handling_time).utc.strftime("%H:%M:%S") %>
+              <% end %>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+    <hr>
+
+        <h3>Статистика за день:</h3>
+        <p>
+          Количество внесенных изменений: <b><%= user.reports_product.size %></b>
+        </p>
+        <p>
+          Среднее время на одно изменение: <b><%= Time.at(user.reports_product.map(&:handling_time).inject(0, &:+) / user.reports_product.size).utc.strftime("%H:%M:%S") %></b>
+        </p>
+        <p>
+          Затрачено времени на изменения: <b><%= Time.at(user.reports_product.map(&:handling_time).inject(0, &:+)).utc.strftime("%H:%M:%S") %></b>
+        </p>
+
+    <% else %>
+        <p>
+          Информации нет
+        </p>
+    <% end %>
+
+<% end %>
+</body>
+</html>

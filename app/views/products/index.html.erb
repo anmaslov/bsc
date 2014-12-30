@@ -1,11 +1,23 @@
-<h1>Listing products</h1>
-<table>
+<h1>Список продуктов</h1>
 
+<%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+
+<table class="table table-striped table-hover">
+
+  <% i = 1 %>
     <% @products.each do |product| %>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
 
+        <td><%= i %></td>
+
+
+
         <td>
-          <%= image_tag(product.image_url, class:'list_image') %>
+          <% if product.image.present? or product.imgs.size == 0 %>
+            <%= image_tag(product.image.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'max-height: 50px') %>
+          <% elsif product.imgs.size > 0 %>
+              <%= image_tag(product.imgs.first.picture.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'max-height: 50px') %>
+          <% end %>
         </td>
 
         <td class="list_description">
@@ -17,15 +29,61 @@
           </dl>
         </td>
 
-        <td class="list_actions">
-          <%= link_to 'Show', product %> <br>
-          <%= link_to 'Edit', edit_product_path(product) %> <br>
-          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td>
+          <%= localize(product.updated_at.localtime, :format => :long) %>
         </td>
+
+        <% if product.reports.present? %>
+            <td>
+              <%= product.reports.last.user.email %>
+            </td>
+            <td>
+              <% if product.reports.last.handling_time.present? %>
+                  <%= Time.at( product.reports.last.handling_time).utc.strftime("%H:%M:%S") %>
+              <% end %>
+            </td>
+        <% else %>
+            <td></td><td></td>
+        <% end %>
+        <td>
+          <span class="price" style="white-space: nowrap"><%= number_to_currency(product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+        </td>
+        <td class="list_actions">
+          <% if can? :manage, product %>
+          <div class="btn-group" role="group" aria-label="...">
+            <%= link_to 'Открыть', product, :class => 'btn btn-default' %>
+            <%= link_to 'Редактировать', edit_product_path(product), :class => 'btn btn-default' %>
+            <%#= link_to 'Удалить', product, method: :delete, data: { confirm: 'Вы уверены?' }, :class => 'btn btn-default' %>
+          </div>
+          <% end %>
+
+        </td>
+
+        <td>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" <% if product.is_active_boolean %> checked <% end %> id="is_active_<%= product.id %>" onchange="changeFieldProduct('is_active', <%= product.id %>);"> Акт
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" <% if product.market_yandex_boolean %> checked <% end %> id="market_yandex_<%= product.id %>" onchange="changeFieldProduct('market_yandex', <%= product.id %>);"> Янд.Марк
+            </label>
+          </div>
+        </td>
+
       </tr>
+      <% i = i + 1 %>
     <% end %>
 
 </table>
+
+
+
+<br>
+
+<%= will_paginate @products, renderer: BootstrapPagination::Rails %>
 
 <br>
 

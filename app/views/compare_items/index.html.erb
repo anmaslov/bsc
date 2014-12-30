@@ -1,0 +1,29 @@
+<h1>Listing compare_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Cart</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @compare_items.each do |compare_item| %>
+      <tr>
+        <td><%= compare_item.product %></td>
+        <td><%= compare_item.cart %></td>
+        <td><%= link_to 'Show', compare_item %></td>
+        <td><%= link_to 'Edit', edit_compare_item_path(compare_item) %></td>
+        <td><%= link_to 'Destroy', compare_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Compare item', new_compare_item_path %>

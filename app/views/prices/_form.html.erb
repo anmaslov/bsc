@@ -1,0 +1,44 @@
+<%= simple_form_for(@price, :html => {:class => 'form-horizontal', :multipart => :true}) do |f| %>
+    <% if @price.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@price.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+          <ul>
+            <% @product.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label 'Файл', :class => 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= @price.file.url %> <br>
+        <%= f.file_field :file %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Поставщик', :class => 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.association :supplier, collection: Supplier.order('title ASC'), :label => false %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label 'Информация по импорту', :class => 'col-sm-2 control-label' %>
+      <div class="col-sm-10">
+        <%= f.association :supplier_import_information, collection: SupplierImportInformation.order('title ASC'), :label => false %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-2">
+      </div>
+      <div class="actions col-sm-10">
+        <%= f.submit :class => 'btn btn-info btn-block' %>
+      </div>
+    </div>
+
+<% end %>

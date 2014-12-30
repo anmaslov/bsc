@@ -28,7 +28,7 @@
         </tbody>
       </table>
 
-  <div id="total_bascet" class="right">Итого: <span><%= cart.total_price %> <span class="ruble">a</span></span></div>
+  <div id="total_bascet" class="right">Итого: <span class="price"><%= number_to_currency(cart.total_price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span></div>
 
 </div>
 <div class="modal-footer">
@@ -45,3 +45,9 @@
   <button type="button" class="btn btn-primary" onclick="$('.checkout').click();">Оформить заказ</button>
 
 </div>
+
+<script>
+    if ($('#cart tr').length == 1) {
+        $('#cart').show();
+    }
+</script>

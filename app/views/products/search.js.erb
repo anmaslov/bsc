@@ -1,0 +1,11 @@
+$('#hidden_search_top_result').html("<%= escape_javascript render(@products) %>");
+
+$('#search_top_result').html("<%= escape_javascript render :partial => 'products/search', :collection => @products %>");
+
+$('.total-found').html("<%= escape_javascript link_to "Всего найдено " + @total_found.to_s + " позиций", search_product_url(:query => @query.delete('\"')) %>");
+
+<% if @total_found > 4 %>
+    $('.total-found').removeClass('hidden');
+<% else %>
+    $('.total-found').addClass('hidden');
+<% end %>

@@ -1,0 +1,10 @@
+<% if compare_small.compare_items.size > 1 %>
+    <b><%= link_to 'Сравнить', compares_url %></b> <br><br>
+<% end %>
+<table class="table table-striped table-hover">
+    <%= render :partial => 'compare_items/compare_item_small', :collection => compare_small.compare_items %>
+</table>
+
+<script>
+    changeCountCompare(<%= compare_small.compare_items.size %>);
+</script>

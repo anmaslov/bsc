@@ -1,5 +1,5 @@
-<li
-<% if (user_signed_in? && current_user.admin?) || catalog.is_active %>
+<% if (user_signed_in? && (can? :update, catalog)) or (catalog.is_active and catalog.count_active_products > 0) %>
+    <li
     class="
     <% if @catalog && @catalog.id == catalog.id %>
         selected

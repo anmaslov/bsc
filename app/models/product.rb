@@ -1,6 +1,8 @@
 # encoding: utf-8
 class Product < ActiveRecord::Base
   has_many :line_items
+  has_many :compare_items
+
   has_many :orders, through: :line_items
   has_many :imgs, :class_name => "ProductImg", dependent: :destroy
   has_many :characters, :class_name => "Character", dependent: :destroy
@@ -8,6 +10,8 @@ class Product < ActiveRecord::Base
   has_many :documents, :class_name => "Document", dependent: :destroy
   has_many :details, :order => 'position_detail ASC', :class_name => "Detail", :foreign_key => "detail_for_id"
   belongs_to :detail, :class_name => "Detail", :foreign_key => "product_id"
+
+  has_many :reports
 
   #belongs_to :detail_for, :class_name => "Product", :foreign_key => "detail_for_id"
   #has_many :details, :order => 'title ASC', :class_name => "Product", :foreign_key => "detail_for_id"
@@ -23,6 +27,7 @@ class Product < ActiveRecord::Base
   has_attached_file :image, styles: {:medium => "300x300#", :thumb => "150x150>", :thumbnail => "50x50>"}
 
   before_destroy :ensure_not_referenced_by_any_line_item
+  before_destroy :ensure_not_referenced_by_any_compare_item
 
   validates :title, presence: true #поля заполнены
   validates :price, numericality: {greater_than_or_equal_to: 0.01} #поле больше либо равно 0.01
@@ -72,11 +77,20 @@ class Product < ActiveRecord::Base
 
   def potential_brand
     Brand.all.each do |brand|
-      if title.downcase.include? brand.title.downcase
+      if title != nil and title.downcase.include? brand.title.downcase
         return brand.id
       end
     end
     false
+  end
+
+  def value_character_by_name name
+    character = Character.where(:product_id => self.id, :name => name).first
+    if character.present?
+      character.value
+    else
+      "<span style='color:#ccc'>&mdash;</span>"
+    end
   end
 
   private
@@ -84,13 +98,20 @@ class Product < ActiveRecord::Base
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
   def ensure_not_referenced_by_any_line_item
     if line_items.empty?
-      return true
+      true
     else
       errors.add(:base, 'существуют товарные позиции')
-      return false
+      false
     end
   end
 
-
+  def ensure_not_referenced_by_any_compare_item
+    if compare_items.empty?
+      true
+    else
+      errors.add(:base, 'существуют товарные позиции')
+      false
+    end
+  end
 
 end

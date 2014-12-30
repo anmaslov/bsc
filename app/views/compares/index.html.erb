@@ -1,0 +1,87 @@
+<h1>Сравнения</h1>
+<div style="width: 100%;">
+<div style="width: <%=@compare.products.size * 250%>px; min-height: 1000px;">
+<table class="table table-striped table-hover" id="compares" style="width: auto; max-width: <%=@compare.products.size * 250%>px !important;">
+<thead style="background: #ffffff">
+<tr>
+  <th width="300px;padding-top: 40px;" style="vertical-align: bottom; padding: 30px; text-align: center;" class="fixed">
+    <a href="javascript: void (0);" style="text-decoration: none !important;">
+      <span class="dotted" onclick="identical(this)">Скрыть одинаковые параметры</span>
+    </a>
+  </th>
+  <% @compare.products.each do |product| %>
+      <th style="vertical-align: top; width: 250px;padding-top: 40px;" class="compare-item-<%=product.id%> ">
+
+        <div style="height: 100px; width: 100%; text-align: center; position: relative" class="compare-item-head">
+
+          <button class="close" onclick="destroyItemCompare(<%=product.id%>)">×</button>
+
+        <% if product.image.present? or product.imgs.size == 0 %>
+            <%= image_tag(product.image.url(:thumb), :alt => product.title,
+                          :class => 'product_img', :style => 'max-height: 100px; max-width: 100px; position: relative;') %>
+        <% elsif !product.image.present? and product.imgs.size > 0 %>
+            <%= image_tag(product.imgs.first.picture.url(:thumb),
+                          :alt => product.title, :class => 'product_img', :style => 'max-height: 100px; max-width: 100px; position: relative;') %>
+        <% end %>
+        </div>
+        <div class="clearfix"></div>
+        <div style="height: 100px;" class="compare-item-head-title">
+        <%= link_to product.title, product %>
+        </div>
+
+        <div class="caption">
+          <hr>
+            <span class="price">
+              <%= number_to_currency(product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%>
+              <span class="ruble">a</span>
+            </span>
+            <div class="clearfix"></div>
+              <button type="button" class="btn btn-success buy" data-toggle="modal" data-target="#addToBascet"
+                      onclick="showAddToBascet('<%= product.id %>');" style="width: 100%;"
+              >Купить</button>
+
+        </div>
+      </th>
+  <% end %>
+</tr>
+</thead>
+<% i = 0 %>
+<% @characters.each do |character| %>
+<tr class="character-item-<%=i%> identical">
+  <td width="300px" class="fixed">
+    <%=character%>
+  </td>
+  <% j = 0 %>
+  <% @compare.products.each do |product| %>
+      <td width="250px" class="compare-item-<%=product.id%>">
+        <%= raw product.value_character_by_name character %>
+      </td>
+      <% if (product.value_character_by_name character) != (@compare.products.first.value_character_by_name character) and (j != 0) %>
+        <script>
+          $('.character-item-<%=i%>').removeClass('identical');
+        </script>
+      <% end %>
+      <% j = j + 1 %>
+  <% end %>
+</tr>
+    <% i = i + 1 %>
+<% end %>
+</table>
+</div>
+<div class="hidden">
+
+  <% @compare.products.each do |product| %>
+    <%= render product %>
+  <% end %>
+
+  <% @compare.compare_items.each do |compare| %>
+      <%= button_to 'Delete Compare Item', compare, :method => :delete, :remote=>true, :confirm => 'Вы уверены?', :class => 'hidden button_destroy_' + compare.product.id.to_s %>
+<% end %>
+
+</div>
+</div>
+<script>
+  $('.container.content').removeClass('container').attr({style: 'padding: 0 25px;'});
+  $('#compares').stickyTableHeaders();
+
+</script>

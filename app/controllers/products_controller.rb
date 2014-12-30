@@ -1,16 +1,20 @@
 class ProductsController < ApplicationController
   include CurrentCart
+  include CurrentCompare
   before_action :set_cart
+  before_action :set_compare
 
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]
+
+  load_and_authorize_resource except: :create
+  skip_authorize_resource :only => [:show, :search]
 
   # before_filter :load_attachable
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.where('id NOT IN (SELECT DISTINCT(product_id) FROM details) AND price > 1500 AND supplier_id <> 2').order(:updated_at).paginate(:page => params[:page], :per_page => 30)
   end
 
   # GET /products/1
@@ -27,17 +31,31 @@ class ProductsController < ApplicationController
     end
 
     @line_item = LineItem.new
-
+    @compare_item = CompareItem.new
   end
 
   # GET /products/new
   def new
     @product = Product.new
+
+    report = Report.new
+    report.user = current_user
+    report.product = @product
+    report.type_action = Report.create_open
+    report.save
+
   end
 
   # GET /products/1/edit
   def edit
     #@product = @attachable.Product.find(params[:id])
+
+    report = Report.new
+    report.user = current_user
+    report.product = @product
+    report.type_action = Report.edit_open
+    report.save
+
     @characters = @product.characters
   end
 
@@ -48,6 +66,13 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
+
+        report = Report.new
+        report.user = current_user
+        report.product = @product
+        report.type_action = Report.create_save
+        report.save
+
         format.html { redirect_to edit_product_path @product, scrollto: 'imgs' }
         format.json { render action: 'show', status: :created, location: @product }
       else
@@ -60,26 +85,23 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
-    #@img = @attachable.imgs.find(params[:id])
-
-    # product = Product.find(params[:id])
-    # product.imgs.delete_all
-    # category_programs = params[:program][:category_program_ids]
-    # category_programs.shift
-    # category_programs.each do |s|
-    #   product.imgs << ProductImg.find(s.to_i)
-    # end
     characters_params = params[:product][:characters]
     if !characters_params.nil?
       characters_params.each do |key, characters_param|
         if characters_param.is_a?(Hash)
           if characters_param[:name].to_s.size > 0 and characters_param[:value].to_s.size > 0
             if key.include? 'new'
-              character = Character.new
-              character.name = characters_param[:name]
-              character.value = characters_param[:value]
-              character.product_id = @product.id
-              character.save
+              i = 0
+              characters_param[:name].each do |key|
+                character = Character.new
+                character.name = characters_param[:name][i]
+                character.value = characters_param[:value][i]
+                character.product_id = @product.id
+                if character.name.to_s.size > 0 and character.value.to_s.size > 0
+                  character.save
+                end
+                i = i + 1
+              end
             elsif key.to_i > 0
               character = Character.find(key.to_i)
               character.name = characters_param[:name]
@@ -119,6 +141,13 @@ class ProductsController < ApplicationController
     params[:product][:brand_id] = brand.id
     respond_to do |format|
       if @product.update(product_params)
+
+        report = Report.new
+        report.user = current_user
+        report.product = @product
+        report.type_action = Report.edit_save
+        report.save
+
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
@@ -132,6 +161,12 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     # @product = @attachable.assets.find(params[:id])
+
+    report = Report.new
+    report.user = current_user
+    report.product = @product
+    report.type_action = Report.delete
+    report.save
 
     @product.destroy
     respond_to do |format|
@@ -172,6 +207,19 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    @query = params[:query].split(/'([^']+)'|"([^"]+)"|\s+|\+/).reject{|x| x.empty?}.map{|x| x.inspect }*' && '
+    @products = ThinkingSphinx.search @query, :classes => [Product], :conditions => {:is_active => 1}, :limit => 5
+    @total_found = @products .total_entries
+    @line_item = LineItem.new
+    @compare_item = CompareItem.new
+    @query = params[:query]
+    #@artists.run
+    respond_to do |format|
+      format.js #search.js.erb
+    end
+  end
+
   # def load_attachable
   #   resource, id = request.path.split('/')[1, 2]
   #   @attachable  = resource.singularize.classify.constantize.find(id)
@@ -185,6 +233,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :article, :description, :image_url, :price, :catalog_id, :is_active, :image, :imgs, :characters, :brand_id)
+      params.require(:product).permit(:title, :article, :description, :image_url, :price, :catalog_id, :is_active, :image, :_destroy, :value, :imgs, :characters, :brand_id, :content, :reports)
     end
 end

@@ -28,6 +28,9 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
+
 gem 'russian', '~> 0.6.0'
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
@@ -82,6 +85,7 @@ gem 'spreadsheet', '~> 1.0.0'
 gem 'roo'
 
 gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 
 gem 'nokogiri', '~> 1.6.3.1'
 
@@ -93,3 +97,8 @@ gem 'simple_form'
 
 gem 'jquery-fileupload-rails'
 gem "thin"
+gem "rolify"
+
+gem 'thinking-sphinx', '~> 3.1.0'
+
+#gem 'chronic'

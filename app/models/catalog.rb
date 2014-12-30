@@ -22,10 +22,18 @@ class Catalog < ActiveRecord::Base
       return image
     end
 
-    product.each do |product|
-      if product.image.present?
+    product.limit(100).each do |product|
+
+      if product.image.exists?
         return product.image
       end
+
+      if product.imgs.size > 0
+        if product.imgs.first.picture.present?
+          return product.imgs.first.picture
+        end
+      end
+
     end
 
     children.each do |child|
@@ -34,6 +42,18 @@ class Catalog < ActiveRecord::Base
       end
     end
     image
+  end
+
+  def count_active_products
+    count = product.where(:is_active => true).size
+
+    children.each do |child|
+      if child.present?
+        count = count + child.count_active_products
+      end
+    end
+
+    count
   end
 
   def self.roots

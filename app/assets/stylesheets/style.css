@@ -473,6 +473,10 @@ tr.not-active {
     padding: 5px;
 }
 
+.price {
+    white-space: nowrap;
+}
+
 .ruble {
     font-family: 'Ruble';
 }
@@ -504,7 +508,7 @@ tr.not-active {
     line-height: 150px;
     display: block;
     position: relative;
-    margin: 0 auto;
+    margin: 15px auto;
 
     text-align: center;
     width: 150px;
@@ -677,7 +681,7 @@ tr.not-active {
 
 .thumbnail.product {
     min-height: 325px;
-    max-height: 340px;
+    max-height: 365px;
 }
 
 .thumbnail.product .product_title {
@@ -717,7 +721,13 @@ tr.not-active {
     width: 285px;
     float: left;
     padding: 0 10px;
-    height: 350px;
+    height: 375px;
+}
+
+.column_catalog {
+    width: 285px;
+    float: left;
+    padding: 0 10px;
 }
 
 .carousel-bounding-box {

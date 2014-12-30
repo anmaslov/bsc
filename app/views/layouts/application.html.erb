@@ -56,12 +56,37 @@
           </div>
           <!-- Поиск -->
           <div class="col-xs-4 .col-sm-1 col-md-4">
-            <div class="search">
-                              <span class="input-group-btn">
-                                <div class="glyphicon glyphicon-search" type="button"></div>
-                              </span>
-              <input type="text" class="form-control">
-            </div><!-- /input-group -->
+
+
+
+            <div class="dropdown search">
+              <span class="input-group-btn">
+                <div class="glyphicon glyphicon-search" type="button"></div>
+              </span>
+              <input type="text" class="form-control" onkeyup="search_top(this.value)" value="<% if @query.present? %><%= @query.delete('\"') %><% end %>">
+
+              <div class="panel panel-default dropdown-menu" aria-labelledby="dropdownMenu1" style="width: 100%">
+                <!-- Table -->
+                <table class="table table-striped table-hover">
+                  <tbody id="search_top_result">
+                  <tr>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                  </tr>
+                  </tbody>
+                </table>
+                    <b class="total-found hidden" style="padding-left: 25px;">Найдено: </b>
+                <div id="hidden_search_top_result" class="hidden"></div>
+
+              </div>
+
+            </div>
+
           </div>
           <!-- Контакты -->
           <div class="col-xs-5 .col-sm-7 col-md-5">
@@ -100,8 +125,16 @@
 
             <a class="navbar-brand right notdecoration" data-toggle="modal" data-target="#bascet">
                                 <span class="dotted cart-link-menu">Корзина</span>
-              <span class="label label-success count-cart">12</span>
+              <span class="label label-success count-cart"></span>
             </a>
+
+            <a type="button" id="button_compare_list" class="navbar-brand right notdecoration" data-container="body" data-toggle="popover"
+               data-placement="bottom" data-content='<div id="compare-list"><%= render :partial => 'compares/compare_small', :object => @compare %></div>'>
+                <span class="dotted compare-link-menu">Сравнения</span>
+                <span class="label label-success count-compare"></span>
+            </a>
+            <%#= render :partial => 'compares/comparesmall', :collection => @compare %>
+
 
             <a id="login_link" class="navbar-brand right popover-top-link notdecoration" data-toggle="modal" data-target="#profileModal" >
                                 <span class="dotted">
@@ -240,15 +273,23 @@
   <div class="modal fade bs-example-modal-lgbs-example-modal-lg" id="bascet" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <% if @cart %>
+        <% if @cart.present? %>
             <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
                 <%=render @cart %>
-        <% end %><% end %>
+            <% end %>
+        <% end %>
 
-      <!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-</div>
+        <!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+  </div>
+
+    <% if @compare.present? %>
+            <script>
+              changeCountCompare(<%= @compare.compare_items.size %>);
+            </script>
+    <% end %>
+
 
   <div id="addToBascet" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
@@ -261,7 +302,7 @@
 
           <div class="thumbnail">
             <div class="cart-img">
-
+              <%= image_tag('#', :alt => '', :class => 'modal-product-image') %>
             </div>
             <div class="caption">
               <a href="#" class="modal-product-title">Бензопила HUSQVARNA 460-15</a>
@@ -306,6 +347,34 @@
           });
       });
   </script>
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function (d, w, c) {
+          (w[c] = w[c] || []).push(function() {
+              try {
+                  w.yaCounter27412127 = new Ya.Metrika({id:27412127,
+                      webvisor:true,
+                      clickmap:true,
+                      trackLinks:true,
+                      accurateTrackBounce:true});
+              } catch(e) { }
+          });
+
+          var n = d.getElementsByTagName("script")[0],
+                  s = d.createElement("script"),
+                  f = function () { n.parentNode.insertBefore(s, n); };
+          s.type = "text/javascript";
+          s.async = true;
+          s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+          if (w.opera == "[object Opera]") {
+              d.addEventListener("DOMContentLoaded", f, false);
+          } else { f(); }
+      })(document, window, "yandex_metrika_callbacks");
+  </script>
+  <noscript><div><img src="//mc.yandex.ru/watch/27412127" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 
   <%= render :template => "layouts/view-toggle" %>
 

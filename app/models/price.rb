@@ -1,4 +1,15 @@
+# encoding: utf-8
 class Price < ActiveRecord::Base
+
+  belongs_to :supplier
+  belongs_to :supplier_import_information
+
+  has_attached_file :file
+  validates_attachment_content_type :file, :content_type => ["application/pdf","application/vnd.ms-excel",
+                                                               "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                                                               "application/msword",
+                                                               "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                                                               "text/plain"]
 
   def Price.load_price_regual
     #mails = Email.find(:all, :conditions => ["processing = :processing AND processed = :processed", {:processing => true, :processed => false}], :order => "created_at DESC")
@@ -17,13 +28,12 @@ class Price < ActiveRecord::Base
       mail.attributes = {:processed => true}
       mail.save!
     end
-
-    hui = 'pizda'
-    pizda = 'hui'
   end
 
   def self.import(file, import_information)
 
+    file = file.split("?").first.to_s.encode("utf-8")
+     #file.split("?").first.encoding
     spreadsheet = Roo::Excel.new(file) #open_spreadsheet(file)
     header = spreadsheet.row(1)
     (import_information.first_row..spreadsheet.last_row).each do |i|
@@ -31,22 +41,81 @@ class Price < ActiveRecord::Base
       row = spreadsheet.row(i)
 
       supplier_id = import_information.supplier_id.to_i
-      article  = row[import_information.article_column - 1].to_s + '-' + import_information.supplier_id.to_s
+      if row[import_information.article_column - 1].to_s !~ /^\s*[+-]?((\d+_?)*\d+(\.(\d+_?)*\d+)?|\.(\d+_?)*\d+)(\s*|([eE][+-]?(\d+_?)*\d+)\s*)$/ or import_information.supplier_id == 1
+        article  = row[import_information.article_column - 1].to_s + '-' + import_information.supplier_id.to_s
+      else
+        article  = row[import_information.article_column - 1].round(0).to_s + '-' + import_information.supplier_id.to_s
+      end
+
+      product_id = nil
+      if import_information.product_id.present?
+
+        if row[import_information.product_id - 1].to_s !~ /^\s*[+-]?((\d+_?)*\d+(\.(\d+_?)*\d+)?|\.(\d+_?)*\d+)(\s*|([eE][+-]?(\d+_?)*\d+)\s*)$/ or import_information.supplier_id == 1
+          article_parent  = row[import_information.product_id - 1].to_s + '-' + import_information.supplier_id.to_s
+        else
+          article_parent  = row[import_information.product_id - 1].round(0).to_s + '-' + import_information.supplier_id.to_s
+        end
+
+        parent_product = Product.find_by_article(article_parent)
+        if parent_product.present?
+          product_id = parent_product.id
+        end
+      end
+
+      # characters = row[import_information.characters - 1].to_s
+      # characters_title = row[import_information.characters - 1].to_s
+
+      if import_information.characters.present? and import_information.characters_title.present?
+        characters = import_information.characters.split(", ")
+        characters_title = import_information.characters_title.split("~~")
+      end
+
       title    = row[import_information.title_column - 1].to_s
-      quantity = row[import_information.quantity_column - 1].to_s.size
-      price    = row[import_information.price_column - 1].to_f * (import_information.margin.to_f / 100)
+      quantity = nil
+      if import_information.quantity_column.present?
+        quantity = row[import_information.quantity_column - 1].to_s.size
+      end
+      price    = row[import_information.price_column - 1].to_f
+      if import_information.margin.present?
+        price    = price + price * (import_information.margin.to_f / 100)
+      end
+      bar_code = row[import_information.bar_code - 1].to_s
+      unit     = row[import_information.unit - 1].to_s
 
       if title.size > 0 and price > 0
         product = Product.find_by_article(article)
 
         if product.nil?
           product = Product.new
-          product.attributes = {:title => title, :article => article, :price => price, :quantity => quantity, :supplier_id => supplier_id, :catalog_id => $GC_ID, :is_active => false}
+          product.attributes = {:title => title, :article => article, :price => price, :quantity => quantity,
+                                :supplier_id => supplier_id, :catalog_id => $GC_ID + import_information.supplier_id, :is_active => false,
+                                :product_id => product_id, :bar_code => bar_code, :unit => unit
+          }
         else
           product.attributes = {:price => price, :quantity => quantity}
         end
 
         product.save!
+
+        if characters.present? and characters_title.present?
+          i = 0
+          characters_title.each do |name|
+
+            value = row[characters[i].to_i - 1].to_s
+
+            character = Character.where(:product_id => product.id, :name => name).first
+            if character.present?
+              character.attributes = {:value => value}
+            else
+              character = Character.new
+              character.attributes = {:value => value, :name => name, :product_id => product.id}
+            end
+
+            character.save
+            i = i + 1
+          end
+        end
+
       end
 
       #row = Hash[[header, spreadsheet.row(i)].transpose]
@@ -54,6 +123,15 @@ class Price < ActiveRecord::Base
       #product.attributes = row.to_hash.slice(*accessible_attributes)
       #product.save!
     end
+    true
+  end
+
+  def import
+    if Price.import self.file.path, self.supplier_import_information
+      self.processed = true
+      return true
+    end
+    false
   end
 
   def Price.update_info_arrow

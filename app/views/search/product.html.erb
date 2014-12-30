@@ -1,0 +1,27 @@
+<h1>Результат поиска по запросу <%=@query%></h1>
+
+<%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+<div class="clear" style="height: 10px"></div>
+
+<div class="row product-th-large">
+  <table class="table table-striped table-product">
+    <thead>
+    <tr class="tr product hidden">
+      <% if can? :update, @products %>
+          <th></th>
+      <% end %>
+      <th></th>
+      <th>Артикул</th>
+      <th>Наименование</th>
+      <th>Цена</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= render(@products) %>
+
+    </tbody>
+  </table>
+</div>
+
+<%= will_paginate @products, renderer: BootstrapPagination::Rails %>

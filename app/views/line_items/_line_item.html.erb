@@ -6,7 +6,12 @@
 <% end %>
   <td>
 
-        <%= image_tag(line_item.product.image.url(:thumbnail), :alt => line_item.product.title, :style => 'max-height: 50px') %>
+    <% if line_item.product.image.present? or line_item.product.imgs.size == 0 %>
+        <%= image_tag(line_item.product.image.url(:thumb), :alt => line_item.product.title, :style => 'max-height: 50px') %>
+    <% elsif !line_item.product.image.present? and line_item.product.imgs.size > 0 %>
+        <%= image_tag(line_item.product.imgs.first.picture.url(:thumb), :alt => line_item.product.title, :style => 'max-height: 50px') %>
+    <% end %>
+
 
 
     <%= form_for(line_item, :url => {:controller => 'line_items', :action => 'update', id: line_item}, :remote=>true, :html => {:class => 'hidden form_edit_' + line_item.product.article}) do |f| %>
@@ -18,8 +23,12 @@
   <td><%= line_item.product.article %></td>
   <td><%= line_item.product.title %></td>
   <td><input class="form-control input-sm" type="text" value="<%= line_item.quantity %>" article="<%= line_item.product.article %>" onchange="changeCountItemCart(this);"></td>
-  <td class="price"><%= line_item.product.price %> <span class="ruble">a</span></td>
-  <td class="price"><%= line_item.total_price %><span class="ruble">a</span></td>
+  <td class="price">
+    <span class="price"><%= number_to_currency(line_item.product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+  </td>
+  <td class="price">
+    <span class="price"><%= number_to_currency(line_item.total_price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+  </td>
   <td>
     <a article="<%= line_item.product.article %>" onclick="destroyItemCart(this);"><span class="glyphicon glyphicon-remove"></span></a>
     <%= button_to 'Delete Line Item', line_item, :method => :delete, :remote=>true, :confirm => 'Вы уверены?', :class => 'hidden button_destroy_' + line_item.product.article %>

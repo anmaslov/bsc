@@ -3,14 +3,15 @@
  */
 
 function addToBascet (id) {
+    console.log('addtoBascet ' + id);
     message('success', 'Товар добавлен в корзину');
     $('#addToBascet .close').click();
 
     article = article.replace('арт. ', '');
-
+    console.log(article);
     var quantity = $('.model-product-quantity').val();
-    $('.quantity_' + article).val(quantity);
-    $('.form_' + article).submit();
+    $('.quantity_product_id_' + product_id).val(quantity);
+    $('.form_product_id_' + product_id).submit();
 }
 
 $('#orders a').click(function (e) {
@@ -19,17 +20,19 @@ $('#orders a').click(function (e) {
 });
 
 var article = '';
+var product_id = 0;
 function showAddToBascet(product) {
-
+    console.log(product);
     clearFormAddToBascet();
-    var productObj = $('#product_' + product);
+    var productObj = $('.product_id_' + product);
     var img_src =        productObj.find('.product_img').attr('src');
     var img_alt =        productObj.find('.product_img').attr('alt');
     var title =          productObj.find('.product_title').html();
     var product_href =   productObj.find('.product_title').attr('href');
     article =            productObj.find('.product_article').html();
+    product_id =         product;
     var price =          productObj.find('.price').html();
-
+    console.log(img_src);
     $('.modal-product-image').attr({src: img_src, alt: img_alt});
     $('.modal-product-title').html(title).attr({href: product_href});
     $('.modal-product-article').html(article);

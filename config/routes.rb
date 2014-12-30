@@ -1,5 +1,16 @@
 Bsc::Application.routes.draw do
+  get "search/product"
+  resources :compare_items
+
+  resources :compares
+
   resources :brands
+
+  resources :prices do
+    collection do
+      get :update_price
+    end
+  end
 
   resources :supplier_import_informations
 
@@ -43,7 +54,9 @@ Bsc::Application.routes.draw do
   get "store/index"
   resources :products do
     resources :imgs
+    resources :reports
     resources :brands
+    get :search, on: :collection
     get :who_bought, on: :member
     get :change_ajax, on: :collection
   end

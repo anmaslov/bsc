@@ -1,11 +1,11 @@
 class ReceiverPriceNotifier < ActionMailer::Base
-  default from: "receiver.price@bsc-ltd.ru"
+  default from: "receiver.price2@bsc-ltd.ru"
 
   def receive_regual
     Mail.defaults do
       retriever_method :imap, { :address             => "mail.bsc-ltd.ru",
                                 :port                => 143,
-                                :user_name           => 'receiver.price@bsc-ltd.ru',
+                                :user_name           => 'receiver.price2@bsc-ltd.ru',
                                 :password            => 'KqOYM86o',
                                 :enable_ssl          => false }
     end
@@ -34,7 +34,7 @@ class ReceiverPriceNotifier < ActionMailer::Base
 
             if /text\/plain/.match content_type
               body += p.body.decoded.force_encoding(p.charset).encode("UTF-8")
-            elsif /application\/octet-stream/.match content_type
+            elsif /application\/octet-stream/.match content_type or /multipart\/mixed/.match content_type
               content_type_parameters = p.content_type_parameters
 
               filename = content_type_parameters['name'].to_s
@@ -49,7 +49,7 @@ class ReceiverPriceNotifier < ActionMailer::Base
               attach.push($ROOT_PATH + "tmp/imap/#{message_id}/#{filename}")
 
               attachments.push(attach)
-            elsif /application\/vnd.ms-office/.match content_type
+            elsif /application\/vnd.ms-office/.match content_type or /application\/x-excel/.match content_type
               content_type_parameters = p.content_type_parameters
               filename = content_type_parameters['name'].to_s
               office_attach += p.body.decoded
@@ -92,7 +92,17 @@ class ReceiverPriceNotifier < ActionMailer::Base
           supplier = nil
 
           suppliers.each do |supplier_item|
-            if ((supplier_item.email_address.to_s.downcase == from.to_s.downcase) or ((subject.to_s.mb_chars.downcase.index(supplier_item.subject.to_s.mb_chars.downcase).to_i > 0) and (/bsc\.co\.ltd\@yandex\.ru/.match from.to_s.downcase))) and (attach.size > 0)
+
+            # hui = !subject.to_s.mb_chars.downcase.index(supplier_item.subject.to_s.mb_chars.downcase).nil?
+            # huz = (supplier_item.email_address.to_s.downcase == from.to_s.downcase)
+            # bl9 = (/bsc\.co\.ltd\@yandex\.ru/.match from.to_s.downcase or
+            #     /pavel\.osetrov\@me\.com/.match from.to_s.downcase or /pavel\.osetrov\@icloud\.com/.match from.to_s.downcase)
+            # suk = attach.size
+
+            if ((supplier_item.email_address.to_s.downcase == from.to_s.downcase) or
+                ((!subject.to_s.mb_chars.downcase.index(supplier_item.subject.to_s.mb_chars.downcase).nil?) and (/bsc\.co\.ltd\@yandex\.ru/.match from.to_s.downcase or
+                    /pavel\.osetrov\@me\.com/.match from.to_s.downcase or /paulos\@mail\.ru/.match from.to_s.downcase or
+                    /pavel\.osetrov\@icloud\.com/.match from.to_s.downcase))) and (attach.size > 0)
               processing = true
               supplier = supplier_item
             end
