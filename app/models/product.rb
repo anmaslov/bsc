@@ -84,12 +84,48 @@ class Product < ActiveRecord::Base
     false
   end
 
+  def isset_value_character_by_name name
+    isset_value = Rails.cache.fetch(self.id.to_s + '_isset_value_' + name, expires_in: 24.hours) do
+      character_type = CharecterType.where(:name => name).first
+      if character_type.present?
+        character = Character.where(:product_id => self.id, :charecter_type_id => character_type.id).first
+        if character.present?
+          true
+        else
+          false
+        end
+      else
+        false
+      end
+    end
+    isset_value
+  end
+
   def value_character_by_name name
-    character = Character.where(:product_id => self.id, :name => name).first
-    if character.present?
-      character.value
-    else
-      "<span style='color:#ccc'>&mdash;</span>"
+    value = Rails.cache.fetch(self.id.to_s + '_value_' + name, expires_in: 24.hours) do
+      character_type = CharecterType.where(:name => name).first
+      if character_type.present?
+        character = Character.where(:product_id => self.id, :charecter_type_id => character_type.id).first
+        if character.present?
+          value = character.value
+        else
+          value = "<span style='color:#ccc'>&mdash;</span>"
+        end
+      else
+        value = "<span style='color:#ccc'>&mdash;</span>"
+      end
+    end
+    value
+  end
+
+  def self.re_cache
+    CharecterType.all.each do |character|
+      product_ids = Character.where(charecter_type_id: character.id).map(&:product_id).uniq#: Character.all.map(&:name).uniq).
+      #.where(name: Character.all.map(&:name).uniq).
+      Product.where(:is_active => true, :id => product_ids).each do |product|
+        product.isset_value_character_by_name character.name
+        product.value_character_by_name character.name
+      end
     end
   end
 

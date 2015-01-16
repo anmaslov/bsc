@@ -1,0 +1,127 @@
+<div id="character_filtr_<%=character_filtr.id%>" onchange="console.log('character_filt: <%=character_filtr.id%>')">
+  <%=character_filtr.character_type.name%>:<br>
+
+  <% characters_isset  = [] %>
+  <% characters        = [] %>
+
+  <% @all_products.where(:id => Character.where(charecter_type_id: character_filtr.charecter_type_id).map(&:product_id).uniq).each do |product_character| %>
+      <% if product_character.isset_value_character_by_name character_filtr.character_type.name %>
+          <% value = product_character.value_character_by_name character_filtr.character_type.name %>
+          <% value = value.to_s.mb_chars.downcase %>
+          <% if !(characters_isset.include? value) %>
+              <% if character_filtr.character_type.type_filtr == 1 %>
+                  <% characters_isset.push(value.sub(',', ".").to_f) %>
+              <% else %>
+                  <% characters_isset.push(value) %>
+              <% end %>
+              <% characters.push(product_character) %>
+          <% end %>
+      <% end %>
+  <% end %>
+
+<% if character_filtr.character_type.type_filtr == 0 %>
+
+
+    <% characters.each do |product_character| %>
+        <div class="popover fade left in hidden popover_product_character" id="popover_product_character_<%=product_character.id %>_<%=character_filtr.id%>"
+             style="display: block; position: relative; float: left; margin-left: -215px; width: 200px;">
+          <div class="arrow"></div>
+          <h3 class="popover-title" style="display: none;"></h3>
+          <div class="popover-content" style="min-width: 200px;">Найдено <a href="#" class="count_find_filtr">5 позиций</a></div>
+        </div>
+        <div class="checkbox left">
+          <label>
+            <input type="checkbox" value="<%=product_character.id %>" class="checkbox_character"
+                   id="checkbox_character_<%=product_character.id%>_<%=character_filtr.id%>"
+                   name="filtr_data[characters][<%=character_filtr.id%>][]"
+                   onchange="changeFiltr(<%=product_character.id %>, <%=character_filtr.id%>);"> <%= raw product_character.value_character_by_name character_filtr.character_type.name %>
+          </label>
+        </div>
+
+        <div class="clear"></div>
+
+
+    <% end %>
+
+<% elsif character_filtr.character_type.type_filtr == 1 %>
+
+      <% min = characters_isset.min.to_f > 0 ? characters_isset.min.to_f  : 0.1 %>
+      <% max = characters_isset.max.to_f > 0 ? characters_isset.max.to_f  : 0.1 %>
+      <% if params[:filtr_data].present?
+        value_min = (params[:filtr_data][:characters][character_filtr.id.to_s].present?) ? (params[:filtr_data][:characters][character_filtr.id.to_s][:minimum].present? ? params[:filtr_data][:characters][character_filtr.id.to_s][:minimum] : min) : min
+        value_max = (params[:filtr_data][:characters][character_filtr.id.to_s].present?) ? (params[:filtr_data][:characters][character_filtr.id.to_s][:maximum].present? ? params[:filtr_data][:characters][character_filtr.id.to_s][:maximum] : max) : max
+      else
+        value_min = min
+        value_max = max
+      end %>
+        <div class="row" style="margin-bottom: 10px;">
+        <div class="col-md-12 col-xs-12">
+      <span style="float: left; color: #ccc; font-size: small;">
+        <%=min%>
+      </span>
+          <div class="popover fade left in hidden popover_product_character" id="popover_product_character_0_<%=character_filtr.id%>"
+               style="display: block; position: relative; float: left; margin-left: -245px; width: 200px;">
+            <div class="arrow"></div>
+            <h3 class="popover-title" style="display: none;"></h3>
+            <div class="popover-content" style="min-width: 200px;">Найдено <a href="#" class="count_find_filtr">5 позиций</a></div>
+          </div>
+          <div class="left" style="width: 100%" onmouseup="changeFiltr(0, <%=character_filtr.id%>);">
+      <input id="character_filtr_float_<%=character_filtr.id%>" type="text" class="span2 slider" value=""
+
+             data-slider-tooltip="hide"
+             data-slider-min="<%=min%>"
+             data-slider-max="<%=max%>"
+             data-slider-step="<%= (max - min > 100) ? (max - min) % 100 : (max - min) / 100 %>"
+             data-slider-value="[<%= value_min %>,
+                                 <%= value_max %>]"/>
+          </div>
+      <span style="float: right; color: #ccc; font-size: small;"><%= max %></span>
+      </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 col-xs-5">
+          <input class="form-control input-sm" style="width: 100%" type="text"
+                 placeholder="Минимум"
+                 id="filter_minimum_<%=character_filtr.id%>" name="filtr_data[characters][<%=character_filtr.id%>][minimum]"
+                 onchange="changeFiltr(0, <%=character_filtr.id%>);"
+                 value="<%= value_min %>">
+        </div>
+        <div class="col-md-2 col-xs-2"></div>
+        <div class="col-md-5 col-xs-5">
+          <input class="form-control input-sm" style="width: 100%" type="text"
+                 placeholder="Максимум"
+                 id="filter_maximum_<%=character_filtr.id%>" name="filtr_data[characters][<%=character_filtr.id%>][maximum]"
+                 onchange="changeFiltr(0, <%=character_filtr.id%>);"
+                 value="<%= value_max %>">
+        </div>
+      </div>
+      <hr>
+
+
+
+  <script>
+      $("#character_filtr_float_<%=character_filtr.id%>").slider({});
+      var slider_<%=character_filtr.id%> = $("#character_filtr_float_<%=character_filtr.id%>").slider({
+          formatter: function(value) {
+              console.log('formatter <%=character_filtr.id%>');
+              FilterChange(<%=character_filtr.id%>, slider_<%=character_filtr.id%>);
+              return value;
+          }
+      }).data('slider')
+
+
+
+
+  </script>
+
+
+<% end %>
+
+</div>
+
+<% if characters_isset.size < 2 %>
+    <script>
+        $('#character_filtr_<%=character_filtr.id%>').remove();
+    </script>
+<% end %>
+

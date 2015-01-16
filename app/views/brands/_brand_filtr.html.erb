@@ -1,0 +1,25 @@
+<div class="popover fade left in hidden popover_product_character" id="popover_product_character_0_<%=brand_filtr.id%>"
+     style="display: block; position: relative; float: left; margin-left: -215px; width: 200px;">
+  <div class="arrow"></div>
+  <h3 class="popover-title" style="display: none;"></h3>
+  <div class="popover-content" style="min-width: 200px;">Найдено <a href="#" class="count_find_filtr">5 позиций</a></div>
+</div>
+<div class="checkbox left">
+  <label>
+    <input type="checkbox" value="<%=brand_filtr.id%>"
+           id="checkbox_product_character_0_<%=brand_filtr.id%>"
+           name="filtr_data[brands][]"
+           onchange="changeFiltr(0, <%=brand_filtr.id%>);"> <%=brand_filtr.title%>
+
+  </label>
+  <% if @brands_filter.present? %>
+  <script>
+  <% if @brands_filter.include?(brand_filtr.id) %>
+    $('#checkbox_product_character_0_<%=brand_filtr.id%>').attr("checked", true);
+  <% else %>
+    $('#checkbox_product_character_0_<%=brand_filtr.id%>').attr("checked", false);
+  <% end %>
+  </script>
+  <% end %>
+</div>
+<div class="clear"></div>

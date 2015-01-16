@@ -46,7 +46,85 @@ class CatalogsController < ApplicationController
     @line_item = LineItem.new
     @compare_item = CompareItem.new
 
-    @products =  Product.where(:catalog_id => @catalog.id ).paginate(:page => params[:page], :per_page => 30)
+
+    if params[:filtr_data].present?
+      @filtr_data = params[:filtr_data]
+      @price_filter_minimum = @filtr_data[:price_filter_minimum].sub(' ', "").to_f
+      @price_filter_maximum = @filtr_data[:price_filter_maximum].sub(' ', "").to_f
+      @characters = @filtr_data[:characters]
+      if @filtr_data[:brands].present?
+        @brands_filter = @filtr_data[:brands].map { |i| i.to_i }
+      end
+      @products = Product.where("catalog_id = ? AND price >= ? AND price <= ? AND is_active = 1",
+                                @catalog.id,
+                                @price_filter_minimum,
+                                @price_filter_maximum
+      )
+
+
+
+      if @brands_filter.present?
+        @products = @products.where("brand_id IN(?)",
+                                    @brands_filter
+        )
+      end
+
+      if @characters.present?
+        @characters.each {|index, item|
+          char = Character.find(index)
+          if char.character_type.type_filtr == 0
+            values = Character.where(:product_id => item).map(&:value).uniq
+            @products = @products.where("id IN (?)",
+                                        Character.where(:charecter_type_id => char.charecter_type_id,
+                                                        :value => values).map(&:product_id).uniq)
+          elsif char.character_type.type_filtr == 1
+            @products = @products
+            .where("id IN (?)",
+                   Character.select("*, CAST( REPLACE( `value` , ',', '.' ) AS DECIMAL( 5, 2 ) ) AS `value_float`")
+                   .where("charecter_type_id = ? AND CAST( REPLACE( `value` , ',', '.' ) AS DECIMAL( 5, 2 ) ) >= ? AND CAST( REPLACE( `value` , ',', '.' ) AS DECIMAL( 5, 2 ) ) <= ?",
+                          char.charecter_type_id,
+                          item[:minimum],
+                          item[:maximum]
+                   ).map(&:product_id).uniq)
+          end
+        }
+      end
+
+    else
+      @products =  Product.where(:catalog_id => @catalog.id, :is_active => true)
+    end
+
+    if params[:order].present?
+      order = params[:order]
+      @products = @products.scoped(:order => order + " asc")
+    end
+    @products = @products.paginate(:page => params[:page], :per_page => 30)
+
+    @all_products =  Product.where(:catalog_id => @catalog.id, :is_active => true)
+
+    @price_min = @all_products.minimum(:price)
+    @price_max = @all_products.maximum(:price)
+
+    brand_ids = @all_products.map(&:brand_id).uniq
+    if @all_products.size > 0 and brand_ids.first.present?
+      @brands = Brand.find(brand_ids)
+    else
+      @brands = []
+    end
+
+    @characters_names = []
+    @characters = []
+
+    @all_products.each do |product|
+      product.characters.each do |character|
+        if character.character_type.present? and ((@characters_names.include? character.character_type.name) == false)
+          @characters_names.push(character.character_type.name)
+          @characters.push(character)
+        end
+      end
+    end
+
+
 
   end
 

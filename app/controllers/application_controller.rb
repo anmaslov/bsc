@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
   #  current_user_path
   #end
 
+  include CurrentCart
+  include CurrentCompare
+  before_action :set_cart
+  before_action :set_compare
+
   def after_sign_out_path_for(resource_or_scope)
     request.referrer
   end

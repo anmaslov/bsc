@@ -154,3 +154,10 @@ function changeFieldCatalog(field, value) {
         }
     });
 }
+
+
+function FilterChange(id, slider) {
+    console.log('FilterChange(' + id + ', ' + slider.getValue() + ')');
+    $('#filter_minimum_' + id).val(formatMoney(slider.getValue()[0], 1));
+    $('#filter_maximum_' + id).val(formatMoney(slider.getValue()[1], 1));
+}

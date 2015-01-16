@@ -2,6 +2,14 @@ Bsc::Application.routes.draw do
   get "search/product"
   resources :compare_items
 
+  resources :charecter_types do
+    collection do
+      get :replace_character
+      get :change_type_character
+    end
+  end
+  resources :characters
+
   resources :compares
 
   resources :brands
@@ -26,6 +34,7 @@ Bsc::Application.routes.draw do
     collection do
       get :manage
       get :change_ajax
+
       # required for Sortable GUI server side actions
       post :rebuild
     end
@@ -56,6 +65,7 @@ Bsc::Application.routes.draw do
     resources :imgs
     resources :reports
     resources :brands
+    get :countfiltr, on: :collection
     get :search, on: :collection
     get :who_bought, on: :member
     get :change_ajax, on: :collection

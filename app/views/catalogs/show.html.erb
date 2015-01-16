@@ -84,11 +84,11 @@
 
       <% if @catalog.product.size > 0 %>
         <div class="panel-body">
-
+          <% if @price_max.present? %>
           <div class="btn-group right filtr-btns" data-toggle="buttons" style="margin-left: 25px;">
-            <button type="button" class="btn btn-sm btn-default">Фильтр</button>
-          </div>
+            <button type="button" class="btn btn-sm btn-default filtr-on-off" onclick="showFiltr();">Фильтр</button>
 
+          </div>
           <div class="btn-group right product2-view-toggle" data-toggle="buttons">
             <label class="btn btn-default btn-sm <%= (@catalog.product_table) ? '' : 'active' %>">
               <input type="radio" name="options" id="option1">
@@ -100,32 +100,121 @@
             </label>
 
           </div>
+            <% end %>
+          <div class="left">
+            Сортировать по
+            <% if params[:filtr_data].present? or params[:page].present? or params[:order].present? %>
+                <% if params[:order].present? %>
 
+                    <%
+                       url = request.original_url
 
+                       uri = URI(url)
+                       params_ = CGI.parse(uri.query)
+                       params_.delete('order')
+                       uri.query = URI.encode_www_form(params_)
+
+                       uri.to_s
+                    %>
+
+                    <% if params[:order] == 'title' %>
+                        <%=link_to 'названию', request.original_url%>,
+                        <%=link_to 'цене', uri.to_s+'&order=price'%>
+                    <% else %>
+                        <%=link_to 'названию', uri.to_s+'&order=title'%>,
+                        <%=link_to 'цене', request.original_url%>
+                    <% end %>
+                <% else %>
+                    <%=link_to 'названию', request.original_url+'&order=title'%>,
+                    <%=link_to 'цене', request.original_url+'&order=price'%>
+                <% end %>
+            <% else %>
+                <%=link_to 'названию', request.original_url+'?order=title'%>,
+                <%=link_to 'цене', request.original_url+'?order=price'%>
+            <% end %>
+          </div>
 
           <div class="clear" style="height: 10px"></div>
           <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
           <div class="clear" style="height: 10px"></div>
 
           <div class="row product-th-large">
-            <table class="table table-striped table-product">
-              <thead>
-              <tr class="tr product <%= (@catalog.product_table) ? '' : 'hidden' %>">
-                <% if can? :update, @products %>
+            <div class="col-md-12 col-xs-12 product-list" style="padding: 0 10px 0 0;">
+                <table class="table table-striped table-product">
+                  <thead>
+                  <tr class="tr product <%= (@catalog.product_table) ? '' : 'hidden' %>">
+                    <% if can? :update, @products %>
+                        <th></th>
+                    <% end %>
                     <th></th>
-                <% end %>
-                <th></th>
-                <th>Артикул</th>
-                <th>Наименование</th>
-                <th>Цена</th>
-                <th></th>
-              </tr>
-              </thead>
-              <tbody>
-                <%= render(@products) %>
+                    <th>Артикул</th>
+                    <th>Наименование</th>
+                    <th>Цена</th>
+                    <th></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <%= render(@products) %>
 
-              </tbody>
-            </table>
+                  </tbody>
+                </table>
+            </div>
+
+            <form name="filtr" id="filtr">
+              <input type="hidden" value="<%=@catalog.id%>" name="filtr_data[catalog_id]">
+            <div class="col-md-4 col-xs-4 filt-product hidden" style="padding: 0 5px;">
+              <% if @price_max.present? and @price_min.present? %>
+
+              <div class="row" style="margin-bottom: 10px;">
+                <div class="col-md-12 col-xs-12">
+                Цена:<br>
+
+                <span style="float: left; color: #ccc; font-size: small;">
+                  <span class="price"><%= number_to_currency( @price_min, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+
+                </span>
+                  <div class="popover fade left in hidden popover_product_character" id="popover_product_character_0_price"
+                       style="display: block; position: relative; float: left; margin-left: -245px; width: 200px;">
+                    <div class="arrow"></div>
+                    <h3 class="popover-title" style="display: none;"></h3>
+                    <div class="popover-content" style="min-width: 200px;">Найдено <a href="#" class="count_find_filtr">5 позиций</a></div>
+                  </div>
+                  <div class="left" style="width: 100%" onmouseup="changeFiltr(0, 'price');">
+                <input id="ex2" type="text" class="span2 slider" value=""
+                       data-slider-tooltip="hide"
+                       data-slider-min="<%=number_to_currency( @price_min, unit: '',  separator: "", delimiter: "", precision: 0)%>"
+                       data-slider-max="<%= number_to_currency( @price_max, unit: '',  separator: "", delimiter: "", precision: 0)%>"
+                       data-slider-step="<%= number_to_currency( (@price_max - @price_min) % 100, unit: '',  separator: "", delimiter: "", precision: 0)%>"
+                       data-slider-value="[<%=number_to_currency( @price_filter_minimum.present? ? @price_filter_minimum : @price_min, unit: '',  separator: "", delimiter: "", precision: 0)%>,<%=number_to_currency( @price_filter_maximum.present? ? @price_filter_maximum : @price_max, unit: '',  separator: "", delimiter: "", precision: 0)%>]"/>
+                </div>
+                    <span style="float: right; color: #ccc; font-size: small;"><%= number_to_currency( @price_max, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+                </div>
+              </div>
+                <div class="row">
+                  <div class="col-md-5 col-xs-5">
+                    <input class="form-control input-sm" style="width: 100%" type="text" placeholder="Минимум" id="price_filter_minimum" name="filtr_data[price_filter_minimum]"
+                           onchange="changeFiltr(0, 'price');"
+                           value="<%=number_to_currency( @price_filter_minimum.present? ? @price_filter_minimum : @price_min, unit: '',  separator: "", delimiter: " ", precision: 0)%>">
+                  </div>
+                  <div class="col-md-2 col-xs-2"></div>
+                  <div class="col-md-5 col-xs-5">
+                    <input class="form-control input-sm" style="width: 100%" type="text" placeholder="Максимум" id="price_filter_maximum" name="filtr_data[price_filter_maximum]"
+                           onchange="changeFiltr(0, 'price');"
+                           value="<%= number_to_currency( @price_filter_maximum.present? ? @price_filter_maximum : @price_max, unit: '',  separator: "", delimiter: " ", precision: 0)%>">
+                  </div>
+                </div>
+              <% end %>
+                <hr>
+              <% if @brands.size > 1 %>
+                  <p>
+                  Марка:<br>
+                  <%= render :partial => 'brands/brand_filtr', :collection => @brands %>
+                  </p>
+                  <hr>
+              <% end %>
+              <%= render :partial => 'characters/character_filtr', :collection => @characters %>
+            </div>
+            </form>
           </div>
 
           <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
@@ -142,6 +231,38 @@
     </div>
 </div>
 
+<script>
+    $("#ex2").slider({});
+    var sliderPrice = $("#ex2").slider({
+        formatter: function(value) {
+            PriceFilterChange();
+            return value;
+        }
+    }).data('slider');
+
+    function PriceFilterChange() {
+        $('#price_filter_minimum').val(formatMoney(sliderPrice.getValue()[0]));
+        $('#price_filter_maximum').val(formatMoney(sliderPrice.getValue()[1]));
+    }
+
+  <% if params[:filtr_data].present? %>
+    $('.filtr-on-off').click();
+  <% end %>
 
 
+
+</script>
+
+<script>
+  $('.checkbox_character').attr("checked", false);
+<% if @filtr_data.present? and @filtr_data[:characters].present? %>
+    <% @filtr_data[:characters].each {|index, item| %>
+        <% if Character.find(index).character_type.type_filtr == 0
+            item.each do |value| %>
+            $('#checkbox_character_<%=value%>_<%=index%>').attr("checked", true);
+            <% end
+        end
+    } %>
+<% end %>
+</script>
 <%= render :template => "layouts/view-toggle" %>

@@ -1,0 +1,61 @@
+<h1>Список характеристик</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @charecter_types.each do |charecter_type| %>
+      <tr id="tr_charecter_type_<%=charecter_type.id %>">
+        <td><%= charecter_type.id %></td>
+        <td><%= charecter_type.name %></td>
+        <td>
+          <div class="input-group" style="width: 350px;">
+            <input type="text" class="form-control" placeholder="id на что дубликат" id="new_id_character_<%= charecter_type.id %>" value="">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" onclick="replaceCharacter(<%= charecter_type.id %>, $('#new_id_character_<%= charecter_type.id %>').val());">Переместить!</button>
+              </span>
+          </div>
+          <script>
+            $('#new_id_character_<%= charecter_type.id %>').val('');
+          </script>
+        </td>
+        <td>
+          <%= charecter_type.characters.size %>
+        </td>
+        <td>
+          <select class="form-control input-sm"
+                  onchange="changeTypeCharacter(<%= charecter_type.id %>, $(this).val())"
+                  id="select_type_filtr_<%=charecter_type.id %>" name="id="select_type_filtr_<%=charecter_type.id %>""
+          >
+            <option value="1">Число</option>
+            <option value="0">Список</option>
+          </select>
+          <script>
+            <% if charecter_type.type_filtr.present? %>
+              $("#select_type_filtr_<%=charecter_type.id %>").val('<%=charecter_type.type_filtr %>');
+            <% else %>
+                $("#select_type_filtr_<%=charecter_type.id %>").val(0);
+            <% end %>
+          </script>
+        </td>
+        <td><%= link_to 'Посмотреть', charecter_type %></td>
+        <td><%= link_to 'Редактировать', edit_charecter_type_path(charecter_type) %></td>
+        <td><%= link_to 'Удалить', charecter_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Charecter type', new_charecter_type_path %>

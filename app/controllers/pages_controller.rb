@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
+
   include CurrentCart
-  before_action :set_cart
+  include CurrentCompare
+  before_action :set_cart, only: [:show, :edit, :index]
+  before_action :set_compare, only: [:show, :edit, :index]
+
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]
   # GET /pages
@@ -15,7 +19,7 @@ class PagesController < ApplicationController
     #Price.update_info_arrow
     #@page = Page.find(params[:id])
     #ReceiverPriceNotifier.receive_regual
-
+    #Product.re_cache
     #Price.load_price_regual
     #puts 'update info'
     #ReportMailer.content_manager_for_the_day

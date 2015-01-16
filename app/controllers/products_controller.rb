@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource except: :create
-  skip_authorize_resource :only => [:show, :search]
+  skip_authorize_resource :only => [:show, :search, :countfiltr]
 
   # before_filter :load_attachable
 
@@ -95,6 +95,10 @@ class ProductsController < ApplicationController
               characters_param[:name].each do |key|
                 character = Character.new
                 character.name = characters_param[:name][i]
+
+                character_type = CharecterType.find_or_create_by(name: character.name)
+                character.charecter_type_id = character_type.id
+
                 character.value = characters_param[:value][i]
                 character.product_id = @product.id
                 if character.name.to_s.size > 0 and character.value.to_s.size > 0
@@ -121,21 +125,31 @@ class ProductsController < ApplicationController
     brand_id = params[:product][:brand_id].to_i
     brand_name = params[:product][:brand]
     if brand_id == 0 and brand_name != ""
-      brand = Brand.where("lower(title) = ?", brand_name.downcase).first
+      brand = Brand.where("lower(title) = ?", brand_name.mb_chars.downcase).first
       if brand.nil?
         brand = Brand.new
         brand.title = brand_name
         brand.save
       end
-    else
-      brand = Brand.find(brand_id)
+    elsif brand_id != 0 and brand_name == ""
+      if brand_id != 0
+        brand = Brand.find(brand_id)
+      end
       if brand.title != brand_name and brand_name != ""
-        brand = Brand.where("lower(title) = ?", brand_name.downcase).first
+        brand = Brand.where("lower(title) = ?", brand_name.mb_chars.downcase).first
         if brand.nil?
           brand = Brand.new
           brand.title = brand_name
           brand.save
         end
+      end
+    else
+      brand_name =  "NoName"
+      brand = Brand.where("lower(title) = ?", brand_name.mb_chars.downcase).first
+      if brand.nil?
+        brand = Brand.new
+        brand.title = brand_name
+        brand.save
       end
     end
     params[:product][:brand_id] = brand.id
@@ -218,6 +232,53 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.js #search.js.erb
     end
+  end
+
+  def countfiltr
+
+    filtr_data = params[:filtr_data]
+
+    price_filter_minimum = filtr_data[:price_filter_minimum].sub(' ', "").to_f
+    price_filter_maximum = filtr_data[:price_filter_maximum].sub(' ', "").to_f
+    catalog_id = filtr_data[:catalog_id]
+    characters = filtr_data[:characters]
+    brands = filtr_data[:brands]
+    @url = filtr_data.to_query('filtr_data')
+
+    @products = Product.where("catalog_id = ? AND price >= ? AND price <= ? AND is_active = 1",
+                              catalog_id,
+                              price_filter_minimum,
+                              price_filter_maximum
+    )
+    if brands.present?
+      @products = @products.where("brand_id IN(?)",
+                                  brands
+      )
+    end
+
+    if characters.present?
+      characters.each {|index, item|
+        char = Character.find(index)
+        if char.character_type.type_filtr == 0
+          values = Character.where(:product_id => item).map(&:value).uniq
+          @products = @products.where("id IN (?)",
+                                      Character.where(:charecter_type_id => char.charecter_type_id,
+                                                      :value => values).map(&:product_id).uniq)
+        elsif char.character_type.type_filtr == 1
+          @products = @products
+              .where("id IN (?)",
+                  Character.select("*, CAST( REPLACE( `value` , ',', '.' ) AS DECIMAL( 5, 2 ) ) AS `value_float`")
+                  .where("charecter_type_id = ? AND CAST( REPLACE( `value` , ',', '.' ) AS DECIMAL( 5, 2 ) ) >= ? AND CAST( REPLACE( `value` , ',', '.' ) AS DECIMAL( 5, 2 ) ) <= ?",
+                        char.charecter_type_id,
+                                  item[:minimum],
+                                  item[:maximum]
+                                      ).map(&:product_id).uniq)
+        end
+      }
+    end
+
+    @count = @products.all.size
+
   end
 
   # def load_attachable
