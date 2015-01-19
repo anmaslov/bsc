@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_many :reports, :order => 'updated_at DESC'
 
+  has_many :orders
+
   def role?(role)
     !!self.roles.find_by_name(role.to_s.camelize)
   end

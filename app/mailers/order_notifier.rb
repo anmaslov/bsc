@@ -10,7 +10,14 @@ class OrderNotifier < Notifier
   def received(order)
     @order = order
 
-    mail to: order.email, subject: 'Подтверждение заказа в BSC'
+
+    mail(to: order.email, subject: 'Подтверждение заказа в BSC').deliver
+
+  end
+
+  def report(order)
+    @order = order
+    mail to: 'pavel.osetrov@me.com', subject: 'Новый заказ с сайта BSC'
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

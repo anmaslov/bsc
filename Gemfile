@@ -102,3 +102,6 @@ gem "rolify"
 gem 'thinking-sphinx', '~> 3.1.0'
 
 #gem 'chronic'
+
+#gem 'yandex-money-ruby', :github => "drakmail/yandex-money-ruby", :branch => "master"
+gem 'yandex-money-sdk'

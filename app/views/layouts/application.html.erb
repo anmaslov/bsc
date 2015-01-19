@@ -275,7 +275,7 @@
       <div class="modal-content">
         <% if @cart.present? %>
             <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-                <%=render @cart %>
+                <%=render :partial => 'carts/cart', :object => @cart %>
             <% end %>
         <% end %>
 

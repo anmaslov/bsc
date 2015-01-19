@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h3>Ваш заказ на сайте БСК №<%= @order.id %></h3>
+
+<table class="table table-striped table-hover">
+  <tr>
+    <th colspan="2">
+      Количество
+    </th>
+    <th>
+      Описание
+    </th>
+  </tr>
+  <%= render @order.line_items %>
+</table>
+</body>
+</html>

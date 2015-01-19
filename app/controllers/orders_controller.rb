@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
       return
     end
     @order = Order.new
+    @user = current_user
   end
 
   # GET /orders/1/edit
@@ -33,16 +34,18 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
+    @order.user = current_user
 
     respond_to do |format|
       if @order.save
+        OrderNotifier.received(@order).deliver
+        #OrderNotifier.report(@order).deliver
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        OrderNotifier.received(@order).deliver
         format.html { redirect_to store_url, notice: 'Спасибо за ваш заказ.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
-        @cart = current_cart
+        #@cart = current_cart
         format.html { render action: 'new' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end

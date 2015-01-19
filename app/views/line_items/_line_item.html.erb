@@ -31,8 +31,9 @@
   </td>
   <td>
     <a article="<%= line_item.product.article %>" onclick="destroyItemCart(this);"><span class="glyphicon glyphicon-remove"></span></a>
-    <%= button_to 'Delete Line Item', line_item, :method => :delete, :remote=>true, :confirm => 'Вы уверены?', :class => 'hidden button_destroy_' + line_item.product.article %>
-
+    <% if line_item.cart.present? %>
+        <%= button_to 'Delete Line Item', line_item, :method => :delete, :remote=>true, :confirm => 'Вы уверены?', :class => 'hidden button_destroy_' + line_item.product.article %>
+    <% end %>
   </td>
 </tr>
 <% end %>
