@@ -6,7 +6,11 @@ class PagesController < ApplicationController
   before_action :set_compare, only: [:show, :edit, :index]
 
   before_action :set_page, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]
+  #before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]
+
+  load_and_authorize_resource except: :create
+  skip_authorize_resource :only => [:show]
+
   # GET /pages
   # GET /pages.json
   def index

@@ -23,6 +23,9 @@ class OrdersController < ApplicationController
     end
     @order = Order.new
     @user = current_user
+    @delivery_products = Product.where(:id => [29734, 29735])
+    @line_item = LineItem.new
+    @compare_item = CompareItem.new
   end
 
   # GET /orders/1/edit

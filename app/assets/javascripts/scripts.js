@@ -126,6 +126,8 @@ function search_top(query) {
                 //$('#distance').html('Расстояние не найдено');
             }
         });
+    } else {
+        $('.dropdown.search').removeClass('open');
     }
 }
 

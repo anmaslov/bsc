@@ -195,8 +195,13 @@ class CatalogsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_catalog
     if params[:idr]
-      @catalogs = Catalog.where({:old_id => params[:idr].to_i})
-      @catalog = @catalogs.pop
+      old_catalog = OldCatalog.where(:idc => params[:idr].to_i).first
+
+      if old_catalog.catalog.present?
+        @catalog = old_catalog.catalog
+      else
+        redirect_to 'http://old.bsc-ltd.ru/catalog.php?idr=' + params[:idr].to_s
+      end
     else
       @catalog = Catalog.find(params[:id])
     end

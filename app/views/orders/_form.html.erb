@@ -1,3 +1,5 @@
+<div class="row">
+  <div class="col-sm-6">
 <%= form_for(@order) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
@@ -14,8 +16,8 @@
     <div class="row">
       <div class="form-group">
         <%= f.label 'Способ доставки', :class => 'col-sm-2 control-label' %>
-        <div class="col-sm-4">
-          <%= f.select :delivery_type, Order::DELIVERY_TYPES, {promt: 'Выберите способ доставки'}, {:class => 'form-control input-sm'} %>
+        <div class="col-sm-10">
+          <%= f.select :delivery_type, Order::DELIVERY_TYPES, {promt: 'Выберите способ доставки'}, {:class => 'form-control input-sm', :onchange => 'set_delivery_type(this);'} %>
         </div>
       </div>
     </div><div class="clear" style="height: 10px;"></div>
@@ -23,7 +25,7 @@
 <div class="row">
   <div class="form-group">
     <%= f.label 'Контактное лицо', :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
       <%= f.text_field :name, :class => 'form-control', :placeholder => 'ФИО', :value => @user.present? ? @user.name : '' %>
     </div>
   </div>
@@ -31,7 +33,7 @@
 <div class="row">
   <div class="form-group">
     <%= f.label 'Телефон', :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
       <%= f.text_field :phone, :class => 'form-control', :placeholder => '+7 123 456-78-90', :id => 'phone', :value => @user.present? ? @user.phone : '' %>
     </div>
   </div>
@@ -39,7 +41,7 @@
 <div class="row">
   <div class="form-group">
     <%= f.label 'Электропочта', :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
       <%= f.text_field :email, :class => 'form-control', :placeholder => 'mail@yourmail.ru', :value => @user.present? ? @user.email : '' %>
     </div>
   </div>
@@ -47,7 +49,7 @@
 <div class="row">
   <div class="form-group">
     <%= f.label 'Адрес доставки', :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-4">
+    <div class="col-sm-10">
       <%= f.text_area :address, :class => 'form-control', :placeholder => 'Город, улица, дом, квартира', :rows => 5, :cols => 120, :value => @user.present? ? @user.address : '' %>
     </div>
   </div>
@@ -56,7 +58,7 @@
     <div class="row">
       <div class="form-group">
         <%= f.label 'Способ оплаты', :class => 'col-sm-2 control-label' %>
-        <div class="col-sm-4">
+        <div class="col-sm-10">
           <%= f.select :pay_type, Order::PAYMENT_TYPES, {promt: 'Выберите способ оплаты'}, {:class => 'form-control input-sm'} %>
         </div>
       </div>
@@ -65,7 +67,7 @@
     <div class="row">
       <div class="form-group">
         <%= f.label 'Комментарий', :class => 'col-sm-2 control-label' %>
-        <div class="col-sm-4">
+        <div class="col-sm-10">
           <%= f.text_area :comment, :class => 'form-control', :placeholder => '', :rows => 5, :cols => 120 %>
         </div>
       </div>
@@ -102,10 +104,15 @@
         <% end %>
     <div class="row">
       <div class="form-group">
-        <div class="actions col-sm-6">
+        <div class="actions col-sm-12">
           <%= f.submit 'Подтвердить заказ', :class => 'btn btn-info btn-block' %>
         </div>
       </div>
     </div>
 
 <% end %>
+    </div>
+  <div class="col-sm-6" id="order_cart">
+  <%= render :partial => 'carts/cart_order', :object => @cart %>
+  </div>
+</div>

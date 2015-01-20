@@ -1,6 +1,7 @@
 $('#notice').hide();
 
 $('#cart').html("<%= escape_javascript render(@cart) %>");
+$('#order_cart').html("<%= escape_javascript render :partial => 'carts/cart_order', :object => @cart %>");
 
 if ($('#cart tr').length == 1) {
     $('#cart').show();

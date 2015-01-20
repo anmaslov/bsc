@@ -35,7 +35,7 @@ env :PATH, '/root/.rvm/environments/ruby-2.1.2@bsc'
 
 every 1.days, :at => '04:00am' do
   rake "ts:index RAILS_ENV=production"
-  runner "Product.re_cache"
+  #runner "Product.re_cache"
 end
 
 every [:monday, :tuesday, :wednesday, :thursday, :friday], :at => '21:00pm' do #1.minute do#

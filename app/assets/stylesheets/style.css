@@ -641,7 +641,7 @@ tr.not-active {
     white-space: nowrap;
 }
 
-#bascet #total_bascet span {
+#bascet #total_bascet span, #total_bascet_order span {
     font-weight: bold;
     font-size: x-large;
 }

@@ -8,4 +8,5 @@ $('.total-found').html("<%= escape_javascript link_to "Всего найдено
     $('.total-found').removeClass('hidden');
 <% else %>
     $('.total-found').addClass('hidden');
+    $('.dropdown.search').removeClass('open');
 <% end %>
