@@ -18,7 +18,13 @@ function changeCountCompare(newCount) {
     }
 }
 
+function destroyItemCompareSmall(product_id) {
+    console.log('small ' + product_id);
+    $('.link_destroy_compare_' + product_id).click();
+}
+
 function destroyItemCompare(product_id) {
+    console.log(product_id);
     $('.button_destroy_' + product_id).click();
 }
 

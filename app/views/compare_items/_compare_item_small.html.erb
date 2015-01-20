@@ -7,6 +7,8 @@
     <% end %>
   </td>
   <td>
+    <button class="close" onclick="destroyItemCompareSmall(<%=compare_item_small.id.to_s%>)">×</button>
+    <%= link_to("Destroy", compare_item_small, :method => :delete, :remote => true, :class => 'hidden link_destroy_compare_' + compare_item_small.id.to_s) %>
     <%= link_to compare_item_small.product.title, compare_item_small.product, :style => 'font-size: 10px;' %>
   </td>
 </tr>
