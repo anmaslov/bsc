@@ -39,9 +39,19 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         OrderNotifier.received(@order).deliver
-        #OrderNotifier.report(@order).deliver
+        OrderNotifier.report(@order).deliver
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        if params[:user].present? and params[:password] != ''
+          User.create!({
+            :email => @order.email,
+            :password => params[:user][:password],
+            :password_confirmation => params[:user][:password_confirmation],
+            :name => @order.name,
+            :address => @order.address,
+            :phone => @order.phone
+        })
+        end
         format.html { redirect_to store_url, notice: 'Спасибо за ваш заказ.' }
         format.json { render action: 'show', status: :created, location: @order }
       else
@@ -84,6 +94,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
+      params.require(:order).permit(:name, :address, :email, :pay_type, :delivery_type, :phone, :comment)
     end
 end

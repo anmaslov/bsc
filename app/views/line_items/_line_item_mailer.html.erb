@@ -1,0 +1,17 @@
+<tr>
+  <td>
+    <%= line_item_mailer.product.article %>
+  </td>
+  <td>
+    <%= line_item_mailer.product.title %>
+  </td>
+  <td>
+    <%= line_item_mailer.quantity %>
+  </td>
+  <td>
+    <%= number_to_currency(line_item_mailer.product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%>
+  </td>
+  <td>
+    <%= number_to_currency(line_item_mailer.total_price, unit: '',  separator: ",", delimiter: " ", precision: 0)%> рублей
+  </td>
+</tr>
