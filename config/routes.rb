@@ -1,4 +1,6 @@
 Bsc::Application.routes.draw do
+  resources :news
+
   get "search/product"
   resources :compare_items
 

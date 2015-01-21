@@ -1,0 +1,13 @@
+<h1>Новости</h1>
+
+    <% @news.each do |news| %>
+      <h4><%= link_to news.title, news %></h4>
+        <p>
+          <%= news.description %>
+        </p>
+        <hr>
+    <% end %>
+<br>
+<% if can? :manage, @news %>
+<%= link_to 'Добавить новость', new_news_path %>
+<% end %>

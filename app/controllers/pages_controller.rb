@@ -2,8 +2,8 @@ class PagesController < ApplicationController
 
   include CurrentCart
   include CurrentCompare
-  before_action :set_cart, only: [:show, :edit, :index]
-  before_action :set_compare, only: [:show, :edit, :index]
+  before_action :set_cart, only: [:show, :edit, :new, :index]
+  before_action :set_compare, only: [:show, :edit, :new, :index]
 
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   #before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]

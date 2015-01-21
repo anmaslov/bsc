@@ -734,3 +734,7 @@ tr.not-active {
     width: 150px;
     margin-left: 20px;
 }
+
+.toggle-news-types {
+    cursor: pointer;
+}

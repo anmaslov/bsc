@@ -56,6 +56,8 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
+          <h4>Рекомендуем:</h4>
+
               <div class="btn-group right product2-view-toggle" data-toggle="buttons">
                 <label class="btn btn-default btn-sm active">
                   <input type="radio" name="options" id="option1">
@@ -81,7 +83,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <%= render(@products) %>
+                  <%= render(@recommendation_products) %>
                   </tbody>
                 </table>
               </div>
@@ -97,55 +99,76 @@
     <div class="col-md-3 col-xs-3">
       <div class="panel panel-noborder">
         <div class="panel-heading">
-          <h3><a href="#">Новости</a></h3>
+          <h3> <%= link_to 'Новости', news_index_path %></h3>
 
-          <span class="label label-primary">Все</span>
-          <span class="label label-default">Блог</span>
-          <span class="label label-default">Видео</span>
+          <span class="toggle-news-types label label-primary" onclick="
+                $('.toggle-news-types').removeClass('label-default');
+                $('.toggle-news-types').removeClass('label-primary');
+                $('.toggle-news-types').addClass('label-default');
+                $(this).addClass('label-primary');
+                $('.media.video').removeClass('hidden');
+                $('.media.blog').removeClass('hidden');
+          ">Все</span>
+          <span class="toggle-news-types label label-default" onclick="
+                  $('.toggle-news-types').removeClass('label-default');
+                  $('.toggle-news-types').removeClass('label-primary');
+                  $('.toggle-news-types').addClass('label-default');
+                  $(this).addClass('label-primary');
+                  $('.media.video').addClass('hidden');
+                  $('.media.blog').removeClass('hidden');
+          ">Блог</span>
+          <span class="toggle-news-types label label-default" onclick="
+                  $('.toggle-news-types').removeClass('label-default');
+                  $('.toggle-news-types').removeClass('label-primary');
+                  $('.toggle-news-types').addClass('label-default');
+                  $(this).addClass('label-primary');
+                  $('.media.video').removeClass('hidden');
+                  $('.media.blog').addClass('hidden');
+          ">Видео</span>
         </div>
         <div class="panel-body">
+          <% @news.each do |news| %>
+          <div class="media <%= news.news_type_title %>" <% if news.news_type == 1 %>  data-toggle="modal" data-target="#video" <% end %>>
+            <% if news.news_type == 0 %>
+                <% if news.image.exists? %>
+                <%= link_to (image_tag (news.image.url(:thumb))), news, :class => 'pull-left' %>
+                <% end %>
 
-          <div class="media blog">
-            <a class="pull-left" href="#">
-              <%= image_tag('news/01.png', :alt => 'Шовная плиточная затирка Kerapoxy Design', :style => 'width: 75px') %>
-            </a>
-            <div class="media-body">
-              <h5 class="media-heading"><a href="#">Шовная плиточная затирка Kerapoxy Design</a></h5>
-              Компания БСК предлагает Вам линию шовных заполнителей от компании MAPEI – Kerapoxy Design.</div>
-          </div>
+                <div class="media-body">
+                  <h5 class="media-heading"><%= link_to news.title, news %></h5>
+                  <%= news.description %>
+                </div>
+            <% elsif news.news_type == 1 %>
 
-          <div class="media video" data-toggle="modal" data-target="#video">
-            <div class="media-body">
-              <h5 class="media-heading"><a href="#">Обучающее видео по монтажу дюбеля для гипсокартона KHD </a></h5>
-            </div>
-            <a class="pull-left">
-              <span class="glyphicon glyphicon-play"></span>
-              <%= image_tag('news/02.png', :alt => 'Обучающее видео по монтажу дюбеля для гипсокартона KHD') %>
-            </a>
-          </div>
+                <div class="media-body">
+                  <h5 class="media-heading"><a href="#" onclick="$('#video_iframe').attr({src: '<%= news.youtube_url %>'}); $('#video_title').html('<%= news.title %>');"><%= news.title %></a></h5>
+                </div>
+                <a class="pull-left" onclick="$('#video_iframe').attr({src: '<%= news.youtube_url %>'}); $('#video_title').html('<%= news.title %>');">
+                  <span class="glyphicon glyphicon-play"></span>
+                  <%= image_tag (news.image.url(:medium)) %>
+                </a>
 
-          <div class="media blog">
-            <div class="media-body">
-              <h5 class="media-heading"><a href="#">Весна – начало больших строек. Пора закупать строительные материалы!</a></h5>
-              Предлагаем высококачественные всесезонные монтажные пены, атмосферостойкие герметики для фасадных швов, окон, дверей, сэндвич-панелей, структурного остекления и промышленных установок.</div>
+            <% end %>
           </div>
+        <% end %>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="video" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div id="video" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="video_title" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
 
         <div class="modal-header">
-          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-          <h4 id="myLargeModalLabel" class="modal-title">Обучающее видео по монтажу дюбеля для гипсокартона KHD</h4>
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button" onclick="$('#video_iframe').get(0).stopVideo();">×</button>
+          <h4 id="video_title" class="modal-title"></h4>
         </div>
         <div class="modal-body">
 
-          <iframe width="560" height="315" src="//www.youtube.com/embed/ShiKeqoII1k" frameborder="0" allowfullscreen></iframe>
+          <iframe id="video_iframe" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
         </div>
+        <!--
         <div class="modal-footer">
 
 
@@ -154,7 +177,7 @@
 
 
 
-        </div>
+        </div> -->
       </div><!-- /.modal-content -->
     </div>
   </div>

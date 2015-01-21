@@ -121,11 +121,18 @@
           <input type="checkbox" <% if product.market_yandex_boolean %> checked <% end %> id="market_yandex_<%= product.id %>" onchange="changeFieldProduct('market_yandex', <%= product.id %>);"> Янд.Марк
         </label>
       </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" <% if product.recommendation %> checked <% end %> id="recommendation_<%= product.id %>" onchange="changeFieldProduct('recommendation', <%= product.id %>);"> Рекоммендовать
+        </label>
+      </div>
     </td>
 
         <script>
             $('#is_active_<%= product.id %>').attr("checked", <%= product.is_active_boolean %>);
             $('#market_yandex_<%= product.id %>').attr("checked", <%= product.market_yandex_boolean %>);
+            $('#recommendation_<%= product.id %>').attr("checked", <%= product.recommendation %>);
         </script>
 
     <% end %>

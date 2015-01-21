@@ -1,0 +1,18 @@
+<p id="notice" class="hidden"><%= notice %></p>
+
+<h1><%= @news.title %></h1>
+
+<div class="row">
+    <div class="col-sm-12">
+      <%= raw @news.content %>
+    </div>
+</div>
+<% if @news.news_type == 1 %>
+<div class="row">
+  <iframe id="video_iframe" width="560" height="315" src="<%= @news.youtube_url %>" frameborder="0" allowfullscreen></iframe>
+</div>
+<% end %>
+<% if can? :manage, @news %>
+    <%= link_to 'Редактировать', edit_news_path(@news) %> |
+<% end %>
+<%= link_to 'К списку новостей', news_index_path %>
