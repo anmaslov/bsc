@@ -3,29 +3,38 @@
   <div id="carousel-main-page" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-      <li data-target="#carousel-main-page" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-main-page" data-slide-to="1"></li>
+      <% i = 0 %>
+      <% @sliders.each do |slider| %>
+      <li data-target="#carousel-main-page" data-slide-to="<%=i%>" <% if i == 0 %> class="active" <% end %>></li>
+          <% i = i + 1 %>
+      <% end %>
     </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner big">
-      <div class="item active">
-        <%= image_tag('carousel/001.jpg', :alt => 'Новая продукция ЕКТ') %>
-        <div class="carousel-caption">
-               <span>
-                    Мы эксклюзивный поставщик Titebond в <span style="white-space: nowrap;">Санкт-Петербурге</span>
-               </span>
+    <% if @sliders.size > 0 %>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner big">
+          <% @sliders.each do |slider| %>
+          <div class="item <% if @sliders.first == slider %> active <% end %>">
+            <% if slider.link.present? %>
+                <%= link_to (image_tag(slider.image.url(:medium), :alt => slider.title)), slider.link %>
+            <% elsif slider.news.present? %>
+                <%= link_to (image_tag(slider.image.url(:medium), :alt => slider.title)), slider.news %>
+            <% elsif slider.product.present? %>
+                <%= link_to (image_tag(slider.image.url(:medium), :alt => slider.title)), slider.product %>
+            <% elsif slider.catalog.present? %>
+                <%= link_to (image_tag(slider.image.url(:medium), :alt => slider.title)), slider.catalog %>
+            <% else %>
+                <%= image_tag(slider.image.url(:medium), :alt => slider.title) %>
+            <% end %>
+            <div class="carousel-caption">
+                   <span>
+                        <%= raw slider.title %>
+                   </span>
+            </div>
+          </div>
+          <% end %>
         </div>
-      </div>
-      <div class="item">
-        <%= image_tag('carousel/002.jpg', :alt => 'Новая продукция ЕКТ') %>
-        <div class="carousel-caption">
-                <span>
-                    Husqvarna 350 за 9 000<span class="ruble">a</span> до конца мая!
-                </span>
-        </div>
-      </div>
-    </div>
+    <% end %>
 
     <!-- Controls -->
     <a class="left carousel-control" href="#carousel-main-page" data-slide="prev">

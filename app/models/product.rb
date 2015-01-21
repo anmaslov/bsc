@@ -12,6 +12,7 @@ class Product < ActiveRecord::Base
   belongs_to :detail, :class_name => "Detail", :foreign_key => "product_id"
 
   has_many :reports
+  has_many :sliders
 
   #belongs_to :detail_for, :class_name => "Product", :foreign_key => "detail_for_id"
   #has_many :details, :order => 'title ASC', :class_name => "Product", :foreign_key => "detail_for_id"

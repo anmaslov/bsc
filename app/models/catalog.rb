@@ -8,6 +8,7 @@ class Catalog < ActiveRecord::Base
   has_many :product, :order => 'title ASC', dependent: :destroy
   has_many :old_catalogs, dependent: :destroy
   has_attached_file :image, styles: {:medium => "300x300#", :thumb => "150x150>", :thumbnail => "50x50>"}
+  has_many :sliders
 
   validates :title, :description, presence: true #поля заполнены
 

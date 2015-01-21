@@ -53,6 +53,16 @@ class NewsController < ApplicationController
     end
   end
 
+  # DELETE /news/1
+  # DELETE /news/1.json
+  def destroy
+    @news.destroy
+    respond_to do |format|
+      format.html { redirect_to news_url }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
     def set_news
