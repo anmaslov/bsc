@@ -1,0 +1,23 @@
+<h1>Заказ №<%= order.id %> принят, перейдите к оплате</h1>
+
+<form action="https://money.yandex.ru/eshop.xml" method="post">
+  <!-- Обязательные поля -->
+  <input name="shopId" value="29313" type="hidden"/>
+  <input name="scid" value="58929" type="hidden"/>
+  <input name="sum" value="<%= @order.total_price %>" type="hidden" id="sum_yandex_market">
+  <input name="customerNumber" value="<%= current_user.present? ? 'u' + current_user.id.to_s : 'o' + @order.id.to_s %>" type="hidden"/>
+
+  <!-- Необязательные поля -->
+  <!--<input name="shopArticleId" value="567890" type="hidden"/>-->
+  <input name="paymentType" value="AC" type="hidden"/>
+  <input name="orderNumber" value="<%=  @order.id.to_s %>" type="hidden"/>
+  <input name="cps_phone" value="<%= @order.phone.gsub(" ", "").gsub("+", "").gsub("-", "")  %>" type="hidden" id="phone_yandex_market" />
+  <input name="cps_email" value="<%= @order.email %>" type="hidden" id="email_yandex_market" />
+  <div class="row" id="submit_yandex_market">
+    <div class="form-group">
+      <div class="actions col-sm-12">
+        <input class="btn btn-success btn-block" name="commit" type="submit" value="Перейти к оплате">
+      </div>
+    </div>
+  </div>
+</form>

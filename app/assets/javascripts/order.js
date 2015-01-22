@@ -32,7 +32,7 @@ function set_delivery_type(object) {
 
 function set_payment_type(object) {
     if ($(object).val() == 'Банковской картой Visa/MasterCard') {
-        $('#submit_form').addClass('hidden');
+        $('#submit_form').removeClass('hidden');
         $('#submit_yandex_market').removeClass('hidden');
     } else {
         $('#submit_form').removeClass('hidden');

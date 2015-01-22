@@ -45,7 +45,7 @@ class OrdersController < ApplicationController
         OrderNotifier.report(@order).deliver
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        if params[:user].present? and params[:password] != ''
+        if params[:user].present? and params[:user][:password] != ''
           User.create!({
             :email => @order.email,
             :password => params[:user][:password],
@@ -55,14 +55,24 @@ class OrdersController < ApplicationController
             :phone => @order.phone
         })
         end
-        format.html { redirect_to store_url, notice: 'Спасибо за ваш заказ.' }
-        format.json { render action: 'show', status: :created, location: @order }
+        if @order.pay_type != 'Банковской картой Visa/MasterCard'
+          format.html { redirect_to store_url, notice: 'Спасибо за ваш заказ.' }
+          format.json { render action: 'show', status: :created, location: @order }
+        else
+          format.html { render action: 'payment' }
+          format.json { render action: 'show', status: :created, location: @order }
+        end
       else
         #@cart = current_cart
+        @delivery_products = Product.where(:id => [29734, 29735])
         format.html { render action: 'new' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def payment
+
   end
 
   # PATCH/PUT /orders/1

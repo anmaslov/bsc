@@ -71,6 +71,7 @@ Bsc::Application.routes.draw do
     resources :brands
     get :countfiltr, on: :collection
     get :search, on: :collection
+    post :payment, on: :collection
     get :who_bought, on: :member
     get :change_ajax, on: :collection
   end

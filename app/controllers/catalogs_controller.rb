@@ -65,13 +65,14 @@ class CatalogsController < ApplicationController
         AND (
         products.price + ( products.price * suppliers.margin ) /100
         ) <= " + @price_filter_maximum.to_s + "/1.035
-        AND products.is_active = 1"
+        "
       ).map(&:id).uniq
 
-      @products = Product.where("id IN(?)", @products)
-
-
-
+      if can? :manage, Product
+        @products = Product.where("id IN(?)", @products)
+      else
+        @products = Product.where("id IN(?) AND is_active = 1", @products)
+      end
 
       # @products = Product.where("catalog_id = ? AND price >= ? AND price <= ? AND is_active = 1",
       #                           @catalog.id,
@@ -109,7 +110,12 @@ class CatalogsController < ApplicationController
       end
 
     else
-      @products =  Product.where(:catalog_id => @catalog.id, :is_active => true)
+
+      if can? :manage, Product
+        @products =  Product.where(:catalog_id => @catalog.id)
+      else
+        @products =  Product.where(:catalog_id => @catalog.id, :is_active => true)
+      end
     end
 
     if params[:order].present?
@@ -118,7 +124,13 @@ class CatalogsController < ApplicationController
     end
     @products = @products.paginate(:page => params[:page], :per_page => 30)
 
-    @all_products =  Product.where(:catalog_id => @catalog.id, :is_active => true)
+
+
+    if can? :manage, Product
+      @all_products =  Product.where(:catalog_id => @catalog.id)
+    else
+      @all_products =  Product.where(:catalog_id => @catalog.id, :is_active => true)
+    end
 
     @price_min = @all_products.map(&:price_with_margin).min #@all_products.minimum(:price)
     @price_max = @all_products.map(&:price_with_margin).max #@all_products.maximum(:price)
