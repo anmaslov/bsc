@@ -14,10 +14,24 @@
 <p>
   <b>Способ оплаты:</b> <%= order.pay_type %>
 </p>
+<% if order.NameOrganization.present? %>
+    <p>
+      <b>Название организации:</b><br>
+      <%= order.NameOrganization %>
+    </p>
+<% end %>
+<% if order.InnOrganization %>
+    <p>
+      <b>ИНН организации:</b><br>
+      <%= order.InnOrganization %>
+    </p>
+<% end %>
 <p>
   <b>Способ доставки:</b> <%= order.delivery_type %>
 </p>
-<p>
-  <b>Комментарий:</b><br>
-  <%= order.comment %>
-</p>
+<% if order.comment.present? %>
+    <p>
+      <b>Комментарий:</b><br>
+      <%= order.comment %>
+    </p>
+<% end %>

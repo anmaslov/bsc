@@ -1,6 +1,6 @@
-<h1>Заказ №<%= order.id %> принят, перейдите к оплате</h1>
-
-<form action="https://money.yandex.ru/eshop.xml" method="post">
+<h1>Заказ №<%= @order.id %> принят, перейдите к оплате</h1>
+<-- https://money.yandex.ru/eshop.xml -->
+<form action="https://demomoney.yandex.ru/eshop.xml" method="post">
   <!-- Обязательные поля -->
   <input name="shopId" value="29313" type="hidden"/>
   <input name="scid" value="58929" type="hidden"/>
