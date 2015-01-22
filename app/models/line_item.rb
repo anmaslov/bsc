@@ -5,7 +5,7 @@ class LineItem < ActiveRecord::Base
 
   def total_price
     if product.present?
-     product.price * quantity.to_i
+     price * quantity.to_i
     else
       0
     end
@@ -16,7 +16,7 @@ class LineItem < ActiveRecord::Base
   end
 
   def price
-    product.price
+    product.price_with_margin
   end
 
   def image_url

@@ -55,11 +55,29 @@ class CatalogsController < ApplicationController
       if @filtr_data[:brands].present?
         @brands_filter = @filtr_data[:brands].map { |i| i.to_i }
       end
-      @products = Product.where("catalog_id = ? AND price >= ? AND price <= ? AND is_active = 1",
-                                @catalog.id,
-                                @price_filter_minimum,
-                                @price_filter_maximum
-      )
+      @products = Product.find_by_sql("SELECT products.id
+        FROM products
+        LEFT JOIN suppliers ON products.supplier_id = suppliers.id
+        WHERE products.catalog_id = " + @catalog.id.to_s + "
+        AND (
+        products.price + ( products.price * suppliers.margin ) / 100
+        ) >= " + @price_filter_minimum.to_s + "/1.035
+        AND (
+        products.price + ( products.price * suppliers.margin ) /100
+        ) <= " + @price_filter_maximum.to_s + "/1.035
+        AND products.is_active = 1"
+      ).map(&:id).uniq
+
+      @products = Product.where("id IN(?)", @products)
+
+
+
+
+      # @products = Product.where("catalog_id = ? AND price >= ? AND price <= ? AND is_active = 1",
+      #                           @catalog.id,
+      #                           @price_filter_minimum,
+      #                           @price_filter_maximum
+      #)
 
 
 
@@ -102,8 +120,8 @@ class CatalogsController < ApplicationController
 
     @all_products =  Product.where(:catalog_id => @catalog.id, :is_active => true)
 
-    @price_min = @all_products.minimum(:price)
-    @price_max = @all_products.maximum(:price)
+    @price_min = @all_products.map(&:price_with_margin).min #@all_products.minimum(:price)
+    @price_max = @all_products.map(&:price_with_margin).max #@all_products.maximum(:price)
 
     brand_ids = @all_products.map(&:brand_id).uniq
     if @all_products.size > 0 and brand_ids.first.present?

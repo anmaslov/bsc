@@ -46,7 +46,7 @@
             <td></td><td></td>
         <% end %>
         <td>
-          <span class="price" style="white-space: nowrap"><%= number_to_currency(product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+          <span class="price" style="white-space: nowrap"><%= number_to_currency(product.price_with_margin, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
         </td>
         <td class="list_actions">
           <% if can? :manage, product %>

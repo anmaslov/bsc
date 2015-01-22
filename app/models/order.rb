@@ -2,7 +2,12 @@
 class Order < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
   belongs_to :user
-  PAYMENT_TYPES = [ "Наличные", "Курьеру Visa/MasterCard при получении", "Банковской картой Visa/MasterCard"]
+  PAYMENT_TYPES = [ "Наличные",
+                    "Курьеру Visa/MasterCard при получении",
+                    "Банковской картой Visa/MasterCard",
+                    "Счет для юридических лиц"
+
+  ]
   DELIVERY_TYPES = [ "Самовывоз [ул. Сабировская, 41]",
                      "В пределах КАД [400 рублей]",
                      "В Ленинградскую область [1500 рублей]",

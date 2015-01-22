@@ -245,11 +245,26 @@ class ProductsController < ApplicationController
     brands = filtr_data[:brands]
     @url = filtr_data.to_query('filtr_data')
 
-    @products = Product.where("catalog_id = ? AND price >= ? AND price <= ? AND is_active = 1",
-                              catalog_id,
-                              price_filter_minimum,
-                              price_filter_maximum
-    )
+    @products = Product.find_by_sql("SELECT products.id
+        FROM products
+        LEFT JOIN suppliers ON products.supplier_id = suppliers.id
+        WHERE products.catalog_id = " + catalog_id.to_s + "
+        AND (
+        products.price + ( products.price * suppliers.margin ) / 100
+        ) >= " + price_filter_minimum.to_s + "/1.035
+        AND (
+        products.price + ( products.price * suppliers.margin ) /100
+        ) <= " + price_filter_maximum.to_s + "/1.035
+        AND products.is_active = 1"
+    ).map(&:id).uniq
+
+    @products = Product.where("id IN(?)", @products)
+
+    # @products = Product.where("catalog_id = ? AND price >= ? AND price <= ? AND is_active = 1",
+    #                           catalog_id,
+    #                           price_filter_minimum,
+    #                           price_filter_maximum
+    # )
     if brands.present?
       @products = @products.where("brand_id IN(?)",
                                   brands

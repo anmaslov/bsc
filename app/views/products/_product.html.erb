@@ -54,7 +54,7 @@
           <div>
           <%= raw (product.old_price) ? "<del>" + number_to_currency(product.old_price, unit: '',  separator: ",", delimiter: " ", precision: 0).to_s + '<span class="ruble">a</span>' +  "</del>" : '' %>
 
-          <span class="price"><%= number_to_currency(product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+          <span class="price"><%= number_to_currency(product.price_with_margin, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
           </div>
         <div class="clear"></div>
         <div class="btn-group" style="width: 100%; margin-top: -5px;">
@@ -132,7 +132,7 @@
         <script>
             $('#is_active_<%= product.id %>').attr("checked", <%= product.is_active_boolean %>);
             $('#market_yandex_<%= product.id %>').attr("checked", <%= product.market_yandex_boolean %>);
-            $('#recommendation_<%= product.id %>').attr("checked", <%= product.recommendation %>);
+            $('#recommendation_<%= product.id %>').attr("checked", <%= product.recommendation ? 'true' : 'false' %>);
         </script>
 
     <% end %>
@@ -151,7 +151,7 @@
     <td><%= link_to product.title, product, :class => 'product_title' %></td>
     <td>
       <%= raw (product.old_price) ? "<del>" + product.old_price.to_s + '<span class="ruble">a</span>' + "</del>" : '' %>
-      <span class="price"><%= number_to_currency(product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+      <span class="price"><%= number_to_currency(product.price_with_margin, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
     </td>
     <td>
 

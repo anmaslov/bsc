@@ -44,7 +44,11 @@ class Price < ActiveRecord::Base
       if row[import_information.article_column - 1].to_s !~ /^\s*[+-]?((\d+_?)*\d+(\.(\d+_?)*\d+)?|\.(\d+_?)*\d+)(\s*|([eE][+-]?(\d+_?)*\d+)\s*)$/ or import_information.supplier_id == 1
         article  = row[import_information.article_column - 1].to_s + '-' + import_information.supplier_id.to_s
       else
-        article  = row[import_information.article_column - 1].round(0).to_s + '-' + import_information.supplier_id.to_s
+        if import_information.supplier_id != 1
+          article  = row[import_information.article_column - 1].to_f.round(0).to_s + '-' + import_information.supplier_id.to_s
+        else
+          article  = row[import_information.article_column - 1].to_s + '-' + import_information.supplier_id.to_s
+        end
       end
 
       product_id = nil
@@ -79,8 +83,14 @@ class Price < ActiveRecord::Base
       if import_information.margin.present?
         price    = price + price * (import_information.margin.to_f / 100)
       end
-      bar_code = row[import_information.bar_code - 1].to_s
-      unit     = row[import_information.unit - 1].to_s
+      bar_code = nil
+      if import_information.bar_code.present?
+        bar_code = row[import_information.bar_code - 1].to_s
+      end
+      unit = nil
+      if import_information.unit.present?
+        unit     = row[import_information.unit - 1].to_s
+      end
 
       if title.size > 0 and price > 0
         product = Product.find_by_article(article)
@@ -127,6 +137,8 @@ class Price < ActiveRecord::Base
   end
 
   def import
+    #supplier = self.supplier
+    Product.where(:supplier_id => supplier.id).update_all(:quantity => 0)
     if Price.import self.file.path, self.supplier_import_information
       self.processed = true
       return true

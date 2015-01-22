@@ -90,7 +90,7 @@
                         <td>
                           <%= link_to detail.product.title, detail.product %>
                         </td>
-                          <td style="white-space: nowrap"><span class="price"><%= number_to_currency(detail.product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span></td>
+                          <td style="white-space: nowrap"><span class="price"><%= number_to_currency(detail.product.price_with_margin, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span></td>
                           <td><button onclick="showAddToBascet('<%=detail.product.id %>>');" data-target="#addToBascet" data-toggle="modal" style="width: 100%; min-width: 60px;" class="btn btn-xs btn-info buy" type="button">Заказать</button></td>
                         </tr>
                         <% end %>
@@ -133,7 +133,7 @@
       <div class="clear" style="height: 25px;"></div>
       <h3>
           <%= raw (@product.old_price) ? "<del>" + @product.old_price.to_s + '<span class="ruble">a</span>' + "</del>" : '' %>
-            <%= number_to_currency(@product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span>
+            <%= number_to_currency(@product.price_with_margin, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span>
 
       </h3>
       <div class="clear" style="height: 5px;"></div>

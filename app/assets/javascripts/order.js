@@ -28,5 +28,21 @@ function set_delivery_type(object) {
             $('.form_product_id_29734').submit();
         }
     }, 500);
+}
 
+function set_payment_type(object) {
+    if ($(object).val() == 'Банковской картой Visa/MasterCard') {
+        $('#submit_form').addClass('hidden');
+        $('#submit_yandex_market').removeClass('hidden');
+    } else {
+        $('#submit_form').removeClass('hidden');
+        $('#submit_yandex_market').addClass('hidden');
+    }
+    if ($(object).val() == 'Счет для юридических лиц') {
+        $('#name_organization').removeClass('hidden');
+        $('#inn_organization').removeClass('hidden');
+    } else {
+        $('#name_organization').addClass('hidden');
+        $('#inn_organization').addClass('hidden');
+    }
 }

@@ -130,6 +130,14 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def price_with_margin
+    if supplier.present?
+      ((price + price * ( supplier.margin / 100 )) * 1.035)
+    else
+      price
+    end
+  end
+
   private
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар

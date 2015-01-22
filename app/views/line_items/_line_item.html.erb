@@ -26,7 +26,7 @@
   <td><%= line_item.product.title %></td>
   <td><input class="form-control input-sm" type="text" value="<%= line_item.quantity %>" article="<%= line_item.product.article.gsub('(', '_').gsub(')', '_').gsub('-', '_').gsub('.', '_') %>" onchange="changeCountItemCart(this);"></td>
   <td class="price">
-    <span class="price"><%= number_to_currency(line_item.product.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+    <span class="price"><%= number_to_currency(line_item.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
   </td>
   <td class="price">
     <span class="price"><%= number_to_currency(line_item.total_price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
