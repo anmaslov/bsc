@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   before_action :set_cart
   before_action :set_compare
 
-  before_filter :get_user, :only => [:index,:new,:edit]
+  before_filter :get_user, :only => [:index, :new, :edit, :update, :orders]
   before_filter :accessible_roles, :only => [:new, :edit, :show, :update, :create]
-  load_and_authorize_resource :only => [:show,:new,:destroy,:edit,:update]
+  load_and_authorize_resource :only => [:show, :new, :destroy, :edit, :update, :orders]
 
   # GET /users
   # GET /users.xml
@@ -140,6 +140,10 @@ class UsersController < ApplicationController
     respond_to_not_found(:js, :xml, :html)
   end
 
+  def orders
+    @orders = Order.where(:user_id => @current_user.id)
+  end
+
   private
 
   # Get roles accessible by the current user
@@ -155,7 +159,18 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation, :current_password, :role_ids, :encrypted_password, :email)
+    params.require(:user).permit(:password,
+                                 :password_confirmation,
+                                 :current_password,
+                                 :role_ids,
+                                 :encrypted_password,
+                                 :email,
+                                 :name,
+                                 :phone,
+                                 :address,
+                                 :InnOrganization,
+                                 :NameOrganization
+    )
   end
 
 end

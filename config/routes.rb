@@ -49,7 +49,10 @@ Bsc::Application.routes.draw do
 
   mount RedactorRails::Engine => '/redactor_rails'
   devise_for :users#,  :controllers => { :registrations => "users/registrations" }
-  resources :users
+  #devise_for :users, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+  resources :users do
+    get 'orders', :on => :member
+  end
   resources :roles
   get "persons/profile"
   resources :orders

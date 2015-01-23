@@ -14,6 +14,19 @@ class Order < ActiveRecord::Base
                      "В регионы [согласовывается с менеджером]"
   ]
 
+  STATUS = {
+      0 => "Принят",
+      1 => "Ожидает оплату",
+      2 => "Оплачен, ожидает отправку",
+      3 => "Ожидает оптавку",
+      4 => "Доставлен",
+      5 => "Отменен"
+  }
+
+  def self.STATUS (i)
+    STATUS[i]
+  end
+
   validates :name, :address, :email, presence: true
   validates :pay_type, inclusion: PAYMENT_TYPES
   validates :delivery_type, inclusion: DELIVERY_TYPES

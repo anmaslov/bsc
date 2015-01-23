@@ -13,6 +13,9 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    if current_user.id != @order.user_id
+      redirect_to controller: "users", action: "orders", id: current_user.id, notice: "Это не ваш заказ :)"
+    end
   end
 
   # GET /orders/new
@@ -38,6 +41,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(@cart)
     @order.user = current_user
+    @order.status = 0
 
     respond_to do |format|
       if @order.save
@@ -56,6 +60,7 @@ class OrdersController < ApplicationController
         })
         end
         if @order.pay_type != 'Банковской картой Visa/MasterCard'
+          @order.status = 1
           format.html { redirect_to store_url, notice: 'Спасибо за ваш заказ.' }
           format.json { render action: 'show', status: :created, location: @order }
         else
@@ -65,6 +70,8 @@ class OrdersController < ApplicationController
       else
         #@cart = current_cart
         @delivery_products = Product.where(:id => [29734, 29735])
+        @line_item = LineItem.new
+        @compare_item = CompareItem.new
         format.html { render action: 'new' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end

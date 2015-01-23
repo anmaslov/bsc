@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>БСК – <%= content_for?(:title) ? yield(:title) : "Магазин стройматериалов, инструмента и оборудования" %></title>
+    <title>БСК – <%= content_for?(:title) ? yield(:title) : "Магазин стройматериалов, инструмента и оборудования. Оптовые поставки." %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Компания «БСК» поставщик профессиональных продуктов строительного назначения в России." %>">
     <meta name="keywords" content="<%= content_for?(:keywords) ? yield(:keywords) : "крепеж, метизы, крепеж купить, метизы купить, крепеж оптом, метизы оптом, поставки крепежа, пена, герметики, оснастка, антисептики, инструмент, перфорация,метизы, саморезы, шурупы, гайки, крепеж, гвозди, болты, заклепки, такелаж, скоба, дюбели, анкера, инженерная сантехника, трубы, фитинг, канализация, смеситель, инструмент, кабель, провод, дверная фурнитура, оконная фурнитура, мебельная фурнитура, лестницы, стремянки, alumet" %>">
     <%= csrf_meta_tags %>
@@ -92,7 +92,7 @@
           <div class="col-xs-5 .col-sm-7 col-md-5">
             <div class="header-info">
               <div class="header-info-phone">
-                <span class="header-phone-code">+7 (812)</span>
+                <span style="font-size: small">+7 (</span><span class="header-phone-code">812</span><span style="font-size: small">)</span>
                 <span class="header-phone-number">313-87-17</span>
               </div>
               <div class="header-info-email">
@@ -180,8 +180,10 @@
           <div class="modal-content">
             <div class="modal-body">
             <% if user_signed_in? %>
-                <span>Здравствуйте, <%= current_user.email %></span>
-                <%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
+                <span>Здравствуйте, <%= current_user.name.present? ? current_user.name : current_user.email %></span> <br>
+                  <%= link_to "Отредактируйте свои данные", controller: "users", action: "edit", id: current_user.id %> <br>
+                  <%= link_to "Ваши заказы", controller: "users", action: "orders", id: current_user.id %> <br><br>
+                  <%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
             <% else %>
                 <%= render 'devise/menu/login' %>
             <% end %>
@@ -233,7 +235,7 @@
               <strong><%= link_to 'Контакты', '/contacts' %></strong><br>
               197183, Санкт-Петербург<br>
               ул. Сабировская, 41 <br>
-              <abbr title="Телефон">Тел:</abbr> +7 (812) 313-87-17
+              <abbr title="Телефон">Тел:</abbr> <span class="ya-phone">313-87-17</span>
             </address>
             <!--
             <address>
@@ -348,33 +350,18 @@
       });
   </script>
 
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-      (function (d, w, c) {
-          (w[c] = w[c] || []).push(function() {
-              try {
-                  w.yaCounter27412127 = new Ya.Metrika({id:27412127,
-                      webvisor:true,
-                      clickmap:true,
-                      trackLinks:true,
-                      accurateTrackBounce:true});
-              } catch(e) { }
-          });
-
-          var n = d.getElementsByTagName("script")[0],
-                  s = d.createElement("script"),
-                  f = function () { n.parentNode.insertBefore(s, n); };
-          s.type = "text/javascript";
-          s.async = true;
-          s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-          if (w.opera == "[object Opera]") {
-              d.addEventListener("DOMContentLoaded", f, false);
-          } else { f(); }
-      })(document, window, "yandex_metrika_callbacks");
-  </script>
-  <noscript><div><img src="//mc.yandex.ru/watch/27412127" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter -->
+    <script src="//mc.yandex.ru/metrika/watch.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        try { var yaCounter18292831 = new Ya.Metrika({id:18292831,
+            webvisor:true,
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true});
+        } catch(e) { }
+    </script>
+    <noscript><div><img src="//mc.yandex.ru/watch/18292831" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
 
   <%= render :template => "layouts/view-toggle" %>
 

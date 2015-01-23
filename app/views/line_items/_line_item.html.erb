@@ -14,7 +14,7 @@
 
 
 
-    <%= form_for(line_item, :url => {:controller => 'line_items', :action => 'update', id: line_item}, :remote=>true, :html => {:class => 'hidden form_edit_' + line_item.product.article.gsub('(', '_').gsub(')', '_').gsub('-', '_').gsub('.', '_') }) do |f| %>
+    <%= form_for(line_item, :url => {:controller => '/line_items', :action => 'update', id: line_item}, :remote=>true, :html => {:class => 'hidden form_edit_' + line_item.product.article.gsub('(', '_').gsub(')', '_').gsub('-', '_').gsub('.', '_') }) do |f| %>
         <%= f.text_field :quantity, :class => 'quantity_' + line_item.product.article.gsub('(', '_').gsub(')', '_').gsub('-', '_').gsub('.', '_')%>
         <%= f.submit %>
     <% end %>
@@ -23,7 +23,7 @@
     <%= link_to("Destroy", line_item, :method => :delete, :remote => true, :class => 'hidden link_confirm_destroy_' + line_item.product.id.to_s, :confirm => 'Вы уверены?') %>
   </td>
   <td><%= line_item.product.article %></td>
-  <td><%= line_item.product.title %></td>
+  <td><%= link_to line_item.product.title, line_item.product %></td>
   <td><input class="form-control input-sm" type="text" value="<%= line_item.quantity %>" article="<%= line_item.product.article.gsub('(', '_').gsub(')', '_').gsub('-', '_').gsub('.', '_') %>" onchange="changeCountItemCart(this);"></td>
   <td class="price">
     <span class="price"><%= number_to_currency(line_item.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>

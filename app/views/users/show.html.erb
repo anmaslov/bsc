@@ -79,6 +79,21 @@
                 <%= Time.at( report.handling_time).utc.strftime("%H:%M:%S") %>
             <% end %>
           </td>
+          <td>
+            <% if report.product.present? %>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" <% if report.product.is_active_boolean %> checked <% end %> id="is_active_<%= report.product.id %>" onchange="changeFieldProduct('is_active', <%= report.product.id %>);"> Акт
+              </label>
+            </div>
+
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" <% if report.product.market_yandex_boolean %> checked <% end %> id="market_yandex_<%= report.product.id %>" onchange="changeFieldProduct('market_yandex', <%= report.product.id %>);"> Янд.Марк
+              </label>
+            </div>
+                <% end %>
+          </td>
         </tr>
        <% end %>
     </table>

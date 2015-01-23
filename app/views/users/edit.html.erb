@@ -1,4 +1,5 @@
-<h3><%= @user == @current_user ? "Your Account Settings" : "Edit User" %></h3>
+<h3><%= @user == @current_user ? "Ваши данные" : "Редактировать пользователя" + @user.name.present? ? @user.name : @user.email %></h3>
 
 <%= render 'form' %>
-<%= link_to "Back", :back %>
+
+<%= link_to "Назад", :back %>

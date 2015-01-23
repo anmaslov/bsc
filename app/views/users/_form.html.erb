@@ -13,11 +13,32 @@
 
     <%= render :partial => 'user_fields', :locals => { :f => f } %>
 
-    <p><%= f.label :password %></p>
-    <p><%= f.password_field :password %></p>
+    <div class="clear" style="height: 10px;"></div>
+    <div class="row">
+      <div class="form-group">
+        <%= f.label 'Пароль', :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-5">
+          <%= f.password_field :password, :class => 'form-control' %>
+        </div>
+      </div>
+    </div>
 
-    <p><%= f.label :password_confirmation %></p>
-    <p><%= f.password_field :password_confirmation %></p>
+    <div class="clear" style="height: 10px;"></div>
+    <div class="row">
+      <div class="form-group">
+        <%= f.label 'Повторите пароль', :class => 'col-sm-2 control-label' %>
+        <div class="col-sm-5">
+          <%= f.password_field :password_confirmation, :class => 'form-control' %>
+        </div>
+      </div>
+    </div>
 
-    <p><%= f.submit "Register" %></p>
+    <div class="clear" style="height: 10px;"></div>
+    <div class="row">
+        <div class="form-group">
+          <div class="actions col-sm-7">
+            <%= f.submit 'Сохранить', :class => 'btn btn-success btn-block' %>
+          </div>
+        </div>
+    </div>
 <% end %>

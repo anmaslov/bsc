@@ -24,10 +24,26 @@ class ProductsController < ApplicationController
     self.breadcrumb(@product.catalog)
     @subcatalogs = []
 
+    # while @tree.size > 0
+    #   catalog_item = @tree.pop
+    #   @subcatalogs.push(catalog_item)
+    #   add_breadcrumb catalog_item.title, catalog_item
+    # end
+
+    if @product.keywords != nil
+      if @product.keywords.size > 0
+        @product.keywords += ', '
+      end
+    else
+      @product.keywords = ''
+    end
+    @product.keywords += @product.title
+
     while @tree.size > 0
       catalog_item = @tree.pop
       @subcatalogs.push(catalog_item)
       add_breadcrumb catalog_item.title, catalog_item
+      @product.keywords += ', ' + catalog_item.title
     end
 
     @line_item = LineItem.new

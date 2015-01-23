@@ -19,7 +19,8 @@
 
         <tbody>
 
-        <%= render(cart.line_items) %>
+        <%#= render(cart.line_items) %>
+        <%= render( :partial => 'line_items/line_item', :collection =>  cart.line_items) %>
 
         <script>
           changeCountCart(<%=cart.line_items.size%>);
