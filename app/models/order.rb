@@ -23,8 +23,16 @@ class Order < ActiveRecord::Base
       5 => "Отменен"
   }
 
+  def self.statusInvert
+    STATUS.invert
+  end
+
   def self.STATUS (i)
     STATUS[i]
+  end
+
+  def status_title
+    STATUS[self.status]
   end
 
   validates :name, :address, :email, presence: true
@@ -40,5 +48,14 @@ class Order < ActiveRecord::Base
   def total_price
     line_items.to_a.sum {|item| item.total_price }
   end
+
+  # def to_csv
+  #   CSV.generate do |csv|
+  #     csv << column_names
+  #     line_items.each do |line_item|
+  #       csv << line_item.attributes.values_at(*column_names)
+  #     end
+  #   end
+  # end
 
 end

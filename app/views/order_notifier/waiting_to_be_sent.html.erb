@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <%= stylesheet_link_tag "application", :media => "all" %>
+</head>
+<body>
+<h3>Ваш заказ на сайте БСК №<%= @order.id %> готов к отправлению</h3>
+
+<table class="table table-striped table-hover" style="width: 100%">
+  <tr>
+    <th>
+      Артикул
+    </th>
+    <th>
+      Название
+    </th>
+    <th>
+      Количество
+    </th>
+    <th>
+      Цена
+    </th>
+    <th>
+      Сумма
+    </th>
+  </tr>
+  <%= render :partial => 'line_items/line_item_mailer', :collection => @order.line_items %>
+</table>
+
+<hr>
+
+<span style="text-align: right; width: 100%; float: right">
+  Итого: <%= number_to_currency(@order.total_price, unit: '',  separator: ",", delimiter: " ", precision: 0)%> рублей
+</span>
+
+<br>
+<b>Вы указали следующие данные:</b> <br><br>
+
+<%= render @order %>
+
+</body>
+</html>

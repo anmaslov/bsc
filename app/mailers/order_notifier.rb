@@ -7,16 +7,40 @@ class OrderNotifier < Notifier
   #
   #   en.order_notifier.received.subject
   #
+
+  # Заказ получен
   def received(order)
     @order = order
+    mail(to: order.email, subject: 'Интернет-магазин БСК. Ваш заказ №' + @order.id.to_s + ' принят', skip_premailer: false)
+  end
 
-    mail(to: order.email, subject: 'Заказ №' + @order.id.to_s + ' в интернет-магазине BSC', skip_premailer: false)
+  # Заказ оплачен
+  def paid(order)
+    @order = order
+    mail(to: order.email, subject: 'Интернет-мазанин БСК. Ваш заказ №' + @order.id.to_s + ' успешно оплачен', skip_premailer: false)
+  end
 
+  # Заказ ждет отправку
+  def waiting_to_be_sent(order)
+    @order = order
+    mail(to: order.email, subject: 'Интернет-мазанин БСК. Ваш заказ №' + @order.id.to_s + ' готов к отправке', skip_premailer: false)
+  end
+
+  # Заказ доставлен
+  def delivered(order)
+    @order = order
+    mail(to: order.email, subject: 'Интернет-мазанин БСК. Ваш заказ №' + @order.id.to_s + ' доставлен', skip_premailer: false)
+  end
+
+  # Заказ отменен
+  def canceled(order)
+    @order = order
+    mail(to: order.email, subject: 'Интернет-мазанин БСК. Ваш заказ №' + @order.id.to_s + ' отменен', skip_premailer: false)
   end
 
   def report(order)
     @order = order
-    mail to: 'pavel.osetrov@me.com', subject: 'Новый заказ с сайта BSC №' + @order.id.to_s
+    mail to: 'pavel.osetrov@me.com', subject: 'Новый заказ с сайта №' + @order.id.to_s
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

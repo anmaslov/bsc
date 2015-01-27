@@ -1,33 +1,71 @@
-<h1>Listing orders</h1>
+<h1>Заказы</h1>
 
-<table>
+<ul class="nav nav-tabs">
+  <li role="presentation" <% if @status.nil? %> class="active" <% end %>>
+    <%= link_to 'Все заказы', orders_path(:status => nil) %>
+  </li>
+  <li role="presentation" <% if @status == '0' %> class="active" <% end %>>
+    <%= link_to 'Принят', orders_path(:status => 0) %>
+  </li>
+  <li role="presentation" <% if @status == '1' %> class="active" <% end %>>
+    <%= link_to 'Ожидает оплату', orders_path(:status => 1) %>
+  </li>
+  <li role="presentation" <% if @status == '2' %> class="active" <% end %>>
+    <%= link_to 'Оплачен', orders_path(:status => 2) %>
+  </li>
+  <li role="presentation" <% if @status == '3' %> class="active" <% end %>>
+    <%= link_to 'Ожидает доставку', orders_path(:status => 3) %>
+  </li>
+  <li role="presentation" <% if @status == '4' %> class="active" <% end %>>
+    <%= link_to 'Доставлен', orders_path(:status => 4) %>
+  </li>
+  <li role="presentation" <% if @status == '5' %> class="active" <% end %>>
+    <%= link_to 'Отменен', orders_path(:status => 5) %>
+  </li>
+</ul>
+
+
+<table class="table table-striped table-hover">
   <thead>
-    <tr>
-      <th>Name</th>
-      <th>Address</th>
-      <th>Email</th>
-      <th>Pay type</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <tr>
+    <th>№</th>
+    <th>От</th>
+    <th>Адрес</th>
+    <th>Способ оплаты</th>
+    <th>Способ доставки</th>
+    <th>Статус</th>
+    <th>Сумма заказа</th>
+    <!--<th>Скачать</th>-->
+    <th>Сменить статус</th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @orders.each do |order| %>
+  <% @orders.each do |order| %>
       <tr>
-        <td><%= order.name %></td>
+        <td><%= link_to order.id.to_s, order %></td>
+        <td><%= order.name.present? ? order.name + ', ' : '' %><%= order.email%> </td>
         <td><%= order.address %></td>
-        <td><%= order.email %></td>
         <td><%= order.pay_type %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= order.delivery_type %></td>
+        <td><%= order.status_title %></td>
+        <td style="text-align: right"><%= number_to_currency(order.total_price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></td>
+        <!--<td style="text-align: center"><%= link_to 'xls', order, :format => 'xls' %></td>
+        --><td>
+          <%= simple_form_for(order, :html => {:class => 'form-horizontal', :remote => true, :onchange => '$(this).children(".submit").click();'}) do |f| %>
+              <%= f.select :status, Order.statusInvert %>
+              <%= f.submit :class => 'submit hidden',  :confirm => "Вы уверены?" %>
+          <% end %>
+        </td>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= will_paginate @orders,
+                  renderer: BootstrapPagination::Rails,
+                  :remote => true,
+                  :params => { :status => nil }
+%>

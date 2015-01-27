@@ -1,25 +1,40 @@
 # encoding: utf-8
 class OrdersController < ApplicationController #protect_from_forgery with: :null_session
   include CurrentCart
-  before_action :set_cart, only: [:new, :create]
+  before_action :set_cart, only: [:new, :create, :update]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin_user!, only: [:index]
+  #before_action :authenticate_admin_user!, only: [:index]
 
-  #load_and_authorize_resource except: :create
-  #skip_authorize_resource :only => [:show, :check_order, :new, ]
+  load_and_authorize_resource except: :create
+  skip_authorize_resource :only => [:show, :new, :payment, :check_order, :payment_aviso ]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @status = params[:status]
+    if @status.present?
+      @orders = Order.where(:status => @status.to_i).order('updated_at ASC').paginate(:page => params[:page], :per_page => 30)
+    else
+      @orders = Order.order('updated_at ASC').paginate(:page => params[:page], :per_page => 30)
+    end
+
+    # <div role="tabpanel" class="tab-pane active" id="all_order">all_order</div>
+    # <div role="tabpanel" class="tab-pane" id="adopted">adopted</div>
+    # <div role="tabpanel" class="tab-pane" id="pending_payment">pending_payment</div>
+    # <div role="tabpanel" class="tab-pane" id="paid">paid</div>
+    # <div role="tabpanel" class="tab-pane" id="waiting_to_be_sent">waiting to be sent</div>
+    # <div role="tabpanel" class="tab-pane" id="delivered">delivered</div>
+    # <div role="tabpanel" class="tab-pane" id="canceled">canceled</div>
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
-    if current_user.id != @order.user_id
+    if current_user.id != @order.user_id and !(can? :manage, @order)
       redirect_to controller: "users", action: "orders", id: current_user.id, notice: "Это не ваш заказ :)"
     end
+
+
   end
 
   # GET /orders/new
@@ -170,6 +185,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     requestDatetime = params[:requestDatetime]
     action          = params[:action]
     md5             = params[:md5]
+    orderNumber     = params[:orderNumber]
     shopId          = params[:shopId]
     shopArticleId   = params[:shopArticleId]
     invoiceId       = params[:invoiceId]
@@ -198,6 +214,34 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
       massage = 'Ошибка авторизации'
     end
 
+    if orderNumber.present?
+      order = Order.find(orderNumber)
+    elsif customerNumber.present?
+      customerNumberTemp = customerNumber
+      s = customerNumberTemp[0,1]
+      customerNumberTemp[0] = ''
+      if s == 'o'
+        order = Order.find(customerNumberTemp.to_i)
+      else
+        user = User.find(customerNumberTemp.to_i)
+        if user.present?
+          order = user.orders.last(1)
+        else
+          order = nil
+        end
+      end
+    else
+      order = nil
+    end
+
+    if order.present?
+      order.status = 2
+      order.save
+
+      OrderNotifier.paid(order).deliver
+
+    end
+
     @request = {
         'performedDatetime' => Time.now,
         'code'              => code,
@@ -213,15 +257,33 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+
+    if @order.status.to_s != params[:order][:status]
+
+      case params[:order][:status]
+        when '2'
+          OrderNotifier.paid(@order).deliver
+        when '3'
+          OrderNotifier.waiting_to_be_sent(@order).deliver
+        when '4'
+          OrderNotifier.delivered(@order).deliver
+        when '5'
+          OrderNotifier.canceled(@order).deliver
+      end
+
+    end
+
     respond_to do |format|
       if @order.update(order_params)
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.js { @order }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # DELETE /orders/1
@@ -242,6 +304,6 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type, :delivery_type, :phone, :comment)
+      params.require(:order).permit(:name, :address, :email, :pay_type, :delivery_type, :phone, :comment, :status)
     end
 end
