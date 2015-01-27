@@ -55,7 +55,14 @@ Bsc::Application.routes.draw do
   end
   resources :roles
   get "persons/profile"
-  resources :orders
+  #resources :orders
+  resources :orders do
+    post :check_order, on: :collection
+    get :check_order, on: :collection
+
+    post :payment_aviso, on: :collection
+    get :payment_aviso, on: :collection
+  end
 
   resources :line_items
 

@@ -127,6 +127,13 @@
           <input type="checkbox" <% if product.recommendation %> checked <% end %> id="recommendation_<%= product.id %>" onchange="changeFieldProduct('recommendation', <%= product.id %>);"> Рекоммендовать
         </label>
       </div>
+
+
+
+      <% if product.reports.present? %>
+          <div class="clear"></div>
+        <%= product.reports.last.user.email %>
+      <% end %>
     </td>
 
         <script>

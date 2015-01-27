@@ -1,9 +1,13 @@
 # encoding: utf-8
-class OrdersController < ApplicationController
+class OrdersController < ApplicationController #protect_from_forgery with: :null_session
   include CurrentCart
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin_user!, only: [:index]
+
+  #load_and_authorize_resource except: :create
+  #skip_authorize_resource :only => [:show, :check_order, :new, ]
+
   # GET /orders
   # GET /orders.json
   def index
@@ -80,6 +84,130 @@ class OrdersController < ApplicationController
 
   def payment
 
+  end
+
+  def check_order
+
+    requestDatetime = params[:requestDatetime]
+    action          = params[:action]
+    md5             = params[:md5]
+    shopId          = params[:shopId]
+    shopArticleId   = params[:shopArticleId]
+    invoiceId       = params[:invoiceId]
+    customerNumber  = params[:customerNumber]
+    orderCreatedDatetime = params[:orderCreatedDatetime]
+    orderSumAmount  = params[:orderSumAmount]
+    orderSumCurrencyPaycash = params[:orderSumCurrencyPaycash]
+    orderSumBankPaycash     = params[:orderSumBankPaycash]
+    shopSumAmount   = params[:shopSumAmount]
+    shopSumCurrencyPaycash  = params[:shopSumCurrencyPaycash]
+    shopSumBankPaycash      = params[:shopSumBankPaycash]
+    paymentPayerCode        = params[:paymentPayerCode]
+    paymentType             = params[:paymentType]
+
+    orderNumber = params[:orderNumber]
+
+    md5_string = 'checkOrder;' + orderSumAmount.to_s + ';' + orderSumCurrencyPaycash.to_s + ';' + orderSumBankPaycash.to_s + ';' +
+        shopId.to_s + ';' + invoiceId.to_s + ';' + customerNumber.to_s + ';' + $shopPassword.to_s + ';'
+
+    md5_new = Digest::MD5.hexdigest(md5_string)
+
+    code = 0
+    massage = 'Успешно'
+    if md5 != md5_new
+      code = 1
+      massage = 'Ошибка авторизации'
+    end
+
+    if orderNumber.present?
+      order = Order.find(orderNumber)
+    elsif customerNumber.present?
+      customerNumberTemp = customerNumber
+      s = customerNumberTemp[0,1]
+      customerNumberTemp[0] = ''
+      if s == 'o'
+        order = Order.find(customerNumberTemp.to_i)
+      else
+        user = User.find(customerNumberTemp.to_i)
+        if user.present?
+          order = user.orders.last(1)
+        else
+          order = nil
+          code = 100
+          massage = 'Отказ в приеме перевода'
+        end
+      end
+    else
+      code = 200
+      massage = 'Ошибка разбора запроса'
+    end
+
+    #ts = order.total_price - orderSumAmount.to_f
+    if order.present?
+      if order.total_price - orderSumAmount.to_f > -1 and order.total_price - orderSumAmount.to_f < 1
+        code = 100
+        massage = 'Отказ в приеме перевода'
+      end
+    elsif code == 0
+      code = 100
+      massage = 'Отказ в приеме перевода'
+    end
+
+    @request = {
+        'performedDatetime' => Time.now ,
+        'code'              => code,
+        'shopId'            => '29313',
+        'orderSumAmount'    => orderSumAmount,
+        'message'           => massage
+    }
+    respond_to do |format|
+      format.xml  { render :xml => @request}
+    end
+  end
+
+  def payment_aviso
+
+    requestDatetime = params[:requestDatetime]
+    action          = params[:action]
+    md5             = params[:md5]
+    shopId          = params[:shopId]
+    shopArticleId   = params[:shopArticleId]
+    invoiceId       = params[:invoiceId]
+    customerNumber  = params[:customerNumber]
+    orderCreatedDatetime    = params[:orderCreatedDatetime]
+    orderSumAmount          = params[:orderSumAmount]
+    orderSumCurrencyPaycash = params[:orderSumCurrencyPaycash]
+    orderSumBankPaycash     = params[:orderSumBankPaycash]
+    shopSumAmount           = params[:shopSumAmount]
+    shopSumCurrencyPaycash  = params[:shopSumCurrencyPaycash]
+    shopSumBankPaycash      = params[:shopSumBankPaycash]
+    paymentDatetime         = params[:paymentDatetime]
+    paymentPayerCode        = params[:paymentPayerCode]
+    paymentType             = params[:paymentType]
+
+
+    md5_string = 'checkOrder;' + orderSumAmount.to_s + ';' + orderSumCurrencyPaycash.to_s + ';' + orderSumBankPaycash.to_s + ';' +
+        shopId.to_s + ';' + invoiceId.to_s + ';' + customerNumber.to_s + ';' + $shopPassword.to_s + ';'
+
+    md5_new = Digest::MD5.hexdigest(md5_string)
+
+    code = 0
+    massage = 'Успешно'
+    if md5 != md5_new
+      code = 1
+      massage = 'Ошибка авторизации'
+    end
+
+    @request = {
+        'performedDatetime' => Time.now,
+        'code'              => code,
+        'invoiceId'         => invoiceId,
+        'shopId'            => '29313'
+    }
+
+    respond_to do |format|
+      format.xml  { render :xml => @request}
+    end
   end
 
   # PATCH/PUT /orders/1
