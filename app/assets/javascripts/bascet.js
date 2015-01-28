@@ -29,6 +29,7 @@ function showAddToBascet(product) {
     var img_alt =        productObj.find('.product_img').attr('alt');
     var title =          productObj.find('.product_title').html();
     var product_href =   productObj.find('.product_title').attr('href');
+    var quantity_prod =  productObj.find('.quantity_product').html();
     article =            productObj.find('.product_article').html();
     product_id =         product;
     var price =          productObj.find('.price').html();
@@ -37,6 +38,13 @@ function showAddToBascet(product) {
     $('.modal-product-title').html(title).attr({href: product_href});
     $('.modal-product-article').html(article);
     $('.model-product-price').html(price);
+    console.log(quantity_prod);
+    if (quantity_prod > 0) {
+        $('.model-product-quantity-out-of-stock').html('');
+    } else {
+        $('.model-product-quantity-out-of-stock').html('<b>К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы</b>');
+    }
+
 }
 
 function clearFormAddToBascet() {

@@ -15,7 +15,19 @@
   <td>
     <div class="btn-group-vertical" role="group" style="width: 70px;">
         <button type="button" class="btn btn-sm btn-primary compare" onclick="addToCompare('<%= search.id %>');">Сравнить</button>
-        <button type="button" class="btn btn-sm btn-success buy"  data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= search.id %>');">Купить</button>
+        <% if search.quantity > 0 %>
+            <button type="button" class="btn btn-sm btn-success buy"  data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= search.id %>');">Купить</button>
+        <% else %>
+          <button type="button"
+                  class="btn btn-sm btn-warning buy"
+                  data-toggle="modal"
+                  data-target="#addToBascet"
+                  onclick="showAddToBascet('<%= search.id %>');"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы"
+          >Под заказ</button>
+        <% end %>
     </div>
   </td>
 </tr>

@@ -140,7 +140,26 @@
 
 
       <div class="btn-group" style="width: 100%;">
-        <button type="button" class="btn btn-lg btn-success buy" style="width: 70%;" data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= @product.id %>');">Купить</button>
+        <% if @product.quantity > 0 %>
+            <button type="button"
+                    class="btn btn-lg btn-success buy"
+                    style="width: 70%;"
+                    data-toggle="modal"
+                    data-target="#addToBascet"
+                    onclick="showAddToBascet('<%= @product.id %>');"
+            >Купить</button>
+        <% else %>
+            <button type="button"
+                    class="btn btn-lg btn-warning buy"
+                    style="width: 70%;"
+                    data-toggle="modal"
+                    data-target="#addToBascet"
+                    onclick="showAddToBascet('<%= @product.id %>');"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы"
+            >Под заказ</button>
+        <% end %>
         <button type="button" class="btn btn-lg btn-primary compare" style="width: 30%;">Сравнить</button>
       </div>
 

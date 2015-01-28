@@ -47,6 +47,7 @@
       </div>
         <% end %>
       <div class="caption">
+        <div class="quantity_product hidden"><%=product.quantity%></div>
         <%= link_to product.title, product, :class => 'product_title' %>
         <p class="product_article">арт. <%= product.article %></p>
 
@@ -59,10 +60,18 @@
         <div class="clear"></div>
         <div class="btn-group" style="width: 100%; margin-top: -5px;">
 
+          <% if product.quantity > 0 %>
           <button type="button" class="btn btn-success buy" data-toggle="modal" data-target="#addToBascet"
                   onclick="showAddToBascet('<%= product.id %>');"
                   <% if can? :update, product %> style="width: 25%;" <% end %>
           >Купить</button>
+          <% else %>
+          <button type="button" class="btn btn-warning buy" data-toggle="modal" data-target="#addToBascet"
+                  onclick="showAddToBascet('<%= product.id %>');"
+                  <% if can? :update, product %> style="width: 25%;" <% else %> style="width: 65%;" <% end %>
+                  data-toggle="tooltip" data-placement="bottom" title="К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы"
+          >Под заказ</button>
+          <% end %>
 
           <button type="button" class="btn btn-primary compare"
                   style="padding: 6px !important;
@@ -164,7 +173,27 @@
 
       <% if can? :manage, product %>
           <div class="btn-group-vertical" style="width: 75px;">
-              <button type="button" class="btn btn-sm btn-success buy"  data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= product.id %>');">Купить</button>
+
+
+            <% if product.quantity > 0 %>
+              <button type="button"
+                      class="btn btn-sm btn-success buy"
+                      data-toggle="modal"
+                      data-target="#addToBascet"
+                      onclick="showAddToBascet('<%= product.id %>');">Купить</button>
+            <% else %>
+                <button type="button"
+                        class="btn btn-sm btn-warning buy"
+                        data-toggle="modal"
+                        data-target="#addToBascet"
+                        onclick="showAddToBascet('<%= product.id %>');"
+                        data-toggle="tooltip"
+                        data-placement="bottom"
+                        title="К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы"
+                >Купить</button>
+            <% end %>
+
+
                 <%= button_to "Изменить", edit_product_path(product),
                           :class => "btn btn-sm btn-warning", :method => :get %>
 
@@ -173,8 +202,33 @@
 
           </div>
       <% else %>
-          <button type="button" class="btn btn-sm btn-success buy"  data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= product.id %>');">Купить</button>
+
+          <% if product.quantity > 0 %>
+              <button type="button"
+                      class="btn btn-sm btn-success buy"
+                      data-toggle="modal"
+                      data-target="#addToBascet"
+                      onclick="showAddToBascet('<%= product.id %>');">Купить</button>
+          <% else %>
+              <button type="button"
+                      class="btn btn-sm btn-warning buy"
+                      data-toggle="modal"
+                      data-target="#addToBascet"
+                      onclick="showAddToBascet('<%= product.id %>');"
+                      data-toggle="tooltip"
+                      data-placement="bottom"
+                      title="К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы"
+              >Под заказ</button>
+          <% end %>
+
       <% end %>
+
+      <button type="button" class="btn btn-sm btn-primary compare"
+              style="padding: 6px !important;
+                      <% if can? :update, product %> width: 25%; <% end %>"
+              onclick="addToCompare('<%= product.id %>');"
+      >Сравнить</button>
+
     </td>
   </tr>
 
