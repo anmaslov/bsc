@@ -9,7 +9,7 @@ class Order < ActiveRecord::Base
 
   ]
   DELIVERY_TYPES = [ "Самовывоз [ул. Сабировская, 41]",
-                     "В пределах КАД [400 рублей]",
+                     "В пределах КАД [300 рублей]",
                      "В Ленинградскую область [1500 рублей]",
                      "В регионы [согласовывается с менеджером]"
   ]
@@ -47,6 +47,22 @@ class Order < ActiveRecord::Base
 
   def total_price
     line_items.to_a.sum {|item| item.total_price }
+  end
+
+  def line_items_not_available
+    LineItem.joins(:product).where("line_items.order_id = ? AND products.quantity = 0 OR products.quantity = NULL", id)
+  end
+
+  def line_items_in_stock
+    LineItem.joins(:product).where("line_items.order_id = ? AND products.quantity > 0", id)
+  end
+
+  def total_price_not_available
+    line_items_not_available.to_a.sum {|item| item.total_price }
+  end
+
+  def total_price_in_stock
+    line_items_in_stock.to_a.sum {|item| item.total_price }
   end
 
   # def to_csv

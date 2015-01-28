@@ -89,6 +89,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def robots
+    respond_to :text
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page

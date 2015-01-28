@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.where('id NOT IN (SELECT DISTINCT(product_id) FROM details) AND price > 1500 AND supplier_id <> 2').order(:updated_at).paginate(:page => params[:page], :per_page => 30)
+    @products = Product.where('id NOT IN (SELECT DISTINCT(product_id) FROM details) AND price > 1500 AND supplier_id <> 2').order('is_active, updated_at ASC').paginate(:page => params[:page], :per_page => 30)
   end
 
   # GET /products/1

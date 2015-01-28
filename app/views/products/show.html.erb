@@ -16,7 +16,7 @@
       </ol>
 
       <div class="clear"></div>
-      <h1 class="title-product"><%= @product.title %> <small style="white-space: nowrap;">арт. <%= @product.article %></small></h1>
+      <h1 class="title-product"><%= @product.title %> <small style="white-space: nowrap;">арт. <%= @product.art %></small></h1>
       <div class="clear" style="height: 10px"></div>
       <div class="content">
         <%= raw @product.content %>
@@ -148,6 +148,9 @@
                     data-target="#addToBascet"
                     onclick="showAddToBascet('<%= @product.id %>');"
             >Купить</button>
+
+
+
         <% else %>
             <button type="button"
                     class="btn btn-lg btn-warning buy"
@@ -163,6 +166,17 @@
         <button type="button" class="btn btn-lg btn-primary compare" style="width: 30%;">Сравнить</button>
       </div>
 
+      <% if @product.quantity > 0 %>
+          <div class="clear"></div>
+          <span data-toggle="tooltip"
+                data-placement="bottom"
+                title="Все сроки требуют уточнения"
+                style="font-size: smaller; color: #64c564; cursor: help; display: block; margin-top: 0; position: relative"
+          >
+                Доставим послезавтра в пределах КАД за 300<span class="ruble">a</span>
+          </span>
+      <% end %>
+
       <% if can? :update, @product %>
           <div class="clearfix" style="height: 5px;"></div>
           <div class="btn-group-vertical" style="width: 100%;">
@@ -175,10 +189,6 @@
           </div>
       <% end %>
 
-
-      <% if @product.quantity.nil? or !( @product.quantity > 0 ) %>
-        <h4>Под заказ</h4>
-      <% end %>
     </div>
   </div>
 </div>

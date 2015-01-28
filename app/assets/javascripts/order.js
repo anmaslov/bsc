@@ -23,7 +23,7 @@ function set_delivery_type(object) {
             $('.quantity_product_id_29735').val('1');
             $('.form_product_id_29735').submit();
         }
-        if ($(object).val() == 'В пределах КАД [400 рублей]') {
+        if ($(object).val() == 'В пределах КАД [300 рублей]') {
             $('.quantity_product_id_29734').val('1');
             $('.form_product_id_29734').submit();
         }

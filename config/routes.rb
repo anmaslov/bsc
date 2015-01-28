@@ -3,6 +3,8 @@ Bsc::Application.routes.draw do
 
   resources :news
 
+  get '/robots.:format' => 'pages#robots'
+
   get "search/product"
   resources :compare_items
 

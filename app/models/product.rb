@@ -138,6 +138,15 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def art
+    obj = article.chomp '-' + supplier_id.to_s
+    if obj !~ /^\s*[+-]?((\d+_?)*\d+(\.(\d+_?)*\d+)?|\.(\d+_?)*\d+)(\s*|([eE][+-]?(\d+_?)*\d+)\s*)$/
+      obj
+    else
+      obj.to_i
+    end
+  end
+
   private
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар

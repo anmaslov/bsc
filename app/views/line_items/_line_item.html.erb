@@ -22,7 +22,7 @@
     <%= link_to("Destroy", line_item, :method => :delete, :remote => true, :class => 'hidden link_destroy_' + line_item.product.id.to_s) %>
     <%= link_to("Destroy", line_item, :method => :delete, :remote => true, :class => 'hidden link_confirm_destroy_' + line_item.product.id.to_s, :confirm => 'Вы уверены?') %>
   </td>
-  <td><%= line_item.product.article %></td>
+  <td><%= line_item.product.art %></td>
   <td><%= link_to line_item.product.title, line_item.product %></td>
   <td><input class="form-control input-sm" type="text" value="<%= line_item.quantity %>" article="<%= line_item.product.article.gsub('(', '_').gsub(')', '_').gsub('-', '_').gsub('.', '_') %>" onchange="changeCountItemCart(this);"></td>
   <td class="price">

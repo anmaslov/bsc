@@ -49,18 +49,30 @@
       <div class="caption">
         <div class="quantity_product hidden"><%=product.quantity%></div>
         <%= link_to product.title, product, :class => 'product_title' %>
-        <p class="product_article">арт. <%= product.article %></p>
+        <p class="product_article">арт. <%= product.art %></p>
 
         <hr style="margin-bottom: 10px;">
           <div>
           <%= raw (product.old_price) ? "<del>" + number_to_currency(product.old_price, unit: '',  separator: ",", delimiter: " ", precision: 0).to_s + '<span class="ruble">a</span>' +  "</del>" : '' %>
 
           <span class="price"><%= number_to_currency(product.price_with_margin, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+
+            <% if product.quantity > 0 %>
+                <div class="clear"></div>
+          <span data-toggle="tooltip"
+                data-placement="bottom"
+                title="Все сроки требуют уточнения"
+                style="font-size: smaller; color: #64c564; cursor: help; display: block; margin-top: -40px; position: relative"
+          >
+                Доставим послезавтра в пределах КАД за 300<span class="ruble">a</span>
+          </span>
+            <% end %>
+
           </div>
         <div class="clear"></div>
         <div class="btn-group" style="width: 100%; margin-top: -5px;">
 
-          <% if product.quantity > 0 %>
+          <% if product.quantity.to_i > 0 %>
           <button type="button" class="btn btn-success buy" data-toggle="modal" data-target="#addToBascet"
                   onclick="showAddToBascet('<%= product.id %>');"
                   <% if can? :update, product %> style="width: 25%;" <% end %>
@@ -163,11 +175,23 @@
 
     </td>
     <% end %>
-    <td><%= product.article %></td>
+    <td><%= product.art %></td>
     <td><%= link_to product.title, product, :class => 'product_title' %></td>
     <td>
       <%= raw (product.old_price) ? "<del>" + product.old_price.to_s + '<span class="ruble">a</span>' + "</del>" : '' %>
       <span class="price"><%= number_to_currency(product.price_with_margin, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+    </td>
+    <td>
+      <% if product.quantity > 0 %>
+          <div class="clear"></div>
+          <span data-toggle="tooltip"
+                data-placement="bottom"
+                title="Все сроки требуют уточнения"
+                style="font-size: smaller; color: #64c564; cursor: help; white-space: nowrap"
+          >
+                Доставим послезавтра <br>в пределах КАД за 300<span class="ruble">a</span>
+          </span>
+      <% end %>
     </td>
     <td>
 
@@ -175,7 +199,7 @@
           <div class="btn-group-vertical" style="width: 75px;">
 
 
-            <% if product.quantity > 0 %>
+            <% if product.quantity.to_i > 0 %>
               <button type="button"
                       class="btn btn-sm btn-success buy"
                       data-toggle="modal"

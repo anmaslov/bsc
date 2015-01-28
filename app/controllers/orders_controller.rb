@@ -11,6 +11,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
   # GET /orders
   # GET /orders.json
   def index
+
     @status = params[:status]
     if @status.present?
       @orders = Order.where(:status => @status.to_i).order('updated_at ASC').paginate(:page => params[:page], :per_page => 30)
@@ -202,7 +203,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     paymentType             = params[:paymentType]
 
 
-    md5_string = 'checkOrder;' + orderSumAmount.to_s + ';' + orderSumCurrencyPaycash.to_s + ';' + orderSumBankPaycash.to_s + ';' +
+    md5_string = 'paymentAviso;' + orderSumAmount.to_s + ';' + orderSumCurrencyPaycash.to_s + ';' + orderSumBankPaycash.to_s + ';' +
         shopId.to_s + ';' + invoiceId.to_s + ';' + customerNumber.to_s + ';' + $shopPassword.to_s + ';'
 
     md5_new = Digest::MD5.hexdigest(md5_string)

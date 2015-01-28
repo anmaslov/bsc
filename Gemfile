@@ -107,3 +107,5 @@ gem 'thinking-sphinx', '~> 3.1.0'
 gem 'yandex-money-sdk'
 
 gem 'premailer-rails'
+
+gem "dynamic_sitemaps"

@@ -1,5 +1,5 @@
 <div class="modal-body">
-
+  <% if cart_order.line_items_in_stock.size > 0 %>
   <table class="table table-striped table-product">
     <thead>
     <tr>
@@ -15,20 +15,59 @@
 
     <tbody>
 
-    <%= render(cart_order.line_items) %>
+    <%= render(cart_order.line_items_in_stock) %>
 
     <script>
         changeCountCart(<%=cart_order.line_items.size%>);
-        $('#sum_yandex_market').val('<%= cart_order.total_price %>');
+        $('#sum_yandex_market').val('<%= cart_order.total_price_in_stock %>');
     </script>
 
     </tbody>
   </table>
 
-  <div id="total_bascet_order" class="right">Итого: <span class="price"><%= number_to_currency(cart_order.total_price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span></div>
+  <div id="total_bascet_order" class="right">Итого: <span class="price"><%= number_to_currency(cart_order.total_price_in_stock, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span></div>
+  <% end %>
+  <% if cart_order.line_items_not_available.size > 0 %>
+      <div class="clear"></div>
 
+      <h4>Под заказ, не оплачивается, по этому товару с вами свяжется наш менеджер:</h4>
+
+      <table class="table table-striped table-product">
+        <thead>
+        <tr>
+          <th></th>
+          <th>Артикул</th>
+          <th>Наименование</th>
+          <th>Количество</th>
+          <th>Цена</th>
+          <th>Сумма</th>
+          <th></th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <%= render(cart_order.line_items_not_available) %>
+
+        <script>
+            changeCountCart(<%=cart_order.line_items.size%>);
+            $('#sum_yandex_market').val('<%= cart_order.total_price_in_stock %>');
+        </script>
+
+        </tbody>
+      </table>
+
+      <div id="total_bascet_order" class="right">Итого: <span class="price"><%= number_to_currency(cart_order.total_price_not_available, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span></div>
+    <% end %>
 </div>
-
+<% if cart_order.line_items_not_available.size > 0 %>
+    <div class="clear"></div>
+    <div>
+      <h2>
+        К оплате <span class="price"><%= number_to_currency(cart_order.total_price_in_stock, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+      </h2>
+    </div>
+<% end %>
 <script>
     if ($('#cart tr').length == 1) {
         $('#cart').show();

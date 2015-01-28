@@ -23,4 +23,8 @@ class LineItem < ActiveRecord::Base
     product.image_url
   end
 
+  def quantity_product
+    product.quantity
+  end
+
 end

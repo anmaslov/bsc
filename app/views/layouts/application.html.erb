@@ -123,7 +123,7 @@
 
             <%#= link_to 'Прайс-лист', '/price-list', :class => 'navbar-brand' %>
 
-            <a class="navbar-brand right notdecoration" data-toggle="modal" data-target="#bascet">
+            <a class="navbar-brand right notdecoration hidden" data-toggle="modal" data-target="#bascet" id="button_cart">
                                 <span class="dotted cart-link-menu">Корзина</span>
               <span class="label label-success count-cart"></span>
             </a>
@@ -175,22 +175,7 @@
         </div>
       </div>
 
-      <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-          <div class="modal-content">
-            <div class="modal-body">
-            <% if user_signed_in? %>
-                <span>Здравствуйте, <%= current_user.name.present? ? current_user.name : current_user.email %></span> <br>
-                  <%= link_to "Отредактируйте свои данные", controller: "users", action: "edit", id: current_user.id %> <br>
-                  <%= link_to "Ваши заказы", controller: "users", action: "orders", id: current_user.id %> <br><br>
-                  <%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
-            <% else %>
-                <%= render 'devise/menu/login' %>
-            <% end %>
-              </div>
-          </div>
-        </div>
-      </div>
+
 
 
 
@@ -292,6 +277,22 @@
             </script>
     <% end %>
 
+    <div class="modal fade" id="profileModal" tabindex="-1" role="dialog" aria-labelledby="profileModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-body">
+            <% if user_signed_in? %>
+                <span>Здравствуйте, <%= current_user.name.present? ? current_user.name : current_user.email %></span> <br>
+                <%= link_to "Отредактируйте свои данные", controller: "users", action: "edit", id: current_user.id %> <br>
+                <%= link_to "Ваши заказы", controller: "users", action: "orders", id: current_user.id %> <br><br>
+                <%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
+            <% else %>
+                <%= render 'devise/menu/login' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
 
   <div id="addToBascet" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
@@ -370,6 +371,11 @@
 
   <%= render :template => "layouts/view-toggle" %>
 
+<% if notice %>
+      <script>
+          message('info', '<%= notice %>');
+      </script>
+  <% end %>
 
   </body>
 </html>
