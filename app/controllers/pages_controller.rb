@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   #before_action :authenticate_admin_user!, only: [:edit, :update, :destroy, :new, :create]
 
   load_and_authorize_resource except: :create
-  skip_authorize_resource :only => [:show]
+  skip_authorize_resource :only => [:show, :robots]
 
   # GET /pages
   # GET /pages.json
