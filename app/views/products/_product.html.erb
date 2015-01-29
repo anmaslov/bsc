@@ -1,5 +1,5 @@
 <% if (can? :manage, product) || product.is_active %>
-<div class="column_product product_id_<%= product.id %>" id="product_<%= product.article %>">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 column_product product_id_<%= product.id %>" id="product_<%= product.article %>" style="height: 395px;">
 
 
   <div class="thumbnail product <%= (@catalog && @catalog.product_table) ? 'hidden' : '' %>">
@@ -53,21 +53,27 @@
 
         <hr style="margin-bottom: 10px;">
           <div>
-          <%= raw (product.old_price) ? "<del>" + number_to_currency(product.old_price, unit: '',  separator: ",", delimiter: " ", precision: 0).to_s + '<span class="ruble">a</span>' +  "</del>" : '' %>
+          <%= raw (product.old_price) ?
+                          "<del>" + number_to_ruble(product.old_price).to_s +  "</del>"
+                  : '' %>
 
-          <span class="price"><%= number_to_currency(product.price_with_margin, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+            <div class="row">
+              <span class="price col-xs-5 col-sm-5 col-md-12 col-lg-5" style="padding-left: 20px; margin-top: -10px;">
+                <%= number_to_ruble(product.price_with_margin) %>
+              </span>
 
-            <% if product.quantity > 0 %>
-                <div class="clear"></div>
-          <span data-toggle="tooltip"
-                data-placement="bottom"
-                title="Все сроки требуют уточнения"
-                style="font-size: smaller; color: #64c564; cursor: help; display: block; margin-top: -40px; position: relative"
-          >
-                Доставим послезавтра в пределах КАД за 300<span class="ruble">a</span>
-          </span>
+              <% if product.quantity > 0 %>
+                  <span data-toggle="tooltip"
+                        data-placement="bottom"
+                        title="Все сроки требуют уточнения"
+                        style="font-size: smaller; color: #64c564; cursor: help; display: block; position: relative; margin-top: -15px; padding: 10px;"
+                        class="col-xs-7 col-sm-7 col-md-12 col-lg-7"
+                  >
+                        Доставим послезавтра в пределах КАД за 300<span class="ruble">a</span>
+                  </span>
             <% end %>
-
+            </div>
+            <div class="clear"></div>
           </div>
         <div class="clear"></div>
         <div class="btn-group" style="width: 100%; margin-top: -5px;">
@@ -175,13 +181,11 @@
 
     </td>
     <% end %>
-    <td><%= product.art %></td>
-    <td><%= link_to product.title, product, :class => 'product_title' %></td>
+    <td style="max-width: 600px;"><%= link_to product.title, product, :class => 'product_title' %>, <span style="white-space: nowrap"> арт. <%= product.art %></span></td>
     <td>
-      <%= raw (product.old_price) ? "<del>" + product.old_price.to_s + '<span class="ruble">a</span>' + "</del>" : '' %>
-      <span class="price"><%= number_to_currency(product.price_with_margin, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
-    </td>
-    <td>
+      <%= raw (product.old_price) ? "<del>" + number_to_ruble(product.old_price).to_s + "</del>" : '' %>
+      <span class="price"><%= number_to_ruble(product.price_with_margin) %></span>
+
       <% if product.quantity > 0 %>
           <div class="clear"></div>
           <span data-toggle="tooltip"

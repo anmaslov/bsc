@@ -681,7 +681,7 @@ tr.not-active {
 
 .thumbnail.product {
     min-height: 325px;
-    max-height: 365px;
+    max-height: 385px;
 }
 
 .thumbnail.product .product_title {
@@ -718,10 +718,7 @@ tr.not-active {
 }
 
 .column_product {
-    width: 285px;
-    float: left;
-    padding: 0 10px;
-    height: 375px;
+    max-width: 300px;
 }
 
 .column_catalog {

@@ -55,6 +55,10 @@ module ApplicationHelper
 
   end
 
+  def number_to_ruble(number)
+    number_to_currency(number, unit: raw('<span class="ruble">a</span>'),  separator: ",", delimiter: " ", precision: 0, format: "%n%u")
+  end
+
 
 
   # def link_to_add_fields(name, f, type)

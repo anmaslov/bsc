@@ -160,7 +160,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
 
     #ts = order.total_price - orderSumAmount.to_f
     if order.present?
-      if order.total_price - orderSumAmount.to_f > -1 and order.total_price - orderSumAmount.to_f < 1
+      if order.line_items_in_stock - orderSumAmount.to_f > -1 and order.line_items_in_stock - orderSumAmount.to_f < 1
         code = 100
         massage = 'Отказ в приеме перевода'
       end

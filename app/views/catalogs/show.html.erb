@@ -141,18 +141,6 @@
           <div class="row product-th-large">
             <div class="col-md-12 col-xs-12 product-list" style="padding: 0 10px 0 0;">
                 <table class="table table-striped table-product">
-                  <thead>
-                  <tr class="tr product <%= (@catalog.product_table) ? '' : 'hidden' %>">
-                    <% if can? :update, @products %>
-                        <th></th>
-                    <% end %>
-                    <th></th>
-                    <th>Артикул</th>
-                    <th>Наименование</th>
-                    <th>Цена</th>
-                    <th></th>
-                  </tr>
-                  </thead>
                   <tbody>
                     <%= render(@products) %>
 
