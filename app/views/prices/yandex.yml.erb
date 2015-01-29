@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+
+<yml_catalog date="<%= Time.now %>">
+
+<shop>
+  <name>BSC LTD</name>
+  <company>Building sales company ltd</company>
+  <url>https://bsc-ltd.ru/</url>
+  <platform>RoR</platform>
+  <version>4</version>
+  <agency>Pavel Osetrov</agency>
+  <email>pavel.osetrov@me.com</email>
+
+  <currencies>
+    <currency id="RUR" rate="1"/>
+  </currencies>
+
+  <categories>
+   <% @catalogs.each do |category| %>
+    <category id="<%=category.id%>"><%=category.title%></category>
+   <% end %>
+  </categories>
+
+  <offers>
+    <% @products.each do |offer| %>
+    <offer id="<%=offer.id%>" available="<%= offer.quantity > 0 ? 'true' : 'false' %>" bid="21">
+      <url>https://bsc-ltd.ru<%= url_for offer %></url>
+      <price><%=offer.price_with_margin%></price>
+      <currencyId>RUR</currencyId>
+      <categoryId> <%= offer.catalog_id %> </categoryId >
+      <picture>
+          <% if offer.image.present? or offer.imgs.size == 0 %>
+              https://bsc-ltd.ru<%= offer.image.url(:medium) %>
+          <% elsif !offer.image.present? and offer.imgs.size > 0 %>
+              https://bsc-ltd.ru<%= offer.imgs.first.picture.url(:medium) %>
+          <% end %>
+      </picture>
+      <store>false</store>
+      <pickup>true</pickup>
+      <delivery>true</delivery>
+      <local_delivery_cost>300</local_delivery_cost>
+
+      <name><%= offer.title %></name>
+
+      <% if offer.brand.present? %>
+        <vendor> <%= offer.brand.title %> </vendor>
+      <% end %>
+
+      <% if offer.description.present? %>
+          <description>
+            <%= offer.description %>
+          </description>
+      <% end %>
+      <% if offer.bar_code.present? %>
+        <barcode><%= offer.bar_code %></barcode>
+      <% end %>
+
+      <% offer.characters.each do |character| %>
+        <param name="<%= strip_tags character.name %>"><%= character.value %></param>
+      <% end %>
+
+    </offer>
+    <% end %>
+  </offers>
+</shop>
+</yml_catalog>

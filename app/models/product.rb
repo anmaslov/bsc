@@ -14,6 +14,8 @@ class Product < ActiveRecord::Base
   has_many :reports
   has_many :sliders
 
+  has_many :old_catalogs, dependent: :destroy
+
   #belongs_to :detail_for, :class_name => "Product", :foreign_key => "detail_for_id"
   #has_many :details, :order => 'title ASC', :class_name => "Product", :foreign_key => "detail_for_id"
   #has_and_belongs_to_many :details, :class_name => "Product", :join_table => "products_details", :association_foreign_key => "detail_id"

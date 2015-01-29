@@ -23,6 +23,7 @@ Bsc::Application.routes.draw do
   resources :prices do
     collection do
       get :update_price
+      get :yandex
     end
   end
 

@@ -26,10 +26,10 @@
   <td><%= link_to line_item.product.title, line_item.product %></td>
   <td><input class="form-control input-sm" type="text" value="<%= line_item.quantity %>" article="<%= line_item.product.article.gsub('(', '_').gsub(')', '_').gsub('-', '_').gsub('.', '_') %>" onchange="changeCountItemCart(this);"></td>
   <td class="price">
-    <span class="price"><%= number_to_currency(line_item.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+    <span class="price"><%= number_to_ruble(line_item.price)%></span>
   </td>
   <td class="price">
-    <span class="price"><%= number_to_currency(line_item.total_price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+    <span class="price"><%= number_to_ruble(line_item.total_price)%></span>
   </td>
   <td>
     <a article="<%= line_item.product.article.gsub('(', '_').gsub(')', '_').gsub('-', '_').gsub('.', '_') %>" onclick="$('.link_confirm_destroy_<%=line_item.product.id.to_s%>').first().click();"><span class="glyphicon glyphicon-remove"></span></a>

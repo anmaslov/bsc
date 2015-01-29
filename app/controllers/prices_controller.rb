@@ -3,7 +3,7 @@ class PricesController < ApplicationController
   before_action :set_price, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource except: :create
-  skip_authorize_resource :only => :show
+  skip_authorize_resource :only => [:show, :yandex]
 
 
   def index
@@ -63,6 +63,14 @@ class PricesController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @price.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def yandex
+    @products = Product.where(:is_active => true, :market_yandex => true)
+    @catalogs = Catalog.where(:is_active => true)
+    respond_to do |format|
+      format.yml { @products }
     end
   end
 

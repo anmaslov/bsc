@@ -68,6 +68,13 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
         OrderNotifier.received(@order).deliver
         OrderNotifier.report(@order).deliver
         Cart.destroy(session[:cart_id])
+
+        # фиксируем цены в заказе
+        @order.line_items.each do |line_item|
+          line_item.price_fixed = line_item.product.price_with_margin
+          line_item.save
+        end
+
         session[:cart_id] = nil
         if params[:user].present? and params[:user][:password] != ''
           User.create!({
@@ -80,10 +87,11 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
         })
         end
         if @order.pay_type != 'Банковской картой Visa/MasterCard'
-          @order.status = 1
           format.html { redirect_to store_url, notice: 'Спасибо за ваш заказ.' }
           format.json { render action: 'show', status: :created, location: @order }
         else
+          @order.status = 1
+          @order.save
           format.html { render action: 'payment' }
           format.json { render action: 'show', status: :created, location: @order }
         end

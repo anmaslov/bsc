@@ -227,8 +227,10 @@ class CatalogsController < ApplicationController
     if params[:idr]
       old_catalog = OldCatalog.where(:idc => params[:idr].to_i).first
 
-      if old_catalog.catalog.present?
+      if old_catalog.present? and old_catalog.catalog.present?
         @catalog = old_catalog.catalog
+      elsif old_catalog.product.present?
+        redirect_to old_catalog.product
       else
         redirect_to 'http://old.bsc-ltd.ru/catalog.php?idr=' + params[:idr].to_s
       end

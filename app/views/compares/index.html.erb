@@ -32,13 +32,22 @@
         <div class="caption">
           <hr>
             <span class="price">
-              <%= number_to_currency(product.price_with_margin, unit: '',  separator: ",", delimiter: " ", precision: 0)%>
-              <span class="ruble">a</span>
+              <%= number_to_ruble(product.price_with_margin)%>
             </span>
             <div class="clearfix"></div>
+
+          <% if product.quantity.to_i > 0 %>
               <button type="button" class="btn btn-success buy" data-toggle="modal" data-target="#addToBascet"
                       onclick="showAddToBascet('<%= product.id %>');" style="width: 100%;"
               >Купить</button>
+
+        <% else %>
+              <button type="button" class="btn btn-warning buy" data-toggle="modal" data-target="#addToBascet"
+                      onclick="showAddToBascet('<%= product.id %>');"
+                      style="width: 100%;"
+                      data-toggle="tooltip" data-placement="bottom" title="К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы"
+              >Под заказ</button>
+          <% end %>
 
         </div>
       </th>

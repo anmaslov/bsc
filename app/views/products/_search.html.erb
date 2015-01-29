@@ -10,7 +10,7 @@
     <%= link_to search.title, search %>
   </td>
   <td>
-    <span class="price"><%= number_to_currency(search.price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+    <span class="price"><%= number_to_ruble(search.price)%></span>
   </td>
   <td>
     <div class="btn-group-vertical" role="group" style="width: 70px;">

@@ -16,7 +16,11 @@ class LineItem < ActiveRecord::Base
   end
 
   def price
-    product.price_with_margin
+    if price_fixed.nil?
+      product.price_with_margin
+    else
+      price_fixed
+    end
   end
 
   def image_url

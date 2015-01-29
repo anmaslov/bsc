@@ -29,7 +29,7 @@
         </tbody>
       </table>
 
-  <div id="total_bascet" class="right">Итого: <span class="price"><%= number_to_currency(cart.total_price_in_stock, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span></div>
+  <div id="total_bascet" class="right">Итого: <span class="price"><%= number_to_ruble(cart.total_price_in_stock).to_s %></span></div>
   <% end %>
   <% if cart.line_items_not_available.size > 0 %>
       <div class="clear"></div>
@@ -61,7 +61,7 @@
         </tbody>
       </table>
 
-      <div id="total_bascet_order" class="right">Итого: <span class="price"><%= number_to_currency(cart.total_price_not_available, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span></div>
+      <div id="total_bascet_order" class="right">Итого: <span class="price"><%= number_to_ruble(cart.total_price_not_available).to_s %></span></div>
   <% end %>
 
 </div>

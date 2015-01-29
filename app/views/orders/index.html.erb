@@ -49,7 +49,7 @@
         <td><%= order.pay_type %></td>
         <td><%= order.delivery_type %></td>
         <td><%= order.status_title %></td>
-        <td style="text-align: right"><%= number_to_currency(order.total_price, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></td>
+        <td style="text-align: right"><%= number_to_ruble(order.total_price)%></td>
         <!--<td style="text-align: center"><%= link_to 'xls', order, :format => 'xls' %></td>
         --><td>
           <%= simple_form_for(order, :html => {:class => 'form-horizontal', :remote => true, :onchange => '$(this).children(".submit").click();'}) do |f| %>

@@ -22,7 +22,7 @@
 </table>
 <hr>
 <span style="text-align: right; width: 100%; float: right">
-  <h2>Итого: <%= number_to_currency(@order.total_price, unit: '',  separator: ",", delimiter: " ", precision: 0)%> рублей</h2>
+  <h2>Итого: <%= number_to_ruble(@order.total_price)%></h2>
 </span>
 
 <hr>

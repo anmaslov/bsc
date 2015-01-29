@@ -158,7 +158,7 @@
                 Цена:<br>
 
                 <span style="float: left; color: #ccc; font-size: small;">
-                  <span class="price"><%= number_to_currency( @price_min, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+                  <span class="price"><%= number_to_ruble(@price_min)%></span>
 
                 </span>
                   <div class="popover fade left in hidden popover_product_character" id="popover_product_character_0_price"
@@ -175,7 +175,7 @@
                        data-slider-step="<%= number_to_currency( (@price_max - @price_min) % 100, unit: '',  separator: "", delimiter: "", precision: 0)%>"
                        data-slider-value="[<%=number_to_currency( @price_filter_minimum.present? ? @price_filter_minimum : @price_min, unit: '',  separator: "", delimiter: "", precision: 0)%>,<%=number_to_currency( @price_filter_maximum.present? ? @price_filter_maximum : @price_max, unit: '',  separator: "", delimiter: "", precision: 0)%>]"/>
                 </div>
-                    <span style="float: right; color: #ccc; font-size: small;"><%= number_to_currency( @price_max, unit: '',  separator: ",", delimiter: " ", precision: 0)%><span class="ruble">a</span></span>
+                    <span style="float: right; color: #ccc; font-size: small;"><%= number_to_ruble(@price_max)%></span>
                 </div>
               </div>
                 <div class="row">
