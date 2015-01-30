@@ -132,7 +132,9 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
   end
 
   def check_order
-
+    log = LoggerBd.new
+    log.text = 'check_order start'
+    log.save
     requestDatetime = params[:requestDatetime]
     action          = params[:action]
     md5             = params[:md5]
@@ -237,7 +239,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     log.save
 
     @request = {
-        'performedDatetime' => Time.now ,
+        'performedDatetime' => Time.now.strftime("%FT%T%:z"),
         'code'              => code,
         'shopId'            => '29313',
         'orderSumAmount'    => orderSumAmount,
@@ -320,7 +322,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
       order.save
 
       OrderNotifier.paid(order).deliver
-
+      OrderNotifier.report_paid(order).deliver
     end
 
     log = LoggerBd.new
@@ -328,7 +330,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     log.save
 
     @request = {
-        'performedDatetime' => Time.now,
+        'performedDatetime' => Time.now.now.strftime("%FT%T%:z"),
         'code'              => code,
         'invoiceId'         => invoiceId,
         'shopId'            => '29313'

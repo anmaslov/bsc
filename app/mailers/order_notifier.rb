@@ -43,6 +43,10 @@ class OrderNotifier < Notifier
     mail to: 'pavel.osetrov@me.com', subject: 'Новый заказ с сайта №' + @order.id.to_s
   end
 
+  def report_paid(order)
+    @order = order
+    mail to: 'pavel.osetrov@me.com', subject: 'Заказ №' + @order.id.to_s + ' оплачен'
+  end
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
