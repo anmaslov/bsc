@@ -5,5 +5,6 @@ class PersonsController < ApplicationController
   before_action :set_compare
 
   def profile
+    @user = current_user
   end
 end

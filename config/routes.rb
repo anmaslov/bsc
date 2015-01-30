@@ -5,6 +5,9 @@ Bsc::Application.routes.draw do
 
   get '/robots.:format' => 'pages#robots'
 
+  get 'order/fail' => 'orders#fail'
+  get 'order/success' => 'orders#success'
+
   get "search/product"
   resources :compare_items
 
@@ -65,6 +68,8 @@ Bsc::Application.routes.draw do
 
     post :payment_aviso, on: :collection
     get :payment_aviso, on: :collection
+    get :success, on: :collection
+    get :fail, on: :collection
   end
 
   resources :line_items
@@ -91,6 +96,8 @@ Bsc::Application.routes.draw do
 
   get 'persons/profile', as: 'user_root'
 
+
+
   match '/contact.php' => 'pages#show', :id => 'contacts', :via => [:get]
   match '/about.php' => 'pages#show', :id => 'about', :via => [:get]
   match '/price.php' => 'pages#show', :id => 'price-list', :via => [:get]
@@ -101,6 +108,7 @@ Bsc::Application.routes.draw do
   match 'catalog.php' => 'catalogs#show', :id => 0, :via => [:get]
 
   match '/:id' => 'pages#show', :via => [:get], :as => 'pages_show'
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

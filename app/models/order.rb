@@ -23,6 +23,8 @@ class Order < ActiveRecord::Base
       5 => "Отменен"
   }
 
+  validates :email, email_format: { message: "Не выглядит как электронный адресс" }
+
   def self.statusInvert
     STATUS.invert
   end

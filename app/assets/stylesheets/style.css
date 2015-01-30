@@ -482,11 +482,11 @@ tr.not-active {
 }
 
 .caption button.buy, .caption input.buy {
-    width: 65%;
+    width: 60%;
 }
 
 .caption button.compare, .caption input.compare {
-    width: 35%;
+    width: 40%;
 }
 
 .thumbnail {
@@ -718,7 +718,7 @@ tr.not-active {
 }
 
 .column_product {
-    max-width: 300px;
+
 }
 
 .column_catalog {

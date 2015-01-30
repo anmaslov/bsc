@@ -36,6 +36,7 @@ class Product < ActiveRecord::Base
   validates :price, numericality: {greater_than_or_equal_to: 0.01} #поле больше либо равно 0.01
   validates :article, uniqueness: true #поле уникально
 
+
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
   def self.latest

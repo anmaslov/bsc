@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkOrderResponse performedDatetime="<%=@request['performedDatetime'] %>"
+code="<%=@request['code']%>" invoiceId="<%=@request['invoiceId']%>"
+shopId="<%=@request['shopId']%>"
+<% if @request['code'].to_i > 0 %> message="<%= @request['message'] %>" <% end %>/>

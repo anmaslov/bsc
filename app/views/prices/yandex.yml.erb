@@ -18,7 +18,7 @@
 
   <categories>
    <% @catalogs.each do |category| %>
-    <category id="<%=category.id%>"><%=category.title%></category>
+    <category id="<%=category.id%>"<% if category.parent_id.present? and category.parent_id > 0 %> parentId="<%= category.parent_id %>"<% end %>><%=category.title%></category>
    <% end %>
   </categories>
 

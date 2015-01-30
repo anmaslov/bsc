@@ -6,7 +6,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
   #before_action :authenticate_admin_user!, only: [:index]
 
   load_and_authorize_resource except: :create
-  skip_authorize_resource :only => [:show, :new, :payment, :check_order, :payment_aviso ]
+  skip_authorize_resource :only => [:show, :new, :payment, :check_order, :payment_aviso, :success, :fail ]
 
   # GET /orders
   # GET /orders.json
@@ -64,7 +64,36 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     @order.status = 0
 
     respond_to do |format|
-      if @order.save
+      error = false
+      message = ''
+
+
+
+      if params[:user].present? and params[:user][:password] != ''
+        if params[:user][:password_confirmation] == params[:user][:password]
+          User.create!({
+               :email => @order.email,
+               :password => params[:user][:password],
+               :password_confirmation => params[:user][:password_confirmation],
+               :name => @order.name,
+               :address => @order.address,
+               :phone => @order.phone
+           })
+        else
+          error = true
+          message = 'Пароли не совпадают'
+          @order.errors[:registration] << message
+        end
+      elsif params[:order][:registration] == "" and params[:user][:password] == ""
+        error = true
+        message = 'Вы не заполнили пароль'
+        @order.errors[:registration] << message
+      end
+
+      if error
+        format.html { render action: 'new', notice: message }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      elsif @order.save
         OrderNotifier.received(@order).deliver
         OrderNotifier.report(@order).deliver
         Cart.destroy(session[:cart_id])
@@ -76,26 +105,19 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
         end
 
         session[:cart_id] = nil
-        if params[:user].present? and params[:user][:password] != ''
-          User.create!({
-            :email => @order.email,
-            :password => params[:user][:password],
-            :password_confirmation => params[:user][:password_confirmation],
-            :name => @order.name,
-            :address => @order.address,
-            :phone => @order.phone
-        })
+
+
+
+          if @order.pay_type != 'Банковской картой Visa/MasterCard'
+            format.html { redirect_to store_url, notice: 'Спасибо за ваш заказ.' }
+            format.json { render action: 'show', status: :created, location: @order }
+          else
+            @order.status = 1
+            @order.save
+            format.html { render action: 'payment' }
+            format.json { render action: 'show', status: :created, location: @order }
+          end
         end
-        if @order.pay_type != 'Банковской картой Visa/MasterCard'
-          format.html { redirect_to store_url, notice: 'Спасибо за ваш заказ.' }
-          format.json { render action: 'show', status: :created, location: @order }
-        else
-          @order.status = 1
-          @order.save
-          format.html { render action: 'payment' }
-          format.json { render action: 'show', status: :created, location: @order }
-        end
-      else
         #@cart = current_cart
         @delivery_products = Product.where(:id => [29734, 29735])
         @line_item = LineItem.new
@@ -104,7 +126,6 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
         format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
-  end
 
   def payment
 
@@ -132,9 +153,19 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     orderNumber = params[:orderNumber]
 
     md5_string = 'checkOrder;' + orderSumAmount.to_s + ';' + orderSumCurrencyPaycash.to_s + ';' + orderSumBankPaycash.to_s + ';' +
-        shopId.to_s + ';' + invoiceId.to_s + ';' + customerNumber.to_s + ';' + $shopPassword.to_s + ';'
+        shopId.to_s + ';' + invoiceId.to_s + ';' + customerNumber.to_s + ';' + $shopPassword.to_s
 
-    md5_new = Digest::MD5.hexdigest(md5_string)
+    md5_new = Digest::MD5.hexdigest(md5_string).upcase
+
+
+    log = LoggerBd.new
+    log.text = 'check_order yandex md5: ' + md5.to_s
+    log.save
+    log = LoggerBd.new
+    log.text = 'check_order bsc md5: ' + md5_new.to_s
+    log.save
+
+    #logger.debug "Person attributes hash"
 
     code = 0
     massage = 'Успешно'
@@ -143,8 +174,12 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
       massage = 'Ошибка авторизации'
     end
 
+    log = LoggerBd.new
+    log.text = 'check_order orderNumber: ' + orderNumber.to_s
+    log.save
+
     if orderNumber.present?
-      order = Order.find(orderNumber)
+      order = Order.find(orderNumber.to_i)
     elsif customerNumber.present?
       customerNumberTemp = customerNumber
       s = customerNumberTemp[0,1]
@@ -158,7 +193,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
         else
           order = nil
           code = 100
-          massage = 'Отказ в приеме перевода'
+          massage = 'Отказ в приеме перевода. Пользователя не существует'
         end
       end
     else
@@ -166,30 +201,60 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
       massage = 'Ошибка разбора запроса'
     end
 
+    log = LoggerBd.new
+    log.text = 'check_order 205: ' + code.to_s
+    log.save
+
     #ts = order.total_price - orderSumAmount.to_f
     if order.present?
-      if order.line_items_in_stock - orderSumAmount.to_f > -1 and order.line_items_in_stock - orderSumAmount.to_f < 1
+      if order.total_price_in_stock - orderSumAmount.to_f < -1 or order.total_price_in_stock - orderSumAmount.to_f > 1
         code = 100
-        massage = 'Отказ в приеме перевода'
+        massage = 'Отказ в приеме перевода. Суммы не совпадают'
+        log = LoggerBd.new
+        log.text = 'check_order total_price_in_stock: ' + order.total_price_in_stock.to_s
+        log.save
+        log = LoggerBd.new
+        log.text = 'check_order orderSumAmount: ' + orderSumAmount.to_s
+        log.save
+        log = LoggerBd.new
+        log.text = 'check_order total_price_in_stock - orderSumAmount: ' + (order.total_price_in_stock - orderSumAmount.to_f).to_s
+        log.save
       end
     elsif code == 0
       code = 100
-      massage = 'Отказ в приеме перевода'
+      massage = 'Отказ в приеме перевода. Заявка не найдена'
     end
+
+    log = LoggerBd.new
+    log.text = 'check_order code: ' + code.to_s + ' message: ' + massage
+    log.save
+
+    log = LoggerBd.new
+    log.text = 'check_order code: ' + code.to_s
+    log.save
+    log = LoggerBd.new
+    log.text = 'check_order massage: ' + massage
+    log.save
 
     @request = {
         'performedDatetime' => Time.now ,
         'code'              => code,
         'shopId'            => '29313',
         'orderSumAmount'    => orderSumAmount,
+        'invoiceId'         => invoiceId,
         'message'           => massage
     }
+
     respond_to do |format|
-      format.xml  { render :xml => @request}
+      format.xml  { @request}
     end
   end
 
   def payment_aviso
+
+    log = LoggerBd.new
+    log.text = 'payment_aviso start'
+    log.save
 
     requestDatetime = params[:requestDatetime]
     action          = params[:action]
@@ -212,9 +277,16 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
 
 
     md5_string = 'paymentAviso;' + orderSumAmount.to_s + ';' + orderSumCurrencyPaycash.to_s + ';' + orderSumBankPaycash.to_s + ';' +
-        shopId.to_s + ';' + invoiceId.to_s + ';' + customerNumber.to_s + ';' + $shopPassword.to_s + ';'
+        shopId.to_s + ';' + invoiceId.to_s + ';' + customerNumber.to_s + ';' + $shopPassword.to_s
 
-    md5_new = Digest::MD5.hexdigest(md5_string)
+    md5_new = Digest::MD5.hexdigest(md5_string).upcase
+
+    log = LoggerBd.new
+    log.text = 'payment_aviso yandex md5: ' + md5.to_s
+    log.save
+    log = LoggerBd.new
+    log.text = 'payment_aviso bsc md5: ' + md5_new.to_s
+    log.save
 
     code = 0
     massage = 'Успешно'
@@ -251,6 +323,10 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
 
     end
 
+    log = LoggerBd.new
+    log.text = 'payment_aviso code: ' + code.to_s
+    log.save
+
     @request = {
         'performedDatetime' => Time.now,
         'code'              => code,
@@ -259,7 +335,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     }
 
     respond_to do |format|
-      format.xml  { render :xml => @request}
+      format.xml  { @request}
     end
   end
 
@@ -303,6 +379,14 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
       format.html { redirect_to orders_url }
       format.json { head :no_content }
     end
+  end
+
+  def fail
+
+  end
+
+  def success
+
   end
 
   private

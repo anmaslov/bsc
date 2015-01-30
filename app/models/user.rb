@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :orders
 
+  validates :email, email_format: { message: "Не выглядит как электронный адресс" }
+
   def role?(role)
     !!self.roles.find_by_name(role.to_s.camelize)
   end
