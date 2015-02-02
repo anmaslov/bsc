@@ -15,8 +15,8 @@
 
     <div class="row">
       <div class="form-group">
-        <%= f.label 'Способ доставки', :class => 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+        <%= f.label 'Способ доставки', :class => 'col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label' %>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
           <%= f.select :delivery_type, Order::DELIVERY_TYPES,
                        {:prompt => 'Выберите способ доставки', :include_blank => false},
                        {:class => 'form-control input-sm', :onchange => 'set_delivery_type(this);'} %>
@@ -26,8 +26,8 @@
 
 <div class="row">
   <div class="form-group">
-    <%= f.label 'Контактное лицо', :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+    <%= f.label 'Контактное лицо', :class => 'col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label' %>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
       <% if @user.present? or @order.present? %>
         <%= f.text_field :name, :class => 'form-control', :placeholder => 'ФИО', :value => @user.present? ? @user.name : @order.name %>
       <% else %>
@@ -38,8 +38,8 @@
 </div><div class="clear" style="height: 10px;"></div>
 <div class="row">
   <div class="form-group">
-    <%= f.label 'Телефон', :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+    <%= f.label 'Телефон', :class => 'col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label' %>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
       <% if @user.present? or @order.present? %>
           <%= f.text_field :phone,
                            :class => 'form-control',
@@ -61,8 +61,8 @@
 </div><div class="clear" style="height: 10px;"></div>
 <div class="row">
   <div class="form-group">
-    <%= f.label 'Электропочта', :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+    <%= f.label 'Электропочта', :class => 'col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label' %>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
       <% if @user.present? or @order.present? %>
           <%= f.text_field :email,
                            :class => 'form-control',
@@ -82,8 +82,8 @@
 </div><div class="clear" style="height: 10px;"></div>
 <div class="row">
   <div class="form-group">
-    <%= f.label 'Адрес доставки', :class => 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
+    <%= f.label 'Адрес доставки', :class => 'col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label' %>
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
       <% if @user.present? or @order.present? %>
         <%= f.text_area :address,
                         :class => 'form-control',
@@ -102,8 +102,8 @@
 
     <div class="row">
       <div class="form-group">
-        <%= f.label 'Способ оплаты', :class => 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+        <%= f.label 'Способ оплаты', :class => 'col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label' %>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
           <%= f.select :pay_type, Order::PAYMENT_TYPES,
                        {prompt: 'Выберите способ оплаты', :include_blank => false},
                        {:class => 'form-control input-sm', :onchange => 'set_payment_type(this);'} %>
@@ -113,8 +113,8 @@
     <div class="clear" style="height: 10px;"></div>
     <div class="row hidden" id="name_organization">
       <div class="form-group">
-        <%= f.label 'Название организации', :class => 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+        <%= f.label 'Название организации', :class => 'col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label' %>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
           <% if @user.present? or @order.present? %>
               <%= f.text_field :NameOrganization,
                                :class => 'form-control',
@@ -131,8 +131,8 @@
     <div class="clear" style="height: 10px;"></div>
     <div class="row hidden" id="inn_organization">
       <div class="form-group">
-        <%= f.label 'ИНН организации', :class => 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+        <%= f.label 'ИНН организации', :class => 'col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label' %>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
           <% if @user.present? or @order.present? %>
               <%= f.text_field :InnOrganization,
                                :class => 'form-control',
@@ -148,8 +148,8 @@
 
     <div class="row">
       <div class="form-group">
-        <%= f.label 'Комментарий', :class => 'col-sm-2 control-label' %>
-        <div class="col-sm-10">
+        <%= f.label 'Комментарий', :class => 'col-xs-3 col-sm-3 col-md-3 col-lg-3 control-label' %>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
           <%= f.text_area :comment, :class => 'form-control', :placeholder => '', :rows => 5, :cols => 120 %>
         </div>
       </div>
@@ -170,7 +170,7 @@
     <div class="registration hidden">
         <div class="row">
           <div class="form-group">
-            <div class="col-sm-2"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
             <div class="actions col-sm-6">
               <input type="password" placeholder="Пароль" name="user[password]" id="user_password" class="form-control">
               </div>
@@ -178,7 +178,7 @@
           </div><div class="clear" style="height: 10px;"></div>
         <div class="row">
           <div class="form-group">
-            <div class="col-sm-2"></div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
             <div class="actions col-sm-6">
               <input type="password" placeholder="Повторите пароль" name="user[password_confirmation]" id="user_password_confirmation" class="form-control">
             </div>

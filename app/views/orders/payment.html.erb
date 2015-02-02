@@ -1,9 +1,10 @@
 <h1>Заказ №<%= @order.id %> принят, перейдите к оплате</h1>
 <!-- https://money.yandex.ru/eshop.xml -->
-<form action="https://demomoney.yandex.ru/eshop.xml" method="post">
+<!-- https://demomoney.yandex.ru/eshop.xml -->
+<form action="https://money.yandex.ru/eshop.xml" method="post">
   <!-- Обязательные поля -->
   <input name="shopId" value="29313" type="hidden"/>
-  <input name="scid" value="58929" type="hidden"/>
+  <input name="scid" value="19570" type="hidden"/>
   <input name="sum" value="<%= @order.total_price_in_stock %>" type="hidden" id="sum_yandex_market">
   <input name="customerNumber" value="<%= current_user.present? ? 'u' + current_user.id.to_s : 'o' + @order.id.to_s %>" type="hidden"/>
 

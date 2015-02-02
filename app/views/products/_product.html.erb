@@ -1,5 +1,5 @@
 <% if (can? :manage, product) || product.is_active %>
-<div class="col-xs-6 col-sm-12 col-md-6 col-lg-4 column_product product_id_<%= product.id %>"
+<div class="col-xs-6 col-sm-12 col-md-6 <% if @product_column_2.present? %> col-lg-5 <% else %> col-lg-4 <% end %> column_product product_id_<%= product.id %>"
      id="product_<%= product.article %>"
      style="height: 395px; padding-left: 10px;">
 
@@ -88,7 +88,7 @@
           <% else %>
           <button type="button" class="btn btn-warning buy" data-toggle="modal" data-target="#addToBascet"
                   onclick="showAddToBascet('<%= product.id %>');"
-                  <% if can? :update, product %> style="width: 25%;" <% else %> style="width: 60%;" <% end %>
+                  <% if can? :update, product %> style="width: 25%;" <% else %> style="width: 60%; padding: 6px" <% end %>
                   data-toggle="tooltip" data-placement="bottom" title="К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы"
           >Под заказ</button>
           <% end %>

@@ -209,6 +209,14 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
 
     #ts = order.total_price - orderSumAmount.to_f
     if order.present?
+      order.performed_datetime = Time.now
+      order.save
+      requestDatetime = order.performed_datetime.strftime("%FT%T%:z")
+
+      log = LoggerBd.new
+      log.text = 'check_order requestDatetime: ' + requestDatetime
+      log.save
+
       if order.total_price_in_stock - orderSumAmount.to_f < -1 or order.total_price_in_stock - orderSumAmount.to_f > 1
         code = 100
         massage = 'Отказ в приеме перевода. Суммы не совпадают'
@@ -237,9 +245,9 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     log = LoggerBd.new
     log.text = 'check_order massage: ' + massage
     log.save
-
+    #Time.now.strftime("%FT%T%:z"),
     @request = {
-        'performedDatetime' => Time.now.strftime("%FT%T%:z"),
+        'performedDatetime' => requestDatetime,
         'code'              => code,
         'shopId'            => '29313',
         'orderSumAmount'    => orderSumAmount,
@@ -318,19 +326,28 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     end
 
     if order.present?
-      order.status = 2
-      order.save
+      if order.performed_datetime.present?
+        requestDatetime = order.performed_datetime.strftime("%FT%T%:z")
+      end
+      if order.status != 2
+        order.status = 2
+        order.save
+  
+        log = LoggerBd.new
+        log.text = 'payment_aviso requestDatetime: ' + requestDatetime
+        log.save
 
-      OrderNotifier.paid(order).deliver
-      OrderNotifier.report_paid(order).deliver
+        OrderNotifier.paid(order).deliver
+        OrderNotifier.report_paid(order).deliver
+      end
     end
 
     log = LoggerBd.new
     log.text = 'payment_aviso code: ' + code.to_s
     log.save
-
+    #Time.now.now.strftime("%FT%T%:z"),
     @request = {
-        'performedDatetime' => Time.now.now.strftime("%FT%T%:z"),
+        'performedDatetime' => requestDatetime,
         'code'              => code,
         'invoiceId'         => invoiceId,
         'shopId'            => '29313'

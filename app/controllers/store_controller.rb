@@ -10,5 +10,6 @@ class StoreController < ApplicationController
     @compare_item = CompareItem.new
     @news = News.order("updated_at asc").last(10)
     @sliders = Slider.order("updated_at asc").last(10)
+    @product_column_2 = true
   end
 end

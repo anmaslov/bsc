@@ -1,0 +1,19 @@
+development:
+  morphology: stem_en
+  port: 9312
+  bin_path: "/usr/bin"             # set up the path to binary for searchd
+  searchd_binary_name: searchd
+  indexer_binary_name: indexer
+  #mem_limit: 128M
+test:
+  morphology: stem_en
+  port: 9312
+  mem_limit: 128M
+production:
+  morphology: stem_en
+  port: 9312
+  mem_limit: 512M
+    # the searchd ip, in case it's not on localhost
+    # address: 10.10.0.0
+    # this is by default included in db/sphinx
+    # searchd_file_path: "/path/to/shared/folder/sphinx"
