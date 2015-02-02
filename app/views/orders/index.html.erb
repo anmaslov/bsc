@@ -52,7 +52,9 @@
         <td style="text-align: right"><%= number_to_ruble(order.total_price)%></td>
         <!--<td style="text-align: center"><%= link_to 'xls', order, :format => 'xls' %></td>
         --><td>
-          <%= simple_form_for(order, :html => {:class => 'form-horizontal', :remote => true, :onchange => '$(this).children(".submit").click();'}) do |f| %>
+          <%= simple_form_for(order,
+#                              :url => url_for(:action =>  'change_status', :controller => 'orders'), :action => :change_status, :method => :post,
+                              :html => {:class => 'form-horizontal', :remote => true, :onchange => '$(this).children(".submit").click();'}) do |f| %>
               <%= f.select :status, Order.statusInvert %>
               <%= f.submit :class => 'submit hidden',  :confirm => "Вы уверены?" %>
           <% end %>

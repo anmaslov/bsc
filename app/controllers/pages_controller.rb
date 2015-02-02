@@ -30,6 +30,7 @@ class PagesController < ApplicationController
 
     #products = Product.where(:supplier_id => 4).destroy_all
 
+    #order = Order.all.destroy_all
 
     render 'shared/404', :status => 404 if @page.nil?
   end

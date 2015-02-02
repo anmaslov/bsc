@@ -66,6 +66,8 @@ Bsc::Application.routes.draw do
     post :check_order, on: :collection
     get :check_order, on: :collection
 
+    post :change_status, on: :collection
+
     post :payment_aviso, on: :collection
     get :payment_aviso, on: :collection
     get :success, on: :collection

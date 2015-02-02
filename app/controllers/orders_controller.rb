@@ -2,7 +2,7 @@
 class OrdersController < ApplicationController #protect_from_forgery with: :null_session
   include CurrentCart
   before_action :set_cart, only: [:new, :create, :update]
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :change_status]
   #before_action :authenticate_admin_user!, only: [:index]
 
   load_and_authorize_resource except: :create
@@ -358,6 +358,22 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     end
   end
 
+  # def change_status
+  #   #@order = Order.find(params[:id])
+  #   #product_params = Hash[params[:field] => params[:value]]
+  #   hui = @order
+  #
+  #   respond_to do |format|
+  #     if @order.update(order_params)
+  #       format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html { render action: 'edit' }
+  #       format.json { render json: @order.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
+
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
@@ -374,7 +390,8 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
         when '5'
           OrderNotifier.canceled(@order).deliver
       end
-
+      @order.status = params[:order][:status].to_i
+      @order.save
     end
 
     respond_to do |format|
