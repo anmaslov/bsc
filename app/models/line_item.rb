@@ -15,9 +15,9 @@ class LineItem < ActiveRecord::Base
     product.article
   end
 
-  def price
+  def price user = nil
     if price_fixed.nil?
-      product.price_with_margin
+      product.price_with_margin user
     else
       price_fixed
     end

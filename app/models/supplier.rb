@@ -6,4 +6,6 @@ class Supplier < ActiveRecord::Base
 
   belongs_to :email_box
   has_many :supplier_import_information
+
+  has_many :margin_for_users
 end

@@ -185,11 +185,17 @@
           </div>
         </div><div class="clear" style="height: 10px;"></div>
     </div>
+
+  <script>
+    $('#user_password').val('');
+    $('#user_password_confirmation').val('');
+  </script>
+
         <% end %>
     <div class="row" id="submit_form">
       <div class="form-group">
         <div class="actions col-sm-12">
-          <%= f.submit 'Подтвердить заказ', :class => 'btn btn-info btn-block' %>
+          <%= f.submit 'Подтвердить заказ', :class => 'btn btn-info btn-block btn-lg' %>
         </div>
       </div>
     </div>

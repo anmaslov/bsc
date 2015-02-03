@@ -46,7 +46,7 @@
             <td></td><td></td>
         <% end %>
         <td>
-          <span class="price" style="white-space: nowrap"><%= number_to_ruble(product.price_with_margin)%></span>
+          <span class="price" style="white-space: nowrap"><%= number_to_ruble(product.price_with_margin current_user)%></span>
         </td>
         <td class="list_actions">
           <% if can? :manage, product %>

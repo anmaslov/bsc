@@ -61,7 +61,7 @@
 
             <div class="row">
               <span class="price col-xs-12 col-sm-12 col-md-12 col-lg-5" style="padding-left: 20px; margin-top: -15px;">
-                <%= number_to_ruble(product.price_with_margin) %>
+                <%= number_to_ruble(product.price_with_margin current_user) %>
               </span>
 
               <% if product.quantity > 0 %>
@@ -186,7 +186,7 @@
     <td style="max-width: 600px;"><%= link_to product.title, product, :class => 'product_title' %>, <span style="white-space: nowrap"> арт. <%= product.art %></span></td>
     <td>
       <%= raw (product.old_price) ? "<del>" + number_to_ruble(product.old_price).to_s + "</del>" : '' %>
-      <span class="price"><%= number_to_ruble(product.price_with_margin) %></span>
+      <span class="price"><%= number_to_ruble(product.price_with_margin current_user) %></span>
 
       <% if product.quantity > 0 %>
           <div class="clear"></div>

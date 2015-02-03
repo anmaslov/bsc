@@ -90,7 +90,7 @@
                         <td>
                           <%= link_to detail.product.title, detail.product %>
                         </td>
-                          <td style="white-space: nowrap"><span class="price"><%= number_to_ruble(detail.product.price_with_margin)%></span></td>
+                          <td style="white-space: nowrap"><span class="price"><%= number_to_ruble(detail.product.price_with_margin current_user)%></span></td>
                           <td><button onclick="showAddToBascet('<%=detail.product.id %>>');" data-target="#addToBascet" data-toggle="modal" style="width: 100%; min-width: 60px;" class="btn btn-xs btn-info buy" type="button">Заказать</button></td>
                         </tr>
                         <% end %>
@@ -132,8 +132,8 @@
 
       <div class="clear" style="height: 25px;"></div>
       <h3>
-          <%= raw (@product.old_price) ? "<del>" + number_to_ruble(@product.price_with_margin) + "</del>" : '' %>
-            <%= number_to_ruble(@product.price_with_margin)%>
+          <%= raw (@product.old_price) ? "<del>" + number_to_ruble(@product.price_with_margin current_user) + "</del>" : '' %>
+            <%= number_to_ruble(@product.price_with_margin current_user)%>
       </h3>
       <div class="clear" style="height: 5px;"></div>
 
@@ -164,6 +164,7 @@
         <% end %>
         <button type="button"
                 class="btn btn-lg btn-primary compare"
+                onclick="addToCompare('<%= @product.id %>');"
                 style="width: 45%; padding-left: 5px;">Сравнить</button>
       </div>
 

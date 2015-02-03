@@ -254,8 +254,8 @@ class ProductsController < ApplicationController
 
     filtr_data = params[:filtr_data]
 
-    price_filter_minimum = filtr_data[:price_filter_minimum].sub(' ', "").to_f
-    price_filter_maximum = filtr_data[:price_filter_maximum].sub(' ', "").to_f
+    price_filter_minimum = filtr_data[:price_filter_minimum].gsub(' ', "").to_f
+    price_filter_maximum = filtr_data[:price_filter_maximum].gsub(' ', "").to_f
     catalog_id = filtr_data[:catalog_id]
     characters = filtr_data[:characters]
     brands = filtr_data[:brands]

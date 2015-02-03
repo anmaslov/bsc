@@ -26,7 +26,7 @@
   <td><%= link_to line_item.product.title, line_item.product %></td>
   <td><input class="form-control input-sm" type="text" value="<%= line_item.quantity %>" article="<%= line_item.product.article.gsub('(', '_').gsub(')', '_').gsub('-', '_').gsub('.', '_') %>" onchange="changeCountItemCart(this);"></td>
   <td class="price">
-    <span class="price"><%= number_to_ruble(line_item.price)%></span>
+    <span class="price"><%= number_to_ruble(line_item.price current_user)%></span>
   </td>
   <td class="price">
     <span class="price"><%= number_to_ruble(line_item.total_price)%></span>

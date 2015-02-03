@@ -133,11 +133,18 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def price_with_margin
-    if supplier.present?
-      ((price + price * ( supplier.margin / 100 )) * 1.035)
+  def price_with_margin user = nil
+    if user.present? and
+        user.margin_for_users.present? and
+        supplier_id.present? and
+        user.margin_for_users.where(:supplier_id => supplier_id).first.present?
+      price + price * ( user.margin_for_users.where(:supplier_id => supplier_id).first.margin / 100 )
     else
-      price
+      if supplier.present?
+        ((price + price * ( supplier.margin / 100 )) * 1.035)
+      else
+        price
+      end
     end
   end
 

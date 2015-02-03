@@ -735,3 +735,8 @@ tr.not-active {
 .toggle-news-types {
     cursor: pointer;
 }
+
+#blueimp-gallery a {
+    text-decoration: none !important;
+    color: white !important;
+}

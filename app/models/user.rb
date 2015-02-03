@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :reports, :order => 'updated_at DESC'
 
   has_many :orders
+  has_many :margin_for_users
 
   validates :email, email_format: { message: "Не выглядит как электронный адресс" }
 

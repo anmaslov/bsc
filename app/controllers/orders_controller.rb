@@ -100,7 +100,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
 
         # фиксируем цены в заказе
         @order.line_items.each do |line_item|
-          line_item.price_fixed = line_item.product.price_with_margin
+          line_item.price_fixed = line_item.product.price_with_margin current_user
           line_item.save
         end
 

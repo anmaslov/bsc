@@ -5,7 +5,7 @@
 </head>
 <body>
 <% @users.each do |user| %>
-<h1>Менеджер: <a href="http://bsc-ltd.ru/users/<%=user.id%>"><%=user.email%></a></h1>
+<h1>Менеджер: <a href="https://bsc-ltd.ru/users/<%=user.id%>"><%=user.email%></a></h1>
 
     <% if user.reports_product.size > 0 %>
     <table style="border: 1px; width: 100%;">
@@ -21,7 +21,7 @@
           <tr>
             <td>
               <% if report.product.present? %>
-                  <a href="http://bsc-ltd.ru/products/<%=report.product.id%>"><%=report.product.title%></a>
+                  <a href="https://bsc-ltd.ru/products/<%=report.product.id%>"><%=report.product.title%></a>
               <% end %>
             </td>
             <td>

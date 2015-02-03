@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
   #  current_user_path
   #end
 
+  def after_sign_in_path_for(resource)
+    request.referrer || request.env['omniauth.origin'] || stored_location_for(resource) || root_url
+  end
+
   include CurrentCart
   include CurrentCompare
   before_action :set_cart
