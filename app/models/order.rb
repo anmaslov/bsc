@@ -67,6 +67,19 @@ class Order < ActiveRecord::Base
     line_items_in_stock.to_a.sum {|item| item.total_price }
   end
 
+  def self.when_the_delivery when_date
+
+    case when_date.wday
+      when 5
+        'Доставим во вторник в пределах КАД за 300<span class="ruble">a</span>'
+      when 4
+        'Доставим в понедельник в пределах КАД за 300<span class="ruble">a</span>'
+      else
+        'Доставим послезавтра в пределах КАД за 300<span class="ruble">a</span>'
+    end
+
+end
+
   # def to_csv
   #   CSV.generate do |csv|
   #     csv << column_names

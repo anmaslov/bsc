@@ -34,6 +34,8 @@ class Ability
       can :manage, :all
     elsif user.role? :product_admin
       can :manage, [Product, Catalog, Page]
+    elsif user.role? :order_admin
+      can :manage, [Order]
     end
     #[Product, Catalog, Page]
     # elsif user.role? :product_team

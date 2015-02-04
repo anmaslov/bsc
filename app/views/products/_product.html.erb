@@ -71,7 +71,7 @@
                         style="font-size: smaller; color: #64c564; cursor: help; display: block; position: relative; margin-top: -15px; padding: 10px;"
                         class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
                   >
-                        Доставим послезавтра в пределах КАД за 300<span class="ruble">a</span>
+                        <%= raw Order.when_the_delivery Date.today %>
                   </span>
             <% end %>
             </div>
@@ -195,7 +195,7 @@
                 title="Все сроки требуют уточнения"
                 style="font-size: smaller; color: #64c564; cursor: help; white-space: nowrap"
           >
-                Доставим послезавтра <br>в пределах КАД за 300<span class="ruble">a</span>
+                <%= raw Order.when_the_delivery Date.today %>
           </span>
       <% end %>
     </td>

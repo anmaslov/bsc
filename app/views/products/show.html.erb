@@ -175,7 +175,7 @@
                 title="Все сроки требуют уточнения"
                 style="font-size: smaller; color: #64c564; cursor: help; display: block; margin-top: 0; position: relative"
           >
-                Доставим послезавтра в пределах КАД за 300<span class="ruble">a</span>
+                <%= raw Order.when_the_delivery Date.today %>
           </span>
       <% end %>
 
