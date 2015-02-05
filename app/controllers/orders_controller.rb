@@ -433,6 +433,6 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type, :delivery_type, :phone, :comment, :status)
+      params.require(:order).permit(:name, :address, :email, :pay_type, :delivery_type, :phone, :comment, :status, :NameOrganization, :InnOrganization)
     end
 end

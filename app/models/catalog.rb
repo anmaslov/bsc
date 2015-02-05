@@ -19,7 +19,7 @@ class Catalog < ActiveRecord::Base
   #end
 
   def image_thumb
-    if image.present?
+    if image.exists?
       return image
     end
 

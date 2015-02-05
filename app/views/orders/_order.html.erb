@@ -1,16 +1,20 @@
 <p>
   <b>Контактное лицо:</b> <%= order.name %>
 </p>
+<% if order.phone.present? %>
 <p>
   <b>Телефон:</b> <%= order.phone %>
 </p>
+    <% end %>
 <p>
   <b>Электропочта:</b> <%= mail_to order.email %>
 </p>
+<% if order.address.present? %>
 <p>
   <b>Адрес:</b><br>
   <%= order.address %>
 </p>
+<% end %>
 <p>
   <b>Способ оплаты:</b> <%= order.pay_type %>
 </p>

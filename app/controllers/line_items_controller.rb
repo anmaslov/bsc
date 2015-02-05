@@ -54,7 +54,7 @@ class LineItemsController < ApplicationController
     line_item = params[:line_item]
     quantity = line_item[:quantity].to_i
 
-    @line_item[:quantity] = quantity
+    @line_item[:quantity] = quantity > 0 ? quantity : 1
 
     respond_to do |format|
       if @line_item.save

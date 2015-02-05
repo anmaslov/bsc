@@ -1,4 +1,8 @@
 <div class="modal-body">
+  <% if cart_order.line_items.size == 0 %>
+      <h1>Ваша корзина пуста</h1>
+  <% end %>
+
   <% if cart_order.line_items_in_stock.size > 0 %>
   <table class="table table-striped table-product">
     <thead>
@@ -60,7 +64,7 @@
       <div id="total_bascet_order" class="right">Итого: <span class="price"><%= number_to_ruble(cart_order.total_price_not_available).to_s %></span></div>
     <% end %>
 </div>
-<% if cart_order.line_items_not_available.size > 0 %>
+<% if cart_order.line_items_not_available.size > 0 and cart_order.total_price_in_stock > 0 %>
     <div class="clear"></div>
     <div>
       <h2>
@@ -73,3 +77,21 @@
         $('#cart').show();
     }
 </script>
+
+<% if cart_order.line_items_in_stock.size == 0 or
+        (cart_order.line_items_in_stock.size == 1 and
+                (cart_order.line_items_in_stock.first.product_id == 29734 or
+                        cart_order.line_items_in_stock.first.product_id == 29735)) %>
+    <script>
+        $('#order_pay_type option[value="Банковской картой Visa/MasterCard"]').attr('disabled','disabled')
+    </script>
+<% end %>
+
+<% if cart_order.line_items.size == 0 or
+        (cart_order.line_items.size == 1 and
+                (cart_order.line_items.first.product_id == 29734 or
+                        cart_order.line_items.first.product_id == 29735)) %>
+    <script>
+        $('#new_order').find('input[type="submit"]').attr('disabled','disabled')
+    </script>
+<% end %>
