@@ -1,14 +1,14 @@
 <tr>
   <td>
     <% if compare_item_small.product.image.present? or compare_item_small.product.imgs.size == 0 %>
-        <%= image_tag(compare_item_small.product.image.url(:thumb), :alt => compare_item_small.product.title, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>
+        <%= image_tag(compare_item_small.product.image.url(:thumb), :alt => compare_item_small.product.title_normal, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>
     <% elsif !compare_item_small.product.image.present? and compare_item_small.product.imgs.size > 0 %>
-        <%= image_tag(compare_item_small.product.imgs.first.picture.url(:thumb), :alt => compare_item_small.product.title, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>
+        <%= image_tag(compare_item_small.product.imgs.first.picture.url(:thumb), :alt => compare_item_small.product.title_normal, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>
     <% end %>
   </td>
   <td>
     <button class="close" onclick="destroyItemCompareSmall(<%=compare_item_small.id.to_s%>)">×</button>
     <%= link_to("Destroy", compare_item_small, :method => :delete, :remote => true, :class => 'hidden link_destroy_compare_' + compare_item_small.id.to_s) %>
-    <%= link_to compare_item_small.product.title, compare_item_small.product, :style => 'font-size: 10px;' %>
+    <%= link_to compare_item_small.product.title_normal, compare_item_small.product, :style => 'font-size: 10px;' %>
   </td>
 </tr>

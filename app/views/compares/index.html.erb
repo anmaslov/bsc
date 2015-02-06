@@ -17,16 +17,16 @@
           <button class="close" onclick="destroyItemCompare(<%=product.id%>)">×</button>
 
         <% if product.image.present? or product.imgs.size == 0 %>
-            <%= image_tag(product.image.url(:thumb), :alt => product.title,
+            <%= image_tag(product.image.url(:thumb), :alt => product.title_normal,
                           :class => 'product_img', :style => 'max-height: 100px; max-width: 100px; position: relative;') %>
         <% elsif !product.image.present? and product.imgs.size > 0 %>
             <%= image_tag(product.imgs.first.picture.url(:thumb),
-                          :alt => product.title, :class => 'product_img', :style => 'max-height: 100px; max-width: 100px; position: relative;') %>
+                          :alt => product.title_normal, :class => 'product_img', :style => 'max-height: 100px; max-width: 100px; position: relative;') %>
         <% end %>
         </div>
         <div class="clearfix"></div>
         <div style="height: 100px;" class="compare-item-head-title">
-        <%= link_to product.title, product %>
+        <%= link_to product.title_normal, product %>
         </div>
 
         <div class="caption">

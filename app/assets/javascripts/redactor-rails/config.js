@@ -14,7 +14,12 @@ $(document).ready(
       "path":"/assets/redactor-rails",
       "css":"style.css",
       "lang": "ru",
-       plugins: ['fullscreen']
+      plugins: ['fullscreen'],
+      linkProtocol: 'https'
     }
   );
+
+  $('#redactor').redactor({
+      linkProtocol: 'https'
+  });
 });

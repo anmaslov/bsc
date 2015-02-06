@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  feed.title "Who bought #{@product.title}"
+  feed.title "Who bought #{@product.title_normal}"
 
   feed.updated @latest_order.try(:updatet_at)
 
@@ -18,7 +18,7 @@ atom_feed do |feed|
 
           order.line_items.each do |item|
             xhtml.tr do
-              xhtml.td item.product.title
+              xhtml.td item.product.title_normal
               xhtml.td item.quantity
               xhtml.td number_to_currency item.total_price
             end

@@ -1,13 +1,13 @@
 <tr>
   <td>
     <% if search.image.present? or search.imgs.size == 0 %>
-        <%= image_tag(search.image.url(:thumb), :alt => search.title, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>
+        <%= image_tag(search.image.url(:thumb), :alt => search.title_normal, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>
     <% elsif !search.image.present? and search.imgs.size > 0 %>
-        <%= image_tag(search.imgs.first.picture.url(:thumb), :alt => search.title, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>
+        <%= image_tag(search.imgs.first.picture.url(:thumb), :alt => search.title_normal, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>
     <% end %>
   </td>
   <td>
-    <%= link_to search.title, search %>
+    <%= link_to search.title_normal, search %>
   </td>
   <td>
     <span class="price"><%= number_to_ruble(search.price_with_margin current_user)%></span>

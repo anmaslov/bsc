@@ -56,6 +56,11 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def title_normal
+    title_normal = title.gsub ', Спец предложение', ''
+    title_normal = title_normal.gsub 'NEW', ''
+    title_normal #.mb_chars.capitalize  #.mb_chars.capitalize если доебуться до вверхнего регистра
+  end
 
   #def imageurl
   #  self.image.url != '' ? self.image.url : 'no-image.png'

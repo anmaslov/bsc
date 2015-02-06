@@ -7,9 +7,9 @@
   <td>
 
     <% if line_item.product.image.present? or line_item.product.imgs.size == 0 %>
-        <%= image_tag(line_item.product.image.url(:thumb), :alt => line_item.product.title, :style => 'max-height: 50px') %>
+        <%= image_tag(line_item.product.image.url(:thumb), :alt => line_item.product.title_normal, :style => 'max-height: 50px') %>
     <% elsif !line_item.product.image.present? and line_item.product.imgs.size > 0 %>
-        <%= image_tag(line_item.product.imgs.first.picture.url(:thumb), :alt => line_item.product.title, :style => 'max-height: 50px') %>
+        <%= image_tag(line_item.product.imgs.first.picture.url(:thumb), :alt => line_item.product.title_normal, :style => 'max-height: 50px') %>
     <% end %>
 
 
@@ -23,7 +23,7 @@
     <%= link_to("Destroy", line_item, :method => :delete, :remote => true, :class => 'hidden link_confirm_destroy_' + line_item.product.id.to_s, :confirm => 'Вы уверены?') %>
   </td>
   <td><%= line_item.product.art %></td>
-  <td><%= link_to line_item.product.title, line_item.product %></td>
+  <td><%= link_to line_item.product.title_normal, line_item.product %></td>
   <td><input class="form-control input-sm" type="text" value="<%= line_item.quantity %>" article="<%= line_item.product.article.gsub('(', '_').gsub(')', '_').gsub('-', '_').gsub('.', '_') %>" onchange="changeCountItemCart(this);"></td>
   <td class="price">
     <span class="price"><%= number_to_ruble(line_item.price current_user)%></span>

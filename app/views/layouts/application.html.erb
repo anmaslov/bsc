@@ -46,7 +46,7 @@
 
   <nav class="navbar navbar-inverse" role="navigation"> <!-- navbar-fixed-top -->
     <div class="container header">
-      <div class="navbar-header">
+      <div class="navbar-header" style="height: 64px;">
         <div class="row">
           <!-- Логотип -->
           <div class="col-xs-3 .col-sm-2 col-md-3">
@@ -93,7 +93,9 @@
             <div class="header-info">
               <div class="header-info-phone">
                 <span style="font-size: small">+7 (</span><span class="header-phone-code">812</span><span style="font-size: small">)</span>
-                <span class="header-phone-number">313-87-17</span>
+                <span class="header-phone-number">244-87-53</span>
+                <div class="clear"></div>
+                <span class="right">пн-пт, с 10:00 до 18:00</span>
               </div>
               <div class="header-info-email">
                 <a href="mailto:order@bsc-ltd.ru">order@bsc-ltd.ru</a> <br>
@@ -202,7 +204,7 @@
             <ul class="nav navbar-nav" style="padding: 0px;">
               <li><%= link_to 'Вакансии', '/vacancy' %></li>
               <!--<li><%= link_to 'Карта сайта', '/sitemap' %></li>-->
-              <li><%= link_to 'Гарантия и севрис', '/service' %></li>
+              <li><%= link_to 'Гарантия и сервис', '/service' %></li>
               <li><%= link_to 'Возврат товара', '/return' %></li>
               <!--<li><%= link_to 'Кредит', '/credit' %></li>-->
             </ul>
@@ -223,7 +225,7 @@
               <strong><%= link_to 'Контакты', '/contacts' %></strong><br>
               197183, Санкт-Петербург<br>
               ул. Сабировская, 41 <br>
-              <abbr title="Телефон">Тел:</abbr> <span class="ya-phone">313-87-17</span>
+              <abbr title="Телефон">Тел:</abbr> <span class="ya-phone">244-87-53</span>
             </address>
           </div>
         </div>
@@ -303,10 +305,10 @@
 
           <div class="thumbnail">
             <div class="cart-img">
-              <%= image_tag('#', :alt => '', :class => 'modal-product-image') %>
+              <%= image_tag('/images/thumb/missing.png', :alt => '', :class => 'modal-product-image') %>
             </div>
             <div class="caption">
-              <a href="#" class="modal-product-title">Бензопила HUSQVARNA 460-15</a>
+              <a href="javascript: void(0)" class="modal-product-title">Бензопила HUSQVARNA 460-15</a>
               <p class="modal-product-article">арт. 9650311-15</p>
               <p style="white-space: nowrap">
                 <span class="price model-product-price" style="white-space: nowrap">17 300<span class="ruble">a</span></span>

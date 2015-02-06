@@ -111,3 +111,5 @@ gem 'premailer-rails'
 gem "dynamic_sitemaps"
 
 gem 'validates_email_format_of'
+
+gem 'rack-host-redirect'

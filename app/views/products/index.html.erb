@@ -14,15 +14,15 @@
 
         <td>
           <% if product.image.present? or product.imgs.size == 0 %>
-            <%= image_tag(product.image.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'max-height: 50px') %>
+            <%= image_tag(product.image.url(:thumb), :alt => product.title_normal, :class => 'product_img', :style => 'max-height: 50px') %>
           <% elsif product.imgs.size > 0 %>
-              <%= image_tag(product.imgs.first.picture.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'max-height: 50px') %>
+              <%= image_tag(product.imgs.first.picture.url(:thumb), :alt => product.title_normal, :class => 'product_img', :style => 'max-height: 50px') %>
           <% end %>
         </td>
 
         <td class="list_description">
           <dl>
-            <dt><%= product.title %></dt>
+            <dt><%= product.title_normal %></dt>
             <dd>
               <%= truncate(strip_tags(product.description), lengts: 80) %>
             </dd>

@@ -1,4 +1,5 @@
 Bsc::Application.routes.draw do
+
   resources :sliders
 
   resources :news

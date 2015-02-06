@@ -19,7 +19,7 @@
                     <div class="carousel-inner" style="height: 125px;">
                       <% if product.image.present? or product.imgs.size == 0 %>
                       <div class="active item" data-slide-number="0" >
-                        <%= image_tag(product.image.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'display: inline-block; vertical-align: middle;') %>
+                        <%= image_tag(product.image.url(:thumb), :alt => product.title_normal, :class => 'product_img', :style => 'display: inline-block; vertical-align: middle;') %>
                         <div style="display: inline-block;height: 100%;vertical-align: middle;width: 0;"></div>
                       </div>
                       <% end %>
@@ -27,7 +27,7 @@
                           <% i = 1 %>
                           <% product.imgs.each do |image| %>
                               <div class="item <% if !product.image.present? and i == 1 %> active <% end %>" data-slide-number="<%=i%>>">
-                                <%= image_tag(image.picture.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'display: inline-block; vertical-align: middle;') %>
+                                <%= image_tag(image.picture.url(:thumb), :alt => product.title_normal, :class => 'product_img', :style => 'display: inline-block; vertical-align: middle;') %>
                                 <div style="display: inline-block;height: 100%;vertical-align: middle;width: 0;"></div>
                               </div>
                               <% i = i + 1 %>
@@ -50,7 +50,7 @@
         <% end %>
       <div class="caption">
         <div class="quantity_product hidden"><%=product.quantity%></div>
-        <%= link_to product.title, product, :class => 'product_title' %>
+        <%= link_to product.title_normal, product, :class => 'product_title' %>
         <p class="product_article">арт. <%= product.art %></p>
 
         <hr style="margin-bottom: 10px;">
@@ -176,14 +176,14 @@
     <% cache(product.id.to_s + 'product_td_image_thumb', expires_in: 12.hours) do %>
     <td>
       <% if product.image.present? or product.imgs.size == 0 %>
-          <%= image_tag(product.image.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'max-height: 50px') %>
+          <%= image_tag(product.image.url(:thumb), :alt => product.title_normal, :class => 'product_img', :style => 'max-height: 50px') %>
       <% elsif !product.image.present? and product.imgs.size > 0 %>
-          <%= image_tag(product.imgs.first.picture.url(:thumb), :alt => product.title, :class => 'product_img', :style => 'max-height: 50px') %>
+          <%= image_tag(product.imgs.first.picture.url(:thumb), :alt => product.title_normal, :class => 'product_img', :style => 'max-height: 50px') %>
       <% end %>
 
     </td>
     <% end %>
-    <td style="max-width: 600px;"><%= link_to product.title, product, :class => 'product_title' %>, <span style="white-space: nowrap"> арт. <%= product.art %></span></td>
+    <td style="max-width: 600px;"><%= link_to product.title_normal, product, :class => 'product_title' %>, <span style="white-space: nowrap"> арт. <%= product.art %></span></td>
     <td>
       <%= raw (product.old_price) ? "<del>" + number_to_ruble(product.old_price).to_s + "</del>" : '' %>
       <span class="price"><%= number_to_ruble(product.price_with_margin current_user) %></span>
@@ -199,7 +199,7 @@
           </span>
       <% end %>
     </td>
-    <td>
+    <td style="width: 190px;">
 
       <% if can? :manage, product %>
           <div class="btn-group-vertical" style="width: 75px;">
@@ -220,7 +220,7 @@
                         data-toggle="tooltip"
                         data-placement="bottom"
                         title="К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы"
-                >Купить</button>
+                >Заказать</button>
             <% end %>
 
 
@@ -248,7 +248,7 @@
                       data-toggle="tooltip"
                       data-placement="bottom"
                       title="К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы"
-              >Под заказ</button>
+              >Заказать</button>
           <% end %>
 
       <% end %>

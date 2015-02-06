@@ -1,4 +1,4 @@
-<%= title @product.title %>
+<%= title @product.title_normal %>
 <%= description @product.description %>
 <%= keywords @product.keywords %>
 
@@ -12,11 +12,11 @@
         <%= render_breadcrumbs :tag => :li, :separator => "" %>
         <!--<li><a href="#">Измерительная техника</a></li>
         <li class="active">Тепловизоры</li>-->
-        <li class="active"><%= @product.title %></li>
+        <li class="active"><%= @product.title_normal %></li>
       </ol>
 
       <div class="clear"></div>
-      <h1 class="title-product"><%= @product.title %> <small style="white-space: nowrap;">арт. <%= @product.art %></small></h1>
+      <h1 class="title-product"><%= @product.title_normal %> <small style="white-space: nowrap;">арт. <%= @product.art %></small></h1>
       <div class="clear" style="height: 10px"></div>
       <div class="content">
         <%= raw @product.content %>
@@ -88,7 +88,7 @@
                           <%= detail.position_detail %>
                         </td>
                         <td>
-                          <%= link_to detail.product.title, detail.product %>
+                          <%= link_to detail.product.title_normal, detail.product %>
                         </td>
                           <td style="white-space: nowrap"><span class="price"><%= number_to_ruble(detail.product.price_with_margin current_user)%></span></td>
                           <td><button onclick="showAddToBascet('<%=detail.product.id %>>');" data-target="#addToBascet" data-toggle="modal" style="width: 100%; min-width: 60px;" class="btn btn-xs btn-info buy" type="button">Заказать</button></td>
@@ -118,14 +118,14 @@
   <div class="col-md-3 col-xs-3">
     <div class="panel panel-noborder">
       <% if @product.image.present? or @product.imgs.size == 0 %>
-        <%= image_tag(@product.image.url(:thumb), :alt => @product.title, :class => 'product_img', :style => 'max-height: 150px') %>
+        <%= image_tag(@product.image.url(:thumb), :alt => @product.title_normal, :class => 'product_img', :style => 'max-height: 150px') %>
       <% end %>
       <div class="clear" style="height: 25px;"></div>
 
       <div id="links1">
         <% @product.imgs.each do |image| %>
-            <a href='<%= image.picture.url(:original) %>' title="<%= @product.title %>" data-gallery>
-              <%= image_tag(image.picture.url(:thumbnail), :alt => @product.title, :class => 'product_img', :style => 'max-height: 50px') %>
+            <a href='<%= image.picture.url(:original) %>' title="<%= @product.title_normal %>" data-gallery>
+              <%= image_tag(image.picture.url(:thumbnail), :alt => @product.title_normal, :class => 'product_img', :style => 'max-height: 50px') %>
             </a>
         <% end %>
       </div>
