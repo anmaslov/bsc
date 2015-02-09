@@ -16,7 +16,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     if @status.present?
       @orders = Order.where(:status => @status.to_i).order('updated_at ASC').paginate(:page => params[:page], :per_page => 30)
     else
-      @orders = Order.order('updated_at ASC').paginate(:page => params[:page], :per_page => 30)
+      @orders = Order.order('updated_at DESC').paginate(:page => params[:page], :per_page => 30)
     end
 
     # <div role="tabpanel" class="tab-pane active" id="all_order">all_order</div>

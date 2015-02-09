@@ -49,7 +49,7 @@ $(document).ready(function(){
 
 function floatingPopover(what) {
 
-    popoverObject = $('#' + what);
+    popoverObject = $('.' + what);
     //popoverObject.popover();
 
     popoverObject.on('shown.bs.popover', function () {

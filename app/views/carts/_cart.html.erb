@@ -82,9 +82,9 @@
 <script>
 <% if cart.line_items.size > 0 %>
     $('#cart').show();
-    $('#button_cart').removeClass('hidden');
+    $('.button_cart').removeClass('disabled');
 <% else %>
     $('#cart').hide();
-    $('#button_cart').addClass('hidden');
+    $('.button_cart').addClass('disabled');
 <% end %>
 </script>

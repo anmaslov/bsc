@@ -64,7 +64,7 @@
                 <%= number_to_ruble(product.price_with_margin current_user) %>
               </span>
 
-              <% if product.quantity > 0 %>
+              <% if product.quantity.present? and product.quantity > 0 %>
                   <span data-toggle="tooltip"
                         data-placement="bottom"
                         title="Все сроки требуют уточнения"
@@ -90,7 +90,7 @@
                   onclick="showAddToBascet('<%= product.id %>');"
                   <% if can? :update, product %> style="width: 25%;" <% else %> style="width: 60%; padding: 6px" <% end %>
                   data-toggle="tooltip" data-placement="bottom" title="К сожалению нет в наличии, добавьте в корзину, и мы сообщим вам когда появится или предложим альтернативы"
-          >Под заказ</button>
+          >Заказать</button>
           <% end %>
 
           <button type="button" class="btn btn-primary compare"
@@ -188,7 +188,7 @@
       <%= raw (product.old_price) ? "<del>" + number_to_ruble(product.old_price).to_s + "</del>" : '' %>
       <span class="price"><%= number_to_ruble(product.price_with_margin current_user) %></span>
 
-      <% if product.quantity > 0 %>
+      <% if product.quantity.present? and product.quantity > 0 %>
           <div class="clear"></div>
           <span data-toggle="tooltip"
                 data-placement="bottom"
@@ -233,7 +233,7 @@
           </div>
       <% else %>
 
-          <% if product.quantity > 0 %>
+          <% if product.quantity.present? and product.quantity > 0 %>
               <button type="button"
                       class="btn btn-sm btn-success buy"
                       data-toggle="modal"

@@ -87,6 +87,14 @@ a:hover {
     text-decoration: none;
 }
 
+.white {
+    color: #ffffff;
+}
+
+.dotted.white {
+    border-bottom: 1px dotted #ffffff;
+}
+
 .dashed:hover, .dotted:hover {
     border-bottom: none;
     text-decoration: none;
@@ -99,16 +107,18 @@ a:hover {
 }
 
 .navbar-inverse {
-    background: url("/assets/background_navbar_inverse.png") repeat-x scroll 0 60px rgba(0, 0, 0, 0);
     min-height: 34px;
     width: 100%;
     border: none;
-    background-position: 0 60px;
     min-width: 1000px;
+    background: none;
+}
+
+.navbar-inverse.navbar-header-top {
+    min-height: 150px;
 }
 
 .navbar-inverse-admin {
-    background-color: #000000;
     color: #ffffff;
 }
 
@@ -119,6 +129,12 @@ a:hover {
 
 .navbar-inverse-admin a:hover {
     text-decoration: none !important;
+}
+
+.seach_input_result {
+    max-width: 500px;
+    min-width: 480px;
+    margin-left: -200px;
 }
 
 .navbar {
@@ -292,7 +308,17 @@ div.container a.brand {
 /* Поиск */
 
 .search {
-    margin: 17px 0;
+
+}
+
+.top-navigate.nav-justified > li > a {
+    margin-bottom: -20px !important;
+}
+
+.top-navigate.nav-justified > li > a.big_link {
+    font-size: 15pt;
+    white-space: nowrap;
+    float: left !important;
 }
 
 .search .input-group-btn {
@@ -315,23 +341,21 @@ body.safari .search .input-group-btn {
 /* Контактная информация в шапке */
 
 .header-info {
-    float: right;
-    padding: 10px;
-    overflow: hidden;
-    width: 400px;
+
 }
 
 .header-info .header-info-phone {
-    float: left;
+    white-space: nowrap;
     margin: 5px;
 }
 
-.header-info .header-info-phone .header-phone-code {
-    font-size: small;
+.header-info .header-info-phone .header-phone-code, .header-phone-code-sub {
+    font-size: x-small;
+    top: 0;
 }
 
 .header-info .header-info-phone .header-phone-number {
-    font-size: x-large;
+    font-size: xx-large;
 }
 
 .header-info .header-info-email {
@@ -351,16 +375,57 @@ body.safari .search .input-group-btn {
     margin: 0 10px 0 0;
     width: 25px;
     height: 25px;
+
+}
+
+.header a {
+    color: #303030 !important;
+}
+
+.header a:hover {
+    text-decoration: none !important;
+}
+
+.header .list-group-item {
+    border: none !important;
+    padding: 5px 15px;
+}
+
+.header .badge {
+    border-radius: 50%;
+    padding: 3px;
+    background-color: #39b54a;
+    min-height: 20px;
+    min-width: 20px;
+}
+
+.navbar-floating .label-success {
+    color: #000000 !important;
+    background-color: #ffffff !important;;
+    border-radius: 50%;
+}
+
+.login_link a:hover {
+    text-decoration: none !important;
 }
 
 .ico-facebook, .ico-facebook:hover {
-    background: url("/assets/social/facebook.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    background: url("/assets/social/fb_new.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
     background-position: center center;
     border: medium none;
 }
 
 .ico-vk, .ico-vk:hover {
-    background: url("/assets/social/vk.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+    background: url("/assets/social/vk_new.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+.ico-facebook, .ico-vk {
+    display: block;
+    width: 25px;
+    height: 25px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
 /** Карусель **/
@@ -594,7 +659,7 @@ tr.not-active {
 
 /** Футер **/
 #footer {
-    background: #eeeeee;
+    background: url("/assets/pattern_footer.png") #eeeeee;
     color: #404040;
 }
 
@@ -616,6 +681,17 @@ tr.not-active {
     padding-right: 15px;
 }
 
+#footer, #footer a {
+   color: #ffffff !important;
+}
+
+#footer a {
+    text-decoration: underline !important;
+}
+
+#footer a:hover {
+    text-decoration: none !important;
+}
 
 #footer .navbar-nav > li > a:hover, footer .navbar-nav > li > a:focus {
     background: none;
@@ -651,7 +727,7 @@ tr.not-active {
 }
 
 .copyright {
-    margin-left: 50px;
+
 }
 
 .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
@@ -711,11 +787,7 @@ tr.not-active {
 
 .title-catalog {
     width: 800px;
-}
-
-.navbar.navbar-inverse {
-    background-position: 0 62px;
-}
+}≈
 
 .column_product {
 
@@ -739,4 +811,8 @@ tr.not-active {
 #blueimp-gallery a {
     text-decoration: none !important;
     color: white !important;
+}
+
+.logo img {
+    margin: 20px;
 }

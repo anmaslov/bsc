@@ -9,12 +9,12 @@ function changeCountCompare(newCount) {
     var newCountObject = $('.count-compare');
     var compareLink = $('.compare-link-menu');
     if (newCount == 0) {
-        newCountObject.addClass('hidden');
-        compareLink.addClass('hidden');
+        newCountObject.addClass('disabled');
+        compareLink.addClass('disabled');
     } else {
         newCountObject.html(newCount);
-        newCountObject.removeClass('hidden');
-        compareLink.removeClass('hidden');
+        newCountObject.removeClass('disabled');
+        compareLink.removeClass('disabled');
     }
 }
 

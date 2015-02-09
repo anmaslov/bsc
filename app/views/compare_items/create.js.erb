@@ -1,6 +1,6 @@
 $('#notice').hide();
 
 $('#compare-list').html("<%=raw escape_javascript render :partial => 'compares/compare_small', :object => @compare %>");
-$('#button_compare_list').attr({'data-content': '<%= raw escape_javascript render :partial => 'compares/compare_small', :object => @compare %>'});
+$('.button_compare_list').attr({'data-content': '<%= raw escape_javascript render :partial => 'compares/compare_small', :object => @compare %>'});
 
 changeCountCompare(<%= @compare.compare_items.size %>);
