@@ -53,17 +53,16 @@
 
         <%= render(cart.line_items_not_available) %>
 
-        <script>
-            changeCountCart(<%=cart.line_items.size%>);
-            $('#sum_yandex_market').val('<%= cart.total_price_in_stock %>');
-        </script>
-
         </tbody>
       </table>
 
       <div id="total_bascet_order" class="right">Итого: <span class="price"><%= number_to_ruble(cart.total_price_not_available).to_s %></span></div>
   <% end %>
-
+  <script>
+      console.log('_cart');
+      changeCountCart(<%=cart.line_items.size%>);
+      $('#sum_yandex_market').val('<%= cart.total_price_in_stock %>');
+  </script>
 </div>
 <div class="modal-footer">
 
@@ -82,9 +81,18 @@
 <script>
 <% if cart.line_items.size > 0 %>
     $('#cart').show();
-    $('.button_cart').removeClass('disabled');
+    $('.button_cart').removeClass('disabled').attr({'data-target': '#bascet',
+        'data-toggle': 'modal',
+        'data-placement': '',
+        'title': ''
+    });
 <% else %>
     $('#cart').hide();
-    $('.button_cart').addClass('disabled');
+    $('.button_cart').addClass('disabled').attr({'data-target': '',
+        'data-toggle': '',
+        'data-placement': 'bottom',
+        'title': 'Добавьте товар в корзину'
+    });
+//data-placement="bottom" title="Tooltip on bottom"
 <% end %>
 </script>

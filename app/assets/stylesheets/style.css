@@ -816,3 +816,20 @@ tr.not-active {
 .logo img {
     margin: 20px;
 }
+
+.button_cart.disabled, .button_cart.disabled span,
+.button_compare_list.disabled, .button_compare_list.disabled span {
+    text-decoration: none;
+    border-bottom: none;
+    cursor: not-allowed;
+}
+
+.header .top-right-header .button_cart.disabled, .header .top-right-header .button_cart.disabled span,
+.header .top-right-header .button_compare_list.disabled, .header .top-right-header .button_compare_list.disabled span{
+    color: #808080;
+}
+
+.header .nav-justified .button_cart.disabled, .header .nav-justified .button_cart.disabled span,
+.header .nav-justified .button_compare_list.disabled, .header .nav-justified .button_compare_list.disabled span {
+    color: #efefef;
+}

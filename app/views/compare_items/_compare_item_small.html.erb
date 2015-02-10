@@ -1,4 +1,4 @@
-<tr>
+<tr class="compare-list-<%= compare_item_small.id %>">
   <td>
     <% if compare_item_small.product.image.present? or compare_item_small.product.imgs.size == 0 %>
         <%= image_tag(compare_item_small.product.image.url(:thumb), :alt => compare_item_small.product.title_normal, :class => 'product_img', :style => 'max-height: 30px; max-width: 30px;') %>

@@ -54,6 +54,10 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
 
+    if params[:catalog_id].present?
+      @product.catalog_id = params[:catalog_id]
+    end
+
     report = Report.new
     report.user = current_user
     report.product = @product

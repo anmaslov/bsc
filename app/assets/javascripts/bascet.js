@@ -59,11 +59,11 @@ function changeCountCart(newCount) {
     var cartLink = $('.cart-link-menu');
     if (newCount == 0) {
         newCountObject.addClass('hidden');
-        cartLink.addClass('hidden');
+        cartLink.addClass('disabled');
     } else {
         newCountObject.html(newCount);
         newCountObject.removeClass('hidden');
-        cartLink.removeClass('hidden');
+        cartLink.removeClass('disabled');
     }
 }
 

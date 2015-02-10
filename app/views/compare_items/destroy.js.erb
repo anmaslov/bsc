@@ -1,8 +1,12 @@
-$('#notice').hide();
+//$('#notice').hide();
+
+
+changeCountCompare(<%= @compare.compare_items.size %>);
+
+console.log("compare-item-<%=@compare_id%>");
 
 $('#compare-list').html("<%=raw escape_javascript render :partial => 'compares/compare_small', :object => @compare %>");
 $('.button_compare_list').attr({'data-content': '<%= raw escape_javascript render :partial => 'compares/compare_small', :object => @compare %>'});
 
-changeCountCompare(<%= @compare.compare_items.size %>);
 
-$('.compare-item-<%=@del_id%>').remove();
+$('.compare-item-<%=@compare_id%>').remove();

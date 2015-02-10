@@ -27,6 +27,7 @@ class CompareItemsController < InheritedResources::Base
   def destroy
 
     @compare_item = CompareItem.find(params[:id])
+    @compare_id = params[:id]
     @del_id = @compare_item.product.id
     @compare_item.destroy
     respond_to do |format|

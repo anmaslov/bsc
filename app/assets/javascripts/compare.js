@@ -8,19 +8,24 @@ function addToCompare (id) {
 function changeCountCompare(newCount) {
     var newCountObject = $('.count-compare');
     var compareLink = $('.compare-link-menu');
-    if (newCount == 0) {
-        newCountObject.addClass('disabled');
+    var buttonLink = $('.button_compare_list');
+    if (newCount < 1 ) {
+        newCountObject.addClass('hidden');
         compareLink.addClass('disabled');
+        buttonLink.addClass('disabled');//.attr({'data-toggle': '', 'title': 'Для начала выберите товар для сравнения'});
+
     } else {
         newCountObject.html(newCount);
-        newCountObject.removeClass('disabled');
+        newCountObject.removeClass('hidden');
         compareLink.removeClass('disabled');
+        buttonLink.removeClass('disabled');//.attr({'data-toggle': 'popover', 'title': ''});
     }
 }
 
 function destroyItemCompareSmall(product_id) {
     console.log('small ' + product_id);
     $('.link_destroy_compare_' + product_id).click();
+    //$('.compare-list-' + product_id).remove();
 }
 
 function destroyItemCompare(product_id) {

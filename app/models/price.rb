@@ -141,6 +141,7 @@ class Price < ActiveRecord::Base
     Product.where(:supplier_id => supplier.id).update_all(:quantity => 0)
     if Price.import self.file.path, self.supplier_import_information
       self.processed = true
+      self.save
       return true
     end
     false
