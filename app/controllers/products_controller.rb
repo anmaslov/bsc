@@ -20,6 +20,11 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+
+    if (@product.is_active == false) and ((can? :manage, @product) == false)
+      redirect_to @product.catalog, notice: 'Продукт временно не доступен'
+    end
+
     @tree = []
     self.breadcrumb(@product.catalog)
     @subcatalogs = []
@@ -144,7 +149,7 @@ class ProductsController < ApplicationController
 
     brand_id = params[:product][:brand_id].to_i
     brand_name = params[:product][:brand]
-    if brand_id == 0 and brand_name != ""
+    if brand_name != ""
       brand = Brand.where("lower(title) = ?", brand_name.mb_chars.downcase).first
       if brand.nil?
         brand = Brand.new

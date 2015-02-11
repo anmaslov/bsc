@@ -24,6 +24,10 @@ class CatalogsController < ApplicationController
 
   def show
 
+    if (@catalog.is_active == false) and ((can? :manage, @catalog) == false)
+      redirect_to catalogs_url, notice: 'Каталог временно не доступен'
+    end
+
     @tree = []
     self.breadcrumb(@catalog.parent)
     @subcatalogs = []
