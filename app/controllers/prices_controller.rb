@@ -69,6 +69,11 @@ class PricesController < ApplicationController
   def yandex
     @products = Product.where(:is_active => true, :market_yandex => true)
     @catalogs = Catalog.where(:is_active => true)
+
+    if params[:limit]
+      @products = @products.order('price DESC').limit( params[:limit] )
+    end
+
     respond_to do |format|
       format.yml { @products }
     end
