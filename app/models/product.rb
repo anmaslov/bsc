@@ -60,7 +60,9 @@ class Product < ActiveRecord::Base
     title_normal = title.gsub ', Спец предложение', ''
     title_normal = title_normal.gsub 'NEW', ''
     title_normal = title_normal.gsub 'new', ''
-    title_normal.mb_chars.capitalize  #.mb_chars.capitalize если доебуться до вверхнего регистра
+    title_normal = title_normal.mb_chars.capitalize  #.mb_chars.capitalize если доебуться до вверхнего регистра
+    title_normal = title_normal.gsub 'цена за ', ''
+    title_normal.gsub 'цена', ''
   end
 
   #def imageurl

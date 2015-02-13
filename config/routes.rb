@@ -1,4 +1,15 @@
 Bsc::Application.routes.draw do
+  resources :promos do
+    collection do
+      get :toolset_february_23
+    end
+  end
+  #
+  # constraints(host: /^www\./i) do
+  #   match '(*any)' => redirect { |params, request|
+  #     URI.parse(request.url).tap { |uri| uri.host.sub!(/^www\./i, '') }.to_s
+  #   }
+  # end
 
   resources :sliders
 
@@ -95,6 +106,9 @@ Bsc::Application.routes.draw do
     post :payment, on: :collection
     get :who_bought, on: :member
     get :change_ajax, on: :collection
+
+    get :normalization_of_titles, on: :collection
+    get :rename_title, on: :collection
   end
 
   get 'persons/profile', as: 'user_root'

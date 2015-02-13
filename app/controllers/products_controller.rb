@@ -326,6 +326,24 @@ class ProductsController < ApplicationController
   #   @attachable  = resource.singularize.classify.constantize.find(id)
   # end
 
+  def normalization_of_titles
+    @products = Product.where(:is_active => true, :market_yandex => true)
+  end
+
+  def rename_title
+    @product = Product.find(params[:product_id])
+
+    respond_to do |format|
+      if @product.update(:title => params[:new_title])
+        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

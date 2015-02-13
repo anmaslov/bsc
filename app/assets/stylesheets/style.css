@@ -582,7 +582,7 @@ tr.not-active {
 .thumbnail .cart-img img {
     max-height: 150px;
     max-width: 150px;
-    margin: -20px auto 0;
+    margin: -10px auto 0;
 }
 
 /** Новости **/

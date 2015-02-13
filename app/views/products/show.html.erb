@@ -12,11 +12,11 @@
         <%= render_breadcrumbs :tag => :li, :separator => "" %>
         <!--<li><a href="#">Измерительная техника</a></li>
         <li class="active">Тепловизоры</li>-->
-        <li class="active"><%= @product.title_normal %></li>
+        <li class="active"><%= raw @product.title_normal %></li>
       </ol>
 
       <div class="clear"></div>
-      <h1 class="title-product"><%= @product.title_normal %> <small style="white-space: nowrap;">арт. <%= @product.art %></small></h1>
+      <h1 class="title-product"><%= raw @product.title_normal %> <small style="white-space: nowrap;">арт. <%= @product.art %></small></h1>
       <div class="clear" style="height: 10px"></div>
       <div class="content">
         <%= raw @product.content %>

@@ -1,0 +1,30 @@
+<h1>Названия продуктов</h1>
+
+<table class="table table-striped table-hover">
+  <tbody>
+  <% @products.each do |product| %>
+    <tr>
+      <td>
+        <%= product.id %>
+      </td>
+      <td>
+        <%= product.title %>
+
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Название" id="product_title_<%= product.id %>" value="">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" onclick="rename_title(<%= product.id %>, $('#product_title_<%= product.id %>').val());">Переименовать!</button>
+              </span>
+        </div>
+        <script>
+            $('#product_title_<%= product.id %>').val('<%= product.title %>');
+        </script>
+      </td>
+      <td>
+        <%= product.title_normal %> <br>
+        <b><%= raw product.title_normal %></b>
+      </td>
+    </tr>
+   <% end %>
+  </tbody>
+</table>

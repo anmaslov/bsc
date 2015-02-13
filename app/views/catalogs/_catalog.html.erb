@@ -6,9 +6,9 @@
 
 
         <% if catalog.image.exists? %>
-            <%= image_tag(catalog.image.url(:thumb), :alt => catalog.title, :class => 'catalog_img') %>
+            <%= link_to image_tag(catalog.image.url(:thumb), :alt => catalog.title, :class => 'catalog_img'), catalog %>
         <% else %>
-            <%= image_tag(catalog.image_thumb.url(:thumb), :alt => catalog.title, :class => 'catalog_img') %>
+            <%= link_to image_tag(catalog.image_thumb.url(:thumb), :alt => catalog.title, :class => 'catalog_img'), catalog %>
         <% end %>
 
       </div>

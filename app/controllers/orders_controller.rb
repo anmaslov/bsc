@@ -69,7 +69,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
 
 
 
-      if params[:user].present? and params[:user][:password] != ''
+      if params[:user].present? and params[:order][:registration].present? and params[:user][:password] != ''
         if params[:user][:password_confirmation] == params[:user][:password]
           User.create!({
                :email => @order.email,
@@ -84,7 +84,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
           message = 'Пароли не совпадают'
           @order.errors[:registration] << message
         end
-      elsif params[:order][:registration] == "" and params[:user][:password] == ""
+      elsif params[:order][:registration].present? and params[:user][:password] == ""
         error = true
         message = 'Вы не заполнили пароль'
         @order.errors[:registration] << message
