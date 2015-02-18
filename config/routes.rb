@@ -109,6 +109,7 @@ Bsc::Application.routes.draw do
 
     get :normalization_of_titles, on: :collection
     get :rename_title, on: :collection
+    get :rename_brief_characteristics, on: :collection
   end
 
   get 'persons/profile', as: 'user_root'

@@ -104,8 +104,12 @@ class Price < ActiveRecord::Base
         else
           product.attributes = {:price => price, :quantity => quantity}
         end
-
         product.save!
+
+        if quantity.present? and quantity > 0
+          product.attributes = {:updated_price_at => DateTime.now}
+          product.save!
+        end
 
         if characters.present? and characters_title.present?
           i = 0
@@ -145,6 +149,63 @@ class Price < ActiveRecord::Base
       return true
     end
     false
+  end
+
+  def self.update_info_ekt
+    puts 'start parcing'
+    require 'rubygems'
+    require 'nokogiri'
+    require 'rest_client'
+    require 'oj'
+    require 'open-uri'
+    require 'csv'
+    # 2 779
+    product_all = Product.where({supplier_id: 2, catalog_id: 779, is_processed: true}).order("id desc").all
+
+    puts 'priduct size: ' + product_all.size.to_s
+
+    product_all.each do |product|
+      art = product.article[0..(product.article.size-3)].split('.')
+      first_word = product.title.split(' ').first
+
+      if art.size > 1
+        art = art.first
+        url = "http://www.ekt-rus.ru/search/?q=" + art + '&where=iblock_books'
+      else
+        url = "http://www.ekt-rus.ru/search/?q=" + product.article[0..(product.article.size-3)] + '&where=iblock_books'
+      end
+
+      url = URI.encode(url)
+
+      # Если Url в порядке
+      if url =~ URI::regexp
+        RestClient.get(url){|response, request, result|
+          if result.message == "OK"
+            page = Nokogiri::HTML(open(url))
+
+            if page.at_css(".search-page a").present?
+              if page.at_css(".search-page a").kind_of?(Array)
+                link = page.at_css(".search-page a")[0]['href']
+              else
+                link = page.at_css(".search-page a")['href']
+              end
+              link = 'http://www.ekt-rus.ru' + link.to_s
+              puts 'начинаем парсинг: ' + link
+              parsing_product_ekt(product, link)
+            end
+
+
+            #parsing_product(product, hash['url'], hash['image'])
+          end
+        }
+      end
+
+      product.is_processed = false
+      #sleep(1)
+      product.save
+
+    end
+
   end
 
   def Price.update_info_arrow
@@ -219,6 +280,79 @@ class Price < ActiveRecord::Base
       sleep(2)
       product.save
     end
+  end
+
+  def self.parsing_product_ekt(product, link)
+    require 'rubygems'
+    require 'nokogiri'
+    require 'rest_client'
+    require 'oj'
+
+    page_product_href = URI.encode(link)
+
+    RestClient.get(page_product_href){|response, request, result|
+      if result.message == "OK"
+        page_product = Nokogiri::HTML(response)
+
+        if page_product.css('.article-content img').first.present?
+          img_href = page_product.css('.article-content img').first['src']
+          product.image_from_url 'http://www.ekt-rus.ru' + img_href
+        end
+
+        if page_product.css('.article-content td').present?
+          description = page_product.css('.article-content td')[1].text
+          product.description = description
+        end
+
+        breadcrumb = String.new
+        parent_id = 0
+        new_catalog_id = 0
+
+        links = page_product.css("p[style='padding-top:1px; padding-left:15px; padding-bottom:10px;'] a")
+        # Воссоздаем родительские каталоги до корня
+        links.each do |link|
+          item_bread = Hash.new
+          item_bread["title"] = link.content
+          item_bread["href"]  = link['href']
+
+          if item_bread["title"] != "Каталог" || item_bread["href"] != "/ecatalog/"
+            catalog = Catalog.new
+
+            catalog.title = item_bread["title"]
+
+            if parent_id == 0
+              catalog.parent_id = 0
+            else
+              catalog.parent = Catalog.find(parent_id)
+            end
+
+            old_product = Catalog.where({:title => catalog.title, :parent_id => parent_id}).pop
+
+            if old_product.nil? # or old_product.parent_id != parent_id
+              catalog.description = catalog.title
+              catalog.save
+              new_catalog_id = catalog.id
+              parent_id = catalog.id
+            else
+              parent_id = old_product.id
+              new_catalog_id = parent_id
+            end
+
+          else
+            parent_id = 0
+            new_catalog_id = 0
+          end
+        end
+
+        # если есть id родительского каталога
+        if !new_catalog_id.nil? && new_catalog_id != 0
+          product.catalog = Catalog.find(new_catalog_id)
+        end
+
+        product.save
+
+      end
+    }
   end
 
   def self.parsing_product(product, url, img_href)

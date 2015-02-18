@@ -40,3 +40,25 @@ function rename_title(product_id, new_title) {
         }
     });
 }
+
+function rename_brief_characteristics(product_id, new_value) {
+
+    $.ajax({
+        url: "/products/rename_brief_characteristics.json",
+        type: "GET",
+        data: {
+            product_id: product_id,
+            new_value: new_value
+        },
+        success: function(data) {
+            console.log('Данные изменены ' + data);
+            //$('#tr_charecter_type_' + old_id).hide('slow').remove();
+            message('success', 'Данные изменены');
+
+        },
+        error: function (data) {
+            //
+        }
+    });
+
+}

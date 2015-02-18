@@ -22,6 +22,14 @@ class CatalogsController < ApplicationController
     @catalog = Catalog.new
   end
 
+  def edit
+    report = Report.new
+    report.user = current_user
+    report.catalog = @catalog
+    report.type_action = Report.edit_open
+    report.save
+  end
+
   def show
 
     if (@catalog.is_active == false) and ((can? :manage, @catalog) == false)
@@ -75,7 +83,7 @@ class CatalogsController < ApplicationController
       if can? :manage, Product
         @products = Product.where("id IN(?)", @products)
       else
-        @products = Product.where("id IN(?) AND is_active = 1", @products)
+        @products = Product.where("id IN(?) AND is_active = 1 AND updated_price_at IS NOT NULL AND updated_price_at > ?", @products, (DateTime.now - 2.months))
       end
 
       # @products = Product.where("catalog_id = ? AND price >= ? AND price <= ? AND is_active = 1",
@@ -119,12 +127,15 @@ class CatalogsController < ApplicationController
         @products =  Product.where(:catalog_id => @catalog.id)
       else
         @products =  Product.where(:catalog_id => @catalog.id, :is_active => true)
+        @products = @products.where("updated_price_at IS NOT NULL AND updated_price_at > ?", (DateTime.now - 2.months))
       end
     end
 
     if params[:order].present?
       order = params[:order]
       @products = @products.scoped(:order => order + " asc")
+    else
+      @products = @products.scoped(:order => "price asc")
     end
     @products = @products.paginate(:page => params[:page], :per_page => 30)
 
@@ -134,6 +145,7 @@ class CatalogsController < ApplicationController
       @all_products =  Product.where(:catalog_id => @catalog.id)
     else
       @all_products =  Product.where(:catalog_id => @catalog.id, :is_active => true)
+      @all_products = @all_products.where("updated_price_at IS NOT NULL AND updated_price_at > ?", (DateTime.now - 2.months))
     end
 
     @price_min = @all_products.map(&:price_with_margin).min #@all_products.minimum(:price)
@@ -179,6 +191,13 @@ class CatalogsController < ApplicationController
   def update
     respond_to do |format|
       if @catalog.update(catalog_params)
+
+        report = Report.new
+        report.user = current_user
+        report.catalog = @catalog
+        report.type_action = Report.edit_save
+        report.save
+
         format.html { redirect_to @catalog, notice: 'Catalog was successfully updated.' }
         format.json { head :no_content }
       else
@@ -245,7 +264,7 @@ class CatalogsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def catalog_params
-    params.require(:catalog).permit(:title, :description, :keywords, :content, :parent_id, :product_table, :image)
+    params.require(:catalog).permit(:title, :description, :keywords, :content, :parent_id, :catalog_table, :product_table, :image)
   end
 
 end

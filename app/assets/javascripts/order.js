@@ -27,6 +27,14 @@ function set_delivery_type(object) {
             $('.quantity_product_id_29734').val('1');
             $('.form_product_id_29734').submit();
         }
+
+        if ($(object).val() == 'В регионы [согласовывается с менеджером]') {
+            $('#order_pay_type option[value="Наличные"]').prop('disabled', true);
+            $('#order_pay_type option[value="Курьеру Visa/MasterCard при получении"]').prop('disabled', true);
+        } else {
+            $('#order_pay_type option[value="Наличные"]').prop('disabled', false);
+            $('#order_pay_type option[value="Курьеру Visa/MasterCard при получении"]').prop('disabled', false);
+        }
     }, 500);
 }
 

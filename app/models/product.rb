@@ -56,13 +56,29 @@ class Product < ActiveRecord::Base
     end
   end
 
+  # TODO закешировать
   def title_normal
     title_normal = title.gsub ', Спец предложение', ''
     title_normal = title_normal.gsub 'NEW', ''
     title_normal = title_normal.gsub 'new', ''
-    title_normal = title_normal.mb_chars.capitalize  #.mb_chars.capitalize если доебуться до вверхнего регистра
+    #title_normal = title_normal.mb_chars.capitalize  #.mb_chars.capitalize если доебуться до вверхнего регистра
     title_normal = title_normal.gsub 'цена за ', ''
     title_normal.gsub 'цена', ''
+
+    if brief_characteristics.present?
+      title_normal + ' (' + brief_characteristics.strip + ')' #
+    else
+      title_normal
+    end
+
+  end
+
+  def price_is_valid_until
+    if updated_price_at.present?
+      updated_price_at
+    else
+      created_at
+    end
   end
 
   #def imageurl
@@ -163,6 +179,11 @@ class Product < ActiveRecord::Base
     else
       obj.to_i
     end
+  end
+
+  def available?
+
+    is_active and updated_price_at.present? and ((DateTime.now - updated_price_at) > 2.months)
   end
 
   private

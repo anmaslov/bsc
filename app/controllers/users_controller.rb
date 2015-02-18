@@ -43,11 +43,11 @@ class UsersController < ApplicationController
     if params[:end].present? and params[:start].present?
       @start = Time.at(params[:start].to_f).utc.beginning_of_day
       @end = Time.at(params[:end].to_f).utc.end_of_day
-      @reports_product = Report.where(user_id: @user.id, type_action: [Report.edit_save, Report.create_save], :created_at => (@start..@end)).where.not(product_id: nil).all
+      @reports_product = Report.where(user_id: @user.id, type_action: [Report.edit_save, Report.create_save], :created_at => (@start..@end)).all #.where.not(product_id: nil).all
     else
-      @reports_product = Report.where(user_id: @user.id, type_action: [Report.edit_save, Report.create_save], :created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).where.not(product_id: nil).all
+      @reports_product = Report.where(user_id: @user.id, type_action: [Report.edit_save, Report.create_save], :created_at => (Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)).all #.where.not(product_id: nil).all
     end
-    @reports_product_all_time = Report.where(user_id: @user.id, type_action: [Report.edit_save]).where.not(product_id: nil).all
+    @reports_product_all_time = Report.where(user_id: @user.id, type_action: [Report.edit_save]).all #.where.not(product_id: nil).all
     respond_to do |format|
       format.json { render :json => @user }
       format.xml  { render :xml => @user }

@@ -344,6 +344,20 @@ class ProductsController < ApplicationController
     end
   end
 
+  def rename_brief_characteristics
+    @product = Product.find(params[:product_id])
+
+    respond_to do |format|
+      if @product.update(:brief_characteristics => params[:new_value])
+        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -352,6 +366,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :article, :description, :image_url, :price, :catalog_id, :is_active, :image, :_destroy, :value, :imgs, :characters, :brand_id, :content, :reports)
+      params.require(:product).permit(:title, :article, :description, :image_url, :price, :catalog_id, :is_active, :image, :_destroy, :value, :imgs, :characters, :brand_id, :content, :reports, :brief_characteristics)
     end
 end

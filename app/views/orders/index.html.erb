@@ -33,6 +33,7 @@
     <th>Адрес</th>
     <th>Способ оплаты</th>
     <th>Способ доставки</th>
+    <th>Дата</th>
     <th>Статус</th>
     <th>Сумма заказа</th>
     <!--<th>Скачать</th>-->
@@ -48,6 +49,7 @@
         <td><%= order.address %></td>
         <td><%= order.pay_type %></td>
         <td><%= order.delivery_type %></td>
+        <td><%= order.created_at.getlocal.strftime('%e-%b-%Y, %H:%M')%></td>
         <td><%= order.status_title %></td>
         <td style="text-align: right"><%= number_to_ruble(order.total_price)%></td>
         <!--<td style="text-align: center"><%= link_to 'xls', order, :format => 'xls' %></td>
@@ -69,5 +71,5 @@
 <%= will_paginate @orders,
                   renderer: BootstrapPagination::Rails,
                   :remote => true,
-                  :params => { :status => nil }
+                  :params => { :status => params[:status] }
 %>

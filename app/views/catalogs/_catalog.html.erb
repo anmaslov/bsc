@@ -17,6 +17,9 @@
         <%= link_to catalog.title, catalog, :class => 'catalog_title' %>
         <% if can? :manage, catalog %>
             (<%= catalog.count_active_products %>)
+
+                  <%= button_to "Изменить", edit_catalog_path(catalog),
+                                :class => "btn btn-sm btn-primary", :method => :get %>
         <% end %>
       </div>
     </div>

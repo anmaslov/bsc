@@ -8,8 +8,6 @@
         <%= product.id %>
       </td>
       <td>
-        <%= product.title %>
-
         <div class="input-group">
           <input type="text" class="form-control" placeholder="Название" id="product_title_<%= product.id %>" value="">
               <span class="input-group-btn">
@@ -19,10 +17,23 @@
         <script>
             $('#product_title_<%= product.id %>').val('<%= product.title %>');
         </script>
+
+        <hr>
+
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Характеристики" id="product_brief_characteristics_<%= product.id %>" value="">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" onclick="rename_brief_characteristics(<%= product.id %>, $('#product_brief_characteristics_<%= product.id %>').val());">Переименовать!</button>
+              </span>
+        </div>
+        <script>
+            $('#product_brief_characteristics_<%= product.id %>').val('<%= product.brief_characteristics %>');
+        </script>
+
       </td>
-      <td>
-        <%= product.title_normal %> <br>
-        <b><%= raw product.title_normal %></b>
+      <td style="width: 400px;">
+        <%= link_to product.title_normal, product %> <br>
+        <b><%= raw product.title %></b>
       </td>
     </tr>
    <% end %>

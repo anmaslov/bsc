@@ -2,6 +2,7 @@
 <%= description @catalog.description %>
 <%= keywords @catalog.keywords %>
 
+
 <% if user_signed_in? && current_user.admin? %>
     <nav class="navbar-admin navbar-inverse-admin navbar-fixed-bottom" role="navigation"> <!-- navbar-fixed-top -->
       <nav class="navbar-admin navbar-admin" role="navigation">
@@ -42,7 +43,11 @@
         <li class="active">Тепловизоры</li>-->
         <li class="active"><%= @catalog.title %></li>
       </ol>
-
+      <% if can? :manage, @catalog %>
+          <div class="clear"></div>
+          <%= button_to "Изменить текущий каталог", edit_catalog_path(@catalog),
+                    :class => "btn btn-sm btn-warning", :method => :get %>
+      <% end %>
       <div class="clear"></div>
 
       <h1 class="title-catalog"><%= @catalog.title %></h1>

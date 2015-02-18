@@ -1,6 +1,7 @@
 class Report < ActiveRecord::Base
   belongs_to :user
   belongs_to :product
+  belongs_to :catalog
 
   @@edit_open   = 0
   @@edit_save   = 1

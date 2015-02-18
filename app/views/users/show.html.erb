@@ -67,6 +67,9 @@
             <% if report.product.present? %>
                 <%= link_to report.product.title_normal, report.product %>
             <% end %>
+            <% if report.catalog.present? %>
+                <%= link_to report.catalog.title, report.catalog %>
+            <% end %>
           </td>
           <td>
             <%= report.type_title %>
