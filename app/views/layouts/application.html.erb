@@ -142,7 +142,13 @@
               <span class="input-group-btn">
                 <div class="glyphicon glyphicon-search" type="button"></div>
               </span>
-              <input type="text" class="form-control" onkeyup="search_top(this.value)" value="<% if @query.present? %><%= @query.delete('\"') %><% end %>">
+
+
+
+              <input type="text" class="form-control hasclear" onkeyup="search_top(this.value)" value="<% if @query.present? %><%= @query.delete('\"') %><% end %>">
+
+
+
 
               <div class="panel panel-default dropdown-menu seach_input_result" aria-labelledby="dropdownMenu1">
 
@@ -439,8 +445,6 @@
     </div>
   </div>
 
-
-
   <script>
 
       $('[data-toggle=popover]').each(function () {
@@ -483,6 +487,8 @@
         ga('send', 'pageview');
 
     </script>
+
+    <script type="text/javascript">(window.Image ? (new Image()) : document.createElement('img')).src = location.protocol + '//vk.com/rtrg?r=GceiInSfGIO4xTIpNxYJ4gFYJeFjsAoGhjaA1Pxwd/sbXvrylxwpplPquWlOaI*GFul3l6D5TERF5*x2OvgyQ1SU/TTeg2Sw07mLMDFM*GGdvUihqX1zKsonH5PmemmX5jdGR3qF//fFVxVuOQHwTzbc27xnuI77D36od33oQb4-';</script>
 
   <%= render :template => "layouts/view-toggle" %>
 

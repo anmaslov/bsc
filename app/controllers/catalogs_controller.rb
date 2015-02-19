@@ -158,18 +158,19 @@ class CatalogsController < ApplicationController
       @brands = []
     end
 
-    @characters_names = []
-    @characters = []
+    charar = @catalog.characters_names @all_products
 
-    @all_products.each do |product|
-      product.characters.each do |character|
-        if character.character_type.present? and ((@characters_names.include? character.character_type.name) == false)
-          @characters_names.push(character.character_type.name)
-          @characters.push(character)
-        end
-      end
-    end
+    @characters_names = charar['characters_names']
+    @characters = charar['characters']
 
+    # @all_products.each do |product|
+    #   product.characters.each do |character|
+    #     if character.character_type.present? and ((@characters_names.include? character.character_type.name) == false)
+    #       @characters_names.push(character.character_type.name)
+    #       @characters.push(character)
+    #     end
+    #   end
+    # end
 
 
   end

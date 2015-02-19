@@ -15,7 +15,7 @@
   <td>
     <div class="btn-group-vertical" role="group" style="width: 70px;">
         <button type="button" class="btn btn-sm btn-primary compare" onclick="addToCompare('<%= search.id %>');">Сравнить</button>
-        <% if search.quantity > 0 %>
+        <% if search.quantity.present? and search.quantity.to_i > 0 %>
             <button type="button" class="btn btn-sm btn-success buy"  data-toggle="modal" data-target="#addToBascet" onclick="showAddToBascet('<%= search.id %>');">Купить</button>
         <% else %>
           <button type="button"

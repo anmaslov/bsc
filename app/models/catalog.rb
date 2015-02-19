@@ -75,5 +75,30 @@ class Catalog < ActiveRecord::Base
     result
   end
 
+  def characters_names all_products = nil
+    if all_products.nil?
+      all_products = Product.where(:catalog_id => self.id, :is_active => true)
+    end
+    characters_names_ = Rails.cache.fetch(self.id.to_s + '_characters_names_for_' + all_products.sum('price').to_s + '_' + all_products.size.to_s, expires_in: 24.hours) do
+      characters_names__ = []
+      characters__ = []
+      all_products.each do |product|
+        product.characters.each do |character|
+          if character.character_type.present? and ((characters_names__.include? character.character_type.name) == false)
+            characters_names__.push(character.character_type.name)
+            characters__.push(character)
+          end
+        end
+      end
+      Hash['characters_names', characters_names__, 'characters', characters__]
+    end
+    characters_names_
+  end
+
+  def self.re_cache
+    Catalog.all.each do |catalos|
+      catalos.characters_names
+    end
+  end
 
 end

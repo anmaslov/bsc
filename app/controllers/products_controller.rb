@@ -187,6 +187,8 @@ class ProductsController < ApplicationController
         report.type_action = Report.edit_save
         report.save
 
+        @product.clear_cache
+
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
@@ -200,6 +202,8 @@ class ProductsController < ApplicationController
   # DELETE /products/1.json
   def destroy
     # @product = @attachable.assets.find(params[:id])
+
+    @product.clear_cache
 
     report = Report.new
     report.user = current_user
@@ -237,6 +241,9 @@ class ProductsController < ApplicationController
     product_params = Hash[params[:field] => params[:value]]
     respond_to do |format|
       if @product.update(product_params)
+
+        @product.clear_cache
+
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
@@ -247,12 +254,15 @@ class ProductsController < ApplicationController
   end
 
   def search
-    @query = params[:query].split(/'([^']+)'|"([^"]+)"|\s+|\+/).reject{|x| x.empty?}.map{|x| x.inspect }*' && '
-    @products = ThinkingSphinx.search @query, :classes => [Product], :conditions => {:is_active => 1}, :limit => 5
-    @total_found = @products .total_entries
+    #@query = params[:query].split(/'([^']+)'|"([^"]+)"|\s+|\+/).reject{|x| x.empty?}.map{|x| x.inspect }*' && '
+    #@query = "*#{params[:query].strip.gsub(/ +/, '* *')}*"
+    @query = "#{params[:query].strip.gsub(' ', ' | ')}"
+    @products = ThinkingSphinx.search @query, :match_mode => :extended, :classes => [Product], :limit => 5
+    @query = "#{@query.strip.gsub(' | ', ' ')}"
+    @total_found = @products.total_entries
     @line_item = LineItem.new
     @compare_item = CompareItem.new
-    @query = params[:query]
+    #@query = params[:query]
     #@artists.run
     respond_to do |format|
       format.js #search.js.erb
@@ -335,6 +345,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update(:title => params[:new_title])
+        @product.clear_cache
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else
@@ -349,6 +360,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update(:brief_characteristics => params[:new_value])
+        @product.clear_cache
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { head :no_content }
       else

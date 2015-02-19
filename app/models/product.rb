@@ -58,19 +58,21 @@ class Product < ActiveRecord::Base
 
   # TODO закешировать
   def title_normal
-    title_normal = title.gsub ', Спец предложение', ''
-    title_normal = title_normal.gsub 'NEW', ''
-    title_normal = title_normal.gsub 'new', ''
-    #title_normal = title_normal.mb_chars.capitalize  #.mb_chars.capitalize если доебуться до вверхнего регистра
-    title_normal = title_normal.gsub 'цена за ', ''
-    title_normal.gsub 'цена', ''
+    title_normal_ = Rails.cache.fetch(self.id.to_s + '_title_normal', expires_in: 24.hours) do
+      title_normal = title.gsub ', Спец предложение', ''
+      title_normal = title_normal.gsub 'NEW', ''
+      title_normal = title_normal.gsub 'new', ''
+      #title_normal = title_normal.mb_chars.capitalize  #.mb_chars.capitalize если доебуться до вверхнего регистра
+      title_normal = title_normal.gsub 'цена за ', ''
+      title_normal.gsub 'цена', ''
 
-    if brief_characteristics.present?
-      title_normal + ' (' + brief_characteristics.strip + ')' #
-    else
-      title_normal
+      if brief_characteristics.present?
+        title_normal + ' (' + brief_characteristics.strip + ')' #
+      else
+        title_normal
+      end
     end
-
+    title_normal_
   end
 
   def price_is_valid_until
@@ -155,35 +157,51 @@ class Product < ActiveRecord::Base
         product.value_character_by_name character.name
       end
     end
+    Product.all.each do |product|
+      product.title_normal
+      product.price_with_margin
+      product.art
+    end
   end
 
   def price_with_margin user = nil
-    if user.present? and
-        user.margin_for_users.present? and
-        supplier_id.present? and
-        user.margin_for_users.where(:supplier_id => supplier_id).first.present?
-      price + price * ( user.margin_for_users.where(:supplier_id => supplier_id).first.margin / 100 )
-    else
-      if supplier.present?
-        ((price + price * ( supplier.margin / 100 )) * 1.035)
+    price_with_margin_ = Rails.cache.fetch(self.id.to_s + '_price_for_' + (user.present? ? user.id.to_s : 'all'), expires_in: 24.hours) do
+      if user.present? and
+          user.margin_for_users.present? and
+          supplier_id.present? and
+          user.margin_for_users.where(:supplier_id => supplier_id).first.present?
+        price + price * ( user.margin_for_users.where(:supplier_id => supplier_id).first.margin / 100 )
       else
-        price
+        if supplier.present?
+          ((price + price * ( supplier.margin / 100 )) * 1.035)
+        else
+          price
+        end
       end
     end
+    price_with_margin_
   end
 
   def art
-    obj = article.chomp '-' + supplier_id.to_s
-    if obj !~ /^\s*[+-]?((\d+_?)*\d+(\.(\d+_?)*\d+)?|\.(\d+_?)*\d+)(\s*|([eE][+-]?(\d+_?)*\d+)\s*)$/
-      obj
-    else
-      obj.to_i
+    art_ = Rails.cache.fetch(self.id.to_s + '_art', expires_in: 24.hours) do
+      obj = article.chomp '-' + supplier_id.to_s
+      if obj !~ /^\s*[+-]?((\d+_?)*\d+(\.(\d+_?)*\d+)?|\.(\d+_?)*\d+)(\s*|([eE][+-]?(\d+_?)*\d+)\s*)$/
+        obj
+      else
+        obj.to_i
+      end
     end
+    art_
   end
 
   def available?
-
     is_active and updated_price_at.present? and ((DateTime.now - updated_price_at) > 2.months)
+  end
+
+  def clear_cache
+    Rails.cache.delete(id.to_s + '_art')
+    Rails.cache.delete(id.to_s + '_price_for_all')
+    Rails.cache.delete(id.to_s + '_title_normal')
   end
 
   private
