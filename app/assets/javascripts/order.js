@@ -18,6 +18,9 @@ function set_delivery_type(object) {
     if ($('.link_destroy_29735').length) {
         $('.link_destroy_29735').click();
     }
+    if ($('.link_destroy_31234').length) {
+        $('.link_destroy_31234').click();
+    }
     setTimeout(function() {
         if ($(object).val() == 'В Ленинградскую область [1500 рублей]') {
             $('.quantity_product_id_29735').val('1');
@@ -27,10 +30,25 @@ function set_delivery_type(object) {
             $('.quantity_product_id_29734').val('1');
             $('.form_product_id_29734').submit();
         }
+        if ($(object).val() == 'В регионы [согласовывается с менеджером, 300 рублей до транспортной компании]') {
+            $('.quantity_product_id_31234').val('1');
+            $('.form_product_id_31234').submit();
+        }
 
-        if ($(object).val() == 'В регионы [согласовывается с менеджером]') {
+
+        if ($(object).val() == 'В регионы [согласовывается с менеджером, 300 рублей до транспортной компании]') {
+
+
+            console.log('В регионы [согласовывается с менеджером, 300 рублей до транспортной компании]');
+            console.log($('#order_pay_type').val() );
+            if ($('#order_pay_type').val() == 'Наличные' || $('#order_pay_type').val() == 'Курьеру Visa/MasterCard при получении') {
+                $('#order_pay_type').val('');
+                console.log('сброс типа оплаты');
+            }
+
             $('#order_pay_type option[value="Наличные"]').prop('disabled', true);
             $('#order_pay_type option[value="Курьеру Visa/MasterCard при получении"]').prop('disabled', true);
+
         } else {
             $('#order_pay_type option[value="Наличные"]').prop('disabled', false);
             $('#order_pay_type option[value="Курьеру Visa/MasterCard при получении"]').prop('disabled', false);

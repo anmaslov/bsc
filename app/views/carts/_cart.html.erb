@@ -61,7 +61,9 @@
   <script>
       console.log('_cart');
       changeCountCart(<%=cart.line_items.size%>);
-      $('#sum_yandex_market').val('<%= cart.total_price_in_stock %>');
+      <% if cart.total_price_in_stock > 0 %>
+        $('#sum_yandex_market').val('<%= cart.total_price_in_stock %>');
+      <% end %>
   </script>
 </div>
 <div class="modal-footer">

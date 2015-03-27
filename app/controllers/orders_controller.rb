@@ -31,8 +31,10 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
   # GET /orders/1
   # GET /orders/1.json
   def show
-    if current_user.id != @order.user_id and !(can? :manage, @order)
+    if (current_user.present? and current_user.id != @order.user_id) and !(can? :manage, @order)
       redirect_to controller: "users", action: "orders", id: current_user.id, notice: "Это не ваш заказ :)"
+    elsif params[:secret_code] != @order.secret_code and !(can? :manage, @order)
+      redirect_to controller: "catalogs", action: "index", notice: "Вы не можете просматривать чужие заказы"
     end
 
 
@@ -46,7 +48,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     end
     @order = Order.new
     @user = current_user
-    @delivery_products = Product.where(:id => [29734, 29735])
+    @delivery_products = Product.where(:id => [29734, 29735, 31234])
     @line_item = LineItem.new
     @compare_item = CompareItem.new
   end
@@ -62,6 +64,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
     @order.add_line_items_from_cart(@cart)
     @order.user = current_user
     @order.status = 0
+    @order.secret_code = (0...50).map { ('a'..'z').to_a[rand(26)] }.join
 
     respond_to do |format|
       error = false
@@ -119,7 +122,7 @@ class OrdersController < ApplicationController #protect_from_forgery with: :null
           end
         end
         #@cart = current_cart
-        @delivery_products = Product.where(:id => [29734, 29735])
+        @delivery_products = Product.where(:id => [29734, 29735, 31234])
         @line_item = LineItem.new
         @compare_item = CompareItem.new
         format.html { render action: 'new' }

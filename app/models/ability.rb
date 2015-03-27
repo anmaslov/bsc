@@ -33,7 +33,7 @@ class Ability
     if user.role? :super_admin
       can :manage, :all
     elsif user.role? :product_admin
-      can :manage, [Product, Catalog, Page]
+      can :manage, [Product, Catalog, Page, CharecterType]
     elsif user.role? :order_admin
       can :manage, [Order]
     end

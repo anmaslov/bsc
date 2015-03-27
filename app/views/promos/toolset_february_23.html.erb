@@ -1,0 +1,173 @@
+<%= title 'Набор инструмента - лучший подарок на 23 февраля' %>
+
+<div class="row" style="min-height: 1000px; min-width: 1300px; background: url('/assets/pattern_23_febr.jpg'); margin-top: -20px;">
+
+  <div class="row" style="padding: 55px 0 20px 100px;">
+    <h1 style="font-size: 56pt; font: Myriad Pro; padding: 0; margin: 0;">
+      Набор инструмента &mdash;<br>
+      лучший подарок <br>
+      на 23 февраля <span style="width: 100px; height: 100px; background-color: #39b54a; border-radius: 50px; overflow: hidden; font-size: 20px; color: white; position: absolute; padding: 35px 20px; margin: -10px 0 0 60px;">Акция</span>
+    </h1>
+  </div>
+
+  <div class="row" style="padding: 0 0 20px 100px;">
+    <span style="font-size: large">Купите</span>
+    <div class="clearfix" style="height: 20px;"></div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+      <%= link_to raw('<img src="/assets/23_feb/kobalt-25.png" alt="Кобальт. 25 предметов">'), Product.find(30828) %>
+        <div class="clear"></div>
+        <span style="width: 50px; height: 50px; background-color: #fff; border-radius: 50px; overflow: hidden; font-size: 20px; color: #000000; position: absolute; padding: 15px; margin: -80px 0 0 180px;">x2</span>
+        <div class="clear"></div>
+        <span style="width: 60px; height: 50px; overflow: hidden; font-size: 20px; color: #000000; position: absolute; padding: 15px; margin: -150px 0 0 240px;">или</span>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <%= link_to raw('<img src="/assets/23_feb/kobalt-55.png" alt="Кобальт. 55 предметов">'), Product.find(1232) %>
+      <div class="clear"></div>
+      <span style="width: 60px; height: 50px; overflow: hidden; font-size: 20px; color: #000000; position: absolute; padding: 15px; margin: -170px 0 0 240px;">или</span>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <%= link_to raw('<img src="/assets/23_feb/kobalt-101.png" alt="Кобальт. 101 предметов">'), Product.find(1231) %>
+
+      <div class="clear"></div>
+      <span style="width: 60px; height: 50px; overflow: hidden; font-size: 20px; color: #000000; position: absolute; padding: 15px; margin: -170px 0 0 240px;">+</span>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="padding: 65px 0 0 35px;;">
+      <%= link_to raw('<img src="/assets/23_feb/bosch.png" alt="Бош">'), Product.find(1151) %>
+      <div class="clear"></div>
+      <%= link_to raw('<img src="/assets/23_feb/gift.png" alt="В подарок" style="position: absolute; margin: -120px -25px">'), Product.find(1151) %>
+
+    </div>
+  </div>
+  <div class="row" style="padding: 0 0 10px 100px;">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <span style="color: #39b54a; font-size: large;">
+        <%= link_to raw('КОБАЛЬТ 1/2"<br>(25 предметов) кейс<br>2 комплекта'), Product.find(30828), style: "color: #39b54a !important; font-size: large; text-decoration: none !important;" %>
+      </span>
+
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <span style="color: #39b54a; font-size: large">
+        <%= link_to raw('КОБАЛЬТ 1/4" и 1/2"<br>(55 предметов) кейс'), Product.find(1232), style: "color: #39b54a !important; font-size: large; text-decoration: none !important;" %>
+      </span>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <span style="color: #39b54a; font-size: large">
+        <%= link_to raw('КОБАЛЬТ 1/4" и 1/2"<br>(101 предметов) кейс'), Product.find(1231), style: "color: #39b54a !important; font-size: large; text-decoration: none !important;" %>
+      </span>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <span style="font-size: large">
+        <%= link_to raw('Металлоискатель<br>BOSCH PDO 6'), Product.find(1151), style: "color: black !important; font-size: large; text-decoration: none !important;" %>
+         <br>
+        <span style="text-decoration: line-through"> <%= number_to_ruble(Product.find(1151).price_with_margin) %></span>
+      </span>
+    </div>
+  </div>
+  <div class="row" style="padding: 0 0 40px 100px;">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <button type="button" class="btn btn-success" style="background-image: none; background-color: #39b54a; padding: 10px 35px;"
+              onclick="showAddToBascet('30828');" data-target="#addToBascet" data-toggle="modal">Купить за <span> <%= number_to_ruble(Product.find(30828).price_with_margin) %></span></button>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <button type="button" class="btn btn-success" style="background-image: none; background-color: #39b54a; padding: 10px 35px;"
+              onclick="showAddToBascet('1232');" data-target="#addToBascet" data-toggle="modal">Купить за <span> <%= number_to_ruble(Product.find(1232).price_with_margin) %></span></button>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+      <button type="button" class="btn btn-success" style="background-image: none; background-color: #39b54a; padding: 10px 35px;"
+              onclick="showAddToBascet('1231');" data-target="#addToBascet" data-toggle="modal">Купить за <span> <%= number_to_ruble(Product.find(1231).price_with_margin) %></span></button>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+
+    </div>
+  </div>
+
+  <div class="row" style="padding: 0 0 0 100px;">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      Металлоискатель <br>
+      BOSCH PDO 6 это:
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+      <span style="width: 160px; height: 160px; background-color: #fff600; border-radius: 50%; overflow: hidden; font-size: 20px; color: #000000; position: absolute; padding: 10px 25px; margin-left: -100px;">
+        <img src="/assets/23_feb/arrow.png" alt="Стрелка" style="margin-left: 45px;">
+        <div class="clearfix"></div>
+        <h1 style="margin: 0; padding: 0;">60 мм</h1> <br>
+        <span style="width: 160px; text-align: center; font-size: 10pt; position: absolute; margin: -25px -25px; padding: 5px;">
+          Макс. глубина<br>обнаружения<br>стали
+        </span>
+      </span>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <span style="width: 160px; height: 160px; background-color: #fff600; border-radius: 50%; overflow: hidden; font-size: 20px; color: #000000; position: absolute; padding: 10px 25px; margin-left: -100px;">
+        <img src="/assets/23_feb/arrow.png" alt="Стрелка" style="margin-left: 45px;">
+        <div class="clearfix"></div>
+        <h1 style="margin: 0; padding: 0;">50 мм</h1> <br>
+        <span style="width: 160px; text-align: center; font-size: 10pt; position: absolute; margin: -25px -25px; padding: 5px;">
+          Макс. глубина<br>обнаружения<br>меди
+        </span>
+      </span>
+    </div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        <span style="width: 160px; height: 160px; background-color: #fff600; border-radius: 50%; overflow: hidden; font-size: 20px; color: #000000; position: absolute; padding: 10px 25px; margin-left: -100px;">
+        <img src="/assets/23_feb/arrow.png" alt="Стрелка" style="margin-left: 45px;">
+        <div class="clearfix"></div>
+        <h1 style="margin: 0; padding: 0;">30 мм</h1> <br>
+        <span style="width: 160px; text-align: center; font-size: 10pt; position: absolute; margin: -25px -25px; padding: 5px;">
+          Макс. глубина<br>обнаружения<br>эл. проводки
+        </span>
+
+
+      </span>
+      <div class="clearfix"></div>
+      <img src="/assets/23_feb/man.png" alt="Мужик" style="position: relative; bottom: 0; left: 50px;">
+    </div>
+
+  </div>
+</div>
+
+<div class="row" style="padding: 20px 0 50px 100px;">
+  <span style="color: #808080">Акция действует с 26 января до 28 февраля 2015 года включительно!</span>
+</div>
+
+<div class="row">
+
+  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <div class="panel panel-noborder left-menu"> <!-- Левое меню -->
+      <%= render :template => "catalogs/left-menu" %>
+    </div>
+  </div>
+
+  <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9" style="padding: 0">
+    <div class="panel panel-noborder">
+
+      <div class="panel-body">
+
+        <h2>Все наборы:</h2>
+
+        <div class="btn-group right product2-view-toggle" data-toggle="buttons">
+          <label class="btn btn-default btn-sm active">
+            <input type="radio" name="options" id="option1">
+            <span class="glyphicon glyphicon-th-large"></span>
+          </label>
+          <label class="btn btn-default btn-sm">
+            <input type="radio" name="options" id="option3">
+            <span class="glyphicon glyphicon-th-list"></span>
+          </label>
+        </div>
+
+        <div class="clear" style="height: 10px"></div>
+
+        <div class="row product-th-large">
+          <table class="table table-striped table-product">
+
+            <tbody>
+            <%= render(@all_goods) %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>

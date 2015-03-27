@@ -25,3 +25,7 @@
 //= require_directory .
 //= require_directory ./redactor
 //= require_directory ./redactor-rails
+
+$(document).ready(function() {
+    $("img").lazyload();
+});

@@ -23,7 +23,9 @@
 
     <script>
         changeCountCart(<%=cart_order.line_items.size%>);
-        $('#sum_yandex_market').val('<%= cart_order.total_price_in_stock %>');
+        <% if cart_order.total_price_in_stock > 0 %>
+            $('#sum_yandex_market').val('<%= cart_order.total_price_in_stock %>');
+        <% end %>
     </script>
 
     </tbody>
@@ -55,7 +57,9 @@
 
         <script>
             changeCountCart(<%=cart_order.line_items.size%>);
-            $('#sum_yandex_market').val('<%= cart_order.total_price_in_stock %>');
+            <% if cart_order.total_price_in_stock > 0 %>
+                $('#sum_yandex_market').val('<%= cart_order.total_price_in_stock %>');
+            <% end %>
         </script>
 
         </tbody>
@@ -81,7 +85,8 @@
 <% if cart_order.line_items_in_stock.size == 0 or
         (cart_order.line_items_in_stock.size == 1 and
                 (cart_order.line_items_in_stock.first.product_id == 29734 or
-                        cart_order.line_items_in_stock.first.product_id == 29735)) %>
+                        cart_order.line_items_in_stock.first.product_id == 29735 or
+                            cart_order.line_items_in_stock.first.product_id == 31234)) %>
     <script>
         $('#order_pay_type option[value="Банковской картой Visa/MasterCard"]').prop('disabled', true);
     </script>
@@ -95,7 +100,8 @@
 <% if cart_order.line_items.size == 0 or
         (cart_order.line_items.size == 1 and
                 (cart_order.line_items.first.product_id == 29734 or
-                        cart_order.line_items.first.product_id == 29735)) %>
+                        cart_order.line_items.first.product_id == 29735 or
+                            cart_order.line_items.first.product_id == 31234)) %>
     <script>
         $('#new_order').find('input[type="submit"]').attr('disabled','disabled')
     </script>

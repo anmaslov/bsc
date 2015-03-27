@@ -6,9 +6,9 @@
 
 
         <% if catalog.image.exists? %>
-            <%= link_to image_tag(catalog.image.url(:thumb), :alt => catalog.title, :class => 'catalog_img'), catalog %>
+            <%= link_to image_tag(catalog.image.url(:thumb), :alt => catalog.title, :class => 'catalog_img', lazy: true), catalog %>
         <% else %>
-            <%= link_to image_tag(catalog.image_thumb.url(:thumb), :alt => catalog.title, :class => 'catalog_img'), catalog %>
+            <%= link_to image_tag(catalog.image_thumb.url(:thumb), :alt => catalog.title, :class => 'catalog_img', lazy: true), catalog %>
         <% end %>
 
       </div>
@@ -49,9 +49,9 @@
     <% cache(catalog.id.to_s + 'td_image_thumb', expires_in: 12.hours) do %>
     <td>
       <% if !catalog.image_thumb.kind_of?(Array) %>
-          <%= image_tag(catalog.image_thumb.url(:thumbnail), :alt => catalog.title, :class => 'catalog_img') %>
+          <%= image_tag(catalog.image_thumb.url(:thumbnail), :alt => catalog.title, :class => 'catalog_img', lazy: true) %>
       <% else %>
-          <%= image_tag(catalog.image.url(:thumbnail), :alt => catalog.title, :class => 'catalog_img') %>
+          <%= image_tag(catalog.image.url(:thumbnail), :alt => catalog.title, :class => 'catalog_img', lazy: true) %>
       <% end %>
     </td>
     <% end %>

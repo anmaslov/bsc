@@ -22,7 +22,6 @@ class PagesController < ApplicationController
   def show
     #Price.update_info_arrow
     #Price.update_info_ekt
-    #runner "Price.update_info_ekt"
     #@page = Page.find(params[:id])
     #ReceiverPriceNotifier.receive_regual
     #Product.re_cache

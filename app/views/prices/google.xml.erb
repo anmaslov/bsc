@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:g="http://base.google.com/ns/1.0">
+	<title>BSC Store</title>
+	<link rel="self" href="https://bsc-ltd.ru"/>
+	<updated><%= Date.today %></updated>
+
+    <% @products.each do |entry| %>
+	<entry>
+		<g:id><%=entry.id%></g:id>
+		<g:title><%= entry.title_normal %></g:title>
+		<g:description><%= entry.description %></g:description>
+		<g:link>https://bsc-ltd.ru<%= url_for entry %></g:link>
+		<g:image_link>
+		<% if entry.image.present? or entry.imgs.size == 0 %>
+              https://bsc-ltd.ru<%= entry.image.url(:medium) %>
+          <% elsif !entry.image.present? and entry.imgs.size > 0 %>
+              https://bsc-ltd.ru<%= entry.imgs.first.picture.url(:medium) %>
+          <% end %>
+		</g:image_link>
+		<g:condition>new</g:condition>
+		<g:availability>in stock</g:availability>
+		<g:price><%=entry.price_with_margin%> RUB</g:price>
+		<g:shipping>
+			<g:country>RU</g:country>
+			<g:service>Standard</g:service>
+			<g:price>300 RUB</g:price>
+		</g:shipping>
+			
+		<% if entry.brand.present? %>
+            <g:brand><%= entry.brand.title %></g:brand>
+        <% end %>
+	</entry>
+    <% end %>
+
+</feed>

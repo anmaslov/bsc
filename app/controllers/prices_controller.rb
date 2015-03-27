@@ -3,7 +3,7 @@ class PricesController < ApplicationController
   before_action :set_price, only: [:show, :edit, :update, :destroy]
 
   load_and_authorize_resource except: :create
-  skip_authorize_resource :only => [:show, :yandex]
+  skip_authorize_resource :only => [:show, :yandex, :google]
 
 
   def index
@@ -68,13 +68,9 @@ class PricesController < ApplicationController
 
   def yandex
     @products = Product.where(:is_active => true, :market_yandex => true)
-
     @products = @products.where("updated_price_at IS NOT NULL AND updated_price_at > ?", (DateTime.now - 2.months))
-
     @catalogs = Catalog.where(:is_active => true)
-
     @products = @products.where("quantity > ?", 0)
-
     if params[:price_max]
       @products = @products.where("price <= ?", params[:price_max])
     end
@@ -89,6 +85,28 @@ class PricesController < ApplicationController
 
     respond_to do |format|
       format.yml { @products }
+      format.xml { @products }
+    end
+  end
+
+  def google
+    @products = Product.where(:is_active => true, :market_yandex => true)
+    @products = @products.where("updated_price_at IS NOT NULL AND updated_price_at > ?", (DateTime.now - 2.months))
+    @catalogs = Catalog.where(:is_active => true)
+    @products = @products.where("quantity > ?", 0)
+    if params[:price_max]
+      @products = @products.where("price <= ?", params[:price_max])
+    end
+
+    if params[:price_min]
+      @products = @products.where("price >= ?", params[:price_min])
+    end
+
+    if params[:limit]
+      @products = @products.order('price DESC').limit( params[:limit] )
+    end
+
+    respond_to do |format|
       format.xml { @products }
     end
   end

@@ -158,10 +158,11 @@ class CatalogsController < ApplicationController
       @brands = []
     end
 
-    charar = @catalog.characters_names @all_products
-
-    @characters_names = charar['characters_names']
-    @characters = charar['characters']
+    #charar = @catalog.characters_names @all_products
+    #
+    #
+    #@characters_names = charar['characters_names']
+    #@characters = charar['characters']
 
     # @all_products.each do |product|
     #   product.characters.each do |character|

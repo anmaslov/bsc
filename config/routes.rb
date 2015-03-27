@@ -39,6 +39,7 @@ Bsc::Application.routes.draw do
     collection do
       get :update_price
       get :yandex
+      get :google
     end
   end
 

@@ -115,3 +115,8 @@ gem 'validates_email_format_of'
 gem 'rack-host-redirect'
 
 gem 'dalli'
+
+gem "lazyload-rails"
+# gem 'unveil-rails', '~> 0.1.0'
+#
+#gem 'railties', '~> 4.1.0'

@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
   DELIVERY_TYPES = [ "Самовывоз [ул. Сабировская, 41]",
                      "В пределах КАД [300 рублей]",
                      "В Ленинградскую область [1500 рублей]",
-                     "В регионы [согласовывается с менеджером]"
+                     "В регионы [согласовывается с менеджером, 300 рублей до транспортной компании]"
   ]
 
   STATUS = {
@@ -60,11 +60,11 @@ class Order < ActiveRecord::Base
   end
 
   def total_price_not_available
-    line_items_not_available.to_a.sum {|item| item.total_price }
+    line_items_not_available.to_a.sum {|item| item.total_price}
   end
 
   def total_price_in_stock
-    line_items_in_stock.to_a.sum {|item| item.total_price }
+    line_items_in_stock.to_a.sum {|item| item.total_price}
   end
 
   def self.when_the_delivery when_date

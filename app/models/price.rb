@@ -75,8 +75,12 @@ class Price < ActiveRecord::Base
       end
 
       title    = row[import_information.title_column - 1].to_s
-      quantity = nil
-      if import_information.quantity_column.present?
+      if supplier_id != 4
+        quantity = nil
+      else
+        quantity = 1
+      end
+      if import_information.quantity_column.present? and supplier_id !=4
         quantity = row[import_information.quantity_column - 1].to_s.size
       end
       price    = row[import_information.price_column - 1].to_f

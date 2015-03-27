@@ -26,7 +26,18 @@
     <% @products.each do |offer| %>
     <offer id="<%=offer.id%>" available="<%= offer.quantity > 0 ? 'true' : 'false' %>" bid="21">
       <url>https://bsc-ltd.ru<%= url_for offer %></url>
-      <price><%=offer.price_with_margin%></price>
+
+      <% if offer.fix_price.present? and offer.fix_price > 0 and (offer.fix_price < offer.old_price_with_margin) %>
+        <price><%=offer.fix_price%></price>
+        <% if offer.old_price_with_margin / offer.fix_price > 1.05 %>
+            <oldprice><%=offer.old_price_with_margin%></oldprice>
+        <% else %>
+            <%=offer.fix_price / 0.95 %>
+        <% end %>
+      <% else %>
+        <price><%=offer.price_with_margin%></price>
+      <% end %>
+
       <currencyId>RUR</currencyId>
       <categoryId> <%= offer.catalog_id %> </categoryId >
       <picture>

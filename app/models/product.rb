@@ -164,16 +164,37 @@ class Product < ActiveRecord::Base
     end
   end
 
+  def old_price_with_margin user = nil
+    if user.present? and
+        user.margin_for_users.present? and
+        supplier_id.present? and
+        user.margin_for_users.where(:supplier_id => supplier_id).first.present?
+      price + price * ( user.margin_for_users.where(:supplier_id => supplier_id).first.margin / 100 )
+    else
+      if brand.present? and brand.margin > 0
+        ((price + price * ( brand.margin / 100 )) / 0.965)
+      elsif supplier.present?
+        ((price + price * ( supplier.margin / 100 )) / 0.965)
+      else
+        price
+      end
+    end
+  end
+
   def price_with_margin user = nil
-    price_with_margin_ = Rails.cache.fetch(self.id.to_s + '_price_for_' + (user.present? ? user.id.to_s : 'all'), expires_in: 24.hours) do
-      if user.present? and
+    price_with_margin_ = Rails.cache.fetch(self.id.to_s + '_price_for_' + (user.present? ? user.id.to_s : 'all'), expires_in: 1.hours) do
+      if fix_price.present? and fix_price > 0
+        fix_price
+      elsif user.present? and
           user.margin_for_users.present? and
           supplier_id.present? and
           user.margin_for_users.where(:supplier_id => supplier_id).first.present?
         price + price * ( user.margin_for_users.where(:supplier_id => supplier_id).first.margin / 100 )
       else
-        if supplier.present?
-          ((price + price * ( supplier.margin / 100 )) * 1.035)
+        if brand.present? and brand.margin > 0
+          ((price + price * ( brand.margin / 100 )) / 0.965)
+        elsif supplier.present?
+          ((price + price * ( supplier.margin / 100 )) / 0.965)
         else
           price
         end
@@ -204,6 +225,13 @@ class Product < ActiveRecord::Base
     Rails.cache.delete(id.to_s + '_title_normal')
   end
 
+  def old_price_after_fix_price
+    if fix_price.present? and (fix_price > 0) and (fix_price < old_price_with_margin)
+      old_price_with_margin
+    else
+      nil
+    end
+  end
   private
 
   # убеждаемся в отсутствии товарных позиций, ссылающихся на данный товар
