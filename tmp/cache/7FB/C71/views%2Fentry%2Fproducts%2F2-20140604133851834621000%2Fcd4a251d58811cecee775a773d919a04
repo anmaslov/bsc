@@ -1,13 +1,0 @@
-o: ActiveSupport::Cache::Entry:@valueI"Ô        <div class="entry">
-          <img alt="First" src="/assets/first.jpg" />
-          <h3>Programming Ruby 1.9 &amp; 2.0</h3>
-          <p>
-      Ruby is the fastest growind and most escitind dynamic language out there. Id you  need to gen wording programs delivered fast, you should add Ruby to your toolbox.
-    </p>
-          <div class="price_line">
-            <span class="price">
-              $49.95
-            </span>
-          </div>
-        </div>
-:ET:@created_atf1401909478.044023:@expires_in0
